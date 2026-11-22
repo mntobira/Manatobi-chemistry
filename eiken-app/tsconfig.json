@@ -1,0 +1,69 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+    "module": "ESNext",
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "allowJs": true,
+    "jsx": "react-jsx",
+    "types": [
+      "vite/client"
+    ],
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    },
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "noUnusedLocals": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "useUnknownInCatchVariables": true
+  },
+  "include": [
+    "src/**/*",
+    "vite.config.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/eiken/materials",
+    "src/eiken/listeningPractice.ts",
+    "src/eiken/writtenPractice.ts",
+    "src/eiken/writtenAuthoringSpec.ts",
+    "src/eiken/EikenApp.tsx",
+    "src/eiken/listeningExamCore.ts",
+    "src/eiken/writtenExamCore.ts",
+    "src/eiken/listeningAudio.generated.ts",
+    "src/eiken/listeningImages.generated.ts",
+    "src/data/egV3Items.generated.ts",
+    "src/data/egV3Problems.ts",
+    "src/data/englishGrammarData.ts",
+    "src/data/englishListeningData.ts",
+    "src/data/englishListeningQ1ASets.ts",
+    "src/data/englishListeningQ1BProblems.ts",
+    "src/data/englishListeningQ2Problems.ts",
+    "src/data/englishListeningQ3Problems.ts",
+    "src/data/englishListeningQ4to6Problems.ts",
+    "src/data/writtenPrints.generated.ts",
+    "src/data/toeic",
+    "src/data/reading",
+    "src/components/toeic",
+    "src/battle/data/pool.*.generated.ts",
+    "src/battle/data/answer.*.generated.ts"
+  ]
+}

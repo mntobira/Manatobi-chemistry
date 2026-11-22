@@ -1,0 +1,47 @@
+# 英検3級（eiken_3）撮り直し必須 音源プロンプト（全 6 件）
+目標速度: 120〜130 WPM ｜ style: "clear, speaking slowly" ｜ 出力: MP3 / 24,000 Hz / mono / 128 kbps
+※各行の話者ラベル（Man: / Woman: / Narrator:）自体は読まず、コロンの後ろの英文のみを読み上げてください。
+========================================================================
+
+[PART3-08] 第10回 No.28（B5_存在しない英語数詞（forty-10〜forty-15））
+音源ID: eiken_3_listening_r10_part3_08 ｜ 保存先: eiken_3_listening_r10_part3_08.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+
+Narrator: Hello Aaron, this is River Shoe Repair calling about your order number three-fifty. Everything is going smoothly, and we are calling to inform you that your custom order arrived early. Please call us back before six o'clock this evening.
+Narrator: Question. Why is River Shoe Repair calling Aaron?
+
+------------------------------------------------------------------------
+[PART3-08] 第11回 No.28（B5_存在しない英語数詞（forty-10〜forty-15））
+音源ID: eiken_3_listening_r11_part3_08 ｜ 保存先: eiken_3_listening_r11_part3_08.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+
+Narrator: Hello Caleb, this is Hilltop Pottery calling about your order number three-fifty-one. Everything is going smoothly, and we are calling to confirm whether you want gift wrapping. Please call us back before six o'clock this evening.
+Narrator: Question. Why is Hilltop Pottery calling Caleb?
+
+------------------------------------------------------------------------
+[PART3-08] 第12回 No.28（B5_存在しない英語数詞（forty-10〜forty-15））
+音源ID: eiken_3_listening_r12_part3_08 ｜ 保存先: eiken_3_listening_r12_part3_08.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+
+Narrator: Hello Nathan, this is Breeze Cycle Shop calling about your order number three-fifty-two. Everything is going smoothly, and we are calling to check the spelling of the name on the card. Please call us back before six o'clock this evening.
+Narrator: Question. Why is Breeze Cycle Shop calling Nathan?
+
+------------------------------------------------------------------------
+[PART3-08] 第13回 No.28（B5_存在しない英語数詞（forty-10〜forty-15））
+音源ID: eiken_3_listening_r13_part3_08 ｜ 保存先: eiken_3_listening_r13_part3_08.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+
+Narrator: Hello Owen, this is Crown Stationery calling about your order number three-fifty-three. Everything is going smoothly, and we are calling to ask if Saturday afternoon delivery works for you. Please call us back before six o'clock this evening.
+Narrator: Question. Why is Crown Stationery calling Owen?
+
+------------------------------------------------------------------------
+[PART3-08] 第14回 No.28（B5_存在しない英語数詞（forty-10〜forty-15））
+音源ID: eiken_3_listening_r14_part3_08 ｜ 保存先: eiken_3_listening_r14_part3_08.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+
+Narrator: Hello Liam, this is Forest Furniture calling about your order number three-fifty-four. Everything is going smoothly, and we are calling to let you know a replacement part costs eight hundred yen. Please call us back before six o'clock this evening.
+Narrator: Question. Why is Forest Furniture calling Liam?
+
+------------------------------------------------------------------------
+[PART3-08] 第15回 No.28（B5_存在しない英語数詞（forty-10〜forty-15））
+音源ID: eiken_3_listening_r15_part3_08 ｜ 保存先: eiken_3_listening_r15_part3_08.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+
+Narrator: Hello Noah, this is Sunrise Print Shop calling about your order number three-fifty-five. Everything is going smoothly, and we are calling to inform you that your custom order arrived early. Please call us back before six o'clock this evening.
+Narrator: Question. Why is Sunrise Print Shop calling Noah?
+
+------------------------------------------------------------------------

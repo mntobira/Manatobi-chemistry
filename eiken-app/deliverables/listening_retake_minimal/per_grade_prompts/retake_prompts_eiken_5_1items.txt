@@ -1,0 +1,13 @@
+# 英検5級（eiken_5）撮り直し必須 音源プロンプト（全 1 件）
+目標速度: 100〜110 WPM ｜ style: "clear, speaking slowly" ｜ 出力: MP3 / 24,000 Hz / mono / 128 kbps
+※各行の話者ラベル（Man: / Woman: / Narrator:）自体は読まず、コロンの後ろの英文のみを読み上げてください。
+========================================================================
+
+[PART1-06] 第1回 No.6（B1_テンプレート変数残骸）
+音源ID: eiken_5_listening_r01_part1_06 ｜ 保存先: eiken_5_listening_r01_part1_06.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Woman=F1 / Man=M1 / Narrator=F2
+
+Woman: Supper for tonight is almost ready, Daiki. Can you wash these red tomatoes?
+Man: Do you want me to do it right now?
+Narrator: Number one. We ate spaghetti last night. Number two. Yes, please. Thank you for helping me. Number three. He is cooking at a restaurant.
+
+------------------------------------------------------------------------

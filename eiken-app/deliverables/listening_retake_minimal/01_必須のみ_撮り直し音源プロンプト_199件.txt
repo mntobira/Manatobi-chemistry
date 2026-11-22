@@ -1,0 +1,1674 @@
+# まなとび英検｜リスニング撮り直し用 最低限音源プロンプト集（必須 199 件 / 全 3,285 件中 6.1%）
+※同一回内の重複問題（150件）・業種/作物/施設の矛盾（16件）・英文法/数詞崩壊（33件）のみに厳選した最小セットです。準1級・1級は撮り直し 0 件です。
+
+========================================================================
+【そのままコピペで使える 音源生成マスター指示プロンプト（Manus / ElevenLabs 共通）】
+========================================================================
+以下の英語台本リストから、英検リスニング差し替え用MP3音源を生成してください。
+
+■ 出力仕様（既存3,285本と完全同一規格）
+- 言語：en-US（自然なアメリカ英語）
+- 形式：MP3 / 24,000 Hz / モノラル / 128 kbps
+- ファイル名：各ブロックの `音源ID` + `.mp3`（例：`eiken_4_listening_r04_part1_01.mp3`）
+- 話者割当：各ブロックの `話者割当`（M1=男性1, M2=男性2, F1=女性1, F2=設問ナレーター明瞭女性）に従い、同一音源内では同じ役割の声を維持してください。
+- 読み上げ対象：各行の `Man:` / `Woman:` / `Narrator:` の後ろにある英語本文のみを読み上げてください（話者ラベル・音源ID・日本語メモは絶対に読まないでください）。
+- 間（ポーズ）：会話／本文と `Question.`（または `Number one.`）の間に約0.6秒〜0.8秒の自然な無音を入れてください。本試験2回読みのパートも、MP3自体は1回分（1音源1ファイル）で作成してください（アプリ側で自動リピート制御します）。
+========================================================================
+
+
+########################################################################
+## 英検5級（eiken_5）｜目標速度：100〜110 WPM｜style: "clear, speaking slowly"
+########################################################################
+
+[PART1-06] 第1回 No.6（B1_テンプレート変数残骸）
+音源ID: eiken_5_listening_r01_part1_06 ｜ 保存ファイル名: eiken_5_listening_r01_part1_06.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Woman=F1 / Man=M1 / Narrator=F2
+修正理由: `Supper for round tonight` という不自然な語 `round` が混入していたため `Supper for tonight` に修正
+
+Woman: Supper for tonight is almost ready, Daiki. Can you wash these red tomatoes?
+Man: Do you want me to do it right now?
+Narrator: Number one. We ate spaghetti last night. Number two. Yes, please. Thank you for helping me. Number three. He is cooking at a restaurant.
+
+------------------------------------------------------------------------
+
+########################################################################
+## 英検4級（eiken_4）｜目標速度：110〜120 WPM｜style: "clear, speaking slowly"
+########################################################################
+
+[PART2-07] 第1回 No.17（B3_人称代名詞ミス（Her/His → My））
+音源ID: eiken_4_listening_r01_part2_07 ｜ 保存ファイル名: eiken_4_listening_r01_part2_07.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+修正理由: 話者自身の家族・コーチについて話しているのに `Her/His ... caught a cold, so I went` と三人称になっていたため `My ...` に修正
+
+Man: Did you go to the autumn craft market last weekend, Hina?
+Woman: Yes! My older sister caught a cold, so I went there with my aunt.
+Man: Oh, I hope your family member feels better soon.
+Narrator: Question. Who went to the autumn craft market with the girl?
+
+------------------------------------------------------------------------
+[PART2-07] 第2回 No.17（B3_人称代名詞ミス（Her/His → My））
+音源ID: eiken_4_listening_r02_part2_07 ｜ 保存ファイル名: eiken_4_listening_r02_part2_07.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Woman=F1 / Man=M1 / Woman=F1 / Narrator=F2
+修正理由: 話者自身の家族・コーチについて話しているのに `Her/His ... caught a cold, so I went` と三人称になっていたため `My ...` に修正
+
+Woman: Did you go to the classical violin concert last weekend, Toma?
+Man: Yes! My soccer coach caught a cold, so I went there with my grandfather.
+Woman: Oh, I hope your family member feels better soon.
+Narrator: Question. Who went to the classical violin concert with the boy?
+
+------------------------------------------------------------------------
+[PART2-07] 第3回 No.17（B3_人称代名詞ミス（Her/His → My））
+音源ID: eiken_4_listening_r03_part2_07 ｜ 保存ファイル名: eiken_4_listening_r03_part2_07.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+修正理由: 話者自身の家族・コーチについて話しているのに `Her/His ... caught a cold, so I went` と三人称になっていたため `My ...` に修正
+
+Man: Did you go to the strawberry festival last weekend, Mio?
+Woman: Yes! My mother caught a cold, so I went there with my cousin.
+Man: Oh, I hope your family member feels better soon.
+Narrator: Question. Who went to the strawberry festival with the girl?
+
+------------------------------------------------------------------------
+[PART1-01] 第4回 No.1（B2_代名詞クラッシュ文法崩壊）
+音源ID: eiken_4_listening_r04_part1_01 ｜ 保存ファイル名: eiken_4_listening_r04_part1_01.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Woman=F1 / Man=M1 / Narrator=F2
+修正理由: `do you want me to lend me...` のように主語・目的語の代名詞が衝突していたため自然な申し出表現 `Would you like me to ... you ...?` に修正
+
+Woman: Hey, Kana. My hands are full right now.
+Man: Oh, I see, Takumi. Would you like me to lend you my green highlighter?
+Narrator: Number one. No, it started twenty minutes ago. Number two. I went there with my uncle. Number three. Yes, please. That would really help me.
+
+------------------------------------------------------------------------
+[PART2-07] 第4回 No.17（B3_人称代名詞ミス（Her/His → My））
+音源ID: eiken_4_listening_r04_part2_07 ｜ 保存ファイル名: eiken_4_listening_r04_part2_07.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Woman=F1 / Man=M1 / Woman=F1 / Narrator=F2
+修正理由: 話者自身の家族・コーチについて話しているのに `Her/His ... caught a cold, so I went` と三人称になっていたため `My ...` に修正
+
+Woman: Did you go to the dinosaur exhibition last weekend, Kaito?
+Man: Yes! My older sister caught a cold, so I went there with my aunt.
+Woman: Oh, I hope your family member feels better soon.
+Narrator: Question. Who went to the dinosaur exhibition with the boy?
+
+------------------------------------------------------------------------
+[PART1-01] 第5回 No.1（B2_代名詞クラッシュ文法崩壊）
+音源ID: eiken_4_listening_r05_part1_01 ｜ 保存ファイル名: eiken_4_listening_r05_part1_01.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Man=M1 / Woman=F1 / Narrator=F2
+修正理由: `do you want me to lend me...` のように主語・目的語の代名詞が衝突していたため自然な申し出表現 `Would you like me to ... you ...?` に修正
+
+Man: Hello, Emi. My hands are full right now.
+Woman: Oh, I see, Riku. Would you like me to pass you the salt shaker?
+Narrator: Number one. Yes, please. That would really help me. Number two. No, it started twenty minutes ago. Number three. I went there with my uncle.
+
+------------------------------------------------------------------------
+[PART2-07] 第5回 No.17（B3_人称代名詞ミス（Her/His → My））
+音源ID: eiken_4_listening_r05_part2_07 ｜ 保存ファイル名: eiken_4_listening_r05_part2_07.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+修正理由: 話者自身の家族・コーチについて話しているのに `Her/His ... caught a cold, so I went` と三人称になっていたため `My ...` に修正
+
+Man: Did you go to the riverside fireworks last weekend, Aoi?
+Woman: Yes! My soccer coach caught a cold, so I went there with my grandfather.
+Man: Oh, I hope your family member feels better soon.
+Narrator: Question. Who went to the riverside fireworks with the girl?
+
+------------------------------------------------------------------------
+[PART3-03] 第5回 No.23（B4_基礎冠詞ミス（a orange → an orange））
+音源ID: eiken_4_listening_r05_part3_03 ｜ 保存ファイル名: eiken_4_listening_r05_part3_03.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: `a orange cat` を正しい `an orange cat` に修正
+
+Narrator: Ren got an orange cat two months ago. Every morning before school, Ren gives it fresh water and cleans its space. The pet especially loves sleeping on a sunny cushion every afternoon.
+Narrator: Question. What does Ren's pet especially love doing every afternoon?
+
+------------------------------------------------------------------------
+[PART1-01] 第6回 No.1（B2_代名詞クラッシュ文法崩壊）
+音源ID: eiken_4_listening_r06_part1_01 ｜ 保存ファイル名: eiken_4_listening_r06_part1_01.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Woman=F1 / Man=M1 / Narrator=F2
+修正理由: `do you want me to lend me...` のように主語・目的語の代名詞が衝突していたため自然な申し出表現 `Would you like me to ... you ...?` に修正
+
+Woman: Pardon me, Miyu. My hands are full right now.
+Man: Oh, I see, Hayato. Would you like me to show you the way to Gate Three?
+Narrator: Number one. No, it started twenty minutes ago. Number two. Yes, please. That would really help me. Number three. I went there with my uncle.
+
+------------------------------------------------------------------------
+[PART2-07] 第6回 No.17（B3_人称代名詞ミス（Her/His → My））
+音源ID: eiken_4_listening_r06_part2_07 ｜ 保存ファイル名: eiken_4_listening_r06_part2_07.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Woman=F1 / Man=M1 / Woman=F1 / Narrator=F2
+修正理由: 話者自身の家族・コーチについて話しているのに `Her/His ... caught a cold, so I went` と三人称になっていたため `My ...` に修正
+
+Woman: Did you go to the ice skating show last weekend, Yuma?
+Man: Yes! My mother caught a cold, so I went there with my cousin.
+Woman: Oh, I hope your family member feels better soon.
+Narrator: Question. Who went to the ice skating show with the boy?
+
+------------------------------------------------------------------------
+[PART1-01] 第7回 No.1（B2_代名詞クラッシュ文法崩壊）
+音源ID: eiken_4_listening_r07_part1_01 ｜ 保存ファイル名: eiken_4_listening_r07_part1_01.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Man=M1 / Woman=F1 / Narrator=F2
+修正理由: `do you want me to lend me...` のように主語・目的語の代名詞が衝突していたため自然な申し出表現 `Would you like me to ... you ...?` に修正
+
+Man: Listen, Hina. My hands are full right now.
+Woman: Oh, I see, Kota. Would you like me to help you hang that wall map?
+Narrator: Number one. No, it started twenty minutes ago. Number two. I went there with my uncle. Number three. Yes, please. That would really help me.
+
+------------------------------------------------------------------------
+[PART2-07] 第7回 No.17（B3_人称代名詞ミス（Her/His → My））
+音源ID: eiken_4_listening_r07_part2_07 ｜ 保存ファイル名: eiken_4_listening_r07_part2_07.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+修正理由: 話者自身の家族・コーチについて話しているのに `Her/His ... caught a cold, so I went` と三人称になっていたため `My ...` に修正
+
+Man: Did you go to the pottery village last weekend, Mei?
+Woman: Yes! My older sister caught a cold, so I went there with my aunt.
+Man: Oh, I hope your family member feels better soon.
+Narrator: Question. Who went to the pottery village with the girl?
+
+------------------------------------------------------------------------
+[PART2-07] 第8回 No.17（B3_人称代名詞ミス（Her/His → My））
+音源ID: eiken_4_listening_r08_part2_07 ｜ 保存ファイル名: eiken_4_listening_r08_part2_07.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Woman=F1 / Man=M1 / Woman=F1 / Narrator=F2
+修正理由: 話者自身の家族・コーチについて話しているのに `Her/His ... caught a cold, so I went` と三人称になっていたため `My ...` に修正
+
+Woman: Did you go to the rose garden fair last weekend, Kota?
+Man: Yes! My soccer coach caught a cold, so I went there with my grandfather.
+Woman: Oh, I hope your family member feels better soon.
+Narrator: Question. Who went to the rose garden fair with the boy?
+
+------------------------------------------------------------------------
+[PART2-07] 第9回 No.17（B3_人称代名詞ミス（Her/His → My））
+音源ID: eiken_4_listening_r09_part2_07 ｜ 保存ファイル名: eiken_4_listening_r09_part2_07.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+修正理由: 話者自身の家族・コーチについて話しているのに `Her/His ... caught a cold, so I went` と三人称になっていたため `My ...` に修正
+
+Man: Did you go to the city book festival last weekend, Natsuki?
+Woman: Yes! My mother caught a cold, so I went there with my cousin.
+Man: Oh, I hope your family member feels better soon.
+Narrator: Question. Who went to the city book festival with the girl?
+
+------------------------------------------------------------------------
+[PART2-07] 第10回 No.17（B3_人称代名詞ミス（Her/His → My））
+音源ID: eiken_4_listening_r10_part2_07 ｜ 保存ファイル名: eiken_4_listening_r10_part2_07.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Woman=F1 / Man=M1 / Woman=F1 / Narrator=F2
+修正理由: 話者自身の家族・コーチについて話しているのに `Her/His ... caught a cold, so I went` と三人称になっていたため `My ...` に修正
+
+Woman: Did you go to the glassblowing workshop last weekend, Asahi?
+Man: Yes! My older sister caught a cold, so I went there with my aunt.
+Woman: Oh, I hope your family member feels better soon.
+Narrator: Question. Who went to the glassblowing workshop with the boy?
+
+------------------------------------------------------------------------
+[PART2-07] 第11回 No.17（B3_人称代名詞ミス（Her/His → My））
+音源ID: eiken_4_listening_r11_part2_07 ｜ 保存ファイル名: eiken_4_listening_r11_part2_07.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+修正理由: 話者自身の家族・コーチについて話しているのに `Her/His ... caught a cold, so I went` と三人称になっていたため `My ...` に修正
+
+Man: Did you go to the outdoor jazz event last weekend, Saki?
+Woman: Yes! My soccer coach caught a cold, so I went there with my grandfather.
+Man: Oh, I hope your family member feels better soon.
+Narrator: Question. Who went to the outdoor jazz event with the girl?
+
+------------------------------------------------------------------------
+[PART2-07] 第12回 No.17（B3_人称代名詞ミス（Her/His → My））
+音源ID: eiken_4_listening_r12_part2_07 ｜ 保存ファイル名: eiken_4_listening_r12_part2_07.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Woman=F1 / Man=M1 / Woman=F1 / Narrator=F2
+修正理由: 話者自身の家族・コーチについて話しているのに `Her/His ... caught a cold, so I went` と三人称になっていたため `My ...` に修正
+
+Woman: Did you go to the lantern night walk last weekend, Haruto?
+Man: Yes! My mother caught a cold, so I went there with my cousin.
+Woman: Oh, I hope your family member feels better soon.
+Narrator: Question. Who went to the lantern night walk with the boy?
+
+------------------------------------------------------------------------
+[PART2-07] 第13回 No.17（B3_人称代名詞ミス（Her/His → My））
+音源ID: eiken_4_listening_r13_part2_07 ｜ 保存ファイル名: eiken_4_listening_r13_part2_07.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+修正理由: 話者自身の家族・コーチについて話しているのに `Her/His ... caught a cold, so I went` と三人称になっていたため `My ...` に修正
+
+Man: Did you go to the marine life center last weekend, Honoka?
+Woman: Yes! My older sister caught a cold, so I went there with my aunt.
+Man: Oh, I hope your family member feels better soon.
+Narrator: Question. Who went to the marine life center with the girl?
+
+------------------------------------------------------------------------
+[PART2-07] 第14回 No.17（B3_人称代名詞ミス（Her/His → My））
+音源ID: eiken_4_listening_r14_part2_07 ｜ 保存ファイル名: eiken_4_listening_r14_part2_07.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Woman=F1 / Man=M1 / Woman=F1 / Narrator=F2
+修正理由: 話者自身の家族・コーチについて話しているのに `Her/His ... caught a cold, so I went` と三人称になっていたため `My ...` に修正
+
+Woman: Did you go to the historical castle tour last weekend, Takumi?
+Man: Yes! My soccer coach caught a cold, so I went there with my grandfather.
+Woman: Oh, I hope your family member feels better soon.
+Narrator: Question. Who went to the historical castle tour with the boy?
+
+------------------------------------------------------------------------
+[PART2-07] 第15回 No.17（B3_人称代名詞ミス（Her/His → My））
+音源ID: eiken_4_listening_r15_part2_07 ｜ 保存ファイル名: eiken_4_listening_r15_part2_07.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+修正理由: 話者自身の家族・コーチについて話しているのに `Her/His ... caught a cold, so I went` と三人称になっていたため `My ...` に修正
+
+Man: Did you go to the planetarium special night last weekend, Rin?
+Woman: Yes! My mother caught a cold, so I went there with my cousin.
+Man: Oh, I hope your family member feels better soon.
+Narrator: Question. Who went to the planetarium special night with the girl?
+
+------------------------------------------------------------------------
+
+########################################################################
+## 英検3級（eiken_3）｜目標速度：120〜130 WPM｜style: "clear, speaking slowly"
+########################################################################
+
+[PART3-08] 第10回 No.28（B5_存在しない英語数詞（forty-10〜forty-15））
+音源ID: eiken_3_listening_r10_part3_08 ｜ 保存ファイル名: eiken_3_listening_r10_part3_08.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 英語に存在しない注文番号 `forty-10`（＋準2級では冒頭の不自然な番組タグ）を自然な `three-fifty` に修正
+
+Narrator: Hello Aaron, this is River Shoe Repair calling about your order number three-fifty. Everything is going smoothly, and we are calling to inform you that your custom order arrived early. Please call us back before six o'clock this evening.
+Narrator: Question. Why is River Shoe Repair calling Aaron?
+
+------------------------------------------------------------------------
+[PART3-08] 第11回 No.28（B5_存在しない英語数詞（forty-10〜forty-15））
+音源ID: eiken_3_listening_r11_part3_08 ｜ 保存ファイル名: eiken_3_listening_r11_part3_08.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 英語に存在しない注文番号 `forty-11`（＋準2級では冒頭の不自然な番組タグ）を自然な `three-fifty-one` に修正
+
+Narrator: Hello Caleb, this is Hilltop Pottery calling about your order number three-fifty-one. Everything is going smoothly, and we are calling to confirm whether you want gift wrapping. Please call us back before six o'clock this evening.
+Narrator: Question. Why is Hilltop Pottery calling Caleb?
+
+------------------------------------------------------------------------
+[PART3-08] 第12回 No.28（B5_存在しない英語数詞（forty-10〜forty-15））
+音源ID: eiken_3_listening_r12_part3_08 ｜ 保存ファイル名: eiken_3_listening_r12_part3_08.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 英語に存在しない注文番号 `forty-12`（＋準2級では冒頭の不自然な番組タグ）を自然な `three-fifty-two` に修正
+
+Narrator: Hello Nathan, this is Breeze Cycle Shop calling about your order number three-fifty-two. Everything is going smoothly, and we are calling to check the spelling of the name on the card. Please call us back before six o'clock this evening.
+Narrator: Question. Why is Breeze Cycle Shop calling Nathan?
+
+------------------------------------------------------------------------
+[PART3-08] 第13回 No.28（B5_存在しない英語数詞（forty-10〜forty-15））
+音源ID: eiken_3_listening_r13_part3_08 ｜ 保存ファイル名: eiken_3_listening_r13_part3_08.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 英語に存在しない注文番号 `forty-13`（＋準2級では冒頭の不自然な番組タグ）を自然な `three-fifty-three` に修正
+
+Narrator: Hello Owen, this is Crown Stationery calling about your order number three-fifty-three. Everything is going smoothly, and we are calling to ask if Saturday afternoon delivery works for you. Please call us back before six o'clock this evening.
+Narrator: Question. Why is Crown Stationery calling Owen?
+
+------------------------------------------------------------------------
+[PART3-08] 第14回 No.28（B5_存在しない英語数詞（forty-10〜forty-15））
+音源ID: eiken_3_listening_r14_part3_08 ｜ 保存ファイル名: eiken_3_listening_r14_part3_08.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 英語に存在しない注文番号 `forty-14`（＋準2級では冒頭の不自然な番組タグ）を自然な `three-fifty-four` に修正
+
+Narrator: Hello Liam, this is Forest Furniture calling about your order number three-fifty-four. Everything is going smoothly, and we are calling to let you know a replacement part costs eight hundred yen. Please call us back before six o'clock this evening.
+Narrator: Question. Why is Forest Furniture calling Liam?
+
+------------------------------------------------------------------------
+[PART3-08] 第15回 No.28（B5_存在しない英語数詞（forty-10〜forty-15））
+音源ID: eiken_3_listening_r15_part3_08 ｜ 保存ファイル名: eiken_3_listening_r15_part3_08.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 英語に存在しない注文番号 `forty-15`（＋準2級では冒頭の不自然な番組タグ）を自然な `three-fifty-five` に修正
+
+Narrator: Hello Noah, this is Sunrise Print Shop calling about your order number three-fifty-five. Everything is going smoothly, and we are calling to inform you that your custom order arrived early. Please call us back before six o'clock this evening.
+Narrator: Question. Why is Sunrise Print Shop calling Noah?
+
+------------------------------------------------------------------------
+
+########################################################################
+## 英検準2級（eiken_pre2）｜目標速度：130〜140 WPM｜style: "clear and natural"
+########################################################################
+
+[PART3-08] 第10回 No.28（B5_存在しない英語数詞（forty-10〜forty-15））
+音源ID: eiken_pre2_listening_r10_part3_08 ｜ 保存ファイル名: eiken_pre2_listening_r10_part3_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 英語に存在しない注文番号 `forty-10`（＋準2級では冒頭の不自然な番組タグ）を自然な `three-fifty` に修正
+
+Narrator: Thank you for shopping with us this week. Hello Aaron, this is River Shoe Repair calling about your order number three-fifty. Everything is going smoothly, and we are calling to inform you that your custom order arrived early. Please call us back before six o'clock this evening.
+Narrator: Question. Why is River Shoe Repair calling Aaron?
+
+------------------------------------------------------------------------
+[PART3-08] 第11回 No.28（B5_存在しない英語数詞（forty-10〜forty-15））
+音源ID: eiken_pre2_listening_r11_part3_08 ｜ 保存ファイル名: eiken_pre2_listening_r11_part3_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 英語に存在しない注文番号 `forty-11`（＋準2級では冒頭の不自然な番組タグ）を自然な `three-fifty-one` に修正
+
+Narrator: Thank you for shopping with us this week. Hello Caleb, this is Hilltop Pottery calling about your order number three-fifty-one. Everything is going smoothly, and we are calling to confirm whether you want gift wrapping. Please call us back before six o'clock this evening.
+Narrator: Question. Why is Hilltop Pottery calling Caleb?
+
+------------------------------------------------------------------------
+[PART3-08] 第12回 No.28（B5_存在しない英語数詞（forty-10〜forty-15））
+音源ID: eiken_pre2_listening_r12_part3_08 ｜ 保存ファイル名: eiken_pre2_listening_r12_part3_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 英語に存在しない注文番号 `forty-12`（＋準2級では冒頭の不自然な番組タグ）を自然な `three-fifty-two` に修正
+
+Narrator: Thank you for shopping with us this week. Hello Nathan, this is Breeze Cycle Shop calling about your order number three-fifty-two. Everything is going smoothly, and we are calling to check the spelling of the name on the card. Please call us back before six o'clock this evening.
+Narrator: Question. Why is Breeze Cycle Shop calling Nathan?
+
+------------------------------------------------------------------------
+[PART3-08] 第13回 No.28（B5_存在しない英語数詞（forty-10〜forty-15））
+音源ID: eiken_pre2_listening_r13_part3_08 ｜ 保存ファイル名: eiken_pre2_listening_r13_part3_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 英語に存在しない注文番号 `forty-13`（＋準2級では冒頭の不自然な番組タグ）を自然な `three-fifty-three` に修正
+
+Narrator: Thank you for shopping with us this week. Hello Owen, this is Crown Stationery calling about your order number three-fifty-three. Everything is going smoothly, and we are calling to ask if Saturday afternoon delivery works for you. Please call us back before six o'clock this evening.
+Narrator: Question. Why is Crown Stationery calling Owen?
+
+------------------------------------------------------------------------
+[PART3-08] 第14回 No.28（B5_存在しない英語数詞（forty-10〜forty-15））
+音源ID: eiken_pre2_listening_r14_part3_08 ｜ 保存ファイル名: eiken_pre2_listening_r14_part3_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 英語に存在しない注文番号 `forty-14`（＋準2級では冒頭の不自然な番組タグ）を自然な `three-fifty-four` に修正
+
+Narrator: Thank you for shopping with us this week. Hello Liam, this is Forest Furniture calling about your order number three-fifty-four. Everything is going smoothly, and we are calling to let you know a replacement part costs eight hundred yen. Please call us back before six o'clock this evening.
+Narrator: Question. Why is Forest Furniture calling Liam?
+
+------------------------------------------------------------------------
+[PART3-08] 第15回 No.28（B5_存在しない英語数詞（forty-10〜forty-15））
+音源ID: eiken_pre2_listening_r15_part3_08 ｜ 保存ファイル名: eiken_pre2_listening_r15_part3_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 英語に存在しない注文番号 `forty-15`（＋準2級では冒頭の不自然な番組タグ）を自然な `three-fifty-five` に修正
+
+Narrator: Thank you for shopping with us this week. Hello Noah, this is Sunrise Print Shop calling about your order number three-fifty-five. Everything is going smoothly, and we are calling to inform you that your custom order arrived early. Please call us back before six o'clock this evening.
+Narrator: Question. Why is Sunrise Print Shop calling Noah?
+
+------------------------------------------------------------------------
+
+########################################################################
+## 英検準2級プラス（eiken_pre2plus）｜目標速度：135〜145 WPM｜style: "clear and natural"
+########################################################################
+
+[PART2-11] 第1回 No.26（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r01_part2_11 ｜ 保存ファイル名: eiken_pre2plus_listening_r01_part2_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.21（part2_06）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Passenger notice from the City Transit Bureau. Starting April first, the Green Loop Bus will update its timetable based on rider feedback collected this winter. Under the revised schedule, the service will run every ten minutes instead of twenty during morning rush hours. Printed pocket timetables are now available at all ticket counters.
+Narrator: Question. What change will be made to the Green Loop Bus?
+
+------------------------------------------------------------------------
+[PART2-12] 第1回 No.27（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r01_part2_12 ｜ 保存ファイル名: eiken_pre2plus_listening_r01_part2_12.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.22（part2_07）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Cultural Weekly. Opening this Saturday, the City Toy Museum will host a special three-month exhibition. Unlike past displays where items stayed behind glass cases, this time children can build and test a small wooden glider in the workshop corner. Admission tickets can be booked online with no booking fee.
+Narrator: Question. What is special about the upcoming exhibition at the City Toy Museum?
+
+------------------------------------------------------------------------
+[PART2-13] 第1回 No.28（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r01_part2_13 ｜ 保存ファイル名: eiken_pre2plus_listening_r01_part2_13.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.23（part2_08）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Last autumn, Maple High School introduced a small workflow change suggested by its staff committee. At first, several members doubted such a simple rule would make any noticeable difference. However, an internal review released yesterday confirmed that plastic cup waste during school events dropped by sixty percent.
+Narrator: Question. What did the internal review at Maple High School confirm?
+
+------------------------------------------------------------------------
+[PART2-14] 第1回 No.29（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r01_part2_14 ｜ 保存ファイル名: eiken_pre2plus_listening_r01_part2_14.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.24（part2_09）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Hello, this is the North Park event desk calling with a reminder for everyone registered in tomorrow's Riverbank Clean-Up Walk. Weather conditions look clear and pleasant all day. Because parking and supplies on site are limited, all participants are asked to wear long-sleeved shirts to protect against tall grass along the path. We look forward to seeing you tomorrow!
+Narrator: Question. What are participants in tomorrow's Riverbank Clean-Up Walk asked to do?
+
+------------------------------------------------------------------------
+[PART2-15] 第1回 No.30（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r01_part2_15 ｜ 保存ファイル名: eiken_pre2plus_listening_r01_part2_15.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.25（part2_10）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: In today's household science corner, Food and material specialists often test traditional home habits in the lab. Many people assume special chemical sprays or expensive gadgets are necessary, yet tests show that wrapping bananas at the stem with a small piece of plastic wrap slows down ripening gas so the fruit stays yellow for several extra days. Anyone can try this simple method today.
+Narrator: Question. According to the talk, what is the benefit of wrapping bananas at the stem with a small piece of plastic wrap?
+
+------------------------------------------------------------------------
+[PART2-08] 第2回 No.23（A2_業種・作物・施設の内容矛盾）
+音源ID: eiken_pre2plus_listening_r02_part2_08 ｜ 保存ファイル名: eiken_pre2plus_listening_r02_part2_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 店舗業種と特典（書店で果物等）、作物と表現（茶葉・じゃがいもを果物扱い）、施設と案内（劇場・桟橋で客室番号記入）の矛盾を解消
+
+Narrator: Customer announcement from Nordic Home Furnishings: starting this Friday, we are launching our Sustainable Shopper Program. Members who sign up for free at the register can borrow fabric and wood color samples for three days before ordering furniture. Staff at the service counter will be happy to explain the details.
+Narrator: Question. What benefit do members of Nordic Home Furnishings's new program get?
+
+------------------------------------------------------------------------
+[PART2-11] 第2回 No.26（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r02_part2_11 ｜ 保存ファイル名: eiken_pre2plus_listening_r02_part2_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.21（part2_06）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Passenger notice from the City Transit Bureau. Starting May first, the Hillside Town Shuttle will update its timetable based on rider feedback collected this winter. Under the revised schedule, the service will run every ten minutes instead of twenty during morning rush hours. Printed pocket timetables are now available at all ticket counters.
+Narrator: Question. What change will be made to the Hillside Town Shuttle?
+
+------------------------------------------------------------------------
+[PART2-12] 第2回 No.27（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r02_part2_12 ｜ 保存ファイル名: eiken_pre2plus_listening_r02_part2_12.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.22（part2_07）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Cultural Weekly. Opening next Tuesday, the Harbor Nature Hall will host a special three-month exhibition. Unlike past displays where items stayed behind glass cases, this time children can build and test a small wooden glider in the workshop corner. Admission tickets can be booked online with no booking fee.
+Narrator: Question. What is special about the upcoming exhibition at the Harbor Nature Hall?
+
+------------------------------------------------------------------------
+[PART2-13] 第2回 No.28（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r02_part2_13 ｜ 保存ファイル名: eiken_pre2plus_listening_r02_part2_13.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.23（part2_08）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Six months ago, Clover Junior High introduced a small workflow change suggested by its staff committee. At first, several members doubted such a simple rule would make any noticeable difference. However, an internal review released yesterday confirmed that plastic cup waste during school events dropped by sixty percent.
+Narrator: Question. What did the internal review at Clover Junior High confirm?
+
+------------------------------------------------------------------------
+[PART2-14] 第2回 No.29（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r02_part2_14 ｜ 保存ファイル名: eiken_pre2plus_listening_r02_part2_14.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.24（part2_09）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Hello, this is the organizing committee calling with a reminder for everyone registered in tomorrow's Junior Park Relay Run. Weather conditions look clear and pleasant all day. Because parking and supplies on site are limited, all participants are asked to wear long-sleeved shirts to protect against tall grass along the path. We look forward to seeing you tomorrow!
+Narrator: Question. What are participants in tomorrow's Junior Park Relay Run asked to do?
+
+------------------------------------------------------------------------
+[PART2-15] 第2回 No.30（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r02_part2_15 ｜ 保存ファイル名: eiken_pre2plus_listening_r02_part2_15.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.25（part2_10）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Practical Living Tips. Food and material specialists often test traditional home habits in the lab. Many people assume special chemical sprays or expensive gadgets are necessary, yet tests show that putting a slice of white bread inside a jar of hardened brown sugar restores soft moisture overnight so the sugar is easy to scoop again. Anyone can try this simple method today.
+Narrator: Question. According to the talk, what is the benefit of putting a slice of white bread inside a jar of hardened brown sugar?
+
+------------------------------------------------------------------------
+[PART2-11] 第3回 No.26（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r03_part2_11 ｜ 保存ファイル名: eiken_pre2plus_listening_r03_part2_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.21（part2_06）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Passenger notice from the City Transit Bureau. Starting June first, the Riverbank Mini Tram will update its timetable based on rider feedback collected this winter. Under the revised schedule, the service will run every ten minutes instead of twenty during morning rush hours. Printed pocket timetables are now available at all ticket counters.
+Narrator: Question. What change will be made to the Riverbank Mini Tram?
+
+------------------------------------------------------------------------
+[PART2-12] 第3回 No.27（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r03_part2_12 ｜ 保存ファイル名: eiken_pre2plus_listening_r03_part2_12.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.22（part2_07）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Cultural Weekly. Opening this Friday, the Sunrise Railway Museum will host a special three-month exhibition. Unlike past displays where items stayed behind glass cases, this time children can build and test a small wooden glider in the workshop corner. Admission tickets can be booked online with no booking fee.
+Narrator: Question. What is special about the upcoming exhibition at the Sunrise Railway Museum?
+
+------------------------------------------------------------------------
+[PART2-13] 第3回 No.28（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r03_part2_13 ｜ 保存ファイル名: eiken_pre2plus_listening_r03_part2_13.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.23（part2_08）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Early this spring, Sunrise Community Library introduced a small workflow change suggested by its staff committee. At first, several members doubted such a simple rule would make any noticeable difference. However, an internal review released yesterday confirmed that plastic cup waste during school events dropped by sixty percent.
+Narrator: Question. What did the internal review at Sunrise Community Library confirm?
+
+------------------------------------------------------------------------
+[PART2-14] 第3回 No.29（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r03_part2_14 ｜ 保存ファイル名: eiken_pre2plus_listening_r03_part2_14.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.24（part2_09）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Hello, this is the city recreation office calling with a reminder for everyone registered in tomorrow's Sunset Beach Picnic. Weather conditions look clear and pleasant all day. Because parking and supplies on site are limited, all participants are asked to wear long-sleeved shirts to protect against tall grass along the path. We look forward to seeing you tomorrow!
+Narrator: Question. What are participants in tomorrow's Sunset Beach Picnic asked to do?
+
+------------------------------------------------------------------------
+[PART2-15] 第3回 No.30（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r03_part2_15 ｜ 保存ファイル名: eiken_pre2plus_listening_r03_part2_15.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.25（part2_10）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: On Kitchen and Home Minute today, Food and material specialists often test traditional home habits in the lab. Many people assume special chemical sprays or expensive gadgets are necessary, yet tests show that washing canvas sneakers in cold water instead of hot water prevents the cotton fabric from shrinking and keeps colors bright. Anyone can try this simple method today.
+Narrator: Question. According to the talk, what is the benefit of washing canvas sneakers in cold water instead of hot water?
+
+------------------------------------------------------------------------
+[PART2-11] 第4回 No.26（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r04_part2_11 ｜ 保存ファイル名: eiken_pre2plus_listening_r04_part2_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.21（part2_06）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Passenger notice from the City Transit Bureau. Starting July first, the Station South Bus will update its timetable based on rider feedback collected this winter. Under the revised schedule, the service will run every ten minutes instead of twenty during morning rush hours. Printed pocket timetables are now available at all ticket counters.
+Narrator: Question. What change will be made to the Station South Bus?
+
+------------------------------------------------------------------------
+[PART2-12] 第4回 No.27（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r04_part2_12 ｜ 保存ファイル名: eiken_pre2plus_listening_r04_part2_12.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.22（part2_07）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Cultural Weekly. Opening next weekend, the Forest Craft Gallery will host a special three-month exhibition. Unlike past displays where items stayed behind glass cases, this time children can build and test a small wooden glider in the workshop corner. Admission tickets can be booked online with no booking fee.
+Narrator: Question. What is special about the upcoming exhibition at the Forest Craft Gallery?
+
+------------------------------------------------------------------------
+[PART2-13] 第4回 No.28（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r04_part2_13 ｜ 保存ファイル名: eiken_pre2plus_listening_r04_part2_13.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.23（part2_08）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Last January, Westgate Youth Center introduced a small workflow change suggested by its staff committee. At first, several members doubted such a simple rule would make any noticeable difference. However, an internal review released yesterday confirmed that plastic cup waste during school events dropped by sixty percent.
+Narrator: Question. What did the internal review at Westgate Youth Center confirm?
+
+------------------------------------------------------------------------
+[PART2-14] 第4回 No.29（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r04_part2_14 ｜ 保存ファイル名: eiken_pre2plus_listening_r04_part2_14.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.24（part2_09）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Hello, this is the outdoor club coordinator calling with a reminder for everyone registered in tomorrow's Saturday Canoe Lesson. Weather conditions look clear and pleasant all day. Because parking and supplies on site are limited, all participants are asked to wear long-sleeved shirts to protect against tall grass along the path. We look forward to seeing you tomorrow!
+Narrator: Question. What are participants in tomorrow's Saturday Canoe Lesson asked to do?
+
+------------------------------------------------------------------------
+[PART2-15] 第4回 No.30（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r04_part2_15 ｜ 保存ファイル名: eiken_pre2plus_listening_r04_part2_15.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.25（part2_10）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Listeners of Daily Science, Food and material specialists often test traditional home habits in the lab. Many people assume special chemical sprays or expensive gadgets are necessary, yet tests show that placing apples in a separate drawer away from leafy green salads keeps lettuce leaves from turning brown prematurely in the refrigerator. Anyone can try this simple method today.
+Narrator: Question. According to the talk, what is the benefit of placing apples in a separate drawer away from leafy green salads?
+
+------------------------------------------------------------------------
+[PART2-08] 第5回 No.23（A2_業種・作物・施設の内容矛盾）
+音源ID: eiken_pre2plus_listening_r05_part2_08 ｜ 保存ファイル名: eiken_pre2plus_listening_r05_part2_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 店舗業種と特典（書店で果物等）、作物と表現（茶葉・じゃがいもを果物扱い）、施設と案内（劇場・桟橋で客室番号記入）の矛盾を解消
+
+Narrator: Customer announcement from BookBridge Stores: starting this Friday, we are launching our Sustainable Shopper Program. Members who sign up for free at the register can trade in gently used hardcover books for twenty-percent discount coupons. Staff at the service counter will be happy to explain the details.
+Narrator: Question. What benefit do members of BookBridge Stores's new program get?
+
+------------------------------------------------------------------------
+[PART2-10] 第5回 No.25（A2_業種・作物・施設の内容矛盾）
+音源ID: eiken_pre2plus_listening_r05_part2_10 ｜ 保存ファイル名: eiken_pre2plus_listening_r05_part2_10.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 店舗業種と特典（書店で果物等）、作物と表現（茶葉・じゃがいもを果物扱い）、施設と案内（劇場・桟橋で客室番号記入）の矛盾を解消
+
+Narrator: Welcome to Central Arts Theater! We are delighted to have you with us today. To ensure smooth operations for everyone, please turn off smartwatches and mobile screens completely before the curtain rises. If you need assistance in another language, staff wearing green badges are ready to help.
+Narrator: Question. What are visitors at Central Arts Theater asked to do?
+
+------------------------------------------------------------------------
+[PART2-11] 第5回 No.26（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r05_part2_11 ｜ 保存ファイル名: eiken_pre2plus_listening_r05_part2_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.21（part2_06）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Passenger notice from the City Transit Bureau. Starting September first, the Bayside Park Shuttle will update its timetable based on rider feedback collected this winter. Under the revised schedule, the service will run every ten minutes instead of twenty during morning rush hours. Printed pocket timetables are now available at all ticket counters.
+Narrator: Question. What change will be made to the Bayside Park Shuttle?
+
+------------------------------------------------------------------------
+[PART2-12] 第5回 No.27（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r05_part2_12 ｜ 保存ファイル名: eiken_pre2plus_listening_r05_part2_12.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.22（part2_07）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Cultural Weekly. Opening on May tenth, the Starlight Science Dome will host a special three-month exhibition. Unlike past displays where items stayed behind glass cases, this time children can build and test a small wooden glider in the workshop corner. Admission tickets can be booked online with no booking fee.
+Narrator: Question. What is special about the upcoming exhibition at the Starlight Science Dome?
+
+------------------------------------------------------------------------
+[PART2-13] 第5回 No.28（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r05_part2_13 ｜ 保存ファイル名: eiken_pre2plus_listening_r05_part2_13.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.23（part2_08）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Four months ago, Harbor Cooking School introduced a small workflow change suggested by its staff committee. At first, several members doubted such a simple rule would make any noticeable difference. However, an internal review released yesterday confirmed that plastic cup waste during school events dropped by sixty percent.
+Narrator: Question. What did the internal review at Harbor Cooking School confirm?
+
+------------------------------------------------------------------------
+[PART2-14] 第5回 No.29（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r05_part2_14 ｜ 保存ファイル名: eiken_pre2plus_listening_r05_part2_14.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.24（part2_09）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Hello, this is the Saturday tour staff calling with a reminder for everyone registered in tomorrow's Forest Berry Picking Tour. Weather conditions look clear and pleasant all day. Because parking and supplies on site are limited, all participants are asked to wear long-sleeved shirts to protect against tall grass along the path. We look forward to seeing you tomorrow!
+Narrator: Question. What are participants in tomorrow's Forest Berry Picking Tour asked to do?
+
+------------------------------------------------------------------------
+[PART2-15] 第5回 No.30（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r05_part2_15 ｜ 保存ファイル名: eiken_pre2plus_listening_r05_part2_15.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.25（part2_10）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Here is a useful everyday tip: Food and material specialists often test traditional home habits in the lab. Many people assume special chemical sprays or expensive gadgets are necessary, yet tests show that soaking peeled potatoes in cold water for fifteen minutes before frying removes excess surface starch so homemade fries turn golden and crisp. Anyone can try this simple method today.
+Narrator: Question. According to the talk, what is the benefit of soaking peeled potatoes in cold water for fifteen minutes before frying?
+
+------------------------------------------------------------------------
+[PART2-09] 第6回 No.24（A2_業種・作物・施設の内容矛盾）
+音源ID: eiken_pre2plus_listening_r06_part2_09 ｜ 保存ファイル名: eiken_pre2plus_listening_r06_part2_09.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 店舗業種と特典（書店で果物等）、作物と表現（茶葉・じゃがいもを果物扱い）、施設と案内（劇場・桟橋で客室番号記入）の矛盾を解消
+
+Narrator: In regional farming news, growers of green tea leaves are reporting an encouraging season this year. According to the agricultural cooperative, cool misty mornings gave the young leaves a much richer aroma than last year. Local markets expect lively weekend crowds eager to buy this year's harvest.
+Narrator: Question. What is reported about green tea leaves this year?
+
+------------------------------------------------------------------------
+[PART2-11] 第6回 No.26（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r06_part2_11 ｜ 保存ファイル名: eiken_pre2plus_listening_r06_part2_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.21（part2_06）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Passenger notice from the City Transit Bureau. Starting October first, the Green Loop Bus will update its timetable based on rider feedback collected this winter. Under the revised schedule, the service will stop directly in front of the new Sports Complex entrance. Printed pocket timetables are now available at all ticket counters.
+Narrator: Question. What change will be made to the Green Loop Bus?
+
+------------------------------------------------------------------------
+[PART2-12] 第6回 No.27（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r06_part2_12 ｜ 保存ファイル名: eiken_pre2plus_listening_r06_part2_12.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.22（part2_07）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Cultural Weekly. Opening on June fifth, the City Toy Museum will host a special three-month exhibition. Unlike past displays where items stayed behind glass cases, this time every guest receives an illustrated stamp booklet at the entrance gate. Admission tickets can be booked online with no booking fee.
+Narrator: Question. What is special about the upcoming exhibition at the City Toy Museum?
+
+------------------------------------------------------------------------
+[PART2-13] 第6回 No.28（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r06_part2_13 ｜ 保存ファイル名: eiken_pre2plus_listening_r06_part2_13.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.23（part2_08）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Last September, Maple High School introduced a small workflow change suggested by its staff committee. At first, several members doubted such a simple rule would make any noticeable difference. However, an internal review released yesterday confirmed that forgotten umbrellas and jackets in the Lost and Found fell by half.
+Narrator: Question. What did the internal review at Maple High School confirm?
+
+------------------------------------------------------------------------
+[PART2-14] 第6回 No.29（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r06_part2_14 ｜ 保存ファイル名: eiken_pre2plus_listening_r06_part2_14.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.24（part2_09）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Hello, this is the Harbor Trail office calling with a reminder for everyone registered in tomorrow's Riverbank Clean-Up Walk. Weather conditions look clear and pleasant all day. Because parking and supplies on site are limited, all participants are asked to write an emergency phone number on the back of their name tag. We look forward to seeing you tomorrow!
+Narrator: Question. What are participants in tomorrow's Riverbank Clean-Up Walk asked to do?
+
+------------------------------------------------------------------------
+[PART2-15] 第6回 No.30（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r06_part2_15 ｜ 保存ファイル名: eiken_pre2plus_listening_r06_part2_15.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.25（part2_10）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Good morning from Smart Home Radio. Food and material specialists often test traditional home habits in the lab. Many people assume special chemical sprays or expensive gadgets are necessary, yet tests show that wrapping bananas at the stem with a small piece of plastic wrap slows down ripening gas so the fruit stays yellow for several extra days. Anyone can try this simple method today.
+Narrator: Question. According to the talk, what is the benefit of wrapping bananas at the stem with a small piece of plastic wrap?
+
+------------------------------------------------------------------------
+[PART2-08] 第7回 No.23（A2_業種・作物・施設の内容矛盾）
+音源ID: eiken_pre2plus_listening_r07_part2_08 ｜ 保存ファイル名: eiken_pre2plus_listening_r07_part2_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 店舗業種と特典（書店で果物等）、作物と表現（茶葉・じゃがいもを果物扱い）、施設と案内（劇場・桟橋で客室番号記入）の矛盾を解消
+
+Narrator: Customer announcement from EcoWardrobe Apparel: starting this Friday, we are launching our Sustainable Shopper Program. Members who sign up for free at the register can bring clean cotton shirts for recycling to get a three-hundred-yen coupon. Staff at the service counter will be happy to explain the details.
+Narrator: Question. What benefit do members of EcoWardrobe Apparel's new program get?
+
+------------------------------------------------------------------------
+[PART2-11] 第7回 No.26（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r07_part2_11 ｜ 保存ファイル名: eiken_pre2plus_listening_r07_part2_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.21（part2_06）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Passenger notice from the City Transit Bureau. Starting November first, the Hillside Town Shuttle will update its timetable based on rider feedback collected this winter. Under the revised schedule, the service will stop directly in front of the new Sports Complex entrance. Printed pocket timetables are now available at all ticket counters.
+Narrator: Question. What change will be made to the Hillside Town Shuttle?
+
+------------------------------------------------------------------------
+[PART2-12] 第7回 No.27（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r07_part2_12 ｜ 保存ファイル名: eiken_pre2plus_listening_r07_part2_12.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.22（part2_07）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Cultural Weekly. Opening this Thursday, the Harbor Nature Hall will host a special three-month exhibition. Unlike past displays where items stayed behind glass cases, this time every guest receives an illustrated stamp booklet at the entrance gate. Admission tickets can be booked online with no booking fee.
+Narrator: Question. What is special about the upcoming exhibition at the Harbor Nature Hall?
+
+------------------------------------------------------------------------
+[PART2-13] 第7回 No.28（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r07_part2_13 ｜ 保存ファイル名: eiken_pre2plus_listening_r07_part2_13.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.23（part2_08）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Earlier this year, Clover Junior High introduced a small workflow change suggested by its staff committee. At first, several members doubted such a simple rule would make any noticeable difference. However, an internal review released yesterday confirmed that forgotten umbrellas and jackets in the Lost and Found fell by half.
+Narrator: Question. What did the internal review at Clover Junior High confirm?
+
+------------------------------------------------------------------------
+[PART2-14] 第7回 No.29（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r07_part2_14 ｜ 保存ファイル名: eiken_pre2plus_listening_r07_part2_14.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.24（part2_09）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Hello, this is the weekend sports desk calling with a reminder for everyone registered in tomorrow's Junior Park Relay Run. Weather conditions look clear and pleasant all day. Because parking and supplies on site are limited, all participants are asked to write an emergency phone number on the back of their name tag. We look forward to seeing you tomorrow!
+Narrator: Question. What are participants in tomorrow's Junior Park Relay Run asked to do?
+
+------------------------------------------------------------------------
+[PART2-15] 第7回 No.30（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r07_part2_15 ｜ 保存ファイル名: eiken_pre2plus_listening_r07_part2_15.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.25（part2_10）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: In this week's consumer lab note, Food and material specialists often test traditional home habits in the lab. Many people assume special chemical sprays or expensive gadgets are necessary, yet tests show that putting a slice of white bread inside a jar of hardened brown sugar restores soft moisture overnight so the sugar is easy to scoop again. Anyone can try this simple method today.
+Narrator: Question. According to the talk, what is the benefit of putting a slice of white bread inside a jar of hardened brown sugar?
+
+------------------------------------------------------------------------
+[PART2-08] 第8回 No.23（A2_業種・作物・施設の内容矛盾）
+音源ID: eiken_pre2plus_listening_r08_part2_08 ｜ 保存ファイル名: eiken_pre2plus_listening_r08_part2_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 店舗業種と特典（書店で果物等）、作物と表現（茶葉・じゃがいもを果物扱い）、施設と案内（劇場・桟橋で客室番号記入）の矛盾を解消
+
+Narrator: Customer announcement from SunRay Electronics: starting this Friday, we are launching our Sustainable Shopper Program. Members who sign up for free at the register can get a free protective screen film installed when buying a tablet or phone. Staff at the service counter will be happy to explain the details.
+Narrator: Question. What benefit do members of SunRay Electronics's new program get?
+
+------------------------------------------------------------------------
+[PART2-11] 第8回 No.26（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r08_part2_11 ｜ 保存ファイル名: eiken_pre2plus_listening_r08_part2_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.21（part2_06）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Passenger notice from the City Transit Bureau. Starting December first, the Riverbank Mini Tram will update its timetable based on rider feedback collected this winter. Under the revised schedule, the service will stop directly in front of the new Sports Complex entrance. Printed pocket timetables are now available at all ticket counters.
+Narrator: Question. What change will be made to the Riverbank Mini Tram?
+
+------------------------------------------------------------------------
+[PART2-12] 第8回 No.27（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r08_part2_12 ｜ 保存ファイル名: eiken_pre2plus_listening_r08_part2_12.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.22（part2_07）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Cultural Weekly. Opening next Monday, the Sunrise Railway Museum will host a special three-month exhibition. Unlike past displays where items stayed behind glass cases, this time every guest receives an illustrated stamp booklet at the entrance gate. Admission tickets can be booked online with no booking fee.
+Narrator: Question. What is special about the upcoming exhibition at the Sunrise Railway Museum?
+
+------------------------------------------------------------------------
+[PART2-13] 第8回 No.28（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r08_part2_13 ｜ 保存ファイル名: eiken_pre2plus_listening_r08_part2_13.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.23（part2_08）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Last November, Sunrise Community Library introduced a small workflow change suggested by its staff committee. At first, several members doubted such a simple rule would make any noticeable difference. However, an internal review released yesterday confirmed that forgotten umbrellas and jackets in the Lost and Found fell by half.
+Narrator: Question. What did the internal review at Sunrise Community Library confirm?
+
+------------------------------------------------------------------------
+[PART2-14] 第8回 No.29（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r08_part2_14 ｜ 保存ファイル名: eiken_pre2plus_listening_r08_part2_14.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.24（part2_09）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Hello, this is the lakeside park team calling with a reminder for everyone registered in tomorrow's Sunset Beach Picnic. Weather conditions look clear and pleasant all day. Because parking and supplies on site are limited, all participants are asked to write an emergency phone number on the back of their name tag. We look forward to seeing you tomorrow!
+Narrator: Question. What are participants in tomorrow's Sunset Beach Picnic asked to do?
+
+------------------------------------------------------------------------
+[PART2-15] 第8回 No.30（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r08_part2_15 ｜ 保存ファイル名: eiken_pre2plus_listening_r08_part2_15.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.25（part2_10）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome back to Everyday Chemistry. Food and material specialists often test traditional home habits in the lab. Many people assume special chemical sprays or expensive gadgets are necessary, yet tests show that washing canvas sneakers in cold water instead of hot water prevents the cotton fabric from shrinking and keeps colors bright. Anyone can try this simple method today.
+Narrator: Question. According to the talk, what is the benefit of washing canvas sneakers in cold water instead of hot water?
+
+------------------------------------------------------------------------
+[PART2-11] 第9回 No.26（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r09_part2_11 ｜ 保存ファイル名: eiken_pre2plus_listening_r09_part2_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.21（part2_06）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Passenger notice from the City Transit Bureau. Starting January tenth, the Station South Bus will update its timetable based on rider feedback collected this winter. Under the revised schedule, the service will stop directly in front of the new Sports Complex entrance. Printed pocket timetables are now available at all ticket counters.
+Narrator: Question. What change will be made to the Station South Bus?
+
+------------------------------------------------------------------------
+[PART2-12] 第9回 No.27（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r09_part2_12 ｜ 保存ファイル名: eiken_pre2plus_listening_r09_part2_12.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.22（part2_07）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Cultural Weekly. Opening on October third, the Forest Craft Gallery will host a special three-month exhibition. Unlike past displays where items stayed behind glass cases, this time every guest receives an illustrated stamp booklet at the entrance gate. Admission tickets can be booked online with no booking fee.
+Narrator: Question. What is special about the upcoming exhibition at the Forest Craft Gallery?
+
+------------------------------------------------------------------------
+[PART2-13] 第9回 No.28（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r09_part2_13 ｜ 保存ファイル名: eiken_pre2plus_listening_r09_part2_13.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.23（part2_08）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Three months back, Westgate Youth Center introduced a small workflow change suggested by its staff committee. At first, several members doubted such a simple rule would make any noticeable difference. However, an internal review released yesterday confirmed that forgotten umbrellas and jackets in the Lost and Found fell by half.
+Narrator: Question. What did the internal review at Westgate Youth Center confirm?
+
+------------------------------------------------------------------------
+[PART2-14] 第9回 No.29（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r09_part2_14 ｜ 保存ファイル名: eiken_pre2plus_listening_r09_part2_14.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.24（part2_09）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Hello, this is the coastal guide center calling with a reminder for everyone registered in tomorrow's Saturday Canoe Lesson. Weather conditions look clear and pleasant all day. Because parking and supplies on site are limited, all participants are asked to write an emergency phone number on the back of their name tag. We look forward to seeing you tomorrow!
+Narrator: Question. What are participants in tomorrow's Saturday Canoe Lesson asked to do?
+
+------------------------------------------------------------------------
+[PART2-15] 第9回 No.30（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r09_part2_15 ｜ 保存ファイル名: eiken_pre2plus_listening_r09_part2_15.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.25（part2_10）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Today on Modern Homemaker Digest, Food and material specialists often test traditional home habits in the lab. Many people assume special chemical sprays or expensive gadgets are necessary, yet tests show that placing apples in a separate drawer away from leafy green salads keeps lettuce leaves from turning brown prematurely in the refrigerator. Anyone can try this simple method today.
+Narrator: Question. According to the talk, what is the benefit of placing apples in a separate drawer away from leafy green salads?
+
+------------------------------------------------------------------------
+[PART2-08] 第10回 No.23（A2_業種・作物・施設の内容矛盾）
+音源ID: eiken_pre2plus_listening_r10_part2_08 ｜ 保存ファイル名: eiken_pre2plus_listening_r10_part2_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 店舗業種と特典（書店で果物等）、作物と表現（茶葉・じゃがいもを果物扱い）、施設と案内（劇場・桟橋で客室番号記入）の矛盾を解消
+
+Narrator: Customer announcement from DailyBean Roasters: starting this Friday, we are launching our Sustainable Shopper Program. Members who sign up for free at the register can get forty yen off any freshly brewed coffee when bringing a reusable tumbler. Staff at the service counter will be happy to explain the details.
+Narrator: Question. What benefit do members of DailyBean Roasters's new program get?
+
+------------------------------------------------------------------------
+[PART2-10] 第10回 No.25（A2_業種・作物・施設の内容矛盾）
+音源ID: eiken_pre2plus_listening_r10_part2_10 ｜ 保存ファイル名: eiken_pre2plus_listening_r10_part2_10.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 店舗業種と特典（書店で果物等）、作物と表現（茶葉・じゃがいもを果物扱い）、施設と案内（劇場・桟橋で客室番号記入）の矛盾を解消
+
+Narrator: Welcome to Coral Island Pier! We are delighted to have you with us today. To ensure smooth operations for everyone, please have boarding passes ready for inspection before stepping onto Deck Two. If you need assistance in another language, staff wearing green badges are ready to help.
+Narrator: Question. What are visitors at Coral Island Pier asked to do?
+
+------------------------------------------------------------------------
+[PART2-11] 第10回 No.26（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r10_part2_11 ｜ 保存ファイル名: eiken_pre2plus_listening_r10_part2_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.21（part2_06）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Passenger notice from the City Transit Bureau. Starting February first, the Bayside Park Shuttle will update its timetable based on rider feedback collected this winter. Under the revised schedule, the service will stop directly in front of the new Sports Complex entrance. Printed pocket timetables are now available at all ticket counters.
+Narrator: Question. What change will be made to the Bayside Park Shuttle?
+
+------------------------------------------------------------------------
+[PART2-12] 第10回 No.27（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r10_part2_12 ｜ 保存ファイル名: eiken_pre2plus_listening_r10_part2_12.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.22（part2_07）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Cultural Weekly. Opening this Sunday, the Starlight Science Dome will host a special three-month exhibition. Unlike past displays where items stayed behind glass cases, this time every guest receives an illustrated stamp booklet at the entrance gate. Admission tickets can be booked online with no booking fee.
+Narrator: Question. What is special about the upcoming exhibition at the Starlight Science Dome?
+
+------------------------------------------------------------------------
+[PART2-13] 第10回 No.28（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r10_part2_13 ｜ 保存ファイル名: eiken_pre2plus_listening_r10_part2_13.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.23（part2_08）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Last spring, Harbor Cooking School introduced a small workflow change suggested by its staff committee. At first, several members doubted such a simple rule would make any noticeable difference. However, an internal review released yesterday confirmed that forgotten umbrellas and jackets in the Lost and Found fell by half.
+Narrator: Question. What did the internal review at Harbor Cooking School confirm?
+
+------------------------------------------------------------------------
+[PART2-14] 第10回 No.29（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r10_part2_14 ｜ 保存ファイル名: eiken_pre2plus_listening_r10_part2_14.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.24（part2_09）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Hello, this is the highland camp office calling with a reminder for everyone registered in tomorrow's Forest Berry Picking Tour. Weather conditions look clear and pleasant all day. Because parking and supplies on site are limited, all participants are asked to write an emergency phone number on the back of their name tag. We look forward to seeing you tomorrow!
+Narrator: Question. What are participants in tomorrow's Forest Berry Picking Tour asked to do?
+
+------------------------------------------------------------------------
+[PART2-15] 第10回 No.30（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r10_part2_15 ｜ 保存ファイル名: eiken_pre2plus_listening_r10_part2_15.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.25（part2_10）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Here is a quick food-science fact: Food and material specialists often test traditional home habits in the lab. Many people assume special chemical sprays or expensive gadgets are necessary, yet tests show that soaking peeled potatoes in cold water for fifteen minutes before frying removes excess surface starch so homemade fries turn golden and crisp. Anyone can try this simple method today.
+Narrator: Question. According to the talk, what is the benefit of soaking peeled potatoes in cold water for fifteen minutes before frying?
+
+------------------------------------------------------------------------
+[PART2-08] 第11回 No.23（A2_業種・作物・施設の内容矛盾）
+音源ID: eiken_pre2plus_listening_r11_part2_08 ｜ 保存ファイル名: eiken_pre2plus_listening_r11_part2_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 店舗業種と特典（書店で果物等）、作物と表現（茶葉・じゃがいもを果物扱い）、施設と案内（劇場・桟橋で客室番号記入）の矛盾を解消
+
+Narrator: Customer announcement from Terra Outdoor Gear: starting this Friday, we are launching our Sustainable Shopper Program. Members who sign up for free at the register can have hiking backpack zippers and straps inspected and adjusted for free. Staff at the service counter will be happy to explain the details.
+Narrator: Question. What benefit do members of Terra Outdoor Gear's new program get?
+
+------------------------------------------------------------------------
+[PART2-09] 第11回 No.24（A2_業種・作物・施設の内容矛盾）
+音源ID: eiken_pre2plus_listening_r11_part2_09 ｜ 保存ファイル名: eiken_pre2plus_listening_r11_part2_09.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 店舗業種と特典（書店で果物等）、作物と表現（茶葉・じゃがいもを果物扱い）、施設と案内（劇場・桟橋で客室番号記入）の矛盾を解消
+
+Narrator: In regional farming news, growers of new potatoes are reporting an encouraging season this year. According to the agricultural cooperative, well-drained sandy soil produced unusually smooth and flavorful tubers this spring. Local markets expect lively weekend crowds eager to buy this year's harvest.
+Narrator: Question. What is reported about new potatoes this year?
+
+------------------------------------------------------------------------
+[PART2-11] 第11回 No.26（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r11_part2_11 ｜ 保存ファイル名: eiken_pre2plus_listening_r11_part2_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.21（part2_06）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Passenger notice from the City Transit Bureau. Starting March first, the Green Loop Bus will update its timetable based on rider feedback collected this winter. Under the revised schedule, the service will offer half-price weekend fares for students with a school ID. Printed pocket timetables are now available at all ticket counters.
+Narrator: Question. What change will be made to the Green Loop Bus?
+
+------------------------------------------------------------------------
+[PART2-12] 第11回 No.27（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r11_part2_12 ｜ 保存ファイル名: eiken_pre2plus_listening_r11_part2_12.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.22（part2_07）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Cultural Weekly. Opening next Wednesday, the City Toy Museum will host a special three-month exhibition. Unlike past displays where items stayed behind glass cases, this time visitors can touch real meteorites displayed on the center table. Admission tickets can be booked online with no booking fee.
+Narrator: Question. What is special about the upcoming exhibition at the City Toy Museum?
+
+------------------------------------------------------------------------
+[PART2-13] 第11回 No.28（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r11_part2_13 ｜ 保存ファイル名: eiken_pre2plus_listening_r11_part2_13.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.23（part2_08）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Five months ago, Maple High School introduced a small workflow change suggested by its staff committee. At first, several members doubted such a simple rule would make any noticeable difference. However, an internal review released yesterday confirmed that students returned ninety-five percent of library books before the due date.
+Narrator: Question. What did the internal review at Maple High School confirm?
+
+------------------------------------------------------------------------
+[PART2-14] 第11回 No.29（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r11_part2_14 ｜ 保存ファイル名: eiken_pre2plus_listening_r11_part2_14.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.24（part2_09）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Hello, this is the greenway walk desk calling with a reminder for everyone registered in tomorrow's Riverbank Clean-Up Walk. Weather conditions look clear and pleasant all day. Because parking and supplies on site are limited, all participants are asked to meet in front of the park clock tower fifteen minutes before nine. We look forward to seeing you tomorrow!
+Narrator: Question. What are participants in tomorrow's Riverbank Clean-Up Walk asked to do?
+
+------------------------------------------------------------------------
+[PART2-15] 第11回 No.30（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r11_part2_15 ｜ 保存ファイル名: eiken_pre2plus_listening_r11_part2_15.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.25（part2_10）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Thank you for tuning in to Life Hacks. Food and material specialists often test traditional home habits in the lab. Many people assume special chemical sprays or expensive gadgets are necessary, yet tests show that wrapping bananas at the stem with a small piece of plastic wrap slows down ripening gas so the fruit stays yellow for several extra days. Anyone can try this simple method today.
+Narrator: Question. According to the talk, what is the benefit of wrapping bananas at the stem with a small piece of plastic wrap?
+
+------------------------------------------------------------------------
+[PART2-11] 第12回 No.26（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r12_part2_11 ｜ 保存ファイル名: eiken_pre2plus_listening_r12_part2_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.21（part2_06）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Passenger notice from the City Transit Bureau. Starting April fifteenth, the Hillside Town Shuttle will update its timetable based on rider feedback collected this winter. Under the revised schedule, the service will offer half-price weekend fares for students with a school ID. Printed pocket timetables are now available at all ticket counters.
+Narrator: Question. What change will be made to the Hillside Town Shuttle?
+
+------------------------------------------------------------------------
+[PART2-12] 第12回 No.27（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r12_part2_12 ｜ 保存ファイル名: eiken_pre2plus_listening_r12_part2_12.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.22（part2_07）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Cultural Weekly. Opening on April twelfth, the Harbor Nature Hall will host a special three-month exhibition. Unlike past displays where items stayed behind glass cases, this time visitors can touch real meteorites displayed on the center table. Admission tickets can be booked online with no booking fee.
+Narrator: Question. What is special about the upcoming exhibition at the Harbor Nature Hall?
+
+------------------------------------------------------------------------
+[PART2-13] 第12回 No.28（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r12_part2_13 ｜ 保存ファイル名: eiken_pre2plus_listening_r12_part2_13.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.23（part2_08）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Last October, Clover Junior High introduced a small workflow change suggested by its staff committee. At first, several members doubted such a simple rule would make any noticeable difference. However, an internal review released yesterday confirmed that students returned ninety-five percent of library books before the due date.
+Narrator: Question. What did the internal review at Clover Junior High confirm?
+
+------------------------------------------------------------------------
+[PART2-14] 第12回 No.29（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r12_part2_14 ｜ 保存ファイル名: eiken_pre2plus_listening_r12_part2_14.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.24（part2_09）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Hello, this is the youth relay committee calling with a reminder for everyone registered in tomorrow's Junior Park Relay Run. Weather conditions look clear and pleasant all day. Because parking and supplies on site are limited, all participants are asked to meet in front of the park clock tower fifteen minutes before nine. We look forward to seeing you tomorrow!
+Narrator: Question. What are participants in tomorrow's Junior Park Relay Run asked to do?
+
+------------------------------------------------------------------------
+[PART2-15] 第12回 No.30（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r12_part2_15 ｜ 保存ファイル名: eiken_pre2plus_listening_r12_part2_15.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.25（part2_10）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: In our Tuesday kitchen experiment, Food and material specialists often test traditional home habits in the lab. Many people assume special chemical sprays or expensive gadgets are necessary, yet tests show that putting a slice of white bread inside a jar of hardened brown sugar restores soft moisture overnight so the sugar is easy to scoop again. Anyone can try this simple method today.
+Narrator: Question. According to the talk, what is the benefit of putting a slice of white bread inside a jar of hardened brown sugar?
+
+------------------------------------------------------------------------
+[PART2-11] 第13回 No.26（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r13_part2_11 ｜ 保存ファイル名: eiken_pre2plus_listening_r13_part2_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.21（part2_06）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Passenger notice from the City Transit Bureau. Starting May fifteenth, the Riverbank Mini Tram will update its timetable based on rider feedback collected this winter. Under the revised schedule, the service will offer half-price weekend fares for students with a school ID. Printed pocket timetables are now available at all ticket counters.
+Narrator: Question. What change will be made to the Riverbank Mini Tram?
+
+------------------------------------------------------------------------
+[PART2-12] 第13回 No.27（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r13_part2_12 ｜ 保存ファイル名: eiken_pre2plus_listening_r13_part2_12.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.22（part2_07）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Cultural Weekly. Opening on July eighth, the Sunrise Railway Museum will host a special three-month exhibition. Unlike past displays where items stayed behind glass cases, this time visitors can touch real meteorites displayed on the center table. Admission tickets can be booked online with no booking fee.
+Narrator: Question. What is special about the upcoming exhibition at the Sunrise Railway Museum?
+
+------------------------------------------------------------------------
+[PART2-13] 第13回 No.28（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r13_part2_13 ｜ 保存ファイル名: eiken_pre2plus_listening_r13_part2_13.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.23（part2_08）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: At the start of this term, Sunrise Community Library introduced a small workflow change suggested by its staff committee. At first, several members doubted such a simple rule would make any noticeable difference. However, an internal review released yesterday confirmed that students returned ninety-five percent of library books before the due date.
+Narrator: Question. What did the internal review at Sunrise Community Library confirm?
+
+------------------------------------------------------------------------
+[PART2-14] 第13回 No.29（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r13_part2_14 ｜ 保存ファイル名: eiken_pre2plus_listening_r13_part2_14.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.24（part2_09）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Hello, this is the beach picnic staff calling with a reminder for everyone registered in tomorrow's Sunset Beach Picnic. Weather conditions look clear and pleasant all day. Because parking and supplies on site are limited, all participants are asked to meet in front of the park clock tower fifteen minutes before nine. We look forward to seeing you tomorrow!
+Narrator: Question. What are participants in tomorrow's Sunset Beach Picnic asked to do?
+
+------------------------------------------------------------------------
+[PART2-15] 第13回 No.30（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r13_part2_15 ｜ 保存ファイル名: eiken_pre2plus_listening_r13_part2_15.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.25（part2_10）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: From the Home Economics Desk today, Food and material specialists often test traditional home habits in the lab. Many people assume special chemical sprays or expensive gadgets are necessary, yet tests show that washing canvas sneakers in cold water instead of hot water prevents the cotton fabric from shrinking and keeps colors bright. Anyone can try this simple method today.
+Narrator: Question. According to the talk, what is the benefit of washing canvas sneakers in cold water instead of hot water?
+
+------------------------------------------------------------------------
+[PART2-11] 第14回 No.26（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r14_part2_11 ｜ 保存ファイル名: eiken_pre2plus_listening_r14_part2_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.21（part2_06）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Passenger notice from the City Transit Bureau. Starting June fifteenth, the Station South Bus will update its timetable based on rider feedback collected this winter. Under the revised schedule, the service will offer half-price weekend fares for students with a school ID. Printed pocket timetables are now available at all ticket counters.
+Narrator: Question. What change will be made to the Station South Bus?
+
+------------------------------------------------------------------------
+[PART2-12] 第14回 No.27（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r14_part2_12 ｜ 保存ファイル名: eiken_pre2plus_listening_r14_part2_12.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.22（part2_07）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Cultural Weekly. Opening this holiday Monday, the Forest Craft Gallery will host a special three-month exhibition. Unlike past displays where items stayed behind glass cases, this time visitors can touch real meteorites displayed on the center table. Admission tickets can be booked online with no booking fee.
+Narrator: Question. What is special about the upcoming exhibition at the Forest Craft Gallery?
+
+------------------------------------------------------------------------
+[PART2-13] 第14回 No.28（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r14_part2_13 ｜ 保存ファイル名: eiken_pre2plus_listening_r14_part2_13.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.23（part2_08）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Last winter, Westgate Youth Center introduced a small workflow change suggested by its staff committee. At first, several members doubted such a simple rule would make any noticeable difference. However, an internal review released yesterday confirmed that students returned ninety-five percent of library books before the due date.
+Narrator: Question. What did the internal review at Westgate Youth Center confirm?
+
+------------------------------------------------------------------------
+[PART2-14] 第14回 No.29（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r14_part2_14 ｜ 保存ファイル名: eiken_pre2plus_listening_r14_part2_14.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.24（part2_09）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Hello, this is the canoe club counter calling with a reminder for everyone registered in tomorrow's Saturday Canoe Lesson. Weather conditions look clear and pleasant all day. Because parking and supplies on site are limited, all participants are asked to meet in front of the park clock tower fifteen minutes before nine. We look forward to seeing you tomorrow!
+Narrator: Question. What are participants in tomorrow's Saturday Canoe Lesson asked to do?
+
+------------------------------------------------------------------------
+[PART2-15] 第14回 No.30（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r14_part2_15 ｜ 保存ファイル名: eiken_pre2plus_listening_r14_part2_15.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.25（part2_10）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Curious minds often ask our staff: Food and material specialists often test traditional home habits in the lab. Many people assume special chemical sprays or expensive gadgets are necessary, yet tests show that placing apples in a separate drawer away from leafy green salads keeps lettuce leaves from turning brown prematurely in the refrigerator. Anyone can try this simple method today.
+Narrator: Question. According to the talk, what is the benefit of placing apples in a separate drawer away from leafy green salads?
+
+------------------------------------------------------------------------
+[PART2-08] 第15回 No.23（A2_業種・作物・施設の内容矛盾）
+音源ID: eiken_pre2plus_listening_r15_part2_08 ｜ 保存ファイル名: eiken_pre2plus_listening_r15_part2_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 店舗業種と特典（書店で果物等）、作物と表現（茶葉・じゃがいもを果物扱い）、施設と案内（劇場・桟橋で客室番号記入）の矛盾を解消
+
+Narrator: Customer announcement from ClearSound Audio: starting this Friday, we are launching our Sustainable Shopper Program. Members who sign up for free at the register can test noise-canceling headphones at home for three days before purchasing. Staff at the service counter will be happy to explain the details.
+Narrator: Question. What benefit do members of ClearSound Audio's new program get?
+
+------------------------------------------------------------------------
+[PART2-10] 第15回 No.25（A2_業種・作物・施設の内容矛盾）
+音源ID: eiken_pre2plus_listening_r15_part2_10 ｜ 保存ファイル名: eiken_pre2plus_listening_r15_part2_10.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 店舗業種と特典（書店で果物等）、作物と表現（茶葉・じゃがいもを果物扱い）、施設と案内（劇場・桟橋で客室番号記入）の矛盾を解消
+
+Narrator: Welcome to Crown Plaza Auditorium! We are delighted to have you with us today. To ensure smooth operations for everyone, please pick up simultaneous interpretation headsets at Table B before taking a seat. If you need assistance in another language, staff wearing green badges are ready to help.
+Narrator: Question. What are visitors at Crown Plaza Auditorium asked to do?
+
+------------------------------------------------------------------------
+[PART2-11] 第15回 No.26（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r15_part2_11 ｜ 保存ファイル名: eiken_pre2plus_listening_r15_part2_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.21（part2_06）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Passenger notice from the City Transit Bureau. Starting October fifteenth, the Bayside Park Shuttle will update its timetable based on rider feedback collected this winter. Under the revised schedule, the service will offer half-price weekend fares for students with a school ID. Printed pocket timetables are now available at all ticket counters.
+Narrator: Question. What change will be made to the Bayside Park Shuttle?
+
+------------------------------------------------------------------------
+[PART2-12] 第15回 No.27（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r15_part2_12 ｜ 保存ファイル名: eiken_pre2plus_listening_r15_part2_12.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.22（part2_07）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Cultural Weekly. Opening on November second, the Starlight Science Dome will host a special three-month exhibition. Unlike past displays where items stayed behind glass cases, this time visitors can touch real meteorites displayed on the center table. Admission tickets can be booked online with no booking fee.
+Narrator: Question. What is special about the upcoming exhibition at the Starlight Science Dome?
+
+------------------------------------------------------------------------
+[PART2-13] 第15回 No.28（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r15_part2_13 ｜ 保存ファイル名: eiken_pre2plus_listening_r15_part2_13.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.23（part2_08）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Two quarters ago, Harbor Cooking School introduced a small workflow change suggested by its staff committee. At first, several members doubted such a simple rule would make any noticeable difference. However, an internal review released yesterday confirmed that students returned ninety-five percent of library books before the due date.
+Narrator: Question. What did the internal review at Harbor Cooking School confirm?
+
+------------------------------------------------------------------------
+[PART2-14] 第15回 No.29（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r15_part2_14 ｜ 保存ファイル名: eiken_pre2plus_listening_r15_part2_14.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.24（part2_09）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Hello, this is the forest tour desk calling with a reminder for everyone registered in tomorrow's Forest Berry Picking Tour. Weather conditions look clear and pleasant all day. Because parking and supplies on site are limited, all participants are asked to meet in front of the park clock tower fifteen minutes before nine. We look forward to seeing you tomorrow!
+Narrator: Question. What are participants in tomorrow's Forest Berry Picking Tour asked to do?
+
+------------------------------------------------------------------------
+[PART2-15] 第15回 No.30（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_pre2plus_listening_r15_part2_15 ｜ 保存ファイル名: eiken_pre2plus_listening_r15_part2_15.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.25（part2_10）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: On Weekend Living Spotlight today, Food and material specialists often test traditional home habits in the lab. Many people assume special chemical sprays or expensive gadgets are necessary, yet tests show that soaking peeled potatoes in cold water for fifteen minutes before frying removes excess surface starch so homemade fries turn golden and crisp. Anyone can try this simple method today.
+Narrator: Question. According to the talk, what is the benefit of soaking peeled potatoes in cold water for fifteen minutes before frying?
+
+------------------------------------------------------------------------
+
+########################################################################
+## 英検2級（eiken_2）｜目標速度：140〜150 WPM｜style: "clear and natural"
+########################################################################
+
+[PART2-11] 第1回 No.26（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r01_part2_11 ｜ 保存ファイル名: eiken_2_listening_r01_part2_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.21（part2_06）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Passenger notice from the City Transit Bureau. Starting April first, the Harbor Circular Bus will update its timetable based on rider feedback collected this winter. Under the revised schedule, the service will add an express stop in front of the Municipal Hospital. Printed pocket timetables are now available at all ticket counters.
+Narrator: Question. What change will be made to the Harbor Circular Bus?
+
+------------------------------------------------------------------------
+[PART2-12] 第1回 No.27（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r01_part2_12 ｜ 保存ファイル名: eiken_2_listening_r01_part2_12.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.22（part2_07）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Cultural Weekly. Opening this Saturday, the Maritime Science Museum will host a special three-month exhibition. Unlike past displays where items stayed behind glass cases, this time audio commentary was recorded by the engineers who restored the original machines. Admission tickets can be booked online with no booking fee.
+Narrator: Question. What is special about the upcoming exhibition at the Maritime Science Museum?
+
+------------------------------------------------------------------------
+[PART2-13] 第1回 No.28（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r01_part2_13 ｜ 保存ファイル名: eiken_2_listening_r01_part2_13.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.23（part2_08）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Last autumn, Midland Publishing Group introduced a small workflow change suggested by its staff committee. At first, several members doubted such a simple rule would make any noticeable difference. However, an internal review released yesterday confirmed that staff overtime on Fridays decreased by an average of forty-five minutes.
+Narrator: Question. What did the internal review at Midland Publishing Group confirm?
+
+------------------------------------------------------------------------
+[PART2-14] 第1回 No.29（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r01_part2_14 ｜ 保存ファイル名: eiken_2_listening_r01_part2_14.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.24（part2_09）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Hello, this is the North Park event desk calling with a reminder for everyone registered in tomorrow's Autumn Ridge Trail Walk. Weather conditions look clear and pleasant all day. Because parking and supplies on site are limited, all participants are asked to board the organizer shuttle at North Gate instead of driving private cars. We look forward to seeing you tomorrow!
+Narrator: Question. What are participants in tomorrow's Autumn Ridge Trail Walk asked to do?
+
+------------------------------------------------------------------------
+[PART2-15] 第1回 No.30（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r01_part2_15 ｜ 保存ファイル名: eiken_2_listening_r01_part2_15.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.25（part2_10）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: In today's household science corner, Food and material specialists often test traditional home habits in the lab. Many people assume special chemical sprays or expensive gadgets are necessary, yet tests show that storing cut herbs in a jar with a damp paper towel keeps leaves crisp nearly twice as long as leaving them in open fridge trays. Anyone can try this simple method today.
+Narrator: Question. According to the talk, what is the benefit of storing cut herbs in a jar with a damp paper towel?
+
+------------------------------------------------------------------------
+[PART2-11] 第2回 No.26（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r02_part2_11 ｜ 保存ファイル名: eiken_2_listening_r02_part2_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.21（part2_06）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Passenger notice from the City Transit Bureau. Starting May first, the Westside Commuter Shuttle will update its timetable based on rider feedback collected this winter. Under the revised schedule, the service will add an express stop in front of the Municipal Hospital. Printed pocket timetables are now available at all ticket counters.
+Narrator: Question. What change will be made to the Westside Commuter Shuttle?
+
+------------------------------------------------------------------------
+[PART2-12] 第2回 No.27（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r02_part2_12 ｜ 保存ファイル名: eiken_2_listening_r02_part2_12.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.22（part2_07）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Cultural Weekly. Opening next Tuesday, the National Textile Gallery will host a special three-month exhibition. Unlike past displays where items stayed behind glass cases, this time audio commentary was recorded by the engineers who restored the original machines. Admission tickets can be booked online with no booking fee.
+Narrator: Question. What is special about the upcoming exhibition at the National Textile Gallery?
+
+------------------------------------------------------------------------
+[PART2-13] 第2回 No.28（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r02_part2_13 ｜ 保存ファイル名: eiken_2_listening_r02_part2_13.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.23（part2_08）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Six months ago, Northstar Logistics Office introduced a small workflow change suggested by its staff committee. At first, several members doubted such a simple rule would make any noticeable difference. However, an internal review released yesterday confirmed that staff overtime on Fridays decreased by an average of forty-five minutes.
+Narrator: Question. What did the internal review at Northstar Logistics Office confirm?
+
+------------------------------------------------------------------------
+[PART2-14] 第2回 No.29（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r02_part2_14 ｜ 保存ファイル名: eiken_2_listening_r02_part2_14.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.24（part2_09）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Hello, this is the organizing committee calling with a reminder for everyone registered in tomorrow's Harbor Charity Cycling Tour. Weather conditions look clear and pleasant all day. Because parking and supplies on site are limited, all participants are asked to board the organizer shuttle at North Gate instead of driving private cars. We look forward to seeing you tomorrow!
+Narrator: Question. What are participants in tomorrow's Harbor Charity Cycling Tour asked to do?
+
+------------------------------------------------------------------------
+[PART2-15] 第2回 No.30（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r02_part2_15 ｜ 保存ファイル名: eiken_2_listening_r02_part2_15.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.25（part2_10）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Practical Living Tips. Food and material specialists often test traditional home habits in the lab. Many people assume special chemical sprays or expensive gadgets are necessary, yet tests show that preheating cast-iron pans gradually over medium-low heat prevents uneven hot spots and stops delicate fish fillets from sticking. Anyone can try this simple method today.
+Narrator: Question. According to the talk, what is the benefit of preheating cast-iron pans gradually over medium-low heat?
+
+------------------------------------------------------------------------
+[PART2-11] 第3回 No.26（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r03_part2_11 ｜ 保存ファイル名: eiken_2_listening_r03_part2_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.21（part2_06）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Passenger notice from the City Transit Bureau. Starting June first, the Valley Metro Tram will update its timetable based on rider feedback collected this winter. Under the revised schedule, the service will add an express stop in front of the Municipal Hospital. Printed pocket timetables are now available at all ticket counters.
+Narrator: Question. What change will be made to the Valley Metro Tram?
+
+------------------------------------------------------------------------
+[PART2-12] 第3回 No.27（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r03_part2_12 ｜ 保存ファイル名: eiken_2_listening_r03_part2_12.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.22（part2_07）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Cultural Weekly. Opening this Friday, the Modern Design Pavilion will host a special three-month exhibition. Unlike past displays where items stayed behind glass cases, this time audio commentary was recorded by the engineers who restored the original machines. Admission tickets can be booked online with no booking fee.
+Narrator: Question. What is special about the upcoming exhibition at the Modern Design Pavilion?
+
+------------------------------------------------------------------------
+[PART2-13] 第3回 No.28（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r03_part2_13 ｜ 保存ファイル名: eiken_2_listening_r03_part2_13.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.23（part2_08）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Early this spring, Crestview Medical Clinic introduced a small workflow change suggested by its staff committee. At first, several members doubted such a simple rule would make any noticeable difference. However, an internal review released yesterday confirmed that staff overtime on Fridays decreased by an average of forty-five minutes.
+Narrator: Question. What did the internal review at Crestview Medical Clinic confirm?
+
+------------------------------------------------------------------------
+[PART2-14] 第3回 No.29（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r03_part2_14 ｜ 保存ファイル名: eiken_2_listening_r03_part2_14.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.24（part2_09）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Hello, this is the city recreation office calling with a reminder for everyone registered in tomorrow's Lakeside Botanical Sketch Day. Weather conditions look clear and pleasant all day. Because parking and supplies on site are limited, all participants are asked to board the organizer shuttle at North Gate instead of driving private cars. We look forward to seeing you tomorrow!
+Narrator: Question. What are participants in tomorrow's Lakeside Botanical Sketch Day asked to do?
+
+------------------------------------------------------------------------
+[PART2-15] 第3回 No.30（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r03_part2_15 ｜ 保存ファイル名: eiken_2_listening_r03_part2_15.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.25（part2_10）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: On Kitchen and Home Minute today, Food and material specialists often test traditional home habits in the lab. Many people assume special chemical sprays or expensive gadgets are necessary, yet tests show that drying wet leather shoes with crumpled newspaper at room temperature draws out inner moisture without cracking the leather fibers like hair dryers do. Anyone can try this simple method today.
+Narrator: Question. According to the talk, what is the benefit of drying wet leather shoes with crumpled newspaper at room temperature?
+
+------------------------------------------------------------------------
+[PART2-11] 第4回 No.26（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r04_part2_11 ｜ 保存ファイル名: eiken_2_listening_r04_part2_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.21（part2_06）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Passenger notice from the City Transit Bureau. Starting July first, the Airport Express Coach will update its timetable based on rider feedback collected this winter. Under the revised schedule, the service will add an express stop in front of the Municipal Hospital. Printed pocket timetables are now available at all ticket counters.
+Narrator: Question. What change will be made to the Airport Express Coach?
+
+------------------------------------------------------------------------
+[PART2-12] 第4回 No.27（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r04_part2_12 ｜ 保存ファイル名: eiken_2_listening_r04_part2_12.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.22（part2_07）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Cultural Weekly. Opening next weekend, the Geological Heritage Hall will host a special three-month exhibition. Unlike past displays where items stayed behind glass cases, this time audio commentary was recorded by the engineers who restored the original machines. Admission tickets can be booked online with no booking fee.
+Narrator: Question. What is special about the upcoming exhibition at the Geological Heritage Hall?
+
+------------------------------------------------------------------------
+[PART2-13] 第4回 No.28（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r04_part2_13 ｜ 保存ファイル名: eiken_2_listening_r04_part2_13.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.23（part2_08）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Last January, Pacific Engineering Corp introduced a small workflow change suggested by its staff committee. At first, several members doubted such a simple rule would make any noticeable difference. However, an internal review released yesterday confirmed that staff overtime on Fridays decreased by an average of forty-five minutes.
+Narrator: Question. What did the internal review at Pacific Engineering Corp confirm?
+
+------------------------------------------------------------------------
+[PART2-14] 第4回 No.29（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r04_part2_14 ｜ 保存ファイル名: eiken_2_listening_r04_part2_14.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.24（part2_09）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Hello, this is the outdoor club coordinator calling with a reminder for everyone registered in tomorrow's Coastal Birdwatching Excursion. Weather conditions look clear and pleasant all day. Because parking and supplies on site are limited, all participants are asked to board the organizer shuttle at North Gate instead of driving private cars. We look forward to seeing you tomorrow!
+Narrator: Question. What are participants in tomorrow's Coastal Birdwatching Excursion asked to do?
+
+------------------------------------------------------------------------
+[PART2-15] 第4回 No.30（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r04_part2_15 ｜ 保存ファイル名: eiken_2_listening_r04_part2_15.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.25（part2_10）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Listeners of Daily Science, Food and material specialists often test traditional home habits in the lab. Many people assume special chemical sprays or expensive gadgets are necessary, yet tests show that rinsing freshly brewed cold tea bottles with baking soda water removes bitter tannin film without leaving lingering soap odors. Anyone can try this simple method today.
+Narrator: Question. According to the talk, what is the benefit of rinsing freshly brewed cold tea bottles with baking soda water?
+
+------------------------------------------------------------------------
+[PART2-11] 第5回 No.26（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r05_part2_11 ｜ 保存ファイル名: eiken_2_listening_r05_part2_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.21（part2_06）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Passenger notice from the City Transit Bureau. Starting September first, the Northbay Ferry Link will update its timetable based on rider feedback collected this winter. Under the revised schedule, the service will add an express stop in front of the Municipal Hospital. Printed pocket timetables are now available at all ticket counters.
+Narrator: Question. What change will be made to the Northbay Ferry Link?
+
+------------------------------------------------------------------------
+[PART2-12] 第5回 No.27（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r05_part2_12 ｜ 保存ファイル名: eiken_2_listening_r05_part2_12.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.22（part2_07）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Cultural Weekly. Opening on May tenth, the Astronomical Archive Center will host a special three-month exhibition. Unlike past displays where items stayed behind glass cases, this time audio commentary was recorded by the engineers who restored the original machines. Admission tickets can be booked online with no booking fee.
+Narrator: Question. What is special about the upcoming exhibition at the Astronomical Archive Center?
+
+------------------------------------------------------------------------
+[PART2-13] 第5回 No.28（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r05_part2_13 ｜ 保存ファイル名: eiken_2_listening_r05_part2_13.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.23（part2_08）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Four months ago, Bayside Municipal Hall introduced a small workflow change suggested by its staff committee. At first, several members doubted such a simple rule would make any noticeable difference. However, an internal review released yesterday confirmed that staff overtime on Fridays decreased by an average of forty-five minutes.
+Narrator: Question. What did the internal review at Bayside Municipal Hall confirm?
+
+------------------------------------------------------------------------
+[PART2-14] 第5回 No.29（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r05_part2_14 ｜ 保存ファイル名: eiken_2_listening_r05_part2_14.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.24（part2_09）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Hello, this is the Saturday tour staff calling with a reminder for everyone registered in tomorrow's Highland Stargazing Camp. Weather conditions look clear and pleasant all day. Because parking and supplies on site are limited, all participants are asked to board the organizer shuttle at North Gate instead of driving private cars. We look forward to seeing you tomorrow!
+Narrator: Question. What are participants in tomorrow's Highland Stargazing Camp asked to do?
+
+------------------------------------------------------------------------
+[PART2-15] 第5回 No.30（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r05_part2_15 ｜ 保存ファイル名: eiken_2_listening_r05_part2_15.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.25（part2_10）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Here is a useful everyday tip: Food and material specialists often test traditional home habits in the lab. Many people assume special chemical sprays or expensive gadgets are necessary, yet tests show that placing a wooden spoon across a pot of simmering pasta water breaks surface bubbles before starchy foam can spill over the rim. Anyone can try this simple method today.
+Narrator: Question. According to the talk, what is the benefit of placing a wooden spoon across a pot of simmering pasta water?
+
+------------------------------------------------------------------------
+[PART2-11] 第6回 No.26（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r06_part2_11 ｜ 保存ファイル名: eiken_2_listening_r06_part2_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.21（part2_06）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Passenger notice from the City Transit Bureau. Starting October first, the Harbor Circular Bus will update its timetable based on rider feedback collected this winter. Under the revised schedule, the service will extend Friday night service until eleven thirty p.m. Printed pocket timetables are now available at all ticket counters.
+Narrator: Question. What change will be made to the Harbor Circular Bus?
+
+------------------------------------------------------------------------
+[PART2-12] 第6回 No.27（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r06_part2_12 ｜ 保存ファイル名: eiken_2_listening_r06_part2_12.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.22（part2_07）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Cultural Weekly. Opening on June fifth, the Maritime Science Museum will host a special three-month exhibition. Unlike past displays where items stayed behind glass cases, this time guided evening tours include access to the conservation studio on Floor Three. Admission tickets can be booked online with no booking fee.
+Narrator: Question. What is special about the upcoming exhibition at the Maritime Science Museum?
+
+------------------------------------------------------------------------
+[PART2-13] 第6回 No.28（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r06_part2_13 ｜ 保存ファイル名: eiken_2_listening_r06_part2_13.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.23（part2_08）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Last September, Midland Publishing Group introduced a small workflow change suggested by its staff committee. At first, several members doubted such a simple rule would make any noticeable difference. However, an internal review released yesterday confirmed that monthly paper consumption dropped by nearly forty percent within one quarter.
+Narrator: Question. What did the internal review at Midland Publishing Group confirm?
+
+------------------------------------------------------------------------
+[PART2-14] 第6回 No.29（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r06_part2_14 ｜ 保存ファイル名: eiken_2_listening_r06_part2_14.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.24（part2_09）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Hello, this is the Harbor Trail office calling with a reminder for everyone registered in tomorrow's Autumn Ridge Trail Walk. Weather conditions look clear and pleasant all day. Because parking and supplies on site are limited, all participants are asked to bring a refillable metal bottle because single-use cups are not provided. We look forward to seeing you tomorrow!
+Narrator: Question. What are participants in tomorrow's Autumn Ridge Trail Walk asked to do?
+
+------------------------------------------------------------------------
+[PART2-15] 第6回 No.30（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r06_part2_15 ｜ 保存ファイル名: eiken_2_listening_r06_part2_15.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.25（part2_10）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Good morning from Smart Home Radio. Food and material specialists often test traditional home habits in the lab. Many people assume special chemical sprays or expensive gadgets are necessary, yet tests show that storing cut herbs in a jar with a damp paper towel keeps leaves crisp nearly twice as long as leaving them in open fridge trays. Anyone can try this simple method today.
+Narrator: Question. According to the talk, what is the benefit of storing cut herbs in a jar with a damp paper towel?
+
+------------------------------------------------------------------------
+[PART2-08] 第7回 No.23（A2_業種・作物・施設の内容矛盾）
+音源ID: eiken_2_listening_r07_part2_08 ｜ 保存ファイル名: eiken_2_listening_r07_part2_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 店舗業種と特典（書店で果物等）、作物と表現（茶葉・じゃがいもを果物扱い）、施設と案内（劇場・桟橋で客室番号記入）の矛盾を解消
+
+Narrator: Customer announcement from EcoWardrobe Apparel: starting this Friday, we are launching our Sustainable Shopper Program. Members who sign up for free at the register can receive free hemming and button repairs on any coat or jacket bought here. Staff at the service counter will be happy to explain the details.
+Narrator: Question. What benefit do members of EcoWardrobe Apparel's new program get?
+
+------------------------------------------------------------------------
+[PART2-11] 第7回 No.26（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r07_part2_11 ｜ 保存ファイル名: eiken_2_listening_r07_part2_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.21（part2_06）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Passenger notice from the City Transit Bureau. Starting November first, the Westside Commuter Shuttle will update its timetable based on rider feedback collected this winter. Under the revised schedule, the service will extend Friday night service until eleven thirty p.m. Printed pocket timetables are now available at all ticket counters.
+Narrator: Question. What change will be made to the Westside Commuter Shuttle?
+
+------------------------------------------------------------------------
+[PART2-12] 第7回 No.27（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r07_part2_12 ｜ 保存ファイル名: eiken_2_listening_r07_part2_12.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.22（part2_07）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Cultural Weekly. Opening this Thursday, the National Textile Gallery will host a special three-month exhibition. Unlike past displays where items stayed behind glass cases, this time guided evening tours include access to the conservation studio on Floor Three. Admission tickets can be booked online with no booking fee.
+Narrator: Question. What is special about the upcoming exhibition at the National Textile Gallery?
+
+------------------------------------------------------------------------
+[PART2-13] 第7回 No.28（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r07_part2_13 ｜ 保存ファイル名: eiken_2_listening_r07_part2_13.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.23（part2_08）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Earlier this year, Northstar Logistics Office introduced a small workflow change suggested by its staff committee. At first, several members doubted such a simple rule would make any noticeable difference. However, an internal review released yesterday confirmed that monthly paper consumption dropped by nearly forty percent within one quarter.
+Narrator: Question. What did the internal review at Northstar Logistics Office confirm?
+
+------------------------------------------------------------------------
+[PART2-14] 第7回 No.29（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r07_part2_14 ｜ 保存ファイル名: eiken_2_listening_r07_part2_14.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.24（part2_09）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Hello, this is the weekend sports desk calling with a reminder for everyone registered in tomorrow's Harbor Charity Cycling Tour. Weather conditions look clear and pleasant all day. Because parking and supplies on site are limited, all participants are asked to bring a refillable metal bottle because single-use cups are not provided. We look forward to seeing you tomorrow!
+Narrator: Question. What are participants in tomorrow's Harbor Charity Cycling Tour asked to do?
+
+------------------------------------------------------------------------
+[PART2-15] 第7回 No.30（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r07_part2_15 ｜ 保存ファイル名: eiken_2_listening_r07_part2_15.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.25（part2_10）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: In this week's consumer lab note, Food and material specialists often test traditional home habits in the lab. Many people assume special chemical sprays or expensive gadgets are necessary, yet tests show that preheating cast-iron pans gradually over medium-low heat prevents uneven hot spots and stops delicate fish fillets from sticking. Anyone can try this simple method today.
+Narrator: Question. According to the talk, what is the benefit of preheating cast-iron pans gradually over medium-low heat?
+
+------------------------------------------------------------------------
+[PART2-08] 第8回 No.23（A2_業種・作物・施設の内容矛盾）
+音源ID: eiken_2_listening_r08_part2_08 ｜ 保存ファイル名: eiken_2_listening_r08_part2_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 店舗業種と特典（書店で果物等）、作物と表現（茶葉・じゃがいもを果物扱い）、施設と案内（劇場・桟橋で客室番号記入）の矛盾を解消
+
+Narrator: Customer announcement from SunRay Electronics: starting this Friday, we are launching our Sustainable Shopper Program. Members who sign up for free at the register can recycle old smartphone chargers and batteries in exchange for store points. Staff at the service counter will be happy to explain the details.
+Narrator: Question. What benefit do members of SunRay Electronics's new program get?
+
+------------------------------------------------------------------------
+[PART2-09] 第8回 No.24（A2_業種・作物・施設の内容矛盾）
+音源ID: eiken_2_listening_r08_part2_09 ｜ 保存ファイル名: eiken_2_listening_r08_part2_09.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 店舗業種と特典（書店で果物等）、作物と表現（茶葉・じゃがいもを果物扱い）、施設と案内（劇場・桟橋で客室番号記入）の矛盾を解消
+
+Narrator: In regional farming news, growers of winter spinach are reporting an encouraging season this year. According to the agricultural cooperative, crisp January frost made the thick green leaves noticeably sweeter and tenderer. Local markets expect lively weekend crowds eager to buy this year's harvest.
+Narrator: Question. What is reported about winter spinach this year?
+
+------------------------------------------------------------------------
+[PART2-11] 第8回 No.26（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r08_part2_11 ｜ 保存ファイル名: eiken_2_listening_r08_part2_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.21（part2_06）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Passenger notice from the City Transit Bureau. Starting December first, the Valley Metro Tram will update its timetable based on rider feedback collected this winter. Under the revised schedule, the service will extend Friday night service until eleven thirty p.m. Printed pocket timetables are now available at all ticket counters.
+Narrator: Question. What change will be made to the Valley Metro Tram?
+
+------------------------------------------------------------------------
+[PART2-12] 第8回 No.27（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r08_part2_12 ｜ 保存ファイル名: eiken_2_listening_r08_part2_12.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.22（part2_07）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Cultural Weekly. Opening next Monday, the Modern Design Pavilion will host a special three-month exhibition. Unlike past displays where items stayed behind glass cases, this time guided evening tours include access to the conservation studio on Floor Three. Admission tickets can be booked online with no booking fee.
+Narrator: Question. What is special about the upcoming exhibition at the Modern Design Pavilion?
+
+------------------------------------------------------------------------
+[PART2-13] 第8回 No.28（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r08_part2_13 ｜ 保存ファイル名: eiken_2_listening_r08_part2_13.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.23（part2_08）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Last November, Crestview Medical Clinic introduced a small workflow change suggested by its staff committee. At first, several members doubted such a simple rule would make any noticeable difference. However, an internal review released yesterday confirmed that monthly paper consumption dropped by nearly forty percent within one quarter.
+Narrator: Question. What did the internal review at Crestview Medical Clinic confirm?
+
+------------------------------------------------------------------------
+[PART2-14] 第8回 No.29（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r08_part2_14 ｜ 保存ファイル名: eiken_2_listening_r08_part2_14.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.24（part2_09）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Hello, this is the lakeside park team calling with a reminder for everyone registered in tomorrow's Lakeside Botanical Sketch Day. Weather conditions look clear and pleasant all day. Because parking and supplies on site are limited, all participants are asked to bring a refillable metal bottle because single-use cups are not provided. We look forward to seeing you tomorrow!
+Narrator: Question. What are participants in tomorrow's Lakeside Botanical Sketch Day asked to do?
+
+------------------------------------------------------------------------
+[PART2-15] 第8回 No.30（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r08_part2_15 ｜ 保存ファイル名: eiken_2_listening_r08_part2_15.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.25（part2_10）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome back to Everyday Chemistry. Food and material specialists often test traditional home habits in the lab. Many people assume special chemical sprays or expensive gadgets are necessary, yet tests show that drying wet leather shoes with crumpled newspaper at room temperature draws out inner moisture without cracking the leather fibers like hair dryers do. Anyone can try this simple method today.
+Narrator: Question. According to the talk, what is the benefit of drying wet leather shoes with crumpled newspaper at room temperature?
+
+------------------------------------------------------------------------
+[PART2-11] 第9回 No.26（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r09_part2_11 ｜ 保存ファイル名: eiken_2_listening_r09_part2_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.21（part2_06）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Passenger notice from the City Transit Bureau. Starting January tenth, the Airport Express Coach will update its timetable based on rider feedback collected this winter. Under the revised schedule, the service will extend Friday night service until eleven thirty p.m. Printed pocket timetables are now available at all ticket counters.
+Narrator: Question. What change will be made to the Airport Express Coach?
+
+------------------------------------------------------------------------
+[PART2-12] 第9回 No.27（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r09_part2_12 ｜ 保存ファイル名: eiken_2_listening_r09_part2_12.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.22（part2_07）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Cultural Weekly. Opening on October third, the Geological Heritage Hall will host a special three-month exhibition. Unlike past displays where items stayed behind glass cases, this time guided evening tours include access to the conservation studio on Floor Three. Admission tickets can be booked online with no booking fee.
+Narrator: Question. What is special about the upcoming exhibition at the Geological Heritage Hall?
+
+------------------------------------------------------------------------
+[PART2-13] 第9回 No.28（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r09_part2_13 ｜ 保存ファイル名: eiken_2_listening_r09_part2_13.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.23（part2_08）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Three months back, Pacific Engineering Corp introduced a small workflow change suggested by its staff committee. At first, several members doubted such a simple rule would make any noticeable difference. However, an internal review released yesterday confirmed that monthly paper consumption dropped by nearly forty percent within one quarter.
+Narrator: Question. What did the internal review at Pacific Engineering Corp confirm?
+
+------------------------------------------------------------------------
+[PART2-14] 第9回 No.29（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r09_part2_14 ｜ 保存ファイル名: eiken_2_listening_r09_part2_14.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.24（part2_09）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Hello, this is the coastal guide center calling with a reminder for everyone registered in tomorrow's Coastal Birdwatching Excursion. Weather conditions look clear and pleasant all day. Because parking and supplies on site are limited, all participants are asked to bring a refillable metal bottle because single-use cups are not provided. We look forward to seeing you tomorrow!
+Narrator: Question. What are participants in tomorrow's Coastal Birdwatching Excursion asked to do?
+
+------------------------------------------------------------------------
+[PART2-15] 第9回 No.30（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r09_part2_15 ｜ 保存ファイル名: eiken_2_listening_r09_part2_15.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.25（part2_10）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Today on Modern Homemaker Digest, Food and material specialists often test traditional home habits in the lab. Many people assume special chemical sprays or expensive gadgets are necessary, yet tests show that rinsing freshly brewed cold tea bottles with baking soda water removes bitter tannin film without leaving lingering soap odors. Anyone can try this simple method today.
+Narrator: Question. According to the talk, what is the benefit of rinsing freshly brewed cold tea bottles with baking soda water?
+
+------------------------------------------------------------------------
+[PART2-11] 第10回 No.26（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r10_part2_11 ｜ 保存ファイル名: eiken_2_listening_r10_part2_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.21（part2_06）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Passenger notice from the City Transit Bureau. Starting February first, the Northbay Ferry Link will update its timetable based on rider feedback collected this winter. Under the revised schedule, the service will extend Friday night service until eleven thirty p.m. Printed pocket timetables are now available at all ticket counters.
+Narrator: Question. What change will be made to the Northbay Ferry Link?
+
+------------------------------------------------------------------------
+[PART2-12] 第10回 No.27（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r10_part2_12 ｜ 保存ファイル名: eiken_2_listening_r10_part2_12.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.22（part2_07）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Cultural Weekly. Opening this Sunday, the Astronomical Archive Center will host a special three-month exhibition. Unlike past displays where items stayed behind glass cases, this time guided evening tours include access to the conservation studio on Floor Three. Admission tickets can be booked online with no booking fee.
+Narrator: Question. What is special about the upcoming exhibition at the Astronomical Archive Center?
+
+------------------------------------------------------------------------
+[PART2-13] 第10回 No.28（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r10_part2_13 ｜ 保存ファイル名: eiken_2_listening_r10_part2_13.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.23（part2_08）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Last spring, Bayside Municipal Hall introduced a small workflow change suggested by its staff committee. At first, several members doubted such a simple rule would make any noticeable difference. However, an internal review released yesterday confirmed that monthly paper consumption dropped by nearly forty percent within one quarter.
+Narrator: Question. What did the internal review at Bayside Municipal Hall confirm?
+
+------------------------------------------------------------------------
+[PART2-14] 第10回 No.29（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r10_part2_14 ｜ 保存ファイル名: eiken_2_listening_r10_part2_14.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.24（part2_09）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Hello, this is the highland camp office calling with a reminder for everyone registered in tomorrow's Highland Stargazing Camp. Weather conditions look clear and pleasant all day. Because parking and supplies on site are limited, all participants are asked to bring a refillable metal bottle because single-use cups are not provided. We look forward to seeing you tomorrow!
+Narrator: Question. What are participants in tomorrow's Highland Stargazing Camp asked to do?
+
+------------------------------------------------------------------------
+[PART2-15] 第10回 No.30（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r10_part2_15 ｜ 保存ファイル名: eiken_2_listening_r10_part2_15.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.25（part2_10）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Here is a quick food-science fact: Food and material specialists often test traditional home habits in the lab. Many people assume special chemical sprays or expensive gadgets are necessary, yet tests show that placing a wooden spoon across a pot of simmering pasta water breaks surface bubbles before starchy foam can spill over the rim. Anyone can try this simple method today.
+Narrator: Question. According to the talk, what is the benefit of placing a wooden spoon across a pot of simmering pasta water?
+
+------------------------------------------------------------------------
+[PART2-08] 第11回 No.23（A2_業種・作物・施設の内容矛盾）
+音源ID: eiken_2_listening_r11_part2_08 ｜ 保存ファイル名: eiken_2_listening_r11_part2_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 店舗業種と特典（書店で果物等）、作物と表現（茶葉・じゃがいもを果物扱い）、施設と案内（劇場・桟橋で客室番号記入）の矛盾を解消
+
+Narrator: Customer announcement from Terra Outdoor Gear: starting this Friday, we are launching our Sustainable Shopper Program. Members who sign up for free at the register can rent waterproof hiking tents for a weekend before deciding to buy one. Staff at the service counter will be happy to explain the details.
+Narrator: Question. What benefit do members of Terra Outdoor Gear's new program get?
+
+------------------------------------------------------------------------
+[PART2-11] 第11回 No.26（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r11_part2_11 ｜ 保存ファイル名: eiken_2_listening_r11_part2_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.21（part2_06）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Passenger notice from the City Transit Bureau. Starting March first, the Harbor Circular Bus will update its timetable based on rider feedback collected this winter. Under the revised schedule, the service will allow passengers to tap credit cards directly at the fare gate. Printed pocket timetables are now available at all ticket counters.
+Narrator: Question. What change will be made to the Harbor Circular Bus?
+
+------------------------------------------------------------------------
+[PART2-12] 第11回 No.27（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r11_part2_12 ｜ 保存ファイル名: eiken_2_listening_r11_part2_12.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.22（part2_07）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Cultural Weekly. Opening next Wednesday, the Maritime Science Museum will host a special three-month exhibition. Unlike past displays where items stayed behind glass cases, this time visitors can operate a working replica of an eighteenth-century navigation clock. Admission tickets can be booked online with no booking fee.
+Narrator: Question. What is special about the upcoming exhibition at the Maritime Science Museum?
+
+------------------------------------------------------------------------
+[PART2-13] 第11回 No.28（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r11_part2_13 ｜ 保存ファイル名: eiken_2_listening_r11_part2_13.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.23（part2_08）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Five months ago, Midland Publishing Group introduced a small workflow change suggested by its staff committee. At first, several members doubted such a simple rule would make any noticeable difference. However, an internal review released yesterday confirmed that afternoon cooling electricity costs fell by twenty percent without discomfort.
+Narrator: Question. What did the internal review at Midland Publishing Group confirm?
+
+------------------------------------------------------------------------
+[PART2-14] 第11回 No.29（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r11_part2_14 ｜ 保存ファイル名: eiken_2_listening_r11_part2_14.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.24（part2_09）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Hello, this is the greenway walk desk calling with a reminder for everyone registered in tomorrow's Autumn Ridge Trail Walk. Weather conditions look clear and pleasant all day. Because parking and supplies on site are limited, all participants are asked to check in at the yellow tent thirty minutes before their assigned start group. We look forward to seeing you tomorrow!
+Narrator: Question. What are participants in tomorrow's Autumn Ridge Trail Walk asked to do?
+
+------------------------------------------------------------------------
+[PART2-15] 第11回 No.30（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r11_part2_15 ｜ 保存ファイル名: eiken_2_listening_r11_part2_15.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.25（part2_10）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Thank you for tuning in to Life Hacks. Food and material specialists often test traditional home habits in the lab. Many people assume special chemical sprays or expensive gadgets are necessary, yet tests show that storing cut herbs in a jar with a damp paper towel keeps leaves crisp nearly twice as long as leaving them in open fridge trays. Anyone can try this simple method today.
+Narrator: Question. According to the talk, what is the benefit of storing cut herbs in a jar with a damp paper towel?
+
+------------------------------------------------------------------------
+[PART2-11] 第12回 No.26（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r12_part2_11 ｜ 保存ファイル名: eiken_2_listening_r12_part2_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.21（part2_06）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Passenger notice from the City Transit Bureau. Starting April fifteenth, the Westside Commuter Shuttle will update its timetable based on rider feedback collected this winter. Under the revised schedule, the service will allow passengers to tap credit cards directly at the fare gate. Printed pocket timetables are now available at all ticket counters.
+Narrator: Question. What change will be made to the Westside Commuter Shuttle?
+
+------------------------------------------------------------------------
+[PART2-12] 第12回 No.27（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r12_part2_12 ｜ 保存ファイル名: eiken_2_listening_r12_part2_12.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.22（part2_07）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Cultural Weekly. Opening on April twelfth, the National Textile Gallery will host a special three-month exhibition. Unlike past displays where items stayed behind glass cases, this time visitors can operate a working replica of an eighteenth-century navigation clock. Admission tickets can be booked online with no booking fee.
+Narrator: Question. What is special about the upcoming exhibition at the National Textile Gallery?
+
+------------------------------------------------------------------------
+[PART2-13] 第12回 No.28（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r12_part2_13 ｜ 保存ファイル名: eiken_2_listening_r12_part2_13.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.23（part2_08）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Last October, Northstar Logistics Office introduced a small workflow change suggested by its staff committee. At first, several members doubted such a simple rule would make any noticeable difference. However, an internal review released yesterday confirmed that afternoon cooling electricity costs fell by twenty percent without discomfort.
+Narrator: Question. What did the internal review at Northstar Logistics Office confirm?
+
+------------------------------------------------------------------------
+[PART2-14] 第12回 No.29（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r12_part2_14 ｜ 保存ファイル名: eiken_2_listening_r12_part2_14.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.24（part2_09）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Hello, this is the youth relay committee calling with a reminder for everyone registered in tomorrow's Harbor Charity Cycling Tour. Weather conditions look clear and pleasant all day. Because parking and supplies on site are limited, all participants are asked to check in at the yellow tent thirty minutes before their assigned start group. We look forward to seeing you tomorrow!
+Narrator: Question. What are participants in tomorrow's Harbor Charity Cycling Tour asked to do?
+
+------------------------------------------------------------------------
+[PART2-15] 第12回 No.30（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r12_part2_15 ｜ 保存ファイル名: eiken_2_listening_r12_part2_15.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.25（part2_10）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: In our Tuesday kitchen experiment, Food and material specialists often test traditional home habits in the lab. Many people assume special chemical sprays or expensive gadgets are necessary, yet tests show that preheating cast-iron pans gradually over medium-low heat prevents uneven hot spots and stops delicate fish fillets from sticking. Anyone can try this simple method today.
+Narrator: Question. According to the talk, what is the benefit of preheating cast-iron pans gradually over medium-low heat?
+
+------------------------------------------------------------------------
+[PART2-11] 第13回 No.26（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r13_part2_11 ｜ 保存ファイル名: eiken_2_listening_r13_part2_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.21（part2_06）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Passenger notice from the City Transit Bureau. Starting May fifteenth, the Valley Metro Tram will update its timetable based on rider feedback collected this winter. Under the revised schedule, the service will allow passengers to tap credit cards directly at the fare gate. Printed pocket timetables are now available at all ticket counters.
+Narrator: Question. What change will be made to the Valley Metro Tram?
+
+------------------------------------------------------------------------
+[PART2-12] 第13回 No.27（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r13_part2_12 ｜ 保存ファイル名: eiken_2_listening_r13_part2_12.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.22（part2_07）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Cultural Weekly. Opening on July eighth, the Modern Design Pavilion will host a special three-month exhibition. Unlike past displays where items stayed behind glass cases, this time visitors can operate a working replica of an eighteenth-century navigation clock. Admission tickets can be booked online with no booking fee.
+Narrator: Question. What is special about the upcoming exhibition at the Modern Design Pavilion?
+
+------------------------------------------------------------------------
+[PART2-13] 第13回 No.28（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r13_part2_13 ｜ 保存ファイル名: eiken_2_listening_r13_part2_13.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.23（part2_08）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: At the start of this term, Crestview Medical Clinic introduced a small workflow change suggested by its staff committee. At first, several members doubted such a simple rule would make any noticeable difference. However, an internal review released yesterday confirmed that afternoon cooling electricity costs fell by twenty percent without discomfort.
+Narrator: Question. What did the internal review at Crestview Medical Clinic confirm?
+
+------------------------------------------------------------------------
+[PART2-14] 第13回 No.29（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r13_part2_14 ｜ 保存ファイル名: eiken_2_listening_r13_part2_14.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.24（part2_09）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Hello, this is the beach picnic staff calling with a reminder for everyone registered in tomorrow's Lakeside Botanical Sketch Day. Weather conditions look clear and pleasant all day. Because parking and supplies on site are limited, all participants are asked to check in at the yellow tent thirty minutes before their assigned start group. We look forward to seeing you tomorrow!
+Narrator: Question. What are participants in tomorrow's Lakeside Botanical Sketch Day asked to do?
+
+------------------------------------------------------------------------
+[PART2-15] 第13回 No.30（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r13_part2_15 ｜ 保存ファイル名: eiken_2_listening_r13_part2_15.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.25（part2_10）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: From the Home Economics Desk today, Food and material specialists often test traditional home habits in the lab. Many people assume special chemical sprays or expensive gadgets are necessary, yet tests show that drying wet leather shoes with crumpled newspaper at room temperature draws out inner moisture without cracking the leather fibers like hair dryers do. Anyone can try this simple method today.
+Narrator: Question. According to the talk, what is the benefit of drying wet leather shoes with crumpled newspaper at room temperature?
+
+------------------------------------------------------------------------
+[PART2-11] 第14回 No.26（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r14_part2_11 ｜ 保存ファイル名: eiken_2_listening_r14_part2_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.21（part2_06）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Passenger notice from the City Transit Bureau. Starting June fifteenth, the Airport Express Coach will update its timetable based on rider feedback collected this winter. Under the revised schedule, the service will allow passengers to tap credit cards directly at the fare gate. Printed pocket timetables are now available at all ticket counters.
+Narrator: Question. What change will be made to the Airport Express Coach?
+
+------------------------------------------------------------------------
+[PART2-12] 第14回 No.27（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r14_part2_12 ｜ 保存ファイル名: eiken_2_listening_r14_part2_12.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.22（part2_07）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Cultural Weekly. Opening this holiday Monday, the Geological Heritage Hall will host a special three-month exhibition. Unlike past displays where items stayed behind glass cases, this time visitors can operate a working replica of an eighteenth-century navigation clock. Admission tickets can be booked online with no booking fee.
+Narrator: Question. What is special about the upcoming exhibition at the Geological Heritage Hall?
+
+------------------------------------------------------------------------
+[PART2-13] 第14回 No.28（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r14_part2_13 ｜ 保存ファイル名: eiken_2_listening_r14_part2_13.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.23（part2_08）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Last winter, Pacific Engineering Corp introduced a small workflow change suggested by its staff committee. At first, several members doubted such a simple rule would make any noticeable difference. However, an internal review released yesterday confirmed that afternoon cooling electricity costs fell by twenty percent without discomfort.
+Narrator: Question. What did the internal review at Pacific Engineering Corp confirm?
+
+------------------------------------------------------------------------
+[PART2-14] 第14回 No.29（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r14_part2_14 ｜ 保存ファイル名: eiken_2_listening_r14_part2_14.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.24（part2_09）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Hello, this is the canoe club counter calling with a reminder for everyone registered in tomorrow's Coastal Birdwatching Excursion. Weather conditions look clear and pleasant all day. Because parking and supplies on site are limited, all participants are asked to check in at the yellow tent thirty minutes before their assigned start group. We look forward to seeing you tomorrow!
+Narrator: Question. What are participants in tomorrow's Coastal Birdwatching Excursion asked to do?
+
+------------------------------------------------------------------------
+[PART2-15] 第14回 No.30（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r14_part2_15 ｜ 保存ファイル名: eiken_2_listening_r14_part2_15.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.25（part2_10）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Curious minds often ask our staff: Food and material specialists often test traditional home habits in the lab. Many people assume special chemical sprays or expensive gadgets are necessary, yet tests show that rinsing freshly brewed cold tea bottles with baking soda water removes bitter tannin film without leaving lingering soap odors. Anyone can try this simple method today.
+Narrator: Question. According to the talk, what is the benefit of rinsing freshly brewed cold tea bottles with baking soda water?
+
+------------------------------------------------------------------------
+[PART2-11] 第15回 No.26（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r15_part2_11 ｜ 保存ファイル名: eiken_2_listening_r15_part2_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.21（part2_06）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Passenger notice from the City Transit Bureau. Starting October fifteenth, the Northbay Ferry Link will update its timetable based on rider feedback collected this winter. Under the revised schedule, the service will allow passengers to tap credit cards directly at the fare gate. Printed pocket timetables are now available at all ticket counters.
+Narrator: Question. What change will be made to the Northbay Ferry Link?
+
+------------------------------------------------------------------------
+[PART2-12] 第15回 No.27（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r15_part2_12 ｜ 保存ファイル名: eiken_2_listening_r15_part2_12.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.22（part2_07）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Welcome to Cultural Weekly. Opening on November second, the Astronomical Archive Center will host a special three-month exhibition. Unlike past displays where items stayed behind glass cases, this time visitors can operate a working replica of an eighteenth-century navigation clock. Admission tickets can be booked online with no booking fee.
+Narrator: Question. What is special about the upcoming exhibition at the Astronomical Archive Center?
+
+------------------------------------------------------------------------
+[PART2-13] 第15回 No.28（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r15_part2_13 ｜ 保存ファイル名: eiken_2_listening_r15_part2_13.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.23（part2_08）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Two quarters ago, Bayside Municipal Hall introduced a small workflow change suggested by its staff committee. At first, several members doubted such a simple rule would make any noticeable difference. However, an internal review released yesterday confirmed that afternoon cooling electricity costs fell by twenty percent without discomfort.
+Narrator: Question. What did the internal review at Bayside Municipal Hall confirm?
+
+------------------------------------------------------------------------
+[PART2-14] 第15回 No.29（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r15_part2_14 ｜ 保存ファイル名: eiken_2_listening_r15_part2_14.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.24（part2_09）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: Hello, this is the forest tour desk calling with a reminder for everyone registered in tomorrow's Highland Stargazing Camp. Weather conditions look clear and pleasant all day. Because parking and supplies on site are limited, all participants are asked to check in at the yellow tent thirty minutes before their assigned start group. We look forward to seeing you tomorrow!
+Narrator: Question. What are participants in tomorrow's Highland Stargazing Camp asked to do?
+
+------------------------------------------------------------------------
+[PART2-15] 第15回 No.30（A1_同一回内の完全重複パッセージ）
+音源ID: eiken_2_listening_r15_part2_15 ｜ 保存ファイル名: eiken_2_listening_r15_part2_15.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+修正理由: 同じ回の No.25（part2_10）と本文・設問・正解が完全重複していたため、新規オリジナル問題に差し替え
+
+Narrator: On Weekend Living Spotlight today, Food and material specialists often test traditional home habits in the lab. Many people assume special chemical sprays or expensive gadgets are necessary, yet tests show that placing a wooden spoon across a pot of simmering pasta water breaks surface bubbles before starchy foam can spill over the rim. Anyone can try this simple method today.
+Narrator: Question. According to the talk, what is the benefit of placing a wooden spoon across a pot of simmering pasta water?
+
+------------------------------------------------------------------------

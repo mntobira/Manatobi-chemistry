@@ -1,0 +1,179 @@
+# 英検4級（eiken_4）撮り直し必須 音源プロンプト（全 20 件）
+目標速度: 110〜120 WPM ｜ style: "clear, speaking slowly" ｜ 出力: MP3 / 24,000 Hz / mono / 128 kbps
+※各行の話者ラベル（Man: / Woman: / Narrator:）自体は読まず、コロンの後ろの英文のみを読み上げてください。
+========================================================================
+
+[PART2-07] 第1回 No.17（B3_人称代名詞ミス（Her/His → My））
+音源ID: eiken_4_listening_r01_part2_07 ｜ 保存先: eiken_4_listening_r01_part2_07.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+
+Man: Did you go to the autumn craft market last weekend, Hina?
+Woman: Yes! My older sister caught a cold, so I went there with my aunt.
+Man: Oh, I hope your family member feels better soon.
+Narrator: Question. Who went to the autumn craft market with the girl?
+
+------------------------------------------------------------------------
+[PART2-07] 第2回 No.17（B3_人称代名詞ミス（Her/His → My））
+音源ID: eiken_4_listening_r02_part2_07 ｜ 保存先: eiken_4_listening_r02_part2_07.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Woman=F1 / Man=M1 / Woman=F1 / Narrator=F2
+
+Woman: Did you go to the classical violin concert last weekend, Toma?
+Man: Yes! My soccer coach caught a cold, so I went there with my grandfather.
+Woman: Oh, I hope your family member feels better soon.
+Narrator: Question. Who went to the classical violin concert with the boy?
+
+------------------------------------------------------------------------
+[PART2-07] 第3回 No.17（B3_人称代名詞ミス（Her/His → My））
+音源ID: eiken_4_listening_r03_part2_07 ｜ 保存先: eiken_4_listening_r03_part2_07.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+
+Man: Did you go to the strawberry festival last weekend, Mio?
+Woman: Yes! My mother caught a cold, so I went there with my cousin.
+Man: Oh, I hope your family member feels better soon.
+Narrator: Question. Who went to the strawberry festival with the girl?
+
+------------------------------------------------------------------------
+[PART1-01] 第4回 No.1（B2_代名詞クラッシュ文法崩壊）
+音源ID: eiken_4_listening_r04_part1_01 ｜ 保存先: eiken_4_listening_r04_part1_01.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Woman=F1 / Man=M1 / Narrator=F2
+
+Woman: Hey, Kana. My hands are full right now.
+Man: Oh, I see, Takumi. Would you like me to lend you my green highlighter?
+Narrator: Number one. No, it started twenty minutes ago. Number two. I went there with my uncle. Number three. Yes, please. That would really help me.
+
+------------------------------------------------------------------------
+[PART2-07] 第4回 No.17（B3_人称代名詞ミス（Her/His → My））
+音源ID: eiken_4_listening_r04_part2_07 ｜ 保存先: eiken_4_listening_r04_part2_07.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Woman=F1 / Man=M1 / Woman=F1 / Narrator=F2
+
+Woman: Did you go to the dinosaur exhibition last weekend, Kaito?
+Man: Yes! My older sister caught a cold, so I went there with my aunt.
+Woman: Oh, I hope your family member feels better soon.
+Narrator: Question. Who went to the dinosaur exhibition with the boy?
+
+------------------------------------------------------------------------
+[PART1-01] 第5回 No.1（B2_代名詞クラッシュ文法崩壊）
+音源ID: eiken_4_listening_r05_part1_01 ｜ 保存先: eiken_4_listening_r05_part1_01.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Man=M1 / Woman=F1 / Narrator=F2
+
+Man: Hello, Emi. My hands are full right now.
+Woman: Oh, I see, Riku. Would you like me to pass you the salt shaker?
+Narrator: Number one. Yes, please. That would really help me. Number two. No, it started twenty minutes ago. Number three. I went there with my uncle.
+
+------------------------------------------------------------------------
+[PART2-07] 第5回 No.17（B3_人称代名詞ミス（Her/His → My））
+音源ID: eiken_4_listening_r05_part2_07 ｜ 保存先: eiken_4_listening_r05_part2_07.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+
+Man: Did you go to the riverside fireworks last weekend, Aoi?
+Woman: Yes! My soccer coach caught a cold, so I went there with my grandfather.
+Man: Oh, I hope your family member feels better soon.
+Narrator: Question. Who went to the riverside fireworks with the girl?
+
+------------------------------------------------------------------------
+[PART3-03] 第5回 No.23（B4_基礎冠詞ミス（a orange → an orange））
+音源ID: eiken_4_listening_r05_part3_03 ｜ 保存先: eiken_4_listening_r05_part3_03.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Narrator=F2 / Narrator=F2
+
+Narrator: Ren got an orange cat two months ago. Every morning before school, Ren gives it fresh water and cleans its space. The pet especially loves sleeping on a sunny cushion every afternoon.
+Narrator: Question. What does Ren's pet especially love doing every afternoon?
+
+------------------------------------------------------------------------
+[PART1-01] 第6回 No.1（B2_代名詞クラッシュ文法崩壊）
+音源ID: eiken_4_listening_r06_part1_01 ｜ 保存先: eiken_4_listening_r06_part1_01.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Woman=F1 / Man=M1 / Narrator=F2
+
+Woman: Pardon me, Miyu. My hands are full right now.
+Man: Oh, I see, Hayato. Would you like me to show you the way to Gate Three?
+Narrator: Number one. No, it started twenty minutes ago. Number two. Yes, please. That would really help me. Number three. I went there with my uncle.
+
+------------------------------------------------------------------------
+[PART2-07] 第6回 No.17（B3_人称代名詞ミス（Her/His → My））
+音源ID: eiken_4_listening_r06_part2_07 ｜ 保存先: eiken_4_listening_r06_part2_07.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Woman=F1 / Man=M1 / Woman=F1 / Narrator=F2
+
+Woman: Did you go to the ice skating show last weekend, Yuma?
+Man: Yes! My mother caught a cold, so I went there with my cousin.
+Woman: Oh, I hope your family member feels better soon.
+Narrator: Question. Who went to the ice skating show with the boy?
+
+------------------------------------------------------------------------
+[PART1-01] 第7回 No.1（B2_代名詞クラッシュ文法崩壊）
+音源ID: eiken_4_listening_r07_part1_01 ｜ 保存先: eiken_4_listening_r07_part1_01.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Man=M1 / Woman=F1 / Narrator=F2
+
+Man: Listen, Hina. My hands are full right now.
+Woman: Oh, I see, Kota. Would you like me to help you hang that wall map?
+Narrator: Number one. No, it started twenty minutes ago. Number two. I went there with my uncle. Number three. Yes, please. That would really help me.
+
+------------------------------------------------------------------------
+[PART2-07] 第7回 No.17（B3_人称代名詞ミス（Her/His → My））
+音源ID: eiken_4_listening_r07_part2_07 ｜ 保存先: eiken_4_listening_r07_part2_07.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+
+Man: Did you go to the pottery village last weekend, Mei?
+Woman: Yes! My older sister caught a cold, so I went there with my aunt.
+Man: Oh, I hope your family member feels better soon.
+Narrator: Question. Who went to the pottery village with the girl?
+
+------------------------------------------------------------------------
+[PART2-07] 第8回 No.17（B3_人称代名詞ミス（Her/His → My））
+音源ID: eiken_4_listening_r08_part2_07 ｜ 保存先: eiken_4_listening_r08_part2_07.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Woman=F1 / Man=M1 / Woman=F1 / Narrator=F2
+
+Woman: Did you go to the rose garden fair last weekend, Kota?
+Man: Yes! My soccer coach caught a cold, so I went there with my grandfather.
+Woman: Oh, I hope your family member feels better soon.
+Narrator: Question. Who went to the rose garden fair with the boy?
+
+------------------------------------------------------------------------
+[PART2-07] 第9回 No.17（B3_人称代名詞ミス（Her/His → My））
+音源ID: eiken_4_listening_r09_part2_07 ｜ 保存先: eiken_4_listening_r09_part2_07.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+
+Man: Did you go to the city book festival last weekend, Natsuki?
+Woman: Yes! My mother caught a cold, so I went there with my cousin.
+Man: Oh, I hope your family member feels better soon.
+Narrator: Question. Who went to the city book festival with the girl?
+
+------------------------------------------------------------------------
+[PART2-07] 第10回 No.17（B3_人称代名詞ミス（Her/His → My））
+音源ID: eiken_4_listening_r10_part2_07 ｜ 保存先: eiken_4_listening_r10_part2_07.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Woman=F1 / Man=M1 / Woman=F1 / Narrator=F2
+
+Woman: Did you go to the glassblowing workshop last weekend, Asahi?
+Man: Yes! My older sister caught a cold, so I went there with my aunt.
+Woman: Oh, I hope your family member feels better soon.
+Narrator: Question. Who went to the glassblowing workshop with the boy?
+
+------------------------------------------------------------------------
+[PART2-07] 第11回 No.17（B3_人称代名詞ミス（Her/His → My））
+音源ID: eiken_4_listening_r11_part2_07 ｜ 保存先: eiken_4_listening_r11_part2_07.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+
+Man: Did you go to the outdoor jazz event last weekend, Saki?
+Woman: Yes! My soccer coach caught a cold, so I went there with my grandfather.
+Man: Oh, I hope your family member feels better soon.
+Narrator: Question. Who went to the outdoor jazz event with the girl?
+
+------------------------------------------------------------------------
+[PART2-07] 第12回 No.17（B3_人称代名詞ミス（Her/His → My））
+音源ID: eiken_4_listening_r12_part2_07 ｜ 保存先: eiken_4_listening_r12_part2_07.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Woman=F1 / Man=M1 / Woman=F1 / Narrator=F2
+
+Woman: Did you go to the lantern night walk last weekend, Haruto?
+Man: Yes! My mother caught a cold, so I went there with my cousin.
+Woman: Oh, I hope your family member feels better soon.
+Narrator: Question. Who went to the lantern night walk with the boy?
+
+------------------------------------------------------------------------
+[PART2-07] 第13回 No.17（B3_人称代名詞ミス（Her/His → My））
+音源ID: eiken_4_listening_r13_part2_07 ｜ 保存先: eiken_4_listening_r13_part2_07.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+
+Man: Did you go to the marine life center last weekend, Honoka?
+Woman: Yes! My older sister caught a cold, so I went there with my aunt.
+Man: Oh, I hope your family member feels better soon.
+Narrator: Question. Who went to the marine life center with the girl?
+
+------------------------------------------------------------------------
+[PART2-07] 第14回 No.17（B3_人称代名詞ミス（Her/His → My））
+音源ID: eiken_4_listening_r14_part2_07 ｜ 保存先: eiken_4_listening_r14_part2_07.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Woman=F1 / Man=M1 / Woman=F1 / Narrator=F2
+
+Woman: Did you go to the historical castle tour last weekend, Takumi?
+Man: Yes! My soccer coach caught a cold, so I went there with my grandfather.
+Woman: Oh, I hope your family member feels better soon.
+Narrator: Question. Who went to the historical castle tour with the boy?
+
+------------------------------------------------------------------------
+[PART2-07] 第15回 No.17（B3_人称代名詞ミス（Her/His → My））
+音源ID: eiken_4_listening_r15_part2_07 ｜ 保存先: eiken_4_listening_r15_part2_07.mp3 ｜ 本試験読み回数: 2回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+
+Man: Did you go to the planetarium special night last weekend, Rin?
+Woman: Yes! My mother caught a cold, so I went there with my cousin.
+Man: Oh, I hope your family member feels better soon.
+Narrator: Question. Who went to the planetarium special night with the girl?
+
+------------------------------------------------------------------------

@@ -1,0 +1,772 @@
+# まなとび英検｜リスニング追加ブラッシュアップ用 任意プロンプト集（任意 75 件）
+※正解判定や模試成立には支障ありませんが、第1部の言い淀みや二重疑問文をさらに自然にしたい場合のみ使える予備リストです。
+
+========================================================================
+【そのままコピペで使える 音源生成マスター指示プロンプト（Manus / ElevenLabs 共通）】
+========================================================================
+以下の英語台本リストから、英検リスニング差し替え用MP3音源を生成してください。
+
+■ 出力仕様（既存3,285本と完全同一規格）
+- 言語：en-US（自然なアメリカ英語）
+- 形式：MP3 / 24,000 Hz / モノラル / 128 kbps
+- ファイル名：各ブロックの `音源ID` + `.mp3`（例：`eiken_4_listening_r04_part1_01.mp3`）
+- 話者割当：各ブロックの `話者割当`（M1=男性1, M2=男性2, F1=女性1, F2=設問ナレーター明瞭女性）に従い、同一音源内では同じ役割の声を維持してください。
+- 読み上げ対象：各行の `Man:` / `Woman:` / `Narrator:` の後ろにある英語本文のみを読み上げてください（話者ラベル・音源ID・日本語メモは絶対に読まないでください）。
+- 間（ポーズ）：会話／本文と `Question.`（または `Number one.`）の間に約0.6秒〜0.8秒の自然な無音を入れてください。本試験2回読みのパートも、MP3自体は1回分（1音源1ファイル）で作成してください（アプリ側で自動リピート制御します）。
+========================================================================
+
+
+########################################################################
+## 英検3級（eiken_3）｜目標速度：120〜130 WPM｜style: "clear, speaking slowly"
+########################################################################
+
+[PART1-08] 第1回 No.8（C1_第1部会話の不自然な言い直し）
+音源ID: eiken_3_listening_r01_part1_08 ｜ 保存ファイル名: eiken_3_listening_r01_part1_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Narrator=F2
+修正理由: `Yes! Well, wait—no, you tried it first` の不自然な自己訂正を自然な会話に整形（余裕があれば再収録推奨）
+
+Woman: Hi Brian! I heard you checked out the mystery novel I lent you.
+Man: Actually, you tried it before me, Sarah! What did you think of the mystery novel I lent you?
+Narrator: Number one. The ending really surprised me! Number two. Next Tuesday at four. Number three. I will lend it to Kenji.
+
+------------------------------------------------------------------------
+[PART1-08] 第2回 No.8（C1_第1部会話の不自然な言い直し）
+音源ID: eiken_3_listening_r02_part1_08 ｜ 保存ファイル名: eiken_3_listening_r02_part1_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Narrator=F2
+修正理由: `Yes! Well, wait—no, you tried it first` の不自然な自己訂正を自然な会話に整形（余裕があれば再収録推奨）
+
+Man: Hi Elena! I heard you checked out the new Italian restaurant.
+Woman: Actually, you tried it before me, Jason! What did you think of the new Italian restaurant?
+Narrator: Number one. Next Tuesday at four. Number two. The tomato pasta was fantastic. Number three. I will lend it to Kenji.
+
+------------------------------------------------------------------------
+[PART1-08] 第3回 No.8（C1_第1部会話の不自然な言い直し）
+音源ID: eiken_3_listening_r03_part1_08 ｜ 保存ファイル名: eiken_3_listening_r03_part1_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Narrator=F2
+修正理由: `Yes! Well, wait—no, you tried it first` の不自然な自己訂正を自然な会話に整形（余裕があれば再収録推奨）
+
+Woman: Hi Aaron! I heard you checked out our school festival play.
+Man: Actually, you tried it before me, Julia! What did you think of our school festival play?
+Narrator: Number one. Next Tuesday at four. Number two. I will lend it to Kenji. Number three. Everyone acted very naturally.
+
+------------------------------------------------------------------------
+[PART1-08] 第4回 No.8（C1_第1部会話の不自然な言い直し）
+音源ID: eiken_3_listening_r04_part1_08 ｜ 保存ファイル名: eiken_3_listening_r04_part1_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Narrator=F2
+修正理由: `Yes! Well, wait—no, you tried it first` の不自然な自己訂正を自然な会話に整形（余裕があれば再収録推奨）
+
+Man: Hi Chloe! I heard you checked out the documentary about penguins.
+Woman: Actually, you tried it before me, Caleb! What did you think of the documentary about penguins?
+Narrator: Number one. I learned a lot about Antarctica. Number two. Next Tuesday at four. Number three. I will lend it to Kenji.
+
+------------------------------------------------------------------------
+[PART1-08] 第5回 No.8（C1_第1部会話の不自然な言い直し）
+音源ID: eiken_3_listening_r05_part1_08 ｜ 保存ファイル名: eiken_3_listening_r05_part1_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Narrator=F2
+修正理由: `Yes! Well, wait—no, you tried it first` の不自然な自己訂正を自然な会話に整形（余裕があれば再収録推奨）
+
+Woman: Hi Nathan! I heard you checked out Mr. Miller's science lecture.
+Man: Actually, you tried it before me, Olivia! What did you think of Mr. Miller's science lecture?
+Narrator: Number one. Next Tuesday at four. Number two. His experiments were easy to follow. Number three. I will lend it to Kenji.
+
+------------------------------------------------------------------------
+[PART1-08] 第6回 No.8（C1_第1部会話の不自然な言い直し）
+音源ID: eiken_3_listening_r06_part1_08 ｜ 保存ファイル名: eiken_3_listening_r06_part1_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Narrator=F2
+修正理由: `Yes! Well, wait—no, you tried it first` の不自然な自己訂正を自然な会話に整形（余裕があれば再収録推奨）
+
+Man: Hi Claire! I heard you checked out the new sports shoes you bought.
+Woman: Actually, you tried it before me, Owen! What did you think of the new sports shoes you bought?
+Narrator: Number one. Next Tuesday at four. Number two. I will lend it to Kenji. Number three. They are super light and comfortable.
+
+------------------------------------------------------------------------
+[PART1-08] 第7回 No.8（C1_第1部会話の不自然な言い直し）
+音源ID: eiken_3_listening_r07_part1_08 ｜ 保存ファイル名: eiken_3_listening_r07_part1_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Narrator=F2
+修正理由: `Yes! Well, wait—no, you tried it first` の不自然な自己訂正を自然な会話に整形（余裕があれば再収録推奨）
+
+Woman: Hi Liam! I heard you checked out the autumn art exhibition.
+Man: Actually, you tried it before me, Maya! What did you think of the autumn art exhibition?
+Narrator: Number one. The landscape paintings were lovely. Number two. Next Tuesday at four. Number three. I will lend it to Kenji.
+
+------------------------------------------------------------------------
+[PART1-08] 第8回 No.8（C1_第1部会話の不自然な言い直し）
+音源ID: eiken_3_listening_r08_part1_08 ｜ 保存ファイル名: eiken_3_listening_r08_part1_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Narrator=F2
+修正理由: `Yes! Well, wait—no, you tried it first` の不自然な自己訂正を自然な会話に整形（余裕があれば再収録推奨）
+
+Man: Hi Rachel! I heard you checked out the lemon tart from that bakery.
+Woman: Actually, you tried it before me, Noah! What did you think of the lemon tart from that bakery?
+Narrator: Number one. Next Tuesday at four. Number two. It was sweet and not too sour. Number three. I will lend it to Kenji.
+
+------------------------------------------------------------------------
+[PART1-08] 第9回 No.8（C1_第1部会話の不自然な言い直し）
+音源ID: eiken_3_listening_r09_part1_08 ｜ 保存ファイル名: eiken_3_listening_r09_part1_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Narrator=F2
+修正理由: `Yes! Well, wait—no, you tried it first` の不自然な自己訂正を自然な会話に整形（余裕があれば再収録推奨）
+
+Woman: Hi Ethan! I heard you checked out the city aquarium's night tour.
+Man: Actually, you tried it before me, Nora! What did you think of the city aquarium's night tour?
+Narrator: Number one. Next Tuesday at four. Number two. I will lend it to Kenji. Number three. Seeing glowing jellyfish was magical.
+
+------------------------------------------------------------------------
+[PART1-08] 第10回 No.8（C1_第1部会話の不自然な言い直し）
+音源ID: eiken_3_listening_r10_part1_08 ｜ 保存ファイル名: eiken_3_listening_r10_part1_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Narrator=F2
+修正理由: `Yes! Well, wait—no, you tried it first` の不自然な自己訂正を自然な会話に整形（余裕があれば再収録推奨）
+
+Man: Hi Alice! I heard you checked out the new English study app.
+Woman: Actually, you tried it before me, Lucas! What did you think of the new English study app?
+Narrator: Number one. The short quizzes are really helpful. Number two. Next Tuesday at four. Number three. I will lend it to Kenji.
+
+------------------------------------------------------------------------
+[PART1-08] 第11回 No.8（C1_第1部会話の不自然な言い直し）
+音源ID: eiken_3_listening_r11_part1_08 ｜ 保存ファイル名: eiken_3_listening_r11_part1_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Narrator=F2
+修正理由: `Yes! Well, wait—no, you tried it first` の不自然な自己訂正を自然な会話に整形（余裕があれば再収録推奨）
+
+Woman: Hi Mason! I heard you checked out your cousin's violin recital.
+Man: Actually, you tried it before me, Emma! What did you think of your cousin's violin recital?
+Narrator: Number one. Next Tuesday at four. Number two. Her tone was warm and clear. Number three. I will lend it to Kenji.
+
+------------------------------------------------------------------------
+[PART1-08] 第12回 No.8（C1_第1部会話の不自然な言い直し）
+音源ID: eiken_3_listening_r12_part1_08 ｜ 保存ファイル名: eiken_3_listening_r12_part1_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Narrator=F2
+修正理由: `Yes! Well, wait—no, you tried it first` の不自然な自己訂正を自然な会話に整形（余裕があれば再収録推奨）
+
+Man: Hi Sophia! I heard you checked out the botanical garden greenhouse.
+Woman: Actually, you tried it before me, Oliver! What did you think of the botanical garden greenhouse?
+Narrator: Number one. Next Tuesday at four. Number two. I will lend it to Kenji. Number three. There were so many rare orchids.
+
+------------------------------------------------------------------------
+[PART1-08] 第13回 No.8（C1_第1部会話の不自然な言い直し）
+音源ID: eiken_3_listening_r13_part1_08 ｜ 保存ファイル名: eiken_3_listening_r13_part1_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Narrator=F2
+修正理由: `Yes! Well, wait—no, you tried it first` の不自然な自己訂正を自然な会話に整形（余裕があれば再収録推奨）
+
+Woman: Hi Ryan! I heard you checked out the local history comic book.
+Man: Actually, you tried it before me, Hannah! What did you think of the local history comic book?
+Narrator: Number one. It made old events easy to remember. Number two. Next Tuesday at four. Number three. I will lend it to Kenji.
+
+------------------------------------------------------------------------
+[PART1-08] 第14回 No.8（C1_第1部会話の不自然な言い直し）
+音源ID: eiken_3_listening_r14_part1_08 ｜ 保存ファイル名: eiken_3_listening_r14_part1_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Narrator=F2
+修正理由: `Yes! Well, wait—no, you tried it first` の不自然な自己訂正を自然な会話に整形（余裕があれば再収録推奨）
+
+Man: Hi Grace! I heard you checked out the summer fireworks by the bay.
+Woman: Actually, you tried it before me, Daniel! What did you think of the summer fireworks by the bay?
+Narrator: Number one. Next Tuesday at four. Number two. The gold finale was unforgettable. Number three. I will lend it to Kenji.
+
+------------------------------------------------------------------------
+[PART1-08] 第15回 No.8（C1_第1部会話の不自然な言い直し）
+音源ID: eiken_3_listening_r15_part1_08 ｜ 保存ファイル名: eiken_3_listening_r15_part1_08.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Narrator=F2
+修正理由: `Yes! Well, wait—no, you tried it first` の不自然な自己訂正を自然な会話に整形（余裕があれば再収録推奨）
+
+Woman: Hi Kevin! I heard you checked out the new bicycle lane on Main Street.
+Man: Actually, you tried it before me, Lucy! What did you think of the new bicycle lane on Main Street?
+Narrator: Number one. Next Tuesday at four. Number two. I will lend it to Kenji. Number three. Riding to school feels much safer now.
+
+------------------------------------------------------------------------
+
+########################################################################
+## 英検準2級（eiken_pre2）｜目標速度：130〜140 WPM｜style: "clear and natural"
+########################################################################
+
+[PART1-03] 第1回 No.3（C2_第1部会話のメタ引用（you mean "..."））
+音源ID: eiken_pre2_listening_r01_part1_03 ｜ 保存ファイル名: eiken_pre2_listening_r01_part1_03.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Narrator=F2
+修正理由: 相手がトラブル内容をカギ括弧付きで代弁する不自然なメタ台詞を、本人が状況を伝えて相手が手を差し伸べる自然なやり取りに修正
+
+Man: Oh no, Maya, look at my desk. Actually, my laptop froze right before my presentation!
+Woman: Oh no, Ryan, your laptop froze right before my presentation? Do you need a hand right now?
+Narrator: Number one. No, it was very cheap on sale. Number two. I went there with my roommate. Number three. Yes! Could I borrow yours for twenty minutes?
+
+------------------------------------------------------------------------
+[PART1-06] 第1回 No.6（C3_第1部会話の役割急変（乗客→駅員への独り言））
+音源ID: eiken_pre2_listening_r01_part1_06 ｜ 保存ファイル名: eiken_pre2_listening_r01_part1_06.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Narrator=F2
+修正理由: 回答していたはずの2人目が急に駅員へ質問し直す不自然な流れを、同行者2人が駅員に尋ねる自然な場面に修正
+
+Woman: Excuse me, I need to get to Riverside Hospital, but I just heard this rapid train skips it.
+Man: Oh, let's ask the station attendant right here—excuse me, where should we change trains for Riverside Hospital?
+Narrator: Number one. The train was built five years ago. Number two. Yes, I commute here every morning. Number three. Get off at the next stop and take the local train.
+
+------------------------------------------------------------------------
+[PART1-03] 第2回 No.3（C2_第1部会話のメタ引用（you mean "..."））
+音源ID: eiken_pre2_listening_r02_part1_03 ｜ 保存ファイル名: eiken_pre2_listening_r02_part1_03.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Narrator=F2
+修正理由: 相手がトラブル内容をカギ括弧付きで代弁する不自然なメタ台詞を、本人が状況を伝えて相手が手を差し伸べる自然なやり取りに修正
+
+Woman: Wait a minute, Brian, this is bad. Actually, my printer jammed with twenty pages left!
+Man: Oh no, Lucy, your printer jammed with twenty pages left? Do you need a hand right now?
+Narrator: Number one. Yes! Could I borrow yours for twenty minutes? Number two. No, it was very cheap on sale. Number three. I went there with my roommate.
+
+------------------------------------------------------------------------
+[PART1-06] 第2回 No.6（C3_第1部会話の役割急変（乗客→駅員への独り言））
+音源ID: eiken_pre2_listening_r02_part1_06 ｜ 保存ファイル名: eiken_pre2_listening_r02_part1_06.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Narrator=F2
+修正理由: 回答していたはずの2人目が急に駅員へ質問し直す不自然な流れを、同行者2人が駅員に尋ねる自然な場面に修正
+
+Man: Excuse me, I need to get to the Civic Concert Hall, but I just heard this rapid train skips it.
+Woman: Oh, let's ask the station attendant right here—excuse me, where should we change trains for the Civic Concert Hall?
+Narrator: Number one. Get off at the next stop and take the local train. Number two. The train was built five years ago. Number three. Yes, I commute here every morning.
+
+------------------------------------------------------------------------
+[PART1-03] 第3回 No.3（C2_第1部会話のメタ引用（you mean "..."））
+音源ID: eiken_pre2_listening_r03_part1_03 ｜ 保存ファイル名: eiken_pre2_listening_r03_part1_03.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Narrator=F2
+修正理由: 相手がトラブル内容をカギ括弧付きで代弁する不自然なメタ台詞を、本人が状況を伝えて相手が手を差し伸べる自然なやり取りに修正
+
+Man: Excuse me, Rachel, I have a problem. Actually, my bike chain came off near the school gate!
+Woman: Oh no, Caleb, your bike chain came off near the school gate? Do you need a hand right now?
+Narrator: Number one. No, it was very cheap on sale. Number two. Yes! Could I borrow yours for twenty minutes? Number three. I went there with my roommate.
+
+------------------------------------------------------------------------
+[PART1-06] 第3回 No.6（C3_第1部会話の役割急変（乗客→駅員への独り言））
+音源ID: eiken_pre2_listening_r03_part1_06 ｜ 保存ファイル名: eiken_pre2_listening_r03_part1_06.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Narrator=F2
+修正理由: 回答していたはずの2人目が急に駅員へ質問し直す不自然な流れを、同行者2人が駅員に尋ねる自然な場面に修正
+
+Woman: Excuse me, I need to get to Northgate University, but I just heard this rapid train skips it.
+Man: Oh, let's ask the station attendant right here—excuse me, where should we change trains for Northgate University?
+Narrator: Number one. The train was built five years ago. Number two. Get off at the next stop and take the local train. Number three. Yes, I commute here every morning.
+
+------------------------------------------------------------------------
+[PART1-03] 第4回 No.3（C2_第1部会話のメタ引用（you mean "..."））
+音源ID: eiken_pre2_listening_r04_part1_03 ｜ 保存ファイル名: eiken_pre2_listening_r04_part1_03.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Narrator=F2
+修正理由: 相手がトラブル内容をカギ括弧付きで代弁する不自然なメタ台詞を、本人が状況を伝えて相手が手を差し伸べる自然なやり取りに修正
+
+Woman: Oh dear, Liam, right on the stairs. Actually, my suitcase wheel broke on the stairs!
+Man: Oh no, Sarah, your suitcase wheel broke on the stairs? Do you need a hand right now?
+Narrator: Number one. No, it was very cheap on sale. Number two. I went there with my roommate. Number three. Yes! Could I borrow yours for twenty minutes?
+
+------------------------------------------------------------------------
+[PART1-06] 第4回 No.6（C3_第1部会話の役割急変（乗客→駅員への独り言））
+音源ID: eiken_pre2_listening_r04_part1_06 ｜ 保存ファイル名: eiken_pre2_listening_r04_part1_06.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Narrator=F2
+修正理由: 回答していたはずの2人目が急に駅員へ質問し直す不自然な流れを、同行者2人が駅員に尋ねる自然な場面に修正
+
+Man: Excuse me, I need to get to Harbor Convention Center, but I just heard this rapid train skips it.
+Woman: Oh, let's ask the station attendant right here—excuse me, where should we change trains for Harbor Convention Center?
+Narrator: Number one. The train was built five years ago. Number two. Yes, I commute here every morning. Number three. Get off at the next stop and take the local train.
+
+------------------------------------------------------------------------
+[PART1-03] 第5回 No.3（C2_第1部会話のメタ引用（you mean "..."））
+音源ID: eiken_pre2_listening_r05_part1_03 ｜ 保存ファイル名: eiken_pre2_listening_r05_part1_03.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Narrator=F2
+修正理由: 相手がトラブル内容をカギ括弧付きで代弁する不自然なメタ台詞を、本人が状況を伝えて相手が手を差し伸べる自然なやり取りに修正
+
+Man: Shoot, Nora, just before we go in. Actually, my camera battery died at the entrance!
+Woman: Oh no, Lucas, your camera battery died at the entrance? Do you need a hand right now?
+Narrator: Number one. Yes! Could I borrow yours for twenty minutes? Number two. No, it was very cheap on sale. Number three. I went there with my roommate.
+
+------------------------------------------------------------------------
+[PART1-06] 第5回 No.6（C3_第1部会話の役割急変（乗客→駅員への独り言））
+音源ID: eiken_pre2_listening_r05_part1_06 ｜ 保存ファイル名: eiken_pre2_listening_r05_part1_06.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Narrator=F2
+修正理由: 回答していたはずの2人目が急に駅員へ質問し直す不自然な流れを、同行者2人が駅員に尋ねる自然な場面に修正
+
+Woman: Excuse me, I need to get to Greenview Stadium, but I just heard this rapid train skips it.
+Man: Oh, let's ask the station attendant right here—excuse me, where should we change trains for Greenview Stadium?
+Narrator: Number one. Get off at the next stop and take the local train. Number two. The train was built five years ago. Number three. Yes, I commute here every morning.
+
+------------------------------------------------------------------------
+[PART1-03] 第6回 No.3（C2_第1部会話のメタ引用（you mean "..."））
+音源ID: eiken_pre2_listening_r06_part1_03 ｜ 保存ファイル名: eiken_pre2_listening_r06_part1_03.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Narrator=F2
+修正理由: 相手がトラブル内容をカギ括弧付きで代弁する不自然なメタ台詞を、本人が状況を伝えて相手が手を差し伸べる自然なやり取りに修正
+
+Woman: Hmm, Ryan, something is missing from this box. Actually, my bookshelf kit is missing a screwdriver!
+Man: Oh no, Elena, your bookshelf kit is missing a screwdriver? Do you need a hand right now?
+Narrator: Number one. No, it was very cheap on sale. Number two. Yes! Could I borrow yours for twenty minutes? Number three. I went there with my roommate.
+
+------------------------------------------------------------------------
+[PART1-06] 第6回 No.6（C3_第1部会話の役割急変（乗客→駅員への独り言））
+音源ID: eiken_pre2_listening_r06_part1_06 ｜ 保存ファイル名: eiken_pre2_listening_r06_part1_06.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Narrator=F2
+修正理由: 回答していたはずの2人目が急に駅員へ質問し直す不自然な流れを、同行者2人が駅員に尋ねる自然な場面に修正
+
+Man: Excuse me, I need to get to Maple Science Park, but I just heard this rapid train skips it.
+Woman: Oh, let's ask the station attendant right here—excuse me, where should we change trains for Maple Science Park?
+Narrator: Number one. The train was built five years ago. Number two. Get off at the next stop and take the local train. Number three. Yes, I commute here every morning.
+
+------------------------------------------------------------------------
+[PART1-03] 第7回 No.3（C2_第1部会話のメタ引用（you mean "..."））
+音源ID: eiken_pre2_listening_r07_part1_03 ｜ 保存ファイル名: eiken_pre2_listening_r07_part1_03.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Narrator=F2
+修正理由: 相手がトラブル内容をカギ括弧付きで代弁する不自然なメタ台詞を、本人が状況を伝えて相手が手を差し伸べる自然なやり取りに修正
+
+Man: Look at this, Alice, the wind ruined it. Actually, my poster tore in the strong morning wind!
+Woman: Oh no, Brian, your poster tore in the strong morning wind? Do you need a hand right now?
+Narrator: Number one. No, it was very cheap on sale. Number two. I went there with my roommate. Number three. Yes! Could I borrow yours for twenty minutes?
+
+------------------------------------------------------------------------
+[PART1-06] 第7回 No.6（C3_第1部会話の役割急変（乗客→駅員への独り言））
+音源ID: eiken_pre2_listening_r07_part1_06 ｜ 保存ファイル名: eiken_pre2_listening_r07_part1_06.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Narrator=F2
+修正理由: 回答していたはずの2人目が急に駅員へ質問し直す不自然な流れを、同行者2人が駅員に尋ねる自然な場面に修正
+
+Woman: Excuse me, I need to get to Westside Art Museum, but I just heard this rapid train skips it.
+Man: Oh, let's ask the station attendant right here—excuse me, where should we change trains for Westside Art Museum?
+Narrator: Number one. The train was built five years ago. Number two. Yes, I commute here every morning. Number three. Get off at the next stop and take the local train.
+
+------------------------------------------------------------------------
+[PART1-03] 第8回 No.3（C2_第1部会話のメタ引用（you mean "..."））
+音源ID: eiken_pre2_listening_r08_part1_03 ｜ 保存ファイル名: eiken_pre2_listening_r08_part1_03.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Narrator=F2
+修正理由: 相手がトラブル内容をカギ括弧付きで代弁する不自然なメタ台詞を、本人が状況を伝えて相手が手を差し伸べる自然なやり取りに修正
+
+Woman: Hey Caleb, can you check this connector? Actually, my projector cable does not fit this port!
+Man: Oh no, Julia, your projector cable does not fit this port? Do you need a hand right now?
+Narrator: Number one. Yes! Could I borrow yours for twenty minutes? Number two. No, it was very cheap on sale. Number three. I went there with my roommate.
+
+------------------------------------------------------------------------
+[PART1-06] 第8回 No.6（C3_第1部会話の役割急変（乗客→駅員への独り言））
+音源ID: eiken_pre2_listening_r08_part1_06 ｜ 保存ファイル名: eiken_pre2_listening_r08_part1_06.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Narrator=F2
+修正理由: 回答していたはずの2人目が急に駅員へ質問し直す不自然な流れを、同行者2人が駅員に尋ねる自然な場面に修正
+
+Man: Excuse me, I need to get to Sunrise Airport Terminal, but I just heard this rapid train skips it.
+Woman: Oh, let's ask the station attendant right here—excuse me, where should we change trains for Sunrise Airport Terminal?
+Narrator: Number one. Get off at the next stop and take the local train. Number two. The train was built five years ago. Number three. Yes, I commute here every morning.
+
+------------------------------------------------------------------------
+[PART1-03] 第9回 No.3（C2_第1部会話のメタ引用（you mean "..."））
+音源ID: eiken_pre2_listening_r09_part1_03 ｜ 保存ファイル名: eiken_pre2_listening_r09_part1_03.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Narrator=F2
+修正理由: 相手がトラブル内容をカギ括弧付きで代弁する不自然なメタ台詞を、本人が状況を伝えて相手が手を差し伸べる自然なやり取りに修正
+
+Man: Uh-oh, Emma, my locker will not open. Actually, my locker key bent inside the keyhole!
+Woman: Oh no, Liam, your locker key bent inside the keyhole? Do you need a hand right now?
+Narrator: Number one. No, it was very cheap on sale. Number two. Yes! Could I borrow yours for twenty minutes? Number three. I went there with my roommate.
+
+------------------------------------------------------------------------
+[PART1-06] 第9回 No.6（C3_第1部会話の役割急変（乗客→駅員への独り言））
+音源ID: eiken_pre2_listening_r09_part1_06 ｜ 保存ファイル名: eiken_pre2_listening_r09_part1_06.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Narrator=F2
+修正理由: 回答していたはずの2人目が急に駅員へ質問し直す不自然な流れを、同行者2人が駅員に尋ねる自然な場面に修正
+
+Woman: Excuse me, I need to get to Central Library Plaza, but I just heard this rapid train skips it.
+Man: Oh, let's ask the station attendant right here—excuse me, where should we change trains for Central Library Plaza?
+Narrator: Number one. The train was built five years ago. Number two. Get off at the next stop and take the local train. Number three. Yes, I commute here every morning.
+
+------------------------------------------------------------------------
+[PART1-03] 第10回 No.3（C2_第1部会話のメタ引用（you mean "..."））
+音源ID: eiken_pre2_listening_r10_part1_03 ｜ 保存ファイル名: eiken_pre2_listening_r10_part1_03.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Narrator=F2
+修正理由: 相手がトラブル内容をカギ括弧付きで代弁する不自然なメタ台詞を、本人が状況を伝えて相手が手を差し伸べる自然なやり取りに修正
+
+Woman: Goodness, Lucas, this cap is completely stuck. Actually, my thermos lid will not open at all!
+Man: Oh no, Chloe, your thermos lid will not open at all? Do you need a hand right now?
+Narrator: Number one. No, it was very cheap on sale. Number two. I went there with my roommate. Number three. Yes! Could I borrow yours for twenty minutes?
+
+------------------------------------------------------------------------
+[PART1-06] 第10回 No.6（C3_第1部会話の役割急変（乗客→駅員への独り言））
+音源ID: eiken_pre2_listening_r10_part1_06 ｜ 保存ファイル名: eiken_pre2_listening_r10_part1_06.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Narrator=F2
+修正理由: 回答していたはずの2人目が急に駅員へ質問し直す不自然な流れを、同行者2人が駅員に尋ねる自然な場面に修正
+
+Man: Excuse me, I need to get to Oakwood Botanic Park, but I just heard this rapid train skips it.
+Woman: Oh, let's ask the station attendant right here—excuse me, where should we change trains for Oakwood Botanic Park?
+Narrator: Number one. The train was built five years ago. Number two. Yes, I commute here every morning. Number three. Get off at the next stop and take the local train.
+
+------------------------------------------------------------------------
+[PART1-03] 第11回 No.3（C2_第1部会話のメタ引用（you mean "..."））
+音源ID: eiken_pre2_listening_r11_part1_03 ｜ 保存ファイル名: eiken_pre2_listening_r11_part1_03.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Narrator=F2
+修正理由: 相手がトラブル内容をカギ括弧付きで代弁する不自然なメタ台詞を、本人が状況を伝えて相手が手を差し伸べる自然なやり取りに修正
+
+Man: Hold on, Sophia, my case will not close. Actually, my violin case latch got stuck again!
+Woman: Oh no, Ryan, your violin case latch got stuck again? Do you need a hand right now?
+Narrator: Number one. Yes! Could I borrow yours for twenty minutes? Number two. No, it was very cheap on sale. Number three. I went there with my roommate.
+
+------------------------------------------------------------------------
+[PART1-06] 第11回 No.6（C3_第1部会話の役割急変（乗客→駅員への独り言））
+音源ID: eiken_pre2_listening_r11_part1_06 ｜ 保存ファイル名: eiken_pre2_listening_r11_part1_06.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Narrator=F2
+修正理由: 回答していたはずの2人目が急に駅員へ質問し直す不自然な流れを、同行者2人が駅員に尋ねる自然な場面に修正
+
+Woman: Excuse me, I need to get to Silver Bay Pier, but I just heard this rapid train skips it.
+Man: Oh, let's ask the station attendant right here—excuse me, where should we change trains for Silver Bay Pier?
+Narrator: Number one. Get off at the next stop and take the local train. Number two. The train was built five years ago. Number three. Yes, I commute here every morning.
+
+------------------------------------------------------------------------
+[PART1-03] 第12回 No.3（C2_第1部会話のメタ引用（you mean "..."））
+音源ID: eiken_pre2_listening_r12_part1_03 ｜ 保存ファイル名: eiken_pre2_listening_r12_part1_03.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Narrator=F2
+修正理由: 相手がトラブル内容をカギ括弧付きで代弁する不自然なメタ台詞を、本人が状況を伝えて相手が手を差し伸べる自然なやり取りに修正
+
+Woman: Bad news, Brian, over by our tent. Actually, my tent pole snapped in the campground!
+Man: Oh no, Olivia, your tent pole snapped in the campground? Do you need a hand right now?
+Narrator: Number one. No, it was very cheap on sale. Number two. Yes! Could I borrow yours for twenty minutes? Number three. I went there with my roommate.
+
+------------------------------------------------------------------------
+[PART1-06] 第12回 No.6（C3_第1部会話の役割急変（乗客→駅員への独り言））
+音源ID: eiken_pre2_listening_r12_part1_06 ｜ 保存ファイル名: eiken_pre2_listening_r12_part1_06.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Narrator=F2
+修正理由: 回答していたはずの2人目が急に駅員へ質問し直す不自然な流れを、同行者2人が駅員に尋ねる自然な場面に修正
+
+Man: Excuse me, I need to get to Crown Theatre, but I just heard this rapid train skips it.
+Woman: Oh, let's ask the station attendant right here—excuse me, where should we change trains for Crown Theatre?
+Narrator: Number one. The train was built five years ago. Number two. Get off at the next stop and take the local train. Number three. Yes, I commute here every morning.
+
+------------------------------------------------------------------------
+[PART1-03] 第13回 No.3（C2_第1部会話のメタ引用（you mean "..."））
+音源ID: eiken_pre2_listening_r13_part1_03 ｜ 保存ファイル名: eiken_pre2_listening_r13_part1_03.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Narrator=F2
+修正理由: 相手がトラブル内容をカギ括弧付きで代弁する不自然なメタ台詞を、本人が状況を伝えて相手が手を差し伸べる自然なやり取りに修正
+
+Man: Careful, Hannah, this stand keeps slipping. Actually, my easel leg keeps sliding on the floor!
+Woman: Oh no, Caleb, your easel leg keeps sliding on the floor? Do you need a hand right now?
+Narrator: Number one. No, it was very cheap on sale. Number two. I went there with my roommate. Number three. Yes! Could I borrow yours for twenty minutes?
+
+------------------------------------------------------------------------
+[PART1-06] 第13回 No.6（C3_第1部会話の役割急変（乗客→駅員への独り言））
+音源ID: eiken_pre2_listening_r13_part1_06 ｜ 保存ファイル名: eiken_pre2_listening_r13_part1_06.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Narrator=F2
+修正理由: 回答していたはずの2人目が急に駅員へ質問し直す不自然な流れを、同行者2人が駅員に尋ねる自然な場面に修正
+
+Woman: Excuse me, I need to get to Cedar Tech Hub, but I just heard this rapid train skips it.
+Man: Oh, let's ask the station attendant right here—excuse me, where should we change trains for Cedar Tech Hub?
+Narrator: Number one. The train was built five years ago. Number two. Yes, I commute here every morning. Number three. Get off at the next stop and take the local train.
+
+------------------------------------------------------------------------
+[PART1-03] 第14回 No.3（C2_第1部会話のメタ引用（you mean "..."））
+音源ID: eiken_pre2_listening_r14_part1_03 ｜ 保存ファイル名: eiken_pre2_listening_r14_part1_03.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Narrator=F2
+修正理由: 相手がトラブル内容をカギ括弧付きで代弁する不自然なメタ台詞を、本人が状況を伝えて相手が手を差し伸べる自然なやり取りに修正
+
+Woman: Strange, Liam, the timer display is blank. Actually, my stopwatch button stopped working!
+Man: Oh no, Claire, your stopwatch button stopped working? Do you need a hand right now?
+Narrator: Number one. Yes! Could I borrow yours for twenty minutes? Number two. No, it was very cheap on sale. Number three. I went there with my roommate.
+
+------------------------------------------------------------------------
+[PART1-06] 第14回 No.6（C3_第1部会話の役割急変（乗客→駅員への独り言））
+音源ID: eiken_pre2_listening_r14_part1_06 ｜ 保存ファイル名: eiken_pre2_listening_r14_part1_06.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Narrator=F2
+修正理由: 回答していたはずの2人目が急に駅員へ質問し直す不自然な流れを、同行者2人が駅員に尋ねる自然な場面に修正
+
+Man: Excuse me, I need to get to Coral Aquarium, but I just heard this rapid train skips it.
+Woman: Oh, let's ask the station attendant right here—excuse me, where should we change trains for Coral Aquarium?
+Narrator: Number one. Get off at the next stop and take the local train. Number two. The train was built five years ago. Number three. Yes, I commute here every morning.
+
+------------------------------------------------------------------------
+[PART1-03] 第15回 No.3（C2_第1部会話のメタ引用（you mean "..."））
+音源ID: eiken_pre2_listening_r15_part1_03 ｜ 保存ファイル名: eiken_pre2_listening_r15_part1_03.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Narrator=F2
+修正理由: 相手がトラブル内容をカギ括弧付きで代弁する不自然なメタ台詞を、本人が状況を伝えて相手が手を差し伸べる自然なやり取りに修正
+
+Man: Wait, Grace, this cord cannot reach the stage. Actually, my microphone cable is two meters too short!
+Woman: Oh no, Lucas, your microphone cable is two meters too short? Do you need a hand right now?
+Narrator: Number one. No, it was very cheap on sale. Number two. Yes! Could I borrow yours for twenty minutes? Number three. I went there with my roommate.
+
+------------------------------------------------------------------------
+[PART1-06] 第15回 No.6（C3_第1部会話の役割急変（乗客→駅員への独り言））
+音源ID: eiken_pre2_listening_r15_part1_06 ｜ 保存ファイル名: eiken_pre2_listening_r15_part1_06.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Narrator=F2
+修正理由: 回答していたはずの2人目が急に駅員へ質問し直す不自然な流れを、同行者2人が駅員に尋ねる自然な場面に修正
+
+Woman: Excuse me, I need to get to Hillside Medical Center, but I just heard this rapid train skips it.
+Man: Oh, let's ask the station attendant right here—excuse me, where should we change trains for Hillside Medical Center?
+Narrator: Number one. The train was built five years ago. Number two. Get off at the next stop and take the local train. Number three. Yes, I commute here every morning.
+
+------------------------------------------------------------------------
+
+########################################################################
+## 英検準2級プラス（eiken_pre2plus）｜目標速度：135〜145 WPM｜style: "clear and natural"
+########################################################################
+
+[PART1-11] 第1回 No.11（C4_ナレーターの二重疑問文）
+音源ID: eiken_pre2plus_listening_r01_part1_11 ｜ 保存ファイル名: eiken_pre2plus_listening_r01_part1_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Woman=F1 / Narrator=F2
+修正理由: ナレーターの Question に疑問文が2つ続いていたため、後半の本来の設問1文だけに整理
+
+Man: Hello again, have you checked the supply list yet? We collected four thousand yen for Ms. Toda's farewell gift, Penelope. Should we buy a fresh flower bouquet?
+Woman: Flowers are nice, Nicholas, but the recipient is traveling for five days starting Saturday.
+Man: Good point—flowers would wilt while nobody is home. What should we get instead?
+Woman: How about a set of colored brush pens? It is practical and easy to pack.
+Narrator: Question. What did Penelope suggest buying?
+
+------------------------------------------------------------------------
+[PART1-11] 第2回 No.11（C4_ナレーターの二重疑問文）
+音源ID: eiken_pre2plus_listening_r02_part1_11 ｜ 保存ファイル名: eiken_pre2plus_listening_r02_part1_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+修正理由: ナレーターの Question に疑問文が2つ続いていたため、後半の本来の設問1文だけに整理
+
+Woman: Oh hi, I am glad I caught you before lunch. We collected four thousand yen for Coach Sato's birthday, Caroline. Should we buy a fresh flower bouquet?
+Man: Flowers are nice, Arthur, but the recipient is traveling for five days starting Saturday.
+Woman: Good point—flowers would wilt while nobody is home. What should we get instead?
+Man: How about a cozy fleece blanket? It is practical and easy to pack.
+Narrator: Question. What did Caroline suggest buying?
+
+------------------------------------------------------------------------
+[PART1-11] 第3回 No.11（C4_ナレーターの二重疑問文）
+音源ID: eiken_pre2plus_listening_r03_part1_11 ｜ 保存ファイル名: eiken_pre2plus_listening_r03_part1_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Woman=F1 / Narrator=F2
+修正理由: ナレーターの Question に疑問文が2つ続いていたため、後半の本来の設問1文だけに整理
+
+Man: By the way, regarding next month's training workshop, We collected four thousand yen for our host family's present, Florence. Should we buy a fresh flower bouquet?
+Woman: Flowers are nice, Charles, but the recipient is traveling for five days starting Saturday.
+Man: Good point—flowers would wilt while nobody is home. What should we get instead?
+Woman: How about a canvas book pouch? It is practical and easy to pack.
+Narrator: Question. What did Florence suggest buying?
+
+------------------------------------------------------------------------
+[PART1-11] 第4回 No.11（C4_ナレーターの二重疑問文）
+音源ID: eiken_pre2plus_listening_r04_part1_11 ｜ 保存ファイル名: eiken_pre2plus_listening_r04_part1_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+修正理由: ナレーターの Question に疑問文が2つ続いていたため、後半の本来の設問1文だけに整理
+
+Woman: Excuse me, is this the registration table for visitors? We collected four thousand yen for the graduation gift, Isabella. Should we buy a fresh flower bouquet?
+Man: Flowers are nice, Edward, but the recipient is traveling for five days starting Saturday.
+Woman: Good point—flowers would wilt while nobody is home. What should we get instead?
+Man: How about a ceramic soup mug? It is practical and easy to pack.
+Narrator: Question. What did Isabella suggest buying?
+
+------------------------------------------------------------------------
+[PART1-11] 第5回 No.11（C4_ナレーターの二重疑問文）
+音源ID: eiken_pre2plus_listening_r05_part1_11 ｜ 保存ファイル名: eiken_pre2plus_listening_r05_part1_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Woman=F1 / Narrator=F2
+修正理由: ナレーターの Question に疑問文が2つ続いていたため、後半の本来の設問1文だけに整理
+
+Man: Hi, I have an update about our group presentation. We collected four thousand yen for Uncle Ken's retirement, Lillian. Should we buy a fresh flower bouquet?
+Woman: Flowers are nice, Gregory, but the recipient is traveling for five days starting Saturday.
+Man: Good point—flowers would wilt while nobody is home. What should we get instead?
+Woman: How about a desktop mini plant? It is practical and easy to pack.
+Narrator: Question. What did Lillian suggest buying?
+
+------------------------------------------------------------------------
+[PART1-11] 第6回 No.11（C4_ナレーターの二重疑問文）
+音源ID: eiken_pre2plus_listening_r06_part1_11 ｜ 保存ファイル名: eiken_pre2plus_listening_r06_part1_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+修正理由: ナレーターの Question に疑問文が2つ続いていたため、後半の本来の設問1文だけに整理
+
+Woman: Excuse me, do you have a minute before the briefing? We collected four thousand yen for Aunt Rika's housewarming, Penelope. Should we buy a fresh flower bouquet?
+Man: Flowers are nice, Isaac, but the recipient is traveling for five days starting Saturday.
+Woman: Good point—flowers would wilt while nobody is home. What should we get instead?
+Man: How about a set of colored brush pens? It is practical and easy to pack.
+Narrator: Question. What did Penelope suggest buying?
+
+------------------------------------------------------------------------
+[PART1-11] 第7回 No.11（C4_ナレーターの二重疑問文）
+音源ID: eiken_pre2plus_listening_r07_part1_11 ｜ 保存ファイル名: eiken_pre2plus_listening_r07_part1_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Woman=F1 / Narrator=F2
+修正理由: ナレーターの Question に疑問文が2つ続いていたため、後半の本来の設問1文だけに整理
+
+Man: Good morning, I just looked over the updated notice. We collected four thousand yen for our club advisor's thank-you gift, Caroline. Should we buy a fresh flower bouquet?
+Woman: Flowers are nice, Kenneth, but the recipient is traveling for five days starting Saturday.
+Man: Good point—flowers would wilt while nobody is home. What should we get instead?
+Woman: How about a cozy fleece blanket? It is practical and easy to pack.
+Narrator: Question. What did Caroline suggest buying?
+
+------------------------------------------------------------------------
+[PART1-11] 第8回 No.11（C4_ナレーターの二重疑問文）
+音源ID: eiken_pre2plus_listening_r08_part1_11 ｜ 保存ファイル名: eiken_pre2plus_listening_r08_part1_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+修正理由: ナレーターの Question に疑問文が2つ続いていたため、後半の本来の設問1文だけに整理
+
+Woman: Hi there, thanks for stopping by my desk. We collected four thousand yen for Sister Mei's promotion, Florence. Should we buy a fresh flower bouquet?
+Man: Flowers are nice, Mitchell, but the recipient is traveling for five days starting Saturday.
+Woman: Good point—flowers would wilt while nobody is home. What should we get instead?
+Man: How about a canvas book pouch? It is practical and easy to pack.
+Narrator: Question. What did Florence suggest buying?
+
+------------------------------------------------------------------------
+[PART1-11] 第9回 No.11（C4_ナレーターの二重疑問文）
+音源ID: eiken_pre2plus_listening_r09_part1_11 ｜ 保存ファイル名: eiken_pre2plus_listening_r09_part1_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Woman=F1 / Narrator=F2
+修正理由: ナレーターの Question に疑問文が2つ続いていたため、後半の本来の設問1文だけに整理
+
+Man: Hello, could we go over the schedule for this week? We collected four thousand yen for Grandpa's seventy-fifth birthday, Isabella. Should we buy a fresh flower bouquet?
+Woman: Flowers are nice, Patrick, but the recipient is traveling for five days starting Saturday.
+Man: Good point—flowers would wilt while nobody is home. What should we get instead?
+Woman: How about a ceramic soup mug? It is practical and easy to pack.
+Narrator: Question. What did Isabella suggest buying?
+
+------------------------------------------------------------------------
+[PART1-11] 第10回 No.11（C4_ナレーターの二重疑問文）
+音源ID: eiken_pre2plus_listening_r10_part1_11 ｜ 保存ファイル名: eiken_pre2plus_listening_r10_part1_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+修正理由: ナレーターの Question に疑問文が2つ続いていたため、後半の本来の設問1文だけに整理
+
+Woman: Hey, I just spoke with the coordinator on the phone. We collected four thousand yen for Mr. Lin's welcome gift, Lillian. Should we buy a fresh flower bouquet?
+Man: Flowers are nice, Benjamin, but the recipient is traveling for five days starting Saturday.
+Woman: Good point—flowers would wilt while nobody is home. What should we get instead?
+Man: How about a desktop mini plant? It is practical and easy to pack.
+Narrator: Question. What did Lillian suggest buying?
+
+------------------------------------------------------------------------
+[PART1-11] 第11回 No.11（C4_ナレーターの二重疑問文）
+音源ID: eiken_pre2plus_listening_r11_part1_11 ｜ 保存ファイル名: eiken_pre2plus_listening_r11_part1_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Woman=F1 / Narrator=F2
+修正理由: ナレーターの Question に疑問文が2つ続いていたため、後半の本来の設問1文だけに整理
+
+Man: Pardon me, are you heading to the conference room? We collected four thousand yen for our team captain's prize, Penelope. Should we buy a fresh flower bouquet?
+Woman: Flowers are nice, Dominic, but the recipient is traveling for five days starting Saturday.
+Man: Good point—flowers would wilt while nobody is home. What should we get instead?
+Woman: How about a set of colored brush pens? It is practical and easy to pack.
+Narrator: Question. What did Penelope suggest buying?
+
+------------------------------------------------------------------------
+[PART1-11] 第12回 No.11（C4_ナレーターの二重疑問文）
+音源ID: eiken_pre2plus_listening_r12_part1_11 ｜ 保存ファイル名: eiken_pre2plus_listening_r12_part1_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+修正理由: ナレーターの Question に疑問文が2つ続いていたため、後半の本来の設問1文だけに整理
+
+Woman: Morning! Did you see the message on the bulletin board? We collected four thousand yen for Dr. Ono's appreciation gift, Caroline. Should we buy a fresh flower bouquet?
+Man: Flowers are nice, Frederick, but the recipient is traveling for five days starting Saturday.
+Woman: Good point—flowers would wilt while nobody is home. What should we get instead?
+Man: How about a cozy fleece blanket? It is practical and easy to pack.
+Narrator: Question. What did Caroline suggest buying?
+
+------------------------------------------------------------------------
+[PART1-11] 第13回 No.11（C4_ナレーターの二重疑問文）
+音源ID: eiken_pre2plus_listening_r13_part1_11 ｜ 保存ファイル名: eiken_pre2plus_listening_r13_part1_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Woman=F1 / Narrator=F2
+修正理由: ナレーターの Question に疑問文が2つ続いていたため、後半の本来の設問1文だけに整理
+
+Man: Hi, I wanted to ask about the upcoming community event. We collected four thousand yen for Cousin Yui's wedding gift, Florence. Should we buy a fresh flower bouquet?
+Woman: Flowers are nice, Harrison, but the recipient is traveling for five days starting Saturday.
+Man: Good point—flowers would wilt while nobody is home. What should we get instead?
+Woman: How about a canvas book pouch? It is practical and easy to pack.
+Narrator: Question. What did Florence suggest buying?
+
+------------------------------------------------------------------------
+[PART1-11] 第14回 No.11（C4_ナレーターの二重疑問文）
+音源ID: eiken_pre2plus_listening_r14_part1_11 ｜ 保存ファイル名: eiken_pre2plus_listening_r14_part1_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+修正理由: ナレーターの Question に疑問文が2つ続いていたため、後半の本来の設問1文だけに整理
+
+Woman: Good afternoon, thanks for returning my call so quickly. We collected four thousand yen for Ms. Bell's winter gift, Isabella. Should we buy a fresh flower bouquet?
+Man: Flowers are nice, Julian, but the recipient is traveling for five days starting Saturday.
+Woman: Good point—flowers would wilt while nobody is home. What should we get instead?
+Man: How about a ceramic soup mug? It is practical and easy to pack.
+Narrator: Question. What did Isabella suggest buying?
+
+------------------------------------------------------------------------
+[PART1-11] 第15回 No.11（C4_ナレーターの二重疑問文）
+音源ID: eiken_pre2plus_listening_r15_part1_11 ｜ 保存ファイル名: eiken_pre2plus_listening_r15_part1_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Woman=F1 / Narrator=F2
+修正理由: ナレーターの Question に疑問文が2つ続いていたため、後半の本来の設問1文だけに整理
+
+Man: Listen, we need to make a quick adjustment today. We collected four thousand yen for Brother Sho's college gift, Lillian. Should we buy a fresh flower bouquet?
+Woman: Flowers are nice, Lawrence, but the recipient is traveling for five days starting Saturday.
+Man: Good point—flowers would wilt while nobody is home. What should we get instead?
+Woman: How about a desktop mini plant? It is practical and easy to pack.
+Narrator: Question. What did Lillian suggest buying?
+
+------------------------------------------------------------------------
+
+########################################################################
+## 英検2級（eiken_2）｜目標速度：140〜150 WPM｜style: "clear and natural"
+########################################################################
+
+[PART1-11] 第1回 No.11（C4_ナレーターの二重疑問文）
+音源ID: eiken_2_listening_r01_part1_11 ｜ 保存ファイル名: eiken_2_listening_r01_part1_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+修正理由: ナレーターの Question に疑問文が2つ続いていたため、後半の本来の設問1文だけに整理
+
+Woman: Good evening, thanks for staying to finalize the report. We collected four thousand yen for Ms. Toda's farewell gift, Gabriella. Should we buy a fresh flower bouquet?
+Man: Flowers are nice, Dominic, but the recipient is traveling for five days starting Saturday.
+Woman: Good point—flowers would wilt while nobody is home. What should we get instead?
+Man: How about an insulated stainless tumbler? It is practical and easy to pack.
+Narrator: Question. What did Gabriella suggest buying?
+
+------------------------------------------------------------------------
+[PART1-11] 第2回 No.11（C4_ナレーターの二重疑問文）
+音源ID: eiken_2_listening_r02_part1_11 ｜ 保存ファイル名: eiken_2_listening_r02_part1_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Woman=F1 / Narrator=F2
+修正理由: ナレーターの Question に疑問文が2つ続いていたため、後半の本来の設問1文だけに整理
+
+Man: Oh hello, I just checked the availability of the studio. We collected four thousand yen for Coach Sato's birthday, Jacqueline. Should we buy a fresh flower bouquet?
+Woman: Flowers are nice, Frederick, but the recipient is traveling for five days starting Saturday.
+Man: Good point—flowers would wilt while nobody is home. What should we get instead?
+Woman: How about a botanical hand-cream set? It is practical and easy to pack.
+Narrator: Question. What did Jacqueline suggest buying?
+
+------------------------------------------------------------------------
+[PART1-11] 第3回 No.11（C4_ナレーターの二重疑問文）
+音源ID: eiken_2_listening_r03_part1_11 ｜ 保存ファイル名: eiken_2_listening_r03_part1_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+修正理由: ナレーターの Question に疑問文が2つ続いていたため、後半の本来の設問1文だけに整理
+
+Woman: By the way, concerning the new recycling guidelines here, We collected four thousand yen for our host family's present, Margaret. Should we buy a fresh flower bouquet?
+Man: Flowers are nice, Harrison, but the recipient is traveling for five days starting Saturday.
+Woman: Good point—flowers would wilt while nobody is home. What should we get instead?
+Man: How about a hardcover recipe collection? It is practical and easy to pack.
+Narrator: Question. What did Margaret suggest buying?
+
+------------------------------------------------------------------------
+[PART1-11] 第4回 No.11（C4_ナレーターの二重疑問文）
+音源ID: eiken_2_listening_r04_part1_11 ｜ 保存ファイル名: eiken_2_listening_r04_part1_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Woman=F1 / Narrator=F2
+修正理由: ナレーターの Question に疑問文が2つ続いていたため、後半の本来の設問1文だけに整理
+
+Man: Excuse me, I would like to inquire about the evening course. We collected four thousand yen for the graduation gift, Abigail. Should we buy a fresh flower bouquet?
+Woman: Flowers are nice, Julian, but the recipient is traveling for five days starting Saturday.
+Man: Good point—flowers would wilt while nobody is home. What should we get instead?
+Woman: How about a wooden desk calendar? It is practical and easy to pack.
+Narrator: Question. What did Abigail suggest buying?
+
+------------------------------------------------------------------------
+[PART1-11] 第5回 No.11（C4_ナレーターの二重疑問文）
+音源ID: eiken_2_listening_r05_part1_11 ｜ 保存ファイル名: eiken_2_listening_r05_part1_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+修正理由: ナレーターの Question に疑問文が2つ続いていたため、後半の本来の設問1文だけに整理
+
+Woman: Hi again, let us verify the figures before the meeting. We collected four thousand yen for Uncle Ken's retirement, Dorothy. Should we buy a fresh flower bouquet?
+Man: Flowers are nice, Lawrence, but the recipient is traveling for five days starting Saturday.
+Woman: Good point—flowers would wilt while nobody is home. What should we get instead?
+Man: How about a box of single-origin tea? It is practical and easy to pack.
+Narrator: Question. What did Dorothy suggest buying?
+
+------------------------------------------------------------------------
+[PART1-11] 第6回 No.11（C4_ナレーターの二重疑問文）
+音源ID: eiken_2_listening_r06_part1_11 ｜ 保存ファイル名: eiken_2_listening_r06_part1_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Woman=F1 / Narrator=F2
+修正理由: ナレーターの Question に疑問文が2つ続いていたため、後半の本来の設問1文だけに整理
+
+Man: Good morning, thank you for coming to the consultation desk. We collected four thousand yen for Aunt Rika's housewarming, Gabriella. Should we buy a fresh flower bouquet?
+Woman: Flowers are nice, Nicholas, but the recipient is traveling for five days starting Saturday.
+Man: Good point—flowers would wilt while nobody is home. What should we get instead?
+Woman: How about an insulated stainless tumbler? It is practical and easy to pack.
+Narrator: Question. What did Gabriella suggest buying?
+
+------------------------------------------------------------------------
+[PART1-11] 第7回 No.11（C4_ナレーターの二重疑問文）
+音源ID: eiken_2_listening_r07_part1_11 ｜ 保存ファイル名: eiken_2_listening_r07_part1_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+修正理由: ナレーターの Question に疑問文が2つ続いていたため、後半の本来の設問1文だけに整理
+
+Woman: Hello, I have just reviewed the quarterly maintenance plan. We collected four thousand yen for our club advisor's thank-you gift, Jacqueline. Should we buy a fresh flower bouquet?
+Man: Flowers are nice, Arthur, but the recipient is traveling for five days starting Saturday.
+Woman: Good point—flowers would wilt while nobody is home. What should we get instead?
+Man: How about a botanical hand-cream set? It is practical and easy to pack.
+Narrator: Question. What did Jacqueline suggest buying?
+
+------------------------------------------------------------------------
+[PART1-11] 第8回 No.11（C4_ナレーターの二重疑問文）
+音源ID: eiken_2_listening_r08_part1_11 ｜ 保存ファイル名: eiken_2_listening_r08_part1_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Woman=F1 / Narrator=F2
+修正理由: ナレーターの Question に疑問文が2つ続いていたため、後半の本来の設問1文だけに整理
+
+Man: Pardon me, could I confirm a detail about my membership? We collected four thousand yen for Sister Mei's promotion, Margaret. Should we buy a fresh flower bouquet?
+Woman: Flowers are nice, Charles, but the recipient is traveling for five days starting Saturday.
+Man: Good point—flowers would wilt while nobody is home. What should we get instead?
+Woman: How about a hardcover recipe collection? It is practical and easy to pack.
+Narrator: Question. What did Margaret suggest buying?
+
+------------------------------------------------------------------------
+[PART1-11] 第9回 No.11（C4_ナレーターの二重疑問文）
+音源ID: eiken_2_listening_r09_part1_11 ｜ 保存ファイル名: eiken_2_listening_r09_part1_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+修正理由: ナレーターの Question に疑問文が2つ続いていたため、後半の本来の設問1文だけに整理
+
+Woman: Hi, did you hear the announcement from the facilities team? We collected four thousand yen for Grandpa's seventy-fifth birthday, Abigail. Should we buy a fresh flower bouquet?
+Man: Flowers are nice, Edward, but the recipient is traveling for five days starting Saturday.
+Woman: Good point—flowers would wilt while nobody is home. What should we get instead?
+Man: How about a wooden desk calendar? It is practical and easy to pack.
+Narrator: Question. What did Abigail suggest buying?
+
+------------------------------------------------------------------------
+[PART1-11] 第10回 No.11（C4_ナレーターの二重疑問文）
+音源ID: eiken_2_listening_r10_part1_11 ｜ 保存ファイル名: eiken_2_listening_r10_part1_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Woman=F1 / Narrator=F2
+修正理由: ナレーターの Question に疑問文が2つ続いていたため、後半の本来の設問1文だけに整理
+
+Man: Good afternoon, I am calling regarding next week's shipment. We collected four thousand yen for Mr. Lin's welcome gift, Dorothy. Should we buy a fresh flower bouquet?
+Woman: Flowers are nice, Gregory, but the recipient is traveling for five days starting Saturday.
+Man: Good point—flowers would wilt while nobody is home. What should we get instead?
+Woman: How about a box of single-origin tea? It is practical and easy to pack.
+Narrator: Question. What did Dorothy suggest buying?
+
+------------------------------------------------------------------------
+[PART1-11] 第11回 No.11（C4_ナレーターの二重疑問文）
+音源ID: eiken_2_listening_r11_part1_11 ｜ 保存ファイル名: eiken_2_listening_r11_part1_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+修正理由: ナレーターの Question に疑問文が2つ続いていたため、後半の本来の設問1文だけに整理
+
+Woman: Excuse me, I noticed a change on the departmental calendar. We collected four thousand yen for our team captain's prize, Gabriella. Should we buy a fresh flower bouquet?
+Man: Flowers are nice, Isaac, but the recipient is traveling for five days starting Saturday.
+Woman: Good point—flowers would wilt while nobody is home. What should we get instead?
+Man: How about an insulated stainless tumbler? It is practical and easy to pack.
+Narrator: Question. What did Gabriella suggest buying?
+
+------------------------------------------------------------------------
+[PART1-11] 第12回 No.11（C4_ナレーターの二重疑問文）
+音源ID: eiken_2_listening_r12_part1_11 ｜ 保存ファイル名: eiken_2_listening_r12_part1_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Woman=F1 / Narrator=F2
+修正理由: ナレーターの Question に疑問文が2つ続いていたため、後半の本来の設問1文だけに整理
+
+Man: Hello there, how are preparations going for the symposium? We collected four thousand yen for Dr. Ono's appreciation gift, Jacqueline. Should we buy a fresh flower bouquet?
+Woman: Flowers are nice, Kenneth, but the recipient is traveling for five days starting Saturday.
+Man: Good point—flowers would wilt while nobody is home. What should we get instead?
+Woman: How about a botanical hand-cream set? It is practical and easy to pack.
+Narrator: Question. What did Jacqueline suggest buying?
+
+------------------------------------------------------------------------
+[PART1-11] 第13回 No.11（C4_ナレーターの二重疑問文）
+音源ID: eiken_2_listening_r13_part1_11 ｜ 保存ファイル名: eiken_2_listening_r13_part1_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+修正理由: ナレーターの Question に疑問文が2つ続いていたため、後半の本来の設問1文だけに整理
+
+Woman: Morning! I just received feedback from the review committee. We collected four thousand yen for Cousin Yui's wedding gift, Margaret. Should we buy a fresh flower bouquet?
+Man: Flowers are nice, Mitchell, but the recipient is traveling for five days starting Saturday.
+Woman: Good point—flowers would wilt while nobody is home. What should we get instead?
+Man: How about a hardcover recipe collection? It is practical and easy to pack.
+Narrator: Question. What did Margaret suggest buying?
+
+------------------------------------------------------------------------
+[PART1-11] 第14回 No.11（C4_ナレーターの二重疑問文）
+音源ID: eiken_2_listening_r14_part1_11 ｜ 保存ファイル名: eiken_2_listening_r14_part1_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Man=M1 / Woman=F1 / Man=M1 / Woman=F1 / Narrator=F2
+修正理由: ナレーターの Question に疑問文が2つ続いていたため、後半の本来の設問1文だけに整理
+
+Man: Hi, do you have a moment to discuss the venue layout? We collected four thousand yen for Ms. Bell's winter gift, Abigail. Should we buy a fresh flower bouquet?
+Woman: Flowers are nice, Patrick, but the recipient is traveling for five days starting Saturday.
+Man: Good point—flowers would wilt while nobody is home. What should we get instead?
+Woman: How about a wooden desk calendar? It is practical and easy to pack.
+Narrator: Question. What did Abigail suggest buying?
+
+------------------------------------------------------------------------
+[PART1-11] 第15回 No.11（C4_ナレーターの二重疑問文）
+音源ID: eiken_2_listening_r15_part1_11 ｜ 保存ファイル名: eiken_2_listening_r15_part1_11.mp3 ｜ 本試験読み回数: 1回 ｜ 話者割当: Woman=F1 / Man=M1 / Woman=F1 / Man=M1 / Narrator=F2
+修正理由: ナレーターの Question に疑問文が2つ続いていたため、後半の本来の設問1文だけに整理
+
+Woman: Listen, there has been a slight change to our itinerary. We collected four thousand yen for Brother Sho's college gift, Dorothy. Should we buy a fresh flower bouquet?
+Man: Flowers are nice, Benjamin, but the recipient is traveling for five days starting Saturday.
+Woman: Good point—flowers would wilt while nobody is home. What should we get instead?
+Man: How about a box of single-origin tea? It is practical and easy to pack.
+Narrator: Question. What did Dorothy suggest buying?
+
+------------------------------------------------------------------------

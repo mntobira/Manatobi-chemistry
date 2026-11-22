@@ -1,0 +1,75 @@
+# prod
+dist/
+
+# dev
+.yarn/
+!.yarn/releases
+.vscode/*
+!.vscode/launch.json
+!.vscode/*.code-snippets
+.idea/workspace.xml
+.idea/usage.statistics.xml
+.idea/shelf
+
+# deps
+node_modules/
+.wrangler
+
+# env
+.env
+.env.*
+!.env.example
+.dev.vars
+.dev.vars.*
+.vercel/
+*.pem
+*.key
+*.tar.gz
+*.zip
+
+# logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# locally generated, unreviewed media (never auto-publish)
+.media-output/
+*.part
+*.part.png
+
+# misc
+.DS_Store
+
+# Original uploaded app snapshot and local fork build output
+.reference/
+eiken-app/dist/
+public/eiken/
+
+# uploaded reference PDFs / temp
+*.pdf
+shot.mjs
+check.mjs
+
+# Crash dumps and temporary original verification bundles
+core
+core.*
+.reference-preview/
+
+# Offline authoring diagnostics and third-party reference images (not app assets)
+__pycache__/
+*.pyc
+eiken-app/qa-*.png
+qa-home.png
+eiken-app/deliverables/*.png
+eiken-app/deliverables/reference_*
+eiken-app/deliverables/listening-booklets.json
+eiken-app/deliverables/eiken-elevenlabs-audio-prompts.json
+eiken-app/deliverables/eiken-chatgpt-image-prompts.json
+eiken-app/deliverables/eiken-listening-segments.tsv
+eiken-app/deliverables/pdfs/
+eiken-app/.vite-seq-cache/
+spec/

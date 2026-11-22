@@ -1,0 +1,532 @@
+/* 英検（筆記・語彙・読解）専用：問題一体型コンパクト解説・結果画面スタイル
+   eiken-cloze-page.css のトークン・カード構造をそのまま継承し、
+   フォントを var(--font-modern) に完全統一、スクロール量を最小限に抑える。 */
+
+.ewr-root {
+  font-family: var(--font-modern, var(--mt-font-body));
+}
+
+.ewr-mode-done {
+  background: #1f7a52;
+  color: #ffffff;
+}
+
+.ewr-home-icon-btn {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: 999px;
+  border: 1px solid #e4dccb;
+  background: #ffffff;
+  color: #475569;
+  cursor: pointer;
+}
+
+.ewr-home-icon-btn:hover {
+  background: #f5f0e5;
+  color: #1f2937;
+}
+
+.ewr-step-pill {
+  flex-shrink: 0;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #f3efe4;
+  color: #475569;
+  font-size: 12.5px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.ewr-step-pill b {
+  color: #1f2937;
+  font-size: 13.5px;
+}
+
+/* サマリー帯（コンパクト） */
+.ewr-summary-card {
+  gap: 8px;
+  margin: 10px 12px 0;
+  padding: 10px 12px;
+}
+
+.ewr-summary-main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ewr-score-block {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.ewr-score-icon {
+  color: #1f7a52;
+  flex-shrink: 0;
+}
+
+.ewr-score-fraction {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+  color: #134e4a;
+}
+
+.ewr-score-fraction b {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.ewr-score-fraction small {
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.ewr-score-pct {
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: #dff3ee;
+  color: #15534a;
+  font-size: 12px;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}
+
+.ewr-time-pill,
+.ewr-coin-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid #cfe3dc;
+  color: #334155;
+  font-size: 11.5px;
+  font-weight: 800;
+}
+
+.ewr-coin-pill {
+  background: #fffbeb;
+  border-color: #fde68a;
+  color: #92400e;
+}
+
+/* 横スクロール対応の1行ジャンプチップ列 */
+.ewr-jump-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ewr-jump-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-width: 40px;
+  height: 28px;
+  padding: 0 7px;
+  border-radius: 8px;
+  border: 1.5px solid #cbd5e1;
+  background: #ffffff;
+  color: #334155;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  font-variant-numeric: tabular-nums;
+}
+
+.ewr-jump-chip[data-result='correct'] {
+  border-color: #4db386;
+  background: #eaf8f1;
+  color: #166534;
+}
+
+.ewr-jump-chip[data-result='wrong'] {
+  border-color: #e0786f;
+  background: #fdeeed;
+  color: #991b1b;
+}
+
+/* カードグリッド（スマホ1列、PC 2列で一覧性最大化） */
+.ewr-grid-list {
+  max-width: 1120px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (min-width: 900px) {
+  .ewr-grid-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 12px;
+    padding: 12px 16px 22px;
+  }
+
+  .ewr-summary-card {
+    max-width: 1088px;
+    margin: 12px auto 0;
+  }
+}
+
+/* 各カードの正誤＋開閉ボタンバー */
+.ewr-card .ecp-compact-review {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ewr-review-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+}
+
+.ewr-disclosure-btn {
+  flex: 1;
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 30px;
+  padding: 2px 6px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #1f5c53;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  text-align: left;
+}
+
+.ewr-disclosure-btn:hover {
+  background: #f5f9f8;
+}
+
+.ecp-ex-chev.is-open,
+.ecp-fold-chev.is-open {
+  transform: rotate(180deg);
+}
+
+.ecp-save-inline {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 9px;
+  border-radius: 999px;
+  border: 1px solid #f5d06f;
+  background: #fffbeb;
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #92400e;
+  cursor: pointer;
+}
+
+.ecp-save-inline[data-saved] {
+  border-color: #e5e7eb;
+  background: #f3f4f6;
+  color: #4b5563;
+  cursor: default;
+}
+
+.ewr-ex-body {
+  width: 100%;
+  margin-top: 2px;
+}
+
+/* 長文（cloze / reading）用の本文＋設問レイアウト */
+.ewr-step-body {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 12px 12px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ewr-step-body.has-passage {
+  max-width: 1160px;
+}
+
+.ewr-passage-groups {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 12px 12px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ewr-passage-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (min-width: 960px) {
+  .ewr-step-body.has-passage {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    align-items: start;
+    gap: 14px;
+  }
+
+  .ewr-step-body.has-passage > .ewr-sub-chips {
+    grid-column: 1 / -1;
+  }
+
+  .ewr-passage-group {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    align-items: start;
+    gap: 14px;
+  }
+
+  .ewr-passage-card {
+    position: sticky;
+    top: 10px;
+  }
+}
+
+.ewr-sub-chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.ewr-sub-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1.5px solid #cbd5e1;
+  background: #ffffff;
+  color: #334155;
+  font-size: 12.5px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.ewr-sub-chip[data-result='correct'] {
+  border-color: #4db386;
+  background: #eaf8f1;
+  color: #166534;
+}
+
+.ewr-sub-chip[data-result='wrong'] {
+  border-color: #e0786f;
+  background: #fdeeed;
+  color: #991b1b;
+}
+
+.ewr-sub-summary {
+  margin-left: auto;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #475569;
+}
+
+.ewr-passage-card {
+  background: #ffffff;
+  border: 1px solid #e4dccb;
+  border-radius: 14px;
+  padding: 13px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 2px rgba(44, 62, 80, 0.04);
+}
+
+.ewr-passage-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #eee6d6;
+}
+
+.ewr-passage-title {
+  margin: 0;
+  font-size: 15.5px;
+  font-weight: 800;
+  color: #111827;
+  font-family: var(--font-modern, var(--mt-font-body));
+}
+
+.ewr-tr-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid #bdd8cf;
+  background: #f5fbf9;
+  color: #1f5c53;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.ewr-passage-en {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14.5px;
+  font-weight: 500;
+  line-height: 1.72;
+  color: #1f2937;
+  font-family: var(--font-modern, var(--mt-font-body));
+}
+
+.ewr-passage-para {
+  margin: 0;
+}
+
+.ewr-inline-slot {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 3px;
+  margin: 0 2px;
+  padding: 0 6px;
+  border-radius: 5px;
+  background: #ecfdf5;
+  border-bottom: 2px solid #1f7a4d;
+  font-weight: 800;
+  font-size: 13.5px;
+}
+
+.ewr-inline-slot[data-status='wrong'] {
+  background: #fff8f6;
+  border-bottom-color: #c9483e;
+}
+
+.ewr-slot-no {
+  font-size: 11.5px;
+  color: #475569;
+}
+
+.ewr-slot-wrong {
+  color: #991b1b;
+  text-decoration: line-through;
+}
+
+.ewr-slot-arrow {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.ewr-slot-right {
+  color: #166534;
+}
+
+.ewr-passage-ja {
+  padding: 9px 11px;
+  border-radius: 10px;
+  background: #f8faf9;
+  border: 1px solid #e2ece8;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ewr-passage-ja-tag {
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #2f5b53;
+}
+
+.ewr-passage-ja p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.65;
+  color: #334155;
+  white-space: pre-wrap;
+}
+
+.ewr-cards-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ewr-sub-prompt {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.ewr-sub-prompt .ecp-no {
+  margin-right: 0;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+.ewr-sub-prompt-text {
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.55;
+  color: #111827;
+  font-family: var(--font-modern, var(--mt-font-body));
+}
+
+/* 下部1行コンパクトフッター */
+.ewr-foot {
+  gap: 8px;
+}
+
+.ewr-retry-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-height: 44px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1.5px solid #e7a69f;
+  background: #fff5f4;
+  color: #991b1b;
+  font-size: 13px;
+  font-weight: 800;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.ewr-retry-btn:hover {
+  background: #fee2e2;
+}
+
+@media (max-width: 480px) {
+  .ewr-retry-btn {
+    min-height: 42px;
+    padding: 0 10px;
+    font-size: 12px;
+  }
+}
