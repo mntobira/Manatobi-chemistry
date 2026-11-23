@@ -9,45 +9,80 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
     "chapters": [
       {
         "id": "chem_basic_matter_ch01",
-        "title": "第1章 物質の構成と分離｜第1回 純物質と混合物・単体と元素・同素体",
-        "abstractTitle": "第1回 純物質と混合物・単体と元素・同素体（大問2題・計4問）",
+        "title": "第1章 物質の構成と分離｜第1回 純物質と混合物・加熱曲線・単体と元素の識別",
+        "abstractTitle": "第1回 純物質と混合物・加熱曲線・単体と元素の識別（大問2題・計4問）",
         "realTitle": "第1章 物質の構成と分離",
         "problemCount": 2
       },
       {
         "id": "chem_basic_matter_ch02",
-        "title": "第1章 物質の構成と分離｜第2回 混合物の分離・炎色反応・成分元素の検出・熱運動",
-        "abstractTitle": "第2回 混合物の分離・炎色反応・成分元素の検出・熱運動（大問2題・計4問）",
+        "title": "第1章 物質の構成と分離｜第2回 混合物の分離と精製（ろ過・蒸留・分留・再結晶・昇華・抽出・クロマト）",
+        "abstractTitle": "第2回 混合物の分離と精製（ろ過・蒸留・分留・再結晶・昇華・抽出・クロマト）（大問2題・計4問）",
         "realTitle": "第1章 物質の構成と分離",
         "problemCount": 2
       },
       {
         "id": "chem_basic_matter_ch03",
-        "title": "第2章 原子の構造と周期律｜第3回 原子の構造・同位体・放射性同位体と半減期",
-        "abstractTitle": "第3回 原子の構造・同位体・放射性同位体と半減期（大問1題・計4問）",
-        "realTitle": "第2章 原子の構造と周期律",
-        "problemCount": 1
+        "title": "第1章 物質の構成と分離｜第3回 同素体（SCOP）・炎色反応・成分元素の検出反応",
+        "abstractTitle": "第3回 同素体（SCOP）・炎色反応・成分元素の検出反応（大問2題・計4問）",
+        "realTitle": "第1章 物質の構成と分離",
+        "problemCount": 2
       },
       {
         "id": "chem_basic_matter_ch04",
-        "title": "第2章 原子の構造と周期律｜第4回 電子配置・周期表・イオン化エネルギー・イオン半径",
-        "abstractTitle": "第4回 電子配置・周期表・イオン化エネルギー・イオン半径（大問1題・計4問）",
-        "realTitle": "第2章 原子の構造と周期律",
-        "problemCount": 1
+        "title": "第1章 物質の構成と分離｜第4回 粒子の熱運動・拡散・絶対温度と物質の三態変化",
+        "abstractTitle": "第4回 粒子の熱運動・拡散・絶対温度と物質の三態変化（大問2題・計4問）",
+        "realTitle": "第1章 物質の構成と分離",
+        "problemCount": 2
       },
       {
         "id": "chem_basic_matter_ch05",
-        "title": "第3章 化学結合と結晶｜第5回 イオン結合・共有結合・配位結合・金属結合と結晶の性質",
-        "abstractTitle": "第5回 イオン結合・共有結合・配位結合・金属結合と結晶の性質（大問1題・計4問）",
-        "realTitle": "第3章 化学結合と結晶",
-        "problemCount": 1
+        "title": "第2章 原子の構造と周期律｜第5回 原子の構造・イオンの電子数・同位体と放射線（半減期）",
+        "abstractTitle": "第5回 原子の構造・イオンの電子数・同位体と放射線（半減期）（大問2題・計5問）",
+        "realTitle": "第2章 原子の構造と周期律",
+        "problemCount": 2
       },
       {
         "id": "chem_basic_matter_ch06",
-        "title": "第3章 化学結合と結晶｜第6回 分子の形と極性・分子間力と水素結合",
-        "abstractTitle": "第6回 分子の形と極性・分子間力と水素結合（大問1題・計4問）",
+        "title": "第2章 原子の構造と周期律｜第6回 電子配置（K〜N殻・価電子）と元素の周期表（族・典型/遷移）",
+        "abstractTitle": "第6回 電子配置（K〜N殻・価電子）と元素の周期表（族・典型/遷移）（大問2題・計4問）",
+        "realTitle": "第2章 原子の構造と周期律",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_basic_matter_ch07",
+        "title": "第2章 原子の構造と周期律｜第7回 イオン化エネルギー・電子親和力・原子半径とイオン半径",
+        "abstractTitle": "第7回 イオン化エネルギー・電子親和力・原子半径とイオン半径（大問2題・計4問）",
+        "realTitle": "第2章 原子の構造と周期律",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_basic_matter_ch08",
+        "title": "第3章 化学結合と結晶｜第8回 イオン結合とイオン結晶の性質・組成式の決定",
+        "abstractTitle": "第8回 イオン結合とイオン結晶の性質・組成式の決定（大問2題・計4問）",
         "realTitle": "第3章 化学結合と結晶",
-        "problemCount": 1
+        "problemCount": 2
+      },
+      {
+        "id": "chem_basic_matter_ch09",
+        "title": "第3章 化学結合と結晶｜第9回 共有結合（電子式・構造式・多重結合）・配位結合と分子の形",
+        "abstractTitle": "第9回 共有結合（電子式・構造式・多重結合）・配位結合と分子の形（大問2題・計4問）",
+        "realTitle": "第3章 化学結合と結晶",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_basic_matter_ch10",
+        "title": "第3章 化学結合と結晶｜第10回 電気陰性度・分子の極性と分子間力・水素結合・氷の構造",
+        "abstractTitle": "第10回 電気陰性度・分子の極性と分子間力・水素結合・氷の構造（大問2題・計4問）",
+        "realTitle": "第3章 化学結合と結晶",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_basic_matter_ch11",
+        "title": "第3章 化学結合と結晶｜第11回 共有結合の結晶・金属結合と4種の結晶総合演習",
+        "abstractTitle": "第11回 共有結合の結晶・金属結合と4種の結晶総合演習（大問2題・計4問）",
+        "realTitle": "第3章 化学結合と結晶",
+        "problemCount": 2
       }
     ]
   },
@@ -57,45 +92,101 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
     "chapters": [
       {
         "id": "chem_basic_change_ch01",
-        "title": "第1章 物質量と化学反応式｜第1回 原子量・分子量・物質量（mol）と気体の体積",
-        "abstractTitle": "第1回 原子量・分子量・物質量（mol）と気体の体積（大問1題・計4問）",
-        "realTitle": "第1章 物質量と化学反応式",
-        "problemCount": 1
+        "title": "第1章 物質量と溶液の濃度｜第1回 相対質量・原子量（同位体存在比）・分子量・式量",
+        "abstractTitle": "第1回 相対質量・原子量（同位体存在比）・分子量・式量（大問2題・計4問）",
+        "realTitle": "第1章 物質量と溶液の濃度",
+        "problemCount": 2
       },
       {
         "id": "chem_basic_change_ch02",
-        "title": "第1章 物質量と化学反応式｜第2回 化学反応の量的関係・過不足計算・溶液調製と濃度換算",
-        "abstractTitle": "第2回 化学反応の量的関係・過不足計算・溶液調製と濃度換算（大問1題・計4問）",
-        "realTitle": "第1章 物質量と化学反応式",
-        "problemCount": 1
+        "title": "第1章 物質量と溶液の濃度｜第2回 物質量（mol）・アボガドロの法則・平均分子量と粒子数",
+        "abstractTitle": "第2回 物質量（mol）・アボガドロの法則・平均分子量と粒子数（大問2題・計4問）",
+        "realTitle": "第1章 物質量と溶液の濃度",
+        "problemCount": 2
       },
       {
         "id": "chem_basic_change_ch03",
-        "title": "第2章 酸と塩基・中和反応｜第3回 酸・塩基の定義・強弱・pHと希釈・塩の液性",
-        "abstractTitle": "第3回 酸・塩基の定義・強弱・pHと希釈・塩の液性（大問1題・計4問）",
-        "realTitle": "第2章 酸と塩基・中和反応",
-        "problemCount": 1
+        "title": "第1章 物質量と溶液の濃度｜第3回 化学反応式・未定係数法と過不足計算・混合物連立計算",
+        "abstractTitle": "第3回 化学反応式・未定係数法と過不足計算・混合物連立計算（大問2題・計4問）",
+        "realTitle": "第1章 物質量と溶液の濃度",
+        "problemCount": 2
       },
       {
         "id": "chem_basic_change_ch04",
-        "title": "第2章 酸と塩基・中和反応｜第4回 中和滴定・器具の共洗い・滴定曲線・逆滴定",
-        "abstractTitle": "第4回 中和滴定・器具の共洗い・滴定曲線・逆滴定（大問1題・計4問）",
-        "realTitle": "第2章 酸と塩基・中和反応",
-        "problemCount": 1
+        "title": "第1章 物質量と溶液の濃度｜第4回 溶液の濃度（質量%・モル濃度換算）とメスフラスコ溶液調製",
+        "abstractTitle": "第4回 溶液の濃度（質量%・モル濃度換算）とメスフラスコ溶液調製（大問2題・計4問）",
+        "realTitle": "第1章 物質量と溶液の濃度",
+        "problemCount": 2
       },
       {
         "id": "chem_basic_change_ch05",
-        "title": "第3章 酸化還元と電池・電気分解の基礎｜第5回 酸化数・酸化剤と還元剤の半反応式・酸化還元滴定",
-        "abstractTitle": "第5回 酸化数・酸化剤と還元剤の半反応式・酸化還元滴定（大問1題・計4問）",
-        "realTitle": "第3章 酸化還元と電池・電気分解の基礎",
-        "problemCount": 1
+        "title": "第2章 酸・塩基とpH・塩｜第5回 酸と塩基の定義（アレニウス／ブレンステッド）・価数・強弱と電離度",
+        "abstractTitle": "第5回 酸と塩基の定義（アレニウス／ブレンステッド）・価数・強弱と電離度（大問2題・計4問）",
+        "realTitle": "第2章 酸・塩基とpH・塩",
+        "problemCount": 2
       },
       {
         "id": "chem_basic_change_ch06",
-        "title": "第3章 酸化還元と電池・電気分解の基礎｜第6回 イオン化傾向・不動態・ダニエル電池・燃料電池",
-        "abstractTitle": "第6回 イオン化傾向・不動態・ダニエル電池・燃料電池（大問1題・計4問）",
-        "realTitle": "第3章 酸化還元と電池・電気分解の基礎",
-        "problemCount": 1
+        "title": "第2章 酸・塩基とpH・塩｜第6回 水のイオン積 Kw・pH 計算・強酸と強塩基の希釈",
+        "abstractTitle": "第6回 水のイオン積 Kw・pH 計算・強酸と強塩基の希釈（大問2題・計4問）",
+        "realTitle": "第2章 酸・塩基とpH・塩",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_basic_change_ch07",
+        "title": "第2章 酸・塩基とpH・塩｜第7回 中和と塩の分類・塩の液性・弱酸/弱塩基遊離・酸化物とオキソ酸",
+        "abstractTitle": "第7回 中和と塩の分類・塩の液性・弱酸/弱塩基遊離・酸化物とオキソ酸（大問2題・計4問）",
+        "realTitle": "第2章 酸・塩基とpH・塩",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_basic_change_ch08",
+        "title": "第3章 中和滴定と二段階滴定｜第8回 中和滴定の実験器具・共洗いと誤差考察",
+        "abstractTitle": "第8回 中和滴定の実験器具・共洗いと誤差考察（大問2題・計4問）",
+        "realTitle": "第3章 中和滴定と二段階滴定",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_basic_change_ch09",
+        "title": "第3章 中和滴定と二段階滴定｜第9回 中和の量的計算（食酢・固体塩基・混合酸）と逆滴定（NH₃・CO₂）",
+        "abstractTitle": "第9回 中和の量的計算（食酢・固体塩基・混合酸）と逆滴定（NH₃・CO₂）（大問2題・計4問）",
+        "realTitle": "第3章 中和滴定と二段階滴定",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_basic_change_ch10",
+        "title": "第3章 中和滴定と二段階滴定｜第10回 滴定曲線と指示薬の選択・二段階中和滴定（Na₂CO₃ / 混合塩基）",
+        "abstractTitle": "第10回 滴定曲線と指示薬の選択・二段階中和滴定（Na₂CO₃ / 混合塩基）（大問2題・計4問）",
+        "realTitle": "第3章 中和滴定と二段階滴定",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_basic_change_ch11",
+        "title": "第4章 酸化還元と金属・電池｜第11回 酸化還元の定義・酸化数の決定ルール（例外含む）・酸化剤と還元剤",
+        "abstractTitle": "第11回 酸化還元の定義・酸化数の決定ルール（例外含む）・酸化剤と還元剤（大問2題・計4問）",
+        "realTitle": "第4章 酸化還元と金属・電池",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_basic_change_ch12",
+        "title": "第4章 酸化還元と金属・電池｜第12回 半反応式の作り方と酸化還元滴定（過マンガン酸滴定・ヨウ素滴定・COD）",
+        "abstractTitle": "第12回 半反応式の作り方と酸化還元滴定（過マンガン酸滴定・ヨウ素滴定・COD）（大問2題・計4問）",
+        "realTitle": "第4章 酸化還元と金属・電池",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_basic_change_ch13",
+        "title": "第4章 酸化還元と金属・電池｜第13回 ハロゲン単体の酸化力と金属のイオン化傾向（不動態・王水・金属樹）",
+        "abstractTitle": "第13回 ハロゲン単体の酸化力と金属のイオン化傾向（不動態・王水・金属樹）（大問2題・計4問）",
+        "realTitle": "第4章 酸化還元と金属・電池",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_basic_change_ch14",
+        "title": "第4章 酸化還元と金属・電池｜第14回 化学電池（ボルタ・ダニエル・実用電池・水素燃料電池の酸性/塩基性型）",
+        "abstractTitle": "第14回 化学電池（ボルタ・ダニエル・実用電池・水素燃料電池の酸性/塩基性型）（大問2題・計4問）",
+        "realTitle": "第4章 酸化還元と金属・電池",
+        "problemCount": 2
       }
     ]
   },
@@ -105,31 +196,115 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
     "chapters": [
       {
         "id": "chem_theory_ch01",
-        "title": "第1章 物質の状態と溶液｜第1回 気体の状態方程式・分圧の法則・蒸気圧と実在気体",
-        "abstractTitle": "第1回 気体の状態方程式・分圧の法則・蒸気圧と実在気体（大問1題・計4問）",
-        "realTitle": "第1章 物質の状態と溶液",
-        "problemCount": 1
+        "title": "第1章 気体の性質と状態図｜第1回 ボイル・シャルルの法則と理想気体の状態方程式・連結容器",
+        "abstractTitle": "第1回 ボイル・シャルルの法則と理想気体の状態方程式・連結容器（大問2題・計4問）",
+        "realTitle": "第1章 気体の性質と状態図",
+        "problemCount": 2
       },
       {
         "id": "chem_theory_ch02",
-        "title": "第1章 物質の状態と溶液｜第2回 結晶格子（体心・面心・NaCl型）と希薄溶液の性質",
-        "abstractTitle": "第2回 結晶格子（体心・面心・NaCl型）と希薄溶液の性質（大問1題・計4問）",
-        "realTitle": "第1章 物質の状態と溶液",
-        "problemCount": 1
+        "title": "第1章 気体の性質と状態図｜第2回 ドルトンの分圧の法則・モル分率・水上置換と気体燃焼",
+        "abstractTitle": "第2回 ドルトンの分圧の法則・モル分率・水上置換と気体燃焼（大問2題・計4問）",
+        "realTitle": "第1章 気体の性質と状態図",
+        "problemCount": 2
       },
       {
         "id": "chem_theory_ch03",
-        "title": "第2章 化学反応とエネルギー・速度・平衡｜第3回 反応エンタルピー（ΔH）・ヘスの法則・反応速度と触媒",
-        "abstractTitle": "第3回 反応エンタルピー（ΔH）・ヘスの法則・反応速度と触媒（大問1題・計4問）",
-        "realTitle": "第2章 化学反応とエネルギー・速度・平衡",
-        "problemCount": 1
+        "title": "第1章 気体の性質と状態図｜第3回 蒸気圧曲線・気液平衡の判定と状態図（三重点・臨界点）",
+        "abstractTitle": "第3回 蒸気圧曲線・気液平衡の判定と状態図（三重点・臨界点）（大問2題・計4問）",
+        "realTitle": "第1章 気体の性質と状態図",
+        "problemCount": 2
       },
       {
         "id": "chem_theory_ch04",
-        "title": "第2章 化学反応とエネルギー・速度・平衡｜第4回 化学平衡・ルシャトリエの原理・電離平衡と緩衝液・電気分解",
-        "abstractTitle": "第4回 化学平衡・ルシャトリエの原理・電離平衡と緩衝液・電気分解（大問1題・計4問）",
-        "realTitle": "第2章 化学反応とエネルギー・速度・平衡",
-        "problemCount": 1
+        "title": "第1章 気体の性質と状態図｜第4回 実在気体の理想気体からのずれ（圧縮率因子 Z と温度・分子種依存）",
+        "abstractTitle": "第4回 実在気体の理想気体からのずれ（圧縮率因子 Z と温度・分子種依存）（大問2題・計4問）",
+        "realTitle": "第1章 気体の性質と状態図",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_theory_ch05",
+        "title": "第2章 固体の結晶格子｜第5回 金属結晶の単位格子（体心立方・面心立方・六方最密と密度計算）",
+        "abstractTitle": "第5回 金属結晶の単位格子（体心立方・面心立方・六方最密と密度計算）（大問2題・計4問）",
+        "realTitle": "第2章 固体の結晶格子",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_theory_ch06",
+        "title": "第2章 固体の結晶格子｜第6回 イオン結晶格子（CsCl型・NaCl型・ZnS型の限界半径比）とダイヤモンド格子",
+        "abstractTitle": "第6回 イオン結晶格子（CsCl型・NaCl型・ZnS型の限界半径比）とダイヤモンド格子（大問2題・計4問）",
+        "realTitle": "第2章 固体の結晶格子",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_theory_ch07",
+        "title": "第3章 溶液の性質とコロイド｜第7回 固体の溶解度（水和物の析出計算）と気体の溶解度（ヘンリーの法則）",
+        "abstractTitle": "第7回 固体の溶解度（水和物の析出計算）と気体の溶解度（ヘンリーの法則）（大問2題・計4問）",
+        "realTitle": "第3章 溶液の性質とコロイド",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_theory_ch08",
+        "title": "第3章 溶液の性質とコロイド｜第8回 希薄溶液の束一的性質（沸点上昇・凝固点降下・冷却曲線・浸透圧）",
+        "abstractTitle": "第8回 希薄溶液の束一的性質（沸点上昇・凝固点降下・冷却曲線・浸透圧）（大問2題・計4問）",
+        "realTitle": "第3章 溶液の性質とコロイド",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_theory_ch09",
+        "title": "第3章 溶液の性質とコロイド｜第9回 コロイド溶液の分類と性質（透析・チンダル・電気泳動・凝析と塩析）",
+        "abstractTitle": "第9回 コロイド溶液の分類と性質（透析・チンダル・電気泳動・凝析と塩析）（大問2題・計4問）",
+        "realTitle": "第3章 溶液の性質とコロイド",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_theory_ch10",
+        "title": "第4章 熱化学と反応速度｜第10回 反応エンタルピー ΔH・ヘスの法則・結合エネルギーとエネルギー図",
+        "abstractTitle": "第10回 反応エンタルピー ΔH・ヘスの法則・結合エネルギーとエネルギー図（大問2題・計4問）",
+        "realTitle": "第4章 熱化学と反応速度",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_theory_ch11",
+        "title": "第4章 熱化学と反応速度｜第11回 化学反応の速さ（反応速度式の実験決定・活性化エネルギー・触媒）",
+        "abstractTitle": "第11回 化学反応の速さ（反応速度式の実験決定・活性化エネルギー・触媒）（大問2題・計4問）",
+        "realTitle": "第4章 熱化学と反応速度",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_theory_ch12",
+        "title": "第5章 化学平衡と電解質平衡｜第12回 化学平衡の法則（Kc・Kp・不均一系・解離度）とルシャトリエの原理",
+        "abstractTitle": "第12回 化学平衡の法則（Kc・Kp・不均一系・解離度）とルシャトリエの原理（大問2題・計4問）",
+        "realTitle": "第5章 化学平衡と電解質平衡",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_theory_ch13",
+        "title": "第5章 化学平衡と電解質平衡｜第13回 電離平衡（弱酸・弱塩基の電離定数 Ka, Kb・加水分解・緩衝液のpH）",
+        "abstractTitle": "第13回 電離平衡（弱酸・弱塩基の電離定数 Ka, Kb・加水分解・緩衝液のpH）（大問2題・計4問）",
+        "realTitle": "第5章 化学平衡と電解質平衡",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_theory_ch14",
+        "title": "第5章 化学平衡と電解質平衡｜第14回 難溶性塩の溶解平衡と溶解度積 Ksp（共通イオン効果・モール法・硫化物分離）",
+        "abstractTitle": "第14回 難溶性塩の溶解平衡と溶解度積 Ksp（共通イオン効果・モール法・硫化物分離）（大問2題・計4問）",
+        "realTitle": "第5章 化学平衡と電解質平衡",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_theory_ch15",
+        "title": "第6章 電気化学（実用電池と電気分解）｜第15回 二次電池の定量計算（鉛蓄電池の極板質量・電解液濃度とリチウムイオン電池）",
+        "abstractTitle": "第15回 二次電池の定量計算（鉛蓄電池の極板質量・電解液濃度とリチウムイオン電池）（大問2題・計4問）",
+        "realTitle": "第6章 電気化学（実用電池と電気分解）",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_theory_ch16",
+        "title": "第6章 電気化学（実用電池と電気分解）｜第16回 電気分解とファラデーの法則（極反応判定・イオン交換膜法・銅の電解精錬）",
+        "abstractTitle": "第16回 電気分解とファラデーの法則（極反応判定・イオン交換膜法・銅の電解精錬）（大問2題・計4問）",
+        "realTitle": "第6章 電気化学（実用電池と電気分解）",
+        "problemCount": 2
       }
     ]
   },
@@ -139,24 +314,87 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
     "chapters": [
       {
         "id": "chem_inorganic_ch01",
-        "title": "第1章 非金属元素と工業的製法｜第1回 気体の発生法・捕集法・乾燥剤とハロゲン・硫黄・窒素・炭素",
-        "abstractTitle": "第1回 気体の発生法・捕集法・乾燥剤とハロゲン・硫黄・窒素・炭素（大問1題・計4問）",
-        "realTitle": "第1章 非金属元素と工業的製法",
-        "problemCount": 1
+        "title": "第1章 非金属元素と気体の製法｜第1回 水素・貴ガス・ハロゲンとその化合物（HF・AgX・オキソ酸）",
+        "abstractTitle": "第1回 水素・貴ガス・ハロゲンとその化合物（HF・AgX・オキソ酸）（大問2題・計4問）",
+        "realTitle": "第1章 非金属元素と気体の製法",
+        "problemCount": 2
       },
       {
         "id": "chem_inorganic_ch02",
-        "title": "第2章 典型金属・遷移元素と系統分離｜第2回 アルカリ土類金属・両性元素（あ・あ・すん・な・り）とケイ素",
-        "abstractTitle": "第2回 アルカリ土類金属・両性元素（あ・あ・すん・な・り）とケイ素（大問1題・計4問）",
-        "realTitle": "第2章 典型金属・遷移元素と系統分離",
-        "problemCount": 1
+        "title": "第1章 非金属元素と気体の製法｜第2回 酸素・オゾン・硫黄とその化合物（SO₂ vs H₂S・接触法・濃硫酸の3大性質）",
+        "abstractTitle": "第2回 酸素・オゾン・硫黄とその化合物（SO₂ vs H₂S・接触法・濃硫酸の3大性質）（大問2題・計4問）",
+        "realTitle": "第1章 非金属元素と気体の製法",
+        "problemCount": 2
       },
       {
         "id": "chem_inorganic_ch03",
-        "title": "第2章 典型金属・遷移元素と系統分離｜第3回 遷移元素（Fe・Cu・Ag・Cr・Mn）・錯イオンと金属イオン系統分離",
-        "abstractTitle": "第3回 遷移元素（Fe・Cu・Ag・Cr・Mn）・錯イオンと金属イオン系統分離（大問1題・計4問）",
-        "realTitle": "第2章 典型金属・遷移元素と系統分離",
-        "problemCount": 1
+        "title": "第1章 非金属元素と気体の製法｜第3回 窒素・リンとその化合物（NH₃・NO/NO₂・オストワルト法・王水・リン同素体）",
+        "abstractTitle": "第3回 窒素・リンとその化合物（NH₃・NO/NO₂・オストワルト法・王水・リン同素体）（大問2題・計4問）",
+        "realTitle": "第1章 非金属元素と気体の製法",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_inorganic_ch04",
+        "title": "第1章 非金属元素と気体の製法｜第4回 炭素・ケイ素とその化合物（CO/CO₂・水ガラス・シリカゲル・セラミックス）",
+        "abstractTitle": "第4回 炭素・ケイ素とその化合物（CO/CO₂・水ガラス・シリカゲル・セラミックス）（大問2題・計4問）",
+        "realTitle": "第1章 非金属元素と気体の製法",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_inorganic_ch05",
+        "title": "第1章 非金属元素と気体の製法｜第5回 気体の実験室的製法4原理・乾燥剤相性・捕集法・検出反応の完全総整理",
+        "abstractTitle": "第5回 気体の実験室的製法4原理・乾燥剤相性・捕集法・検出反応の完全総整理（大問2題・計4問）",
+        "realTitle": "第1章 非金属元素と気体の製法",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_inorganic_ch06",
+        "title": "第2章 典型金属元素｜第6回 アルカリ金属とその化合物（単体保存・NaOH電解・アンモニアソーダ法・潮解と風解）",
+        "abstractTitle": "第6回 アルカリ金属とその化合物（単体保存・NaOH電解・アンモニアソーダ法・潮解と風解）（大問2題・計4問）",
+        "realTitle": "第2章 典型金属元素",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_inorganic_ch07",
+        "title": "第2章 典型金属元素｜第7回 2族元素（Mg vs アルカリ土類金属・石灰サイクル・セッコウ・硬水と軟水）",
+        "abstractTitle": "第7回 2族元素（Mg vs アルカリ土類金属・石灰サイクル・セッコウ・硬水と軟水）（大問2題・計4問）",
+        "realTitle": "第2章 典型金属元素",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_inorganic_ch08",
+        "title": "第2章 典型金属元素｜第8回 両性元素（Al・Zn・Sn・Pb）の反応・錯イオン・テルミット・トタンとブリキ",
+        "abstractTitle": "第8回 両性元素（Al・Zn・Sn・Pb）の反応・錯イオン・テルミット・トタンとブリキ（大問2題・計4問）",
+        "realTitle": "第2章 典型金属元素",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_inorganic_ch09",
+        "title": "第3章 遷移元素（Fe・Cu・Ag・Cr・Mn）｜第9回 鉄とその化合物（溶鉱炉と転炉の製鉄・Fe²⁺ vs Fe³⁺ の色と検出試薬完全識別）",
+        "abstractTitle": "第9回 鉄とその化合物（溶鉱炉と転炉の製鉄・Fe²⁺ vs Fe³⁺ の色と検出試薬完全識別）（大問2題・計4問）",
+        "realTitle": "第3章 遷移元素（Fe・Cu・Ag・Cr・Mn）",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_inorganic_ch10",
+        "title": "第3章 遷移元素（Fe・Cu・Ag・Cr・Mn）｜第10回 銅・銀・金とその化合物・錯イオンの立体構造と配位数",
+        "abstractTitle": "第10回 銅・銀・金とその化合物・錯イオンの立体構造と配位数（大問2題・計4問）",
+        "realTitle": "第3章 遷移元素（Fe・Cu・Ag・Cr・Mn）",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_inorganic_ch11",
+        "title": "第3章 遷移元素（Fe・Cu・Ag・Cr・Mn）｜第11回 クロム・マンガンとその化合物（CrO₄²⁻⇄Cr₂O₇²⁻ 平衡・クロム酸塩沈殿・KMnO₄）",
+        "abstractTitle": "第11回 クロム・マンガンとその化合物（CrO₄²⁻⇄Cr₂O₇²⁻ 平衡・クロム酸塩沈殿・KMnO₄）（大問2題・計4問）",
+        "realTitle": "第3章 遷移元素（Fe・Cu・Ag・Cr・Mn）",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_inorganic_ch12",
+        "title": "第4章 金属イオンの系統分離と定性分析｜第12回 金属陽イオンの系統分離（第1〜第6属）と陰イオン検出・総合推理",
+        "abstractTitle": "第12回 金属陽イオンの系統分離（第1〜第6属）と陰イオン検出・総合推理（大問2題・計4問）",
+        "realTitle": "第4章 金属イオンの系統分離と定性分析",
+        "problemCount": 2
       }
     ]
   },
@@ -166,24 +404,87 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
     "chapters": [
       {
         "id": "chem_organic_ch01",
-        "title": "第1章 脂肪族有機化合物｜第1回 炭化水素・異性体（構造・幾何・鏡像）とアルコールの酸化・ヨードホルム反応",
-        "abstractTitle": "第1回 炭化水素・異性体（構造・幾何・鏡像）とアルコールの酸化・ヨードホルム反応（大問1題・計4問）",
-        "realTitle": "第1章 脂肪族有機化合物",
-        "problemCount": 1
+        "title": "第1章 脂肪族炭化水素｜第1回 有機化合物の特徴・元素分析・分子式決定・不飽和度と立体異性体",
+        "abstractTitle": "第1回 有機化合物の特徴・元素分析・分子式決定・不飽和度と立体異性体（大問2題・計4問）",
+        "realTitle": "第1章 脂肪族炭化水素",
+        "problemCount": 2
       },
       {
         "id": "chem_organic_ch02",
-        "title": "第1章 脂肪族有機化合物｜第2回 カルボン酸・エステル化平衡・油脂とセッケン",
-        "abstractTitle": "第2回 カルボン酸・エステル化平衡・油脂とセッケン（大問1題・計4問）",
-        "realTitle": "第1章 脂肪族有機化合物",
-        "problemCount": 1
+        "title": "第1章 脂肪族炭化水素｜第2回 アルカンとシクロアルカン（メタンの製法・光塩素化置換・構造異性体数）",
+        "abstractTitle": "第2回 アルカンとシクロアルカン（メタンの製法・光塩素化置換・構造異性体数）（大問2題・計4問）",
+        "realTitle": "第1章 脂肪族炭化水素",
+        "problemCount": 2
       },
       {
         "id": "chem_organic_ch03",
-        "title": "第2章 芳香族化合物と構造決定｜第3回 ベンゼン誘導体・フェノール類・芳香族アミンと分液ロート抽出分離",
-        "abstractTitle": "第3回 ベンゼン誘導体・フェノール類・芳香族アミンと分液ロート抽出分離（大問1題・計4問）",
-        "realTitle": "第2章 芳香族化合物と構造決定",
-        "problemCount": 1
+        "title": "第1章 脂肪族炭化水素｜第3回 アルケンとアルキン（エチレン脱水製法・マルコフニコフ則・アセチレン付加反応群）",
+        "abstractTitle": "第3回 アルケンとアルキン（エチレン脱水製法・マルコフニコフ則・アセチレン付加反応群）（大問2題・計4問）",
+        "realTitle": "第1章 脂肪族炭化水素",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_organic_ch04",
+        "title": "第2章 酸素を含む脂肪族化合物｜第4回 アルコールとエーテル（1〜3級の酸化・Na反応・C₄H₁₀O/C₅H₁₂O 異性体完全攻略）",
+        "abstractTitle": "第4回 アルコールとエーテル（1〜3級の酸化・Na反応・C₄H₁₀O/C₅H₁₂O 異性体完全攻略）（大問2題・計4問）",
+        "realTitle": "第2章 酸素を含む脂肪族化合物",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_organic_ch05",
+        "title": "第2章 酸素を含む脂肪族化合物｜第5回 アルデヒドとケトン（銀鏡反応・フェーリング反応・ヨードホルム反応の完全条件）",
+        "abstractTitle": "第5回 アルデヒドとケトン（銀鏡反応・フェーリング反応・ヨードホルム反応の完全条件）（大問2題・計4問）",
+        "realTitle": "第2章 酸素を含む脂肪族化合物",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_organic_ch06",
+        "title": "第2章 酸素を含む脂肪族化合物｜第6回 カルボン酸と酸無水物（ギ酸の還元性・二価カルボン酸・マレイン酸とフマル酸）",
+        "abstractTitle": "第6回 カルボン酸と酸無水物（ギ酸の還元性・二価カルボン酸・マレイン酸とフマル酸）（大問2題・計4問）",
+        "realTitle": "第2章 酸素を含む脂肪族化合物",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_organic_ch07",
+        "title": "第2章 酸素を含む脂肪族化合物｜第7回 エステル・油脂・セッケンと合成洗剤（けん化価・ヨウ素価の定量計算）",
+        "abstractTitle": "第7回 エステル・油脂・セッケンと合成洗剤（けん化価・ヨウ素価の定量計算）（大問2題・計4問）",
+        "realTitle": "第2章 酸素を含む脂肪族化合物",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_organic_ch08",
+        "title": "第3章 芳香族化合物｜第8回 芳香族炭化水素（ベンゼンの構造と置換反応・光付加・トルエンとキシレンの酸化）",
+        "abstractTitle": "第8回 芳香族炭化水素（ベンゼンの構造と置換反応・光付加・トルエンとキシレンの酸化）（大問2題・計4問）",
+        "realTitle": "第3章 芳香族化合物",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_organic_ch09",
+        "title": "第3章 芳香族化合物｜第9回 フェノール類（クメン法など3大製法・酸の強さ序列・FeCl₃呈色・臭素水白沈）",
+        "abstractTitle": "第9回 フェノール類（クメン法など3大製法・酸の強さ序列・FeCl₃呈色・臭素水白沈）（大問2題・計4問）",
+        "realTitle": "第3章 芳香族化合物",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_organic_ch10",
+        "title": "第3章 芳香族化合物｜第10回 芳香族カルボン酸とサリチル酸誘導体（コルベ・シュミット法・アスピリンとサリチル酸メチル）",
+        "abstractTitle": "第10回 芳香族カルボン酸とサリチル酸誘導体（コルベ・シュミット法・アスピリンとサリチル酸メチル）（大問2題・計4問）",
+        "realTitle": "第3章 芳香族化合物",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_organic_ch11",
+        "title": "第3章 芳香族化合物｜第11回 芳香族アミンとアゾ化合物（アニリン製法・アセトアニリド・ジアゾ化とカップリング）",
+        "abstractTitle": "第11回 芳香族アミンとアゾ化合物（アニリン製法・アセトアニリド・ジアゾ化とカップリング）（大問2題・計4問）",
+        "realTitle": "第3章 芳香族化合物",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_organic_ch12",
+        "title": "第4章 抽出分離と総合構造決定｜第12回 分液ロートによる芳香族混合物の抽出分離と未知有機化合物の総合構造決定",
+        "abstractTitle": "第12回 分液ロートによる芳香族混合物の抽出分離と未知有機化合物の総合構造決定（大問2題・計4問）",
+        "realTitle": "第4章 抽出分離と総合構造決定",
+        "problemCount": 2
       }
     ]
   },
@@ -193,57 +494,99 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
     "chapters": [
       {
         "id": "chem_polymer_ch01",
-        "title": "第1章 天然高分子化合物｜第1回 単糖・二糖・多糖類とアミノ酸・タンパク質・酵素",
-        "abstractTitle": "第1回 単糖・二糖・多糖類とアミノ酸・タンパク質・酵素（大問1題・計4問）",
-        "realTitle": "第1章 天然高分子化合物",
-        "problemCount": 1
+        "title": "第1章 天然高分子化合物（糖・タンパク質・核酸）｜第1回 単糖類と二糖類（環状・鎖状平衡と還元性・スクロースとトレハロース・アルコール発酵）",
+        "abstractTitle": "第1回 単糖類と二糖類（環状・鎖状平衡と還元性・スクロースとトレハロース・アルコール発酵）（大問2題・計4問）",
+        "realTitle": "第1章 天然高分子化合物（糖・タンパク質・核酸）",
+        "problemCount": 2
       },
       {
         "id": "chem_polymer_ch02",
-        "title": "第2章 合成高分子と機能性高分子｜第2回 合成繊維・合成樹脂・イオン交換樹脂・天然ゴムと合成ゴム",
-        "abstractTitle": "第2回 合成繊維・合成樹脂・イオン交換樹脂・天然ゴムと合成ゴム（大問1題・計4問）",
-        "realTitle": "第2章 合成高分子と機能性高分子",
-        "problemCount": 1
+        "title": "第1章 天然高分子化合物（糖・タンパク質・核酸）｜第2回 多糖類（デンプン・グリコーゲン・セルロース）と再生繊維・半合成繊維",
+        "abstractTitle": "第2回 多糖類（デンプン・グリコーゲン・セルロース）と再生繊維・半合成繊維（大問2題・計4問）",
+        "realTitle": "第1章 天然高分子化合物（糖・タンパク質・核酸）",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_polymer_ch03",
+        "title": "第1章 天然高分子化合物（糖・タンパク質・核酸）｜第3回 アミノ酸の分類・双性イオン・等電点 pI とろ紙電気泳動の完全攻略",
+        "abstractTitle": "第3回 アミノ酸の分類・双性イオン・等電点 pI とろ紙電気泳動の完全攻略（大問2題・計4問）",
+        "realTitle": "第1章 天然高分子化合物（糖・タンパク質・核酸）",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_polymer_ch04",
+        "title": "第1章 天然高分子化合物（糖・タンパク質・核酸）｜第4回 ペプチド・タンパク質の高次構造・4大呈色反応・アミノ酸配列決定と酵素",
+        "abstractTitle": "第4回 ペプチド・タンパク質の高次構造・4大呈色反応・アミノ酸配列決定と酵素（大問2題・計4問）",
+        "realTitle": "第1章 天然高分子化合物（糖・タンパク質・核酸）",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_polymer_ch05",
+        "title": "第1章 天然高分子化合物（糖・タンパク質・核酸）｜第5回 核酸（DNAとRNAの構成成分・ヌクレオチド・二重らせんの水素結合本数計算）",
+        "abstractTitle": "第5回 核酸（DNAとRNAの構成成分・ヌクレオチド・二重らせんの水素結合本数計算）（大問2題・計4問）",
+        "realTitle": "第1章 天然高分子化合物（糖・タンパク質・核酸）",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_polymer_ch06",
+        "title": "第2章 合成高分子化合物（繊維・樹脂・ゴム・機能性）｜第6回 合成繊維（6,6-ナイロン・6-ナイロン開環重合・アラミド・PET・ビニロンのアセタール化計算）",
+        "abstractTitle": "第6回 合成繊維（6,6-ナイロン・6-ナイロン開環重合・アラミド・PET・ビニロンのアセタール化計算）（大問2題・計4問）",
+        "realTitle": "第2章 合成高分子化合物（繊維・樹脂・ゴム・機能性）",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_polymer_ch07",
+        "title": "第2章 合成高分子化合物（繊維・樹脂・ゴム・機能性）｜第7回 合成樹脂（熱可塑性樹脂 vs 熱硬化性樹脂）とイオン交換樹脂の定量滴定計算",
+        "abstractTitle": "第7回 合成樹脂（熱可塑性樹脂 vs 熱硬化性樹脂）とイオン交換樹脂の定量滴定計算（大問2題・計4問）",
+        "realTitle": "第2章 合成高分子化合物（繊維・樹脂・ゴム・機能性）",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_polymer_ch08",
+        "title": "第2章 合成高分子化合物（繊維・樹脂・ゴム・機能性）｜第8回 天然ゴム・合成ゴム（加硫・共重合比計算）と機能性高分子（高吸水性・導電性・生分解性）",
+        "abstractTitle": "第8回 天然ゴム・合成ゴム（加硫・共重合比計算）と機能性高分子（高吸水性・導電性・生分解性）（大問2題・計4問）",
+        "realTitle": "第2章 合成高分子化合物（繊維・樹脂・ゴム・機能性）",
+        "problemCount": 2
       }
     ]
   }
 ];
 export const SUBJECT_STATS: Readonly<Record<string, SubjectStatsEntry>> = {
   "chem_basic_matter": {
-    "chapters": 6,
-    "units": 6,
-    "questions": 8,
-    "marks": 24
+    "chapters": 11,
+    "units": 11,
+    "questions": 22,
+    "marks": 45
   },
   "chem_basic_change": {
-    "chapters": 6,
-    "units": 6,
-    "questions": 6,
-    "marks": 24
+    "chapters": 14,
+    "units": 14,
+    "questions": 28,
+    "marks": 56
   },
   "chem_theory": {
-    "chapters": 4,
-    "units": 4,
-    "questions": 4,
-    "marks": 16
+    "chapters": 16,
+    "units": 16,
+    "questions": 32,
+    "marks": 64
   },
   "chem_inorganic": {
-    "chapters": 3,
-    "units": 3,
-    "questions": 3,
-    "marks": 12
+    "chapters": 12,
+    "units": 12,
+    "questions": 24,
+    "marks": 48
   },
   "chem_organic": {
-    "chapters": 3,
-    "units": 3,
-    "questions": 3,
-    "marks": 12
+    "chapters": 12,
+    "units": 12,
+    "questions": 24,
+    "marks": 48
   },
   "chem_polymer": {
-    "chapters": 2,
-    "units": 2,
-    "questions": 2,
-    "marks": 8
+    "chapters": 8,
+    "units": 8,
+    "questions": 16,
+    "marks": 32
   }
 };
 export function getChapterIndexOfSubject(subjectId: string | null | undefined): readonly ChapterIndexEntry[] {

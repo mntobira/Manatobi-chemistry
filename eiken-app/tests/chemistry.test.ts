@@ -18,8 +18,8 @@ import { renderLatex, toChemLatex } from '../src/utils/mathTypeset';
 describe('Manatobi Chemistry Common Test Curriculum & Isolation', () => {
   it('registers all 6 chemistry courses with valid chapters, 1-screen summary sheets, 4+ questions per unit, and detailed explanations', () => {
     expect(CHEM_COURSES).toHaveLength(6);
-    expect(ALL_CHEM_CHAPTER_SPECS).toHaveLength(24);
-    expect(FLAT_CHEM_QUESTIONS.length).toBeGreaterThanOrEqual(96);
+    expect(ALL_CHEM_CHAPTER_SPECS).toHaveLength(73);
+    expect(FLAT_CHEM_QUESTIONS.length).toBeGreaterThanOrEqual(293);
 
     for (const course of CHEM_COURSES) {
       const chapters = getChaptersOfSubject(course.id);
@@ -54,8 +54,8 @@ describe('Manatobi Chemistry Common Test Curriculum & Isolation', () => {
     }
   });
 
-  it('validates all 3 Common Test full mock exams (50pt Basic x2, 100pt Chemistry x1) with exact point totals', () => {
-    expect(CHEM_MOCK_EXAMS).toHaveLength(3);
+  it('validates all 4 Common Test full mock exams (50pt Basic x2, 100pt Chemistry x2) with exact point totals', () => {
+    expect(CHEM_MOCK_EXAMS).toHaveLength(4);
     for (const exam of CHEM_MOCK_EXAMS) {
       const sumPoints = exam.sections.reduce(
         (acc, sec) => acc + sec.items.reduce((s, it) => s + it.points, 0),
@@ -75,7 +75,7 @@ describe('Manatobi Chemistry Common Test Curriculum & Isolation', () => {
 
   it('validates generated chemistry wordbook JSON and study catalog wiring', () => {
     const vocab = JSON.parse(readFileSync('public/data/listeningVocabulary.json', 'utf8'));
-    expect(vocab.wordCount).toBeGreaterThanOrEqual(100);
+    expect(vocab.wordCount).toBeGreaterThanOrEqual(250);
     expect(vocab.questionCount).toBe(vocab.wordCount * 2);
     for (const w of vocab.words) {
       expect(w.questions).toHaveLength(2);
@@ -101,7 +101,7 @@ describe('Manatobi Chemistry Common Test Curriculum & Isolation', () => {
     expect(latex).toBeTruthy();
     const html = renderLatex(latex!);
     expect(html).toContain('katex');
-    expect(CHEM_LAB_TASKS).toHaveLength(6);
+    expect(CHEM_LAB_TASKS).toHaveLength(12);
   });
 
   it('enforces chemistry storage and Firestore collection isolation', () => {

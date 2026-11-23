@@ -97,8 +97,8 @@ export const STUDY_CATALOG: readonly StudySubject[] = [{
       icon: 'briefcase',
       badge: '共通テスト',
       section: 'memorize',
-      description: '『化学基礎』30分/50点模試（第1回・第2回）＋『化学』60分/100点総合模試。タイマー・見直し付箋・配点採点つき',
-      meta: `全${CHEM_MOCK_EXAMS.length}回（化学基礎2回・化学1回）`,
+      description: '『化学基礎』30分/50点模試（全2回）＋『化学』60分/100点総合模試（全2回）。タイマー・見直し付箋・配点採点つき',
+      meta: `全${CHEM_MOCK_EXAMS.length}回（化学基礎2回・化学2回）`,
       action: { kind: 'mock' },
     },
     {
