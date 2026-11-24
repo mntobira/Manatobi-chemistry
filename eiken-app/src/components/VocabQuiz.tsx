@@ -12,6 +12,7 @@ import { sayWord, prefetchVocabAudioIndex } from './foundationShared';
 import { hasVocabAudio, stopVocabAudio } from '../utils/vocabAudio';
 import { TobiraBuddy } from './TobiraBuddy';
 import { trackEvent } from '../utils/analytics';
+import { formatText } from '../utils/textFormatter';
 
 /**
  * 英単語の4択（2026-10-01 D／2026-10-17 市販の単語アプリと同じ「出題の設定」）
@@ -55,7 +56,7 @@ export function VocabQuiz({ uid, known, onMark, onWordbook }: { uid: string; kno
     if (data) return;
     const c = new AbortController();
     fetch(VOCABULARY_URL, { signal: c.signal }).then(r => { if (!r.ok) throw new Error(); return r.json(); })
-      .then(v => { cache = v; setData(v); }).catch(() => setErr('単語を読み込めませんでした。接続を確認してください。'));
+      .then(v => { cache = v; setData(v); }).catch(() => setErr('重要用語データを読み込めませんでした。接続を確認してください。'));
     return () => c.abort();
   }, [data]);
   useEffect(() => { prefetchVocabAudioIndex(); return () => { stopSpeech(); stopVocabAudio(); }; }, []);
@@ -73,7 +74,7 @@ export function VocabQuiz({ uid, known, onMark, onWordbook }: { uid: string; kno
   const numbers = useMemo(() => wordNumbers(data?.words ?? []), [data]);
   const lvCount = useMemo(() => data ? data.words.filter(w => w.level === level).length : 0, [data, level]);
 
-  if (!data) return <section className="fd-panel fd-loading" role="status">{err || '単語を読み込んでいます…'}</section>;
+  if (!data) return <section className="fd-panel fd-loading" role="status">{err || '重要用語・化学式を読み込んでいます…'}</section>;
 
   const saved = prefs.ranges[level] ?? [1, Math.min(RANGE_STEP, lvCount)];
   const [from, to] = clampRange(saved[0], saved[1], lvCount);
@@ -141,7 +142,8 @@ export function VocabQuiz({ uid, known, onMark, onWordbook }: { uid: string; kno
       play(score === phase.items.length ? 'win' : score >= phase.items.length / 2 ? 'levelup' : 'tap', false);
       setPhase({ kind: 'done', items: phase.items, picks, scope: phase.scope });
     };
-    return <section className="fd-panel vq-play" aria-label="英単語の4択" data-vocab-quiz="play">
+    const canSpeak = !it.wordId.startsWith('chem-term-') && (isSpeechSupported() || hasVocabAudio(it.wordId));
+    return <section className="fd-panel vq-play" aria-label="化学 用語・化学式の4択" data-vocab-quiz="play">
       <div className="vq-top">
         <button type="button" className="fd-chip" onClick={quit} aria-label="やめて出題の設定にもどる（答えた分は記録する）"><X size={16} aria-hidden="true" />やめる</button>
         {phase.items.length <= 30
@@ -155,26 +157,26 @@ export function VocabQuiz({ uid, known, onMark, onWordbook }: { uid: string; kno
         <b className="vq-count">{phase.i + 1}<small>/{phase.items.length}</small></b>
       </div>
       <article className="vq-card" key={it.q.id}>
-        <p className="vq-prompt">{it.no !== undefined && <span className="vq-no" data-vocab-no={it.no}>No.{it.no}</span>}{it.q.prompt}</p>
-        <p className="vq-label" lang={it.dir === 'e2j' ? 'en' : 'ja'}>{it.q.label}
-          {it.dir === 'e2j' && <button type="button" className="fd-icon" aria-label={`${it.word} を読み上げる`} disabled={!isSpeechSupported() && !hasVocabAudio(it.wordId)} onClick={() => sayWord(it.wordId, it.word)}><Volume2 size={18} aria-hidden="true" /></button>}
+        <p className="vq-prompt">{it.no !== undefined && <span className="vq-no" data-vocab-no={it.no}>No.{it.no}</span>}{formatText(it.q.prompt)}</p>
+        <p className="vq-label">{formatText(it.q.label)}
+          {it.dir === 'e2j' && canSpeak && <button type="button" className="fd-icon" aria-label={`${it.word} を読み上げる`} onClick={() => sayWord(it.wordId, it.word)}><Volume2 size={18} aria-hidden="true" /></button>}
         </p>
       </article>
       <div className="vq-options" role="group" aria-label="選択肢">{it.q.options.map((o, k) => <button key={k} type="button" disabled={answered} onClick={() => choose(k)}
-        lang={it.dir === 'j2e' ? 'en' : 'ja'}
         data-correct={answered && k === it.q.answerIndex ? true : undefined} data-wrong={answered && pick === k && k !== it.q.answerIndex ? true : undefined}>
-        <i aria-hidden="true">{'①②③④'[k]}</i><span>{o.split(/([0-9]+)/g).map((part, index) => /[0-9]+/.test(part) ? <span className="vq-number-glyph" key={index}>{part}</span> : part)}</span>{answered && k === it.q.answerIndex && <Check size={18} aria-hidden="true" />}
+        <i aria-hidden="true">{'①②③④'[k]}</i><span>{formatText(o)}</span>{answered && k === it.q.answerIndex && <Check size={18} aria-hidden="true" />}
       </button>)}</div>
       {answered && pick === it.q.answerIndex && <CorrectBurst burstKey={it.q.id} combo={streakAt(phase.items, phase.picks, phase.i)} />}
       <div className="vq-foot" aria-live="polite">
         {answered ? <>
-          <p className="vq-judge" data-ok={pick === it.q.answerIndex || undefined}>{pick === it.q.answerIndex ? '正解！' : <>正解は <b>{it.q.options[it.q.answerIndex]}</b></>}</p>
-          {/* 2026-11-03 解説でも見出し語の発音を聞ける（英→日・日→英どちらも）。録音があれば録音、無ければ端末の読み上げ */}
-          <button type="button" className="vq-say" data-vocab-say={it.wordId} aria-label={`${it.word} の発音を聞く`} disabled={!isSpeechSupported() && !hasVocabAudio(it.wordId)} onClick={() => sayWord(it.wordId, it.word)}>
-            <Volume2 size={17} aria-hidden="true" /><span lang="en">{it.word}</span>
-          </button>
+          <p className="vq-judge" data-ok={pick === it.q.answerIndex || undefined}>{pick === it.q.answerIndex ? '正解！' : <>正解は <b>{formatText(it.q.options[it.q.answerIndex])}</b></>}</p>
+          {canSpeak && (
+            <button type="button" className="vq-say" data-vocab-say={it.wordId} aria-label={`${it.word} の発音を聞く`} onClick={() => sayWord(it.wordId, it.word)}>
+              <Volume2 size={17} aria-hidden="true" /><span>{it.word}</span>
+            </button>
+          )}
           <button type="button" className="vq-next" onClick={next} autoFocus>{phase.i + 1 < phase.items.length ? '次の問題' : '結果を見る'}<ChevronRight size={18} aria-hidden="true" /></button>
-        </> : <p className="vq-hint">わからなければ、いちばん近いものを選ぼう</p>}
+        </> : <p className="vq-hint">定義・化学反応式・例外条件に注目して選ぼう</p>}
       </div>
     </section>;
   }
@@ -198,23 +200,23 @@ export function VocabQuiz({ uid, known, onMark, onWordbook }: { uid: string; kno
         <strong>{score}<small>/{phase.items.length}</small></strong>
         <span className="vq-score-body"><b className="vq-score-title">{title}</b><TobiraBuddy size="sm" input={{ screen: 'study' }} line={line} /></span>
       </div>
-      <ul className="vq-result" aria-label="この回の語（番号順）">{order.map(({ x, j }) => <li key={x.q.id} data-ok={ok(j) || undefined}>
-        {x.no !== undefined && <i>No.{x.no}</i>}<span lang="en">{x.word}</span><span>{x.dir === 'e2j' ? x.q.options[x.q.answerIndex] : x.q.label}</span>
+      <ul className="vq-result" aria-label="この回の項目（番号順）">{order.map(({ x, j }) => <li key={x.q.id} data-ok={ok(j) || undefined}>
+        {x.no !== undefined && <i>No.{x.no}</i>}<span>{formatText(x.word)}</span><span>{formatText(x.dir === 'e2j' ? x.q.options[x.q.answerIndex] : x.q.label)}</span>
         {ok(j) ? <Check size={16} aria-label="正解" /> : <X size={16} aria-label="不正解" />}
       </li>)}</ul>
       <div className="vq-done-actions">
         {wrong.length > 0 && <button type="button" className="vq-next" onClick={() => {
           begin(buildQuiz(data.words.filter(w => wrong.some(x => x.wordId === w.id)), { dir, size: wrong.length, seed: Date.now() }), sc);
-        }}><RotateCcw size={17} aria-hidden="true" />間違えた{wrong.length}語だけもう一度</button>}
+        }}><RotateCcw size={17} aria-hidden="true" />間違えた{wrong.length}項目だけもう一度</button>}
         {sc.kind === 'range' && rangeLeft > 0 && <button type="button" className={wrong.length ? 'fd-secondary' : 'vq-next'} onClick={startRange} data-vocab-continue>
           続けて{prefs.count === 'all' ? '残り全部' : `${prefs.count}問`}<ChevronRight size={16} aria-hidden="true" /></button>}
         {sc.kind === 'range' && rangeLeft === 0 && hasNextRange && <button type="button" className={wrong.length ? 'fd-secondary' : 'vq-next'} onClick={() => {
           const len = sc.to - sc.from + 1; setLevel(sc.level); setRange(nextFrom, nextFrom + len - 1); setPhase({ kind: 'pick' });
         }}>次の範囲へ（No.{nextFrom}〜）<ChevronRight size={16} aria-hidden="true" /></button>}
-        <button type="button" className="fd-secondary" onClick={onWordbook}><BookOpen size={16} aria-hidden="true" />単語帳で見直す</button>
+        <button type="button" className="fd-secondary" onClick={onWordbook}><BookOpen size={16} aria-hidden="true" />暗記帳で見直す</button>
         <button type="button" className="fd-secondary" onClick={() => setPhase({ kind: 'pick' })}>出題の設定へ</button>
       </div>
-      {score === phase.items.length && phase.items.every(x => known.has(x.wordId)) === false && <button type="button" className="fd-chip vq-markall" onClick={() => phase.items.forEach(x => onMark(x.wordId, true))}><Check size={15} aria-hidden="true" />この{phase.items.length}語を単語帳でも「覚えた」にする</button>}
+      {score === phase.items.length && phase.items.every(x => known.has(x.wordId)) === false && <button type="button" className="fd-chip vq-markall" onClick={() => phase.items.forEach(x => onMark(x.wordId, true))}><Check size={15} aria-hidden="true" />この{phase.items.length}項目を暗記帳でも「覚えた」にする</button>}
     </section>;
   }
 
@@ -257,7 +259,7 @@ export function VocabQuiz({ uid, known, onMark, onWordbook }: { uid: string; kno
           <label><input type="number" inputMode="numeric" min={1} max={lvCount} aria-label="範囲のおわりの番号" data-vocab-to
             value={draft?.to ?? String(to)} onChange={e => setDraft({ from: draft?.from ?? String(from), to: e.target.value })}
             onBlur={() => draft && setRange(Number(draft.from) || 1, Number(draft.to) || lvCount)} /></label>
-          <small>/ 全{lvCount.toLocaleString()}語</small>
+          <small>/ 全{lvCount.toLocaleString()}項目</small>
         </div>
         <div className="vq-range-presets" aria-label="範囲をすぐ選ぶ">{presets.map(([a, b]) => {
           const ws = rangeWords(data.words, level, a, b); const got = ws.reduce((n, w) => n + (mastered.has(w.id) ? 1 : 0), 0);
@@ -269,18 +271,18 @@ export function VocabQuiz({ uid, known, onMark, onWordbook }: { uid: string; kno
       </div>
       {seg<QuizCount>('問題数', prefs.count, COUNT_OPTIONS.map(c => [c, c === 'all' ? '全部' : `${c}問`] as const), v => setPrefs(p => ({ ...p, count: v })), 'count')}
       {seg('順番', prefs.order, [['number', '番号順'], ['random', 'ランダム']] as const, v => setPrefs(p => ({ ...p, order: v })), 'order')}
-      {seg('出す語', prefs.only, [['unlearned', 'まだ ✓ がない語'], ['all', 'すべて']] as const, v => setPrefs(p => ({ ...p, only: v })), 'only')}
-      {seg('向き', dir, [['mix', 'まぜる'], ['e2j', '英→日'], ['j2e', '日→英']] as const, v => setDir(v), 'dir')}
+      {seg('出題対象', prefs.only, [['unlearned', 'まだ ✓ がない項目'], ['all', 'すべて']] as const, v => setPrefs(p => ({ ...p, only: v })), 'only')}
+      {seg('出題方向', dir, [['mix', '双方向ミックス'], ['e2j', '用語→要点'], ['j2e', '要点→用語']] as const, v => setDir(v), 'dir')}
     </div>
     <div className="vq-start-box">
-      <p className="vq-start-sum" aria-live="polite">No.{from}〜{to}（{list.length}語）の ✓ <b>{learnedInRange}</b>/{list.length}
+      <p className="vq-start-sum" aria-live="polite">No.{from}〜{to}（{list.length}項目）の ✓ <b>{learnedInRange}</b>/{list.length}
         {prefs.order === 'number' && prefs.only === 'unlearned' && firstUnlearned && <>　・No.{numbers.get(firstUnlearned.id)} から</>}</p>
       <button type="button" className="vq-next vq-start" onClick={startRange} disabled={list.length === 0} data-vocab-start><Play size={18} aria-hidden="true" />{startLabel}</button>
       {(showAll || rec.missed.length > 0) && <div className="vq-start-sub" data-two={(showAll && rec.missed.length > 0) || undefined}>
         {showAll && <button type="button" className="fd-secondary vq-all-btn" onClick={startAll} data-vocab-start-all>
-          <Play size={15} aria-hidden="true" />この範囲を全部（{list.length}語）</button>}
+          <Play size={15} aria-hidden="true" />この範囲を全部（{list.length}項目）</button>}
         {rec.missed.length > 0 && <button type="button" className="fd-secondary vq-missed-btn" onClick={startMissed} data-vocab-missed>
-          <RotateCcw size={15} aria-hidden="true" />間違えた語から（{rec.missed.length}語）</button>}
+          <RotateCcw size={15} aria-hidden="true" />間違えた項目から（{rec.missed.length}項目）</button>}
       </div>}
     </div>
   </section>;

@@ -87,13 +87,21 @@ export function chemProblemToCurriculum(spec: ChemProblemSpec): Problem {
   };
 }
 
+export function cleanChemUnitTitle(raw: string): string {
+  return raw
+    .replace(/^第\d+回\s*/, '')
+    .replace(/（大問\d+題・計\d+問）$/, '')
+    .trim();
+}
+
 export function chemChapterToCurriculum(spec: ChemChapterSpec): Chapter {
   const problems = spec.problems.map(chemProblemToCurriculum);
   const totalMarks = problems.reduce((sum, p) => sum + p.subQuestions.length, 0);
+  const cleanUnit = cleanChemUnitTitle(spec.unitTitle);
   return {
     id: spec.id,
-    title: `${spec.tabTitle}｜${spec.unitTitle}`,
-    abstractTitle: `${spec.unitTitle}（大問${problems.length}題・計${totalMarks}問）`,
+    title: `${spec.tabTitle}｜${cleanUnit}`,
+    abstractTitle: cleanUnit,
     realTitle: spec.tabTitle,
     questionGroup: spec.tabTitle,
     topics: [...spec.topics],
@@ -113,7 +121,13 @@ export function partsForCourse(course: ChemCourseId): Part[] {
     list.push(chemChapterToCurriculum(spec));
     byTab.set(spec.tabTitle, list);
   }
-  return [...byTab.entries()].map(([tabTitle, chapters], index) => ({
+  const sortedEntries = [...byTab.entries()].sort(([a], [b]) => {
+    const ma = a.match(/^第?(\d+)章/);
+    const mb = b.match(/^第?(\d+)章/);
+    if (ma && mb) return Number(ma[1]) - Number(mb[1]);
+    return 0;
+  });
+  return sortedEntries.map(([tabTitle, chapters], index) => ({
     id: `${courseDef.id}_part_${index + 1}`,
     title: `${courseDef.label}｜${tabTitle}`,
     section: `part_${index + 1}`,

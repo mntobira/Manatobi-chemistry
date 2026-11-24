@@ -2,6 +2,7 @@ import React from 'react';
 import { ChevronDown, Headphones, RotateCcw, Play } from 'lucide-react';
 import { UNIT_STATUS_LABEL, stripCircledNumber, type UnitStatus } from '../utils/unitStats';
 import { STAGE_CLEAR_PERFECTS } from '../utils/stageRecords';
+import { formatText } from '../utils/textFormatter';
 import './unit-card.css';
 
 /**
@@ -42,9 +43,11 @@ export interface UnitCardProps {
   roundsMode?: boolean;
   /** D1：「演習 N 大問」の代わりに出す文字 */
   countLabel?: string;
+  /** 閉じたカード行のメタ情報に小さく添える設問数バッジ（例：「全4問」） */
+  subCountLabel?: string;
 }
 
-export function UnitCard({ index, title, topics, questionCount, status, accuracy, hasSavedProgress, expanded, onToggle, onStart, onResume, onAudio, audioOpen, children, accent, perfects, progressLabel, primaryLabel, roundsMode, countLabel }: UnitCardProps) {
+export function UnitCard({ index, title, topics, questionCount, status, accuracy, hasSavedProgress, expanded, onToggle, onStart, onResume, onAudio, audioOpen, children, accent, perfects, progressLabel, primaryLabel, roundsMode, countLabel, subCountLabel }: UnitCardProps) {
   const ready = questionCount > 0;
   const number = String(index + 1).padStart(2, '0');
   const name = stripCircledNumber(title);
@@ -54,9 +57,10 @@ export function UnitCard({ index, title, topics, questionCount, status, accuracy
       style={accent ? ({ '--unit-accent': accent } as React.CSSProperties) : undefined}>
       <div className="unit-card-row">
         <button type="button" className="unit-card-main" onClick={onToggle} aria-expanded={expanded} aria-controls={panelId}>
-          <span className="unit-card-title"><b>{number}.</b> {name}</span>
+          <span className="unit-card-title"><b>{number}.</b> {formatText(name)}</span>
           <span className="unit-card-meta">
             <span className="mt-status" data-status={status}>{!ready ? '準備中' : progressLabel ? progressLabel : status === 'doing' && perfects !== undefined ? `満点 ${perfects}/${STAGE_CLEAR_PERFECTS}` : UNIT_STATUS_LABEL[status]}</span>
+            {subCountLabel && <span className="unit-card-qcount">{subCountLabel}</span>}
             <span className="mt-meter unit-card-meter" data-status={status} aria-hidden="true"><i style={{ width: `${accuracy ?? 0}%` }} /></span>
             <span className="unit-card-acc">{accuracy === null ? '正答率 —' : `正答率 ${accuracy}%`}</span>
             <ChevronDown size={16} className="unit-card-chev" aria-hidden="true" />
@@ -70,7 +74,7 @@ export function UnitCard({ index, title, topics, questionCount, status, accuracy
       </div>
       {expanded && (
         <div className="unit-card-panel" id={panelId}>
-          {!roundsMode && topics && topics.length > 0 && <ul className="unit-card-topics">{topics.map(t => <li key={t}>{t}</li>)}</ul>}
+          {!roundsMode && topics && topics.length > 0 && <ul className="unit-card-topics">{topics.map(t => <li key={t}>{formatText(t)}</li>)}</ul>}
           {!roundsMode && <p className="unit-card-count">{ready ? countLabel ?? `演習 ${questionCount} 大問` : '問題を準備中です'}</p>}
           {ready && (onAudio || (!roundsMode && hasSavedProgress && onResume)) && (
             <div className="unit-card-secondary">

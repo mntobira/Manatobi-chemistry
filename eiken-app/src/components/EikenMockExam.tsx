@@ -647,6 +647,21 @@ export function EikenMockExam({
                     {formatText(item.stem)}
                   </div>
 
+                  {item.imageUrl && (
+                    <figure className="mb-3 rounded-xl border border-slate-200 bg-[#fdfcf8] p-2.5">
+                      <img
+                        src={item.imageUrl}
+                        alt={item.imageCaption || item.label}
+                        className="mx-auto max-h-64 w-auto max-w-full object-contain"
+                      />
+                      {item.imageCaption && (
+                        <figcaption className="mt-1 text-center text-xs font-bold text-slate-600">
+                          {item.imageCaption}
+                        </figcaption>
+                      )}
+                    </figure>
+                  )}
+
                   <div className="grid grid-cols-1 gap-2">
                     {item.choices.map((choice, cIdx) => {
                       const selected = picked === cIdx;
@@ -750,28 +765,58 @@ export function EikenMockExam({
 
       <section className="rounded-2xl border border-slate-200 bg-white p-4 shadow-xs">
         <div className="flex flex-wrap items-baseline justify-between gap-4 border-b border-slate-200 pb-3">
-          <div>
-            <span className="text-xs font-bold text-slate-500">総合得点</span>
-            <div className="text-3xl font-black text-[#1f5c53]">
-              {score.earnedPoints} <small className="text-base font-bold text-slate-500">/ {score.totalPoints} 点（{score.pct}%）</small>
+          <div className="flex flex-wrap items-baseline gap-3">
+            <div>
+              <span className="text-xs font-bold text-slate-500">総合得点</span>
+              <div className="text-3xl font-black text-[#1f5c53]">
+                {score.earnedPoints} <small className="text-base font-bold text-slate-500">/ {score.totalPoints} 点（{score.pct}%）</small>
+              </div>
             </div>
+            <span
+              className={`rounded-full px-3 py-1 text-xs font-extrabold ${
+                score.pct >= 90
+                  ? 'bg-emerald-100 text-emerald-900'
+                  : score.pct >= 80
+                  ? 'bg-teal-100 text-teal-900'
+                  : score.pct >= 65
+                  ? 'bg-amber-100 text-amber-900'
+                  : 'bg-slate-100 text-slate-700'
+              }`}
+            >
+              {score.pct >= 90
+                ? '共通テスト9割突破・最難関圏'
+                : score.pct >= 80
+                ? '共通テスト8割突破・難関国公立圏'
+                : score.pct >= 65
+                ? '共通テスト標準突破圏（あと一歩で8割！）'
+                : '重要単元のまとめプリントから復習しよう'}
+            </span>
           </div>
           <div className="text-xs font-bold text-slate-600 space-x-3">
             <span>正解数：{score.correctCount} / {score.totalCount} 問</span>
-            <span>所要時間：{formatDuration(elapsedSec)}</span>
+            <span>所要時間：{formatDuration(elapsedSec)} / 目安 {activeExam.timeLimitMinutes}分</span>
           </div>
         </div>
 
         <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
-          {score.sectionScores.map(sec => (
-            <div key={sec.id} className="rounded-xl border border-slate-200/90 bg-[#fffdf8] p-2.5 text-xs">
-              <div className="flex items-center justify-between font-extrabold text-slate-800">
-                <span>{sec.daimonLabel}</span>
-                <span>{sec.earnedPoints} / {sec.maxPoints} 点</span>
+          {score.sectionScores.map(sec => {
+            const secPct = sec.maxPoints > 0 ? Math.round((sec.earnedPoints / sec.maxPoints) * 100) : 0;
+            return (
+              <div key={sec.id} className="rounded-xl border border-slate-200/90 bg-[#fffdf8] p-2.5 text-xs">
+                <div className="flex items-center justify-between font-extrabold text-slate-800">
+                  <span>{sec.daimonLabel}</span>
+                  <span>{sec.earnedPoints} / {sec.maxPoints} 点（{secPct}%）</span>
+                </div>
+                <p className="mt-0.5 truncate text-slate-500">{sec.title}</p>
+                <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-slate-200/80" aria-hidden="true">
+                  <div
+                    className={`h-full rounded-full ${secPct >= 80 ? 'bg-emerald-600' : secPct >= 60 ? 'bg-amber-500' : 'bg-rose-500'}`}
+                    style={{ width: `${secPct}%` }}
+                  />
+                </div>
               </div>
-              <p className="mt-0.5 truncate text-slate-500">{sec.title}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
@@ -831,31 +876,87 @@ export function EikenMockExam({
                 {formatText(item.stem)}
               </div>
 
+              {item.imageUrl && (
+                <figure className="rounded-xl border border-slate-200 bg-[#fdfcf8] p-2.5">
+                  <img
+                    src={item.imageUrl}
+                    alt={item.imageCaption || item.label}
+                    className="mx-auto max-h-60 w-auto max-w-full object-contain"
+                  />
+                </figure>
+              )}
+
+              {(() => {
+                const resolvedSteps =
+                  item.steps && item.steps.length > 0
+                    ? item.steps
+                    : item.explanation
+                        .split('\n')
+                        .map(l => l.replace(/^[・●▪■]\s*/, '').trim())
+                        .filter(l => l.length > 0)
+                        .slice(0, 4);
+                if (resolvedSteps.length === 0) return null;
+                return (
+                  <div className="rounded-xl border border-teal-200/90 bg-teal-50/40 p-3 text-xs leading-relaxed">
+                    <strong className="block font-extrabold text-teal-900 mb-1.5">【正解までの道すじ】</strong>
+                    <ol className="space-y-1">
+                      {resolvedSteps.map((st, sIdx) => (
+                        <li key={sIdx} className="flex items-start gap-2 text-slate-800">
+                          <span className="mt-0.5 inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-teal-700 text-[10px] font-extrabold text-white">
+                            {sIdx + 1}
+                          </span>
+                          <span className="min-w-0">{formatText(st)}</span>
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                );
+              })()}
+
               <div className="rounded-xl border border-emerald-200 bg-emerald-50/50 p-3 text-sm leading-relaxed">
                 <strong className="block text-xs font-extrabold text-emerald-900 mb-1">【解説・計算プロセス】</strong>
                 <div className="whitespace-pre-line text-slate-800">{formatText(item.explanation)}</div>
               </div>
 
               <ul className="space-y-1.5 text-xs leading-relaxed text-slate-700">
-                {item.choices.map((choice, cIdx) => (
-                  <li
-                    key={cIdx}
-                    className={`rounded-lg border p-2 ${
-                      cIdx === item.answer
-                        ? 'border-emerald-300 bg-emerald-50/40 font-bold'
-                        : cIdx === picked
-                        ? 'border-rose-300 bg-rose-50/40'
-                        : 'border-slate-100 bg-slate-50/60'
-                    }`}
-                  >
-                    <div>
-                      {circled[cIdx]} {formatText(choice)}
-                    </div>
-                    {item.reasons[cIdx] && (
-                      <div className="mt-0.5 text-slate-600">→ {formatText(item.reasons[cIdx])}</div>
-                    )}
-                  </li>
-                ))}
+                {item.choices.map((choice, cIdx) => {
+                  const isAns = cIdx === item.answer;
+                  const isUserPick = cIdx === picked;
+                  return (
+                    <li
+                      key={cIdx}
+                      className={`rounded-lg border p-2.5 ${
+                        isAns
+                          ? 'border-emerald-300 bg-emerald-50/50 font-bold text-slate-900'
+                          : isUserPick
+                          ? 'border-rose-300 bg-rose-50/50 text-slate-800'
+                          : 'border-slate-100 bg-slate-50/60'
+                      }`}
+                    >
+                      <div className="flex items-start justify-between gap-2">
+                        <div>
+                          <span className="font-extrabold mr-1">{circled[cIdx]}</span>
+                          {formatText(choice)}
+                        </div>
+                        {(isAns || isUserPick) && (
+                          <span
+                            className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-extrabold ${
+                              isAns ? 'bg-emerald-200/80 text-emerald-950' : 'bg-rose-200/80 text-rose-950'
+                            }`}
+                          >
+                            {isAns && isUserPick ? 'あなた・正解' : isAns ? '正解' : 'あなたの選択'}
+                          </span>
+                        )}
+                      </div>
+                      {item.reasons[cIdx] && (
+                        <div className={`mt-1 ${isAns ? 'text-emerald-800 font-semibold' : isUserPick ? 'text-rose-800 font-semibold' : 'text-slate-600'}`}>
+                          {isAns ? '○ ' : '× '}
+                          {formatText(item.reasons[cIdx])}
+                        </div>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </article>
           );

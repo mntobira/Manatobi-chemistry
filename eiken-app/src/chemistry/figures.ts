@@ -547,4 +547,146 @@ export const FIG_ENZYME_ACTIVITY = svgDataUri(`
 </svg>
 `);
 
+/** 機器分析データ読解（①吸光度検量線 A=εcl ／ ②質量分析の同位体ピーク比 9:6:1） */
+export const FIG_SPECTROPHOTOMETRY_MS = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 245" font-family="sans-serif">
+  <rect width="470" height="245" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="235" y="22" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#2A3B4C">共通テスト機器分析グラフ（①ランベルト・ベール検量線 ／ ②質量スペクトル同位体ピーク）</text>
+  <!-- 左：吸光度検量線 -->
+  <line x1="48" y1="204" x2="218" y2="204" stroke="#475569" stroke-width="2"/>
+  <line x1="48" y1="204" x2="48" y2="48" stroke="#475569" stroke-width="2"/>
+  <text x="134" y="229" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#334155">モル濃度 c [mmol/L]（セル長 l 一定）</text>
+  <text x="18" y="126" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#334155" transform="rotate(-90 18 126)">吸光度 A = εcl</text>
+  <line x1="48" y1="204" x2="208" y2="60" stroke="#0F766E" stroke-width="2.6"/>
+  <line x1="128" y1="132" x2="128" y2="204" stroke="#0D9488" stroke-dasharray="4 3"/>
+  <line x1="48" y1="132" x2="128" y2="132" stroke="#0D9488" stroke-dasharray="4 3"/>
+  <circle cx="128" cy="132" r="4" fill="#0F766E"/>
+  <text x="43" y="136" text-anchor="end" font-size="10" font-weight="bold" fill="#0F766E">0.45</text>
+  <text x="128" y="216" text-anchor="middle" font-size="10" font-weight="bold" fill="#0F766E">2.0</text>
+  <text x="140" y="72" font-size="10" font-weight="bold" fill="#115E59">原点を通る比例直線</text>
+  <text x="140" y="86" font-size="9.5" fill="#B91C1C">※希釈測定時は倍率を掛ける！</text>
+  <!-- 右：CH2Cl2 質量スペクトル -->
+  <line x1="266" y1="204" x2="444" y2="204" stroke="#475569" stroke-width="2"/>
+  <line x1="266" y1="204" x2="266" y2="48" stroke="#475569" stroke-width="2"/>
+  <text x="356" y="229" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#334155">質量電荷比 m/z（CH₂Cl₂⁺：³⁵Cl:³⁷Cl = 3:1）</text>
+  <!-- m/z = 84 (9), 86 (6), 88 (1) -->
+  <rect x="304" y="69" width="14" height="135" fill="#2563EB"/>
+  <text x="311" y="62" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1D4ED8">9 (100)</text>
+  <text x="311" y="216" text-anchor="middle" font-size="10" font-weight="bold" fill="#1E293B">84</text>
+  <rect x="354" y="114" width="14" height="90" fill="#0284C7"/>
+  <text x="361" y="107" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#0369A1">6 (67)</text>
+  <text x="361" y="216" text-anchor="middle" font-size="10" font-weight="bold" fill="#1E293B">86</text>
+  <rect x="404" y="189" width="14" height="15" fill="#38BDF8"/>
+  <text x="411" y="183" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#0284C7">1 (11)</text>
+  <text x="411" y="216" text-anchor="middle" font-size="10" font-weight="bold" fill="#1E293B">88</text>
+  <text x="378" y="64" text-anchor="middle" font-size="10" fill="#475569">(3/4)² : 2(3/4)(1/4) : (1/4)²</text>
+</svg>
+`);
+
+/** 海水淡水化の逆浸透法（ΔP = π = icRT）と蒸気圧降下・沸点上昇の対応図 */
+export const FIG_REVERSE_OSMOSIS_VAPOR = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 245" font-family="sans-serif">
+  <rect width="470" height="245" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="235" y="22" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#2A3B4C">逆浸透法による海水淡水化（ΔP ＞ π）と蒸気圧曲線・沸点上昇 ΔTb の対応</text>
+  <!-- 左：逆浸透セル -->
+  <rect x="30" y="64" width="186" height="132" rx="6" fill="#FFFFFF" stroke="#475569" stroke-width="2"/>
+  <rect x="32" y="92" width="91" height="102" fill="#DBEAFE"/>
+  <rect x="123" y="92" width="91" height="102" fill="#ECFEFF"/>
+  <line x1="123" y1="64" x2="123" y2="196" stroke="#D97706" stroke-width="3" stroke-dasharray="5 3"/>
+  <text x="123" y="56" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#B45309">半透膜</text>
+  <!-- ピストン加圧 -->
+  <rect x="36" y="76" width="82" height="16" fill="#64748B"/>
+  <line x1="77" y1="42" x2="77" y2="73" stroke="#DC2626" stroke-width="3"/>
+  <polygon points="71,69 83,69 77,77" fill="#DC2626"/>
+  <text x="72" y="38" text-anchor="middle" font-size="10" font-weight="bold" fill="#B91C1C">外圧 P₁</text>
+  <text x="168" y="84" text-anchor="middle" font-size="10" fill="#475569">大気圧 P₀</text>
+  <text x="77" y="132" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1E40AF">NaCl水溶液</text>
+  <text x="77" y="148" text-anchor="middle" font-size="10" fill="#1E3A8A">(π = 2cRT)</text>
+  <text x="168" y="138" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#0F766E">純水（淡水）</text>
+  <line x1="98" y1="172" x2="148" y2="172" stroke="#059669" stroke-width="2.8"/>
+  <polygon points="145,167 155,172 145,177" fill="#059669"/>
+  <text x="123" y="218" text-anchor="middle" font-size="10" font-weight="bold" fill="#065F46">P₁ − P₀ ＞ π で水分子が右へ移動</text>
+  <!-- 右：蒸気圧曲線 -->
+  <line x1="266" y1="200" x2="446" y2="200" stroke="#475569" stroke-width="2"/>
+  <line x1="266" y1="200" x2="266" y2="48" stroke="#475569" stroke-width="2"/>
+  <text x="356" y="229" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#334155">温度 [℃]（沸騰時は蒸気圧＝外圧）</text>
+  <line x1="266" y1="108" x2="436" y2="108" stroke="#94A3B8" stroke-width="1.6" stroke-dasharray="4 3"/>
+  <text x="262" y="111" text-anchor="end" font-size="9.5" font-weight="bold" fill="#334155">P外</text>
+  <path d="M 276 188 Q 332 162 384 56" fill="none" stroke="#2563EB" stroke-width="2.5"/>
+  <text x="342" y="64" font-size="10" font-weight="bold" fill="#1D4ED8">純水</text>
+  <path d="M 276 193 Q 354 172 418 62" fill="none" stroke="#DC2626" stroke-width="2.5"/>
+  <text x="416" y="56" text-anchor="middle" font-size="10" font-weight="bold" fill="#B91C1C">水溶液</text>
+  <line x1="358" y1="108" x2="358" y2="200" stroke="#2563EB" stroke-dasharray="3 3"/>
+  <line x1="392" y1="108" x2="392" y2="200" stroke="#DC2626" stroke-dasharray="3 3"/>
+  <text x="355" y="213" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#1D4ED8">T₀</text>
+  <text x="394" y="213" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#B91C1C">T₀+ΔTb</text>
+</svg>
+`);
+
+/** 弱酸希釈の pH 曲線と、発熱可逆反応の温度上昇時「速度↑・平衡収率↓」グラフ */
+export const FIG_WEAK_ACID_DILUTION_EQUIL = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 245" font-family="sans-serif">
+  <rect width="470" height="245" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="235" y="22" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#2A3B4C">共通テスト頻出2大グラフ（①強酸vs弱酸の希釈pH変化 ／ ②温度上昇時の速度と平衡収率）</text>
+  <!-- 左：希釈と pH -->
+  <line x1="48" y1="202" x2="218" y2="202" stroke="#475569" stroke-width="2"/>
+  <line x1="48" y1="202" x2="48" y2="48" stroke="#475569" stroke-width="2"/>
+  <text x="134" y="228" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#334155">希釈倍率 V / V₀（1 → 100倍）</text>
+  <text x="18" y="125" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#334155" transform="rotate(-90 18 125)">pH</text>
+  <line x1="48" y1="70" x2="216" y2="70" stroke="#64748B" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="43" y="74" text-anchor="end" font-size="10" font-weight="bold" fill="#334155">7.0</text>
+  <text x="43" y="176" text-anchor="end" font-size="10" font-weight="bold" fill="#334155">3.0</text>
+  <!-- 強酸: 100倍で +2 (pH 3 -> 5) -->
+  <path d="M 48 172 Q 100 130 212 120" fill="none" stroke="#2563EB" stroke-width="2.4"/>
+  <text x="162" y="112" font-size="10" font-weight="bold" fill="#1D4ED8">強酸 (+log₁₀k)</text>
+  <!-- 弱酸: 100倍で +1 (pH 3 -> 4) -->
+  <path d="M 48 172 Q 100 151 212 146" fill="none" stroke="#DC2626" stroke-width="2.6"/>
+  <text x="155" y="164" font-size="10" font-weight="bold" fill="#B91C1C">弱酸 (+0.5log₁₀k)</text>
+  <text x="134" y="59" text-anchor="middle" font-size="9.5" fill="#475569">※薄めても pH ＞ 7 にはならない！</text>
+  <!-- 右：発熱反応の温度上昇 -->
+  <line x1="266" y1="202" x2="444" y2="202" stroke="#475569" stroke-width="2"/>
+  <line x1="266" y1="202" x2="266" y2="48" stroke="#475569" stroke-width="2"/>
+  <text x="355" y="228" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#334155">反応時間 t（発熱反応：N₂ + 3H₂ ⇄ 2NH₃）</text>
+  <!-- 低温 T1 -->
+  <path d="M 266 202 C 296 155, 336 78, 378 78 L 440 78" fill="none" stroke="#2563EB" stroke-width="2.4" stroke-dasharray="5 3"/>
+  <text x="404" y="70" text-anchor="middle" font-size="10" font-weight="bold" fill="#1D4ED8">低温 T₁（遅く高い収率）</text>
+  <!-- 高温 T2 -->
+  <path d="M 266 202 C 278 130, 296 124, 318 124 L 440 124" fill="none" stroke="#DC2626" stroke-width="2.7"/>
+  <text x="382" y="140" text-anchor="middle" font-size="10" font-weight="bold" fill="#B91C1C">高温 T₂＞T₁（立ち上がり急・収率低）</text>
+</svg>
+`);
+
+/** 原油の常圧分留塔と沸点順（石油ガス・ナフサ・灯油・軽油・重油） */
+export const FIG_PETROLEUM_FRACTIONATION = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 245" font-family="sans-serif">
+  <rect width="470" height="245" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="235" y="22" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#2A3B4C">原油の常圧分留塔（上ほど低沸点・低炭素数 ／ ★灯油より軽油の方が高沸点！）</text>
+  <!-- 加熱炉・原油導入 -->
+  <rect x="30" y="156" width="66" height="44" rx="6" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.8"/>
+  <text x="63" y="176" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#991B1B">加熱炉</text>
+  <text x="63" y="191" text-anchor="middle" font-size="9.5" fill="#7F1D1D">原油 約350℃</text>
+  <line x1="96" y1="178" x2="136" y2="178" stroke="#DC2626" stroke-width="2.5"/>
+  <!-- 分留塔本体 -->
+  <rect x="136" y="40" width="90" height="184" rx="12" fill="#F8FAFC" stroke="#334155" stroke-width="2.2"/>
+  <line x1="136" y1="76" x2="226" y2="76" stroke="#94A3B8" stroke-dasharray="4 3"/>
+  <line x1="136" y1="112" x2="226" y2="112" stroke="#94A3B8" stroke-dasharray="4 3"/>
+  <line x1="136" y1="148" x2="226" y2="148" stroke="#94A3B8" stroke-dasharray="4 3"/>
+  <line x1="136" y1="184" x2="226" y2="184" stroke="#94A3B8" stroke-dasharray="4 3"/>
+  <text x="181" y="62" text-anchor="middle" font-size="10" font-weight="bold" fill="#0369A1">低温（塔頂）</text>
+  <text x="181" y="210" text-anchor="middle" font-size="10" font-weight="bold" fill="#B91C1C">高温（塔底）</text>
+  <!-- 5段の取り出しライン -->
+  <line x1="226" y1="56" x2="262" y2="56" stroke="#0284C7" stroke-width="2.2"/>
+  <text x="268" y="60" font-size="11" font-weight="bold" fill="#0369A1">① 石油ガス（〜30℃未満：LPG・C₁〜C₄）</text>
+  <line x1="226" y1="94" x2="262" y2="94" stroke="#0D9488" stroke-width="2.2"/>
+  <text x="268" y="98" font-size="11" font-weight="bold" fill="#0F766E">② ナフサ・ガソリン（30〜180℃：石油化学原料）</text>
+  <line x1="226" y1="130" x2="262" y2="130" stroke="#D97706" stroke-width="2.2"/>
+  <text x="268" y="134" font-size="11" font-weight="bold" fill="#B45309">③ 灯油（170〜250℃：ジェット燃料・暖房）</text>
+  <line x1="226" y1="166" x2="262" y2="166" stroke="#EA580C" stroke-width="2.2"/>
+  <text x="268" y="170" font-size="11" font-weight="bold" fill="#C2410C">④ ★軽油（240〜350℃：ディーゼル燃料）</text>
+  <line x1="226" y1="204" x2="262" y2="204" stroke="#991B1B" stroke-width="2.2"/>
+  <text x="268" y="208" font-size="11" font-weight="bold" fill="#7F1D1D">⑤ 重油・残渣（350℃以上：船舶燃料・アスファルト）</text>
+</svg>
+`);
+
+
 

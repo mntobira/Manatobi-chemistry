@@ -124,18 +124,18 @@ export function ChapterSelection({
             <button
               type="button"
               onClick={() => onOpenMock('written')}
-              className="inline-flex items-center gap-1 rounded-full border border-[#3e9c93]/55 bg-[#fffdf8] px-3 py-1.5 text-xs font-extrabold text-[#1f5c53] shadow-[0_2px_0_#d8ebe6] transition hover:bg-[#edf9f6] cursor-pointer"
+              className="inline-flex items-center gap-1 rounded-full border border-[#3e9c93]/55 bg-[#fffdf8] px-2.5 sm:px-3 py-1.5 text-xs font-extrabold text-[#1f5c53] shadow-[0_2px_0_#d8ebe6] transition hover:bg-[#edf9f6] cursor-pointer"
               data-chapter-open-mock
             >
               <FlaskConical size={13} aria-hidden="true" />
-              <span>通し模試へ</span>
+              <span>通し模試</span>
             </button>
           )}
           {onOpenWriting && (
             <button
               type="button"
               onClick={() => onOpenWriting('')}
-              className="hidden sm:inline-flex items-center gap-1 rounded-full border border-[#c9883a]/45 bg-[#fffdf8] px-3 py-1.5 text-xs font-extrabold text-[#7d4912] shadow-[0_2px_0_#f0dfc2] transition hover:bg-[#fdf6ea] cursor-pointer"
+              className="inline-flex items-center gap-1 rounded-full border border-[#c9883a]/45 bg-[#fffdf8] px-2.5 sm:px-3 py-1.5 text-xs font-extrabold text-[#7d4912] shadow-[0_2px_0_#f0dfc2] transition hover:bg-[#fdf6ea] cursor-pointer"
               data-chapter-open-lab
             >
               <PenLine size={13} aria-hidden="true" />
@@ -218,10 +218,31 @@ export function ChapterSelection({
             tabIndex={0}
             className="min-h-0 flex-1 touch-pan-y overflow-y-auto overscroll-contain rounded-2xl border border-slate-200/80 bg-white/35 p-3 pb-6 sm:p-4 sm:pb-6 [-webkit-overflow-scrolling:touch] [scrollbar-gutter:stable]"
           >
-            <div className="mb-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-200/70 pb-3">
-              <p className="text-xs font-bold" style={{ color: theme.accent }}>
-                {activeGroup.partTitle}
-              </p>
+            <div className="mb-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-200/70 pb-2.5">
+              <div className="flex items-center gap-2 min-w-0">
+                <span
+                  className="inline-flex items-center rounded-md px-2 py-0.5 text-[11px] font-extrabold text-white"
+                  style={{ backgroundColor: theme.accent }}
+                >
+                  {splitTabTitle(activeGroup.title, groups.indexOf(activeGroup)).kicker}
+                </span>
+                <p className="text-sm font-extrabold text-slate-800 truncate">
+                  {splitTabTitle(activeGroup.title, groups.indexOf(activeGroup)).label}
+                </p>
+              </div>
+              <span className="text-xs font-bold text-slate-500">
+                {orderedChapters.length}単元・計
+                {orderedChapters.reduce(
+                  (acc, c) =>
+                    acc +
+                    (mode === 'mini_test' ? c.miniTest || [] : c.practiceProblems || []).reduce(
+                      (s, q) => s + (q.subQuestions?.length || 1),
+                      0,
+                    ),
+                  0,
+                )}
+                問（1画面まとめプリントつき）
+              </span>
             </div>
 
             <div className="chapter-route-list unit-card-list xl:!grid-cols-2">
@@ -276,7 +297,8 @@ export function ChapterSelection({
                         title={chapter.abstractTitle}
                         topics={chapter.topics}
                         questionCount={questions.length}
-                        countLabel={`大問${questions.length}題・設問${totalSubQuestions}問`}
+                        subCountLabel={`全${totalSubQuestions}問`}
+                        countLabel={`1画面まとめプリント ＋ 大問${questions.length}題（設問${totalSubQuestions}問）`}
                         status={status}
                         accuracy={accuracyOf(stat)}
                         perfects={stage?.p ?? 0}

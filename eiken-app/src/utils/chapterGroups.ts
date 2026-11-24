@@ -125,9 +125,10 @@ export function collectAudioSets(
  *   上段を Q1A / Q1B と書き分けることで、狭いスマホ幅でも取り違えない。
  */
 export function splitTabTitle(title: string, index: number): { kicker: string; label: string } {
-  const chapterMatch = title.match(/^(\d+章)\s*(.*)$/);
+  const chapterMatch = title.match(/^第?(\d+章)\s*(.*)$/);
   if (chapterMatch) {
-    return { kicker: chapterMatch[1], label: chapterMatch[2] || title };
+    const prefix = title.startsWith('第') ? `第${chapterMatch[1]}` : chapterMatch[1];
+    return { kicker: prefix, label: chapterMatch[2] || title };
   }
   // 「第1問」「第1問 A」「第1問A」のいずれの表記でも拾う
   const questionMatch = title.match(/^第(\d+)問\s*([A-Z]?)$/);

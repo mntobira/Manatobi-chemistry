@@ -55,12 +55,12 @@ export interface StudySubject {
 }
 
 const DESC_BY_COURSE: Record<string, string> = {
-  chem_basic_matter: '純物質と分離・結晶質と非晶質・昇華と凝華・試薬保存法・周期律・化学結合・水素結合（全13単元）',
-  chem_basic_change: 'mol計算・気体発生グラフ探究・酸塩基と塩の液性・二段階滴定・COD逆滴定・漂白剤定量・燃料電池（全16単元）',
-  chem_theory: '気体とボルツマン分布・結晶格子・蒸気圧降下と浸透圧・エンタルピーとエントロピーΔS・半中和点・二次電池と電解（全19単元）',
-  chem_inorganic: '無機反応6大原理・気体製法・工業製法・金属イオンの色と錯イオン・第1〜6属系統分離・セラミックスと環境化学（全16単元）',
-  chem_organic: 'σ/π結合とアセチリド・オゾン分解・アルコール・ヒドロキシ酸とメソ体・油脂・芳香族医薬品と分液抽出（全15単元）',
-  chem_polymer: '糖類アノマー・アミノ酸電気泳動・酵素反応速度・ナイロン/PET/ビニロン・熱硬化性樹脂・加硫ゴムとイオン交換樹脂（全11単元）',
+  chem_basic_matter: '純物質と分離・白色粉末定性・質量分析MS・ランベルトベール吸光度・周期律・化学結合・水素結合（全15単元）',
+  chem_basic_change: 'mol計算・過不足実験表からの濃度範囲・気体逸散と元素質量%変化・中和誤差・硫安逆滴定・COD・燃料電池（全18単元）',
+  chem_theory: '密閉燃焼と水凝縮・逆浸透法と蒸気圧・炭酸水ヘンリー逆算・弱酸希釈pH曲線・ΔS自発変化・化学発光・二次電池（全21単元）',
+  chem_inorganic: 'ヨウ素かん水製法・過リン酸石灰・水ガラスとシリカゲル・鉄シアノ錯塩原子価則・バナジウム滴定・EDTAキレート（全18単元）',
+  chem_organic: '原油分留塔とナフサ改質・オゾン分解・ヒドロキシ酸メソ体・イミド環化条件・芳香族分液抽出・多段階構造決定（全17単元）',
+  chem_polymer: '糖類・グルタチオンγペプチドとGSSG酸化・酵素速度・PVBブチラール化・ポリイミド2段階合成・加硫ゴム（全13単元）',
 };
 
 const ICON_BY_COURSE: Record<string, StudyIcon> = {
@@ -97,8 +97,8 @@ export const STUDY_CATALOG: readonly StudySubject[] = [{
       icon: 'briefcase',
       badge: '共通テスト',
       section: 'memorize',
-      description: '『化学基礎』30分/50点模試（全3回）＋『化学』60分/100点総合模試（全3回）。新課程ΔS・実験グラフ・配点採点つき',
-      meta: `全${CHEM_MOCK_EXAMS.length}回（化学基礎3回・化学3回）`,
+      description: '『化学基礎』30分/50点模試（全4回）＋『化学』60分/100点総合模試（全4回）。2023〜2026共通テスト型の探究・実験図表・配点採点つき',
+      meta: `全${CHEM_MOCK_EXAMS.length}回（化学基礎4回・化学4回）`,
       action: { kind: 'mock' },
     },
     {
@@ -106,7 +106,7 @@ export const STUDY_CATALOG: readonly StudySubject[] = [{
       title: '実験考察・構造決定ラボ',
       icon: 'pen',
       section: 'memorize',
-      description: '試薬保存・共洗い誤差・逆滴定・ΔS自発変化・熱水分離・オゾン分解・加硫ゴム計算まで記述で整理＆自己採点',
+      description: '過不足濃度範囲・逆浸透淡水化・弱酸希釈曲線・鉄シアノ錯塩・イミド環化・グルタチオン酸化まで記述で整理＆自己採点',
       meta: `全${CHEM_LAB_TASKS.length}テーマ`,
       action: { kind: 'writing' },
     },

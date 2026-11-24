@@ -101,12 +101,36 @@ export function StudyCatalog({ subjectId, onSubject, onContent, onBack, progress
         })}
       </div>}
 
-      <div className={`sc-list${subject?.id === 'eiken' || subject?.id === 'chemistry' ? ' sc-eiken-list' : ''}`} role="list">
+      <div className={`sc-list${subject?.id === 'eiken' ? ' sc-eiken-list' : subject?.id === 'chemistry' ? ' sc-eiken-list sc-chem-list' : ''}`} role="list">
         {showSubjects
           ? STUDY_CATALOG.map(s => <div role="listitem" key={s.id}>
               <StudyCard dataId={s.id} icon={s.icon} title={s.label} description={s.description}
                 meta={`${s.contents.length}コース：${subjectMeta(s)}`} onClick={() => onSubject(s.id)} />
             </div>)
+          : subject.id === 'chemistry'
+          ? <>
+              <h2 className="sc-section" role="presentation" data-study-section="basic">化学基礎（共通テスト 30分・50点満点）</h2>
+              {subject.contents.filter(c => c.section !== 'memorize' && c.section !== 'spotlight' && c.id.startsWith('chem_basic_')).map(c => <div role="listitem" key={c.id} data-content-kind={c.action.kind} data-chem-tier="basic">
+                <StudyCard dataId={c.id} icon={c.icon} title={c.title} description={c.description} meta={c.meta}
+                  primary={c.primary} badge={lastContentId === c.id ? '前回' : c.badge}
+                  progress={c.progressSubject ? progressOf?.(c.progressSubject) : undefined}
+                  onClick={() => onContent(c)} />
+              </div>)}
+              <h2 className="sc-section" role="presentation" data-study-section="advanced">化学（共通テスト 60分・100点満点／国公立2次基礎）</h2>
+              {subject.contents.filter(c => c.section !== 'memorize' && c.section !== 'spotlight' && !c.id.startsWith('chem_basic_')).map(c => <div role="listitem" key={c.id} data-content-kind={c.action.kind} data-chem-tier="advanced">
+                <StudyCard dataId={c.id} icon={c.icon} title={c.title} description={c.description} meta={c.meta}
+                  primary={c.primary} badge={lastContentId === c.id ? '前回' : c.badge}
+                  progress={c.progressSubject ? progressOf?.(c.progressSubject) : undefined}
+                  onClick={() => onContent(c)} />
+              </div>)}
+              {subject.contents.some(c => c.section === 'memorize') && <>
+                <h2 className="sc-section" role="presentation" data-study-section="memorize">実戦通し模試・記述考察ラボ・重要用語暗記</h2>
+                {subject.contents.filter(c => c.section === 'memorize').map(c => <div role="listitem" key={c.id} data-content-kind={c.action.kind}>
+                  <StudyCard dataId={c.id} icon={c.icon} title={c.title} description={c.description} meta={c.meta}
+                    badge={lastContentId === c.id ? '前回' : c.badge} onClick={() => onContent(c)} />
+                </div>)}
+              </>}
+            </>
           : <>
               {/* 問題を解くもの（分野別カード）は同じ列に並べる */}
               {subject.contents.filter(c => c.section !== 'memorize' && c.section !== 'spotlight').map(c => <div role="listitem" key={c.id} data-content-kind={c.action.kind}>
@@ -117,7 +141,7 @@ export function StudyCatalog({ subjectId, onSubject, onContent, onBack, progress
               </div>)}
               {/* ★模試・考察ラボ・暗記帳は下段セクションに整列させる★ */}
               {subject.contents.some(c => c.section === 'memorize') && <>
-                <h2 className="sc-section" role="presentation" data-study-section="memorize">{subject.id === 'chemistry' ? '通し模試・考察ラボ・暗記帳' : subject.id === 'eiken' ? '書く・覚える' : '覚える'}</h2>
+                <h2 className="sc-section" role="presentation" data-study-section="memorize">{subject.id === 'eiken' ? '書く・覚える' : '覚える'}</h2>
                 {subject.contents.filter(c => c.section === 'memorize').map(c => <div role="listitem" key={c.id} data-content-kind={c.action.kind}>
                   <StudyCard dataId={c.id} icon={c.icon} title={c.title} description={c.description} meta={c.meta}
                     badge={lastContentId === c.id ? '前回' : c.badge} onClick={() => onContent(c)} />

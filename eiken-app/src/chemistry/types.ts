@@ -85,6 +85,8 @@ export interface ChemChapterSpec {
 export interface ChemMockItem extends ChemSubItem {
   stem: string;
   points: number;
+  imageUrl?: string;
+  imageCaption?: string;
 }
 
 export interface ChemMockSection {

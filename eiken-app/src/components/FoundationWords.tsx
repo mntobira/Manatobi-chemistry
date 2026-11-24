@@ -10,6 +10,7 @@ import { hasVocabAudio, stopVocabAudio } from '../utils/vocabAudio';
 import { GOAL_OPTIONS, VOCAB_PREF_KEY } from '../utils/vocabGoal';
 import { wordNumbers } from '../data/vocabQuiz';
 import { loadVocabPron, pronOf, type VocabPron } from '../utils/vocabPron';
+import { formatText } from '../utils/textFormatter';
 
 /**
  * 単語・熟語タブ（A4・A19）。
@@ -53,7 +54,7 @@ export function readPrefs(): { preset: PresetId; custom: string[] } {
  * 音節が分からない語・1音節の語は、そのまま表示する。
  */
 function HeadWord({ word, pron }: { word: string; pron: VocabPron | null }) {
-  if (!pron || pron.stress < 0) return <>{word}</>;
+  if (!pron || pron.stress < 0) return <>{formatText(word)}</>;
   return <>{pron.syl.map((s, k) => <span key={k} className={k === pron.stress ? 'fd-acc' : undefined}>{s}</span>)}</>;
 }
 
@@ -71,17 +72,17 @@ function WordDetail({ word, pron, onPractice }: { word: ListeningWord; pron: Voc
   // 2026-10-01 D：辞書としての役割に絞る（4択の確認は「4択で解く」タブへ移した）
   return <div className="fd-word-detail">
     {pron && <PronLine pron={pron} />}
-    <p className="fd-definition">{word.fullMeaning}</p>
+    <p className="fd-definition">{formatText(word.fullMeaning)}</p>
     {word.exampleSentence && <section className="fd-example-sentence" aria-label="重要式・補足">
-      <p><b>式・具体例：</b>{word.exampleSentence}</p><p><b>急所：</b>{word.exampleTranslation}</p>
+      <p><b>式・具体例：</b>{formatText(word.exampleSentence)}</p><p><b>共通テストの急所：</b>{formatText(word.exampleTranslation)}</p>
     </section>}
     {word.examples.length > 0 && <details className="fd-examples">
       <summary><Headphones size={15} aria-hidden="true" />共通テスト演習での出題箇所（{word.examples.length}問）<ChevronDown size={15} aria-hidden="true" /></summary>
       {word.examples.map(ex => <section key={ex.chapterId}>
-        <h4>{ex.chapterTitle}・問題{ex.problemIndex + 1}</h4>
-        <p>{ex.script.length > 220 ? ex.script.slice(0, 220) + '…' : ex.script}</p>
+        <h4>{formatText(ex.chapterTitle)}・大問{ex.problemIndex + 1}</h4>
+        <p>{formatText(ex.script.length > 220 ? ex.script.slice(0, 220) + '…' : ex.script)}</p>
         <div className="fd-example-actions">
-          <button type="button" onClick={() => onPractice(ex.chapterId, ex.problemIndex)}>この問題を解く</button>
+          <button type="button" onClick={() => onPractice(ex.chapterId, ex.problemIndex)}>この単元の問題を解く</button>
         </div>
       </section>)}
     </details>}
@@ -131,7 +132,7 @@ export function FoundationWords({ known, onMark, onPractice }: FoundationWordsPr
     fetch(VOCABULARY_URL, { signal: controller.signal })
       .then(r => { if (!r.ok) throw new Error('Vocabulary unavailable'); return r.json(); })
       .then(v => { if (!Array.isArray(v.words) || !Array.isArray(v.chapters) || typeof v.wordCount !== 'number') throw new Error('Invalid vocabulary data'); if (alive) setData(v as VocabularyData); })
-      .catch(() => { if (alive) setLoadError('単語を読み込めませんでした。接続を確認してください。'); });
+      .catch(() => { if (alive) setLoadError('重要用語データを読み込めませんでした。接続を確認してください。'); });
     return () => { alive = false; controller.abort(); };
   }, [data, retry]);
 
@@ -177,7 +178,7 @@ export function FoundationWords({ known, onMark, onPractice }: FoundationWordsPr
   const pickLevel = (id: string) => { stopSpeech(); setOpenWord(null); setLevel(id); listRef.current?.scrollTo({ top: 0 }); };
 
   if (!data) return <section className="fd-panel fd-loading" role="status">
-    {loadError ? <>{loadError}<button type="button" onClick={() => setRetry(n => n + 1)}>もう一度読み込む</button></> : '単語・熟語を読み込んでいます…'}
+    {loadError ? <>{loadError}<button type="button" onClick={() => setRetry(n => n + 1)}>もう一度読み込む</button></> : '重要用語・化学式を読み込んでいます…'}
   </section>;
 
   const presetNow = PRESETS.find(x => x.id === prefs.preset)!;
@@ -198,10 +199,10 @@ export function FoundationWords({ known, onMark, onPractice }: FoundationWordsPr
           {PRESETS.map(p => <button key={p.id} type="button" role="radio" aria-checked={prefs.preset === p.id} data-fd-range-pick={p.id}
             onClick={() => { setPrefs(v => ({ ...v, preset: p.id })); setLevel(''); resetList(); }}>{p.label}</button>)}
         </div>
-        <p className="fd-goal-now"><strong>{presetNow.full}</strong><span>{(countByPreset[presetNow.id] ?? 0).toLocaleString()}語{prefs.preset === 'custom' ? '・覚えたいレベルを選んでね' : ''}</span></p>
+        <p className="fd-goal-now"><strong>{presetNow.full}</strong><span>{(countByPreset[presetNow.id] ?? 0).toLocaleString()}項目{prefs.preset === 'custom' ? '・覚えたいステージを選んでね' : ''}</span></p>
         {searching
           ? <button type="button" className="fd-level-go is-search" data-fd-start disabled={base.length === 0} onClick={() => go()}>
-              <Search size={20} aria-hidden="true" /><span><strong>「{query.trim()}」の検索結果</strong><small>{base.length.toLocaleString()}語</small></span><ChevronRight size={20} aria-hidden="true" />
+              <Search size={20} aria-hidden="true" /><span><strong>「{query.trim()}」の検索結果</strong><small>{base.length.toLocaleString()}項目</small></span><ChevronRight size={20} aria-hidden="true" />
             </button>
           : levelList.length === 0
             ? <p className="fd-empty" role="status">条件に合う語がありません。「条件をつける」を見直してください。</p>
@@ -235,24 +236,24 @@ export function FoundationWords({ known, onMark, onPractice }: FoundationWordsPr
     </section>;
   }
 
-  const condTags = [listenOnly && 'リスニング', unlearned && '未習得のみ', chapter && (data.chapters.find(c => c.id === chapter)?.title ?? ''), searching && `「${query.trim()}」`].filter(Boolean) as string[];
-  return <section className="fd-panel fd-words fd-book" aria-label="単語を覚える" data-fd-book>
+  const condTags = [listenOnly && '演習問題に登場', unlearned && '未習得のみ', chapter && (data.chapters.find(c => c.id === chapter)?.title ?? ''), searching && `「${query.trim()}」`].filter(Boolean) as string[];
+  return <section className="fd-panel fd-words fd-book" aria-label="重要用語・化学式を覚える" data-fd-book>
     <div className="fd-book-head">
       <button type="button" className="fd-range-back" onClick={() => { stopSpeech(); setStage('range'); }} data-fd-range-back><ChevronLeft size={15} aria-hidden="true" />えらび直す</button>
       <span className="fd-book-title"><strong>{searching ? '検索結果' : curLevel?.label ?? presetNow.full}</strong>
         <small>{condTags.length ? condTags.join('・') : presetNow.full}</small></span>
-      <span className="fd-book-count" data-fd-chapter>{searching || !curChapter ? `${filtered.length.toLocaleString()}語` : <>覚えた <b>{curChapter.learned}</b>/{curChapter.ids.length}</>}</span>
+      <span className="fd-book-count" data-fd-chapter>{searching || !curChapter ? `${filtered.length.toLocaleString()}項目` : <>覚えた <b>{curChapter.learned}</b>/{curChapter.ids.length}</>}</span>
     </div>
-    <div className="fd-hide" role="radiogroup" aria-label="隠す" data-fd-hide>
-      <EyeOff size={15} aria-hidden="true" /><span>隠す</span>
-      {([['none', 'なし'], ['ja', '説明'], ['en', '用語']] as const).map(([v, t]) => <button key={v} type="button" role="radio" aria-checked={hide === v} onClick={() => { setHide(v); setPeek(new Set()); }}>{t}</button>)}
+    <div className="fd-hide" role="radiogroup" aria-label="赤シート隠す" data-fd-hide>
+      <EyeOff size={15} aria-hidden="true" /><span>赤シート</span>
+      {([['none', 'なし'], ['ja', '要点・説明'], ['en', '用語・式']] as const).map(([v, t]) => <button key={v} type="button" role="radio" aria-checked={hide === v} onClick={() => { setHide(v); setPeek(new Set()); }}>{t}</button>)}
       {hide !== 'none' && <small>タップでのぞける</small>}
     </div>
-    {slice.length === 0 ? <p className="fd-empty" role="status">{unlearned && pageWords.length > 0 ? 'この100語は全部覚えました。次の100語へ進もう' : '該当する語はありません。検索や絞り込みを変えてください。'}</p> :
-      <ol className="fd-list" ref={listRef} aria-label={`第${safePage + 1}ページの語`} key={`${curLevel?.id}:${safePage}`} data-slide={slide || undefined}
+    {slice.length === 0 ? <p className="fd-empty" role="status">{unlearned && pageWords.length > 0 ? 'このページの項目は全部覚えました！' : '該当する項目はありません。検索や絞り込みを変えてください。'}</p> :
+      <ol className="fd-list" ref={listRef} aria-label={`第${safePage + 1}ページの項目`} key={`${curLevel?.id}:${safePage}`} data-slide={slide || undefined}
         onTouchStart={e => { const t = e.touches[0]; touch.current = { x: t.clientX, y: t.clientY }; }}
         onTouchEnd={e => {
-          // ★左右にスワイプで次・前の100語★ 縦スクロールと取り違えないよう、横の動きが十分大きいときだけ
+          // ★左右にスワイプで次・前のページ★ 縦スクロールと取り違えないよう、横の動きが十分大きいときだけ
           const st = touch.current; touch.current = null; if (!st) return;
           const t = e.changedTouches[0]; const dx = t.clientX - st.x; const dy = t.clientY - st.y;
           if (Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
@@ -262,6 +263,7 @@ export function FoundationWords({ known, onMark, onPractice }: FoundationWordsPr
         {slice.map(w => {
           const open = openWord === w.id; const isKnown = known.has(w.id);
           const pron = pronOf(pronTable, w.id, w.word);
+          const showAudioBtn = !w.id.startsWith('chem-term-') && (isSpeechSupported() || hasVocabAudio(w.id));
           return <li key={w.id} className="fd-word" data-known={isKnown || undefined} data-open={open || undefined}>
             <div className="fd-word-row">
               <button type="button" className="fd-word-main" aria-expanded={open} onClick={() => {
@@ -270,35 +272,35 @@ export function FoundationWords({ known, onMark, onPractice }: FoundationWordsPr
                 setOpenWord(open ? null : w.id);
               }}>
                 <span className="fd-word-no" aria-label={`No.${numbers.get(w.id)}`}>{numbers.get(w.id)}</span>
-                <span className="fd-word-en" lang="en" data-hidden={(hide === 'en' && !open && !peek.has(w.id)) || undefined} aria-label={pron && pron.stress >= 0 ? w.word : undefined}><HeadWord word={w.word} pron={pron} /></span>
-                <span className="fd-word-ja" data-hidden={(hide === 'ja' && !open && !peek.has(w.id)) || undefined}>{w.meaning}</span>
-                {(searching || w.examples.length > 0) && <span className="fd-word-tags">{searching && <i>{VOCAB_LEVELS[w.level]}</i>}{w.examples.length > 0 && <i className="fd-tag-listen">問題に登場</i>}</span>}
+                <span className="fd-word-en" data-hidden={(hide === 'en' && !open && !peek.has(w.id)) || undefined} aria-label={pron && pron.stress >= 0 ? w.word : undefined}><HeadWord word={w.word} pron={pron} /></span>
+                <span className="fd-word-ja" data-hidden={(hide === 'ja' && !open && !peek.has(w.id)) || undefined}>{formatText(w.meaning)}</span>
+                {(searching || w.examples.length > 0) && <span className="fd-word-tags">{searching && <i>{VOCAB_LEVELS[w.level]}</i>}{w.examples.length > 0 && <i className="fd-tag-listen">演習あり</i>}</span>}
               </button>
-              <button type="button" className="fd-icon" aria-label={`${w.word} を読み上げる`} disabled={!isSpeechSupported() && !hasVocabAudio(w.id)} onClick={() => sayWord(w.id, w.word)}><Volume2 size={18} aria-hidden="true" /></button>
-              <button type="button" className="fd-icon fd-mark" aria-pressed={isKnown} aria-label={isKnown ? `${w.word} の覚えた印を外す` : `${w.word} を覚えた語にする`} onClick={() => onMark(w.id, !isKnown)}><Check size={18} aria-hidden="true" /></button>
+              {showAudioBtn && <button type="button" className="fd-icon" aria-label={`${w.word} を読み上げる`} onClick={() => sayWord(w.id, w.word)}><Volume2 size={18} aria-hidden="true" /></button>}
+              <button type="button" className="fd-icon fd-mark" aria-pressed={isKnown} aria-label={isKnown ? `${w.word} の覚えた印を外す` : `${w.word} を覚えた項目にする`} onClick={() => onMark(w.id, !isKnown)}><Check size={18} aria-hidden="true" /></button>
             </div>
             {open && <WordDetail word={w} pron={pron} onPractice={onPractice} />}
           </li>;
         })}
       </ol>}
-    <nav className="fd-pager" aria-label="100語ずつめくる">
-      <button type="button" disabled={safePage === 0} onClick={() => goPage(safePage - 1)} aria-label="前の100語"><ChevronLeft size={18} aria-hidden="true" /></button>
+    <nav className="fd-pager" aria-label="ページ切り替え">
+      <button type="button" disabled={safePage === 0} onClick={() => goPage(safePage - 1)} aria-label="前のページ"><ChevronLeft size={18} aria-hidden="true" /></button>
       {searching || !curLevel
-        ? <label className="fd-select"><span><select aria-label="章を選ぶ" value={safePage} onChange={e => goPage(Number(e.target.value))}>
+        ? <label className="fd-select"><span><select aria-label="ページを選ぶ" value={safePage} onChange={e => goPage(Number(e.target.value))}>
             {Array.from({ length: pages }, (_, i) => <option key={i} value={i}>検索結果 {i + 1} / {pages}</option>)}
           </select><ChevronDown size={16} aria-hidden="true" /></span></label>
         : <button type="button" className="fd-map-open" onClick={() => setMapOpen(true)} aria-haspopup="dialog" data-fd-map-open>
-            <MapIcon size={16} aria-hidden="true" /><span>{curChapter ? `${curChapter.from}〜${curChapter.to}` : ''}語 <small>{chapterIndex + 1}/{chapters.length}</small>{curChapter && <small className="fd-map-open-learned"> · 覚えた {curChapter.learned}/{curChapter.ids.length}</small>}</span><ChevronDown size={16} aria-hidden="true" />
+            <MapIcon size={16} aria-hidden="true" /><span>No.{curChapter ? `${curChapter.from}〜${curChapter.to}` : ''} <small>{chapterIndex + 1}/{chapters.length}</small>{curChapter && <small className="fd-map-open-learned"> · 覚えた {curChapter.learned}/{curChapter.ids.length}</small>}</span><ChevronDown size={16} aria-hidden="true" />
           </button>}
-      <button type="button" disabled={safePage >= pages - 1} onClick={() => goPage(safePage + 1)} aria-label="次の100語"><ChevronRight size={18} aria-hidden="true" /></button>
+      <button type="button" disabled={safePage >= pages - 1} onClick={() => goPage(safePage + 1)} aria-label="次のページ"><ChevronRight size={18} aria-hidden="true" /></button>
     </nav>
-    {curLevel && <Dialog open={mapOpen} onClose={() => setMapOpen(false)} title={`${curLevel.label}・100語ずつ`} className="fd-map">
-      <p className="fd-map-sum">全{chapters.length}ページ（{WORDBOOK_PAGE}語ずつ・左右にスワイプでもめくれる）・覚えた {curLevel.learned.toLocaleString()}/{curLevel.ids.length.toLocaleString()}語</p>
-      <button type="button" className="fd-map-resume" onClick={() => { goPage(resume); setMapOpen(false); }}><Play size={16} aria-hidden="true" />続きから：{chapters[resume]?.from ?? 1}語目〜</button>
+    {curLevel && <Dialog open={mapOpen} onClose={() => setMapOpen(false)} title={`${curLevel.label}・一覧`} className="fd-map">
+      <p className="fd-map-sum">全{chapters.length}ページ（{WORDBOOK_PAGE}項目ずつ・左右スワイプ対応）・覚えた {curLevel.learned.toLocaleString()}/{curLevel.ids.length.toLocaleString()}項目</p>
+      <button type="button" className="fd-map-resume" onClick={() => { goPage(resume); setMapOpen(false); }}><Play size={16} aria-hidden="true" />続きから：No.{chapters[resume]?.from ?? 1}〜</button>
       <div className="fd-map-blocks" data-fd-map>{blocks.map(b => <section key={b.index} className="fd-map-block">
-        <h3><span>{b.from}〜{b.to}語</span><small>覚えた {b.learned}/{b.total}</small></h3>
+        <h3><span>No.{b.from}〜{b.to}</span><small>覚えた {b.learned}/{b.total}</small></h3>
         <ol>{b.chapters.map(c => <li key={c.index}><button type="button" data-state={chapterState(c)} aria-current={c.index === chapterIndex ? 'true' : undefined}
-          aria-label={`${c.from}〜${c.to}語目 覚えた${c.learned}/${c.ids.length}`} onClick={() => { goPage(c.index); setMapOpen(false); }}>
+          aria-label={`No.${c.from}〜${c.to} 覚えた${c.learned}/${c.ids.length}`} onClick={() => { goPage(c.index); setMapOpen(false); }}>
           <b>{c.from}〜</b><small>{c.learned}/{c.ids.length}</small></button></li>)}</ol>
       </section>)}</div>
     </Dialog>}
