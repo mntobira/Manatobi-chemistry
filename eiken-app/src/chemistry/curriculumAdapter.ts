@@ -26,6 +26,27 @@ export const ALL_CHEM_CHAPTER_SPECS: readonly ChemChapterSpec[] = [
   ...POLYMER_CHAPTERS,
 ];
 
+const CIRCLED_NUMS = ['①', '②', '③', '④'] as const;
+
+function deriveStructuredSteps(sub: ChemSubItem): string[] {
+  if (sub.steps && sub.steps.length > 0) {
+    return [...sub.steps];
+  }
+  const lines = sub.explanation
+    .split('\n')
+    .map(l => l.replace(/^[・●▪■]\s*/, '').trim())
+    .filter(l => l.length > 0);
+  if (lines.length >= 2) {
+    return lines.slice(0, 4);
+  }
+  const correctCircle = CIRCLED_NUMS[sub.answer];
+  const correctReason = sub.reasons[sub.answer];
+  return [
+    `着眼テーマ：「${sub.skill}」の定義・公式・例外条件を確認する。`,
+    `選択肢の吟味：${correctCircle}（${correctReason}）が条件に合致することを確認し、他選択肢の引っかけ箇所を除外する。`,
+  ];
+}
+
 function toSubQuestion(sub: ChemSubItem): SubQuestion {
   const fullLabel = sub.prompt ? `${sub.label}　${sub.prompt}` : sub.label;
   return {
@@ -40,7 +61,7 @@ function toSubQuestion(sub: ChemSubItem): SubQuestion {
     explainJa: sub.explanation,
     detailedExplanation: {
       theme: sub.skill,
-      steps: sub.steps ? [...sub.steps] : [],
+      steps: deriveStructuredSteps(sub),
     },
     distractors: sub.reasons.map((why, index) => ({ no: index + 1, why })),
   };

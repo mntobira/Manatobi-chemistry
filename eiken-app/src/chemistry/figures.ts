@@ -409,3 +409,142 @@ export const FIG_LEAD_ACID_BATTERY = svgDataUri(`
 </svg>
 `);
 
+/** マクスウェル・ボルツマン速度分布と活性化エネルギー以上の分子数 */
+export const FIG_MAXWELL_BOLTZMANN = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 250" font-family="sans-serif">
+  <rect width="470" height="250" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="235" y="23" text-anchor="middle" font-size="13" font-weight="bold" fill="#2A3B4C">気体分子の運動エネルギー分布（低温 T₁ vs 高温 T₂）と活性化エネルギー</text>
+  <line x1="58" y1="212" x2="438" y2="212" stroke="#475569" stroke-width="2"/>
+  <line x1="58" y1="212" x2="58" y2="38" stroke="#475569" stroke-width="2"/>
+  <text x="248" y="239" text-anchor="middle" font-size="12" fill="#475569">分子のもつ運動エネルギー E</text>
+  <text x="22" y="126" text-anchor="middle" font-size="12" fill="#475569" transform="rotate(-90 22 126)">分子数の割合</text>
+  <!-- 高温 T2 の Ea 以上の面積塗り -->
+  <path d="M 300 162 Q 355 190 426 209 L 426 212 L 300 212 Z" fill="#FCA5A5" opacity="0.65"/>
+  <!-- 低温 T1 の Ea 以上の面積塗り -->
+  <path d="M 300 194 Q 355 206 426 211 L 426 212 L 300 212 Z" fill="#93C5FD" opacity="0.8"/>
+  <!-- 低温 T1 曲線 -->
+  <path d="M 58 212 C 96 52, 148 48, 185 98 C 228 156, 290 198, 426 211" fill="none" stroke="#2563EB" stroke-width="2.8"/>
+  <text x="155" y="56" font-size="11.5" font-weight="bold" fill="#1D4ED8">低温 T₁（山が高く鋭い）</text>
+  <!-- 高温 T2 曲線 -->
+  <path d="M 58 212 C 110 102, 188 86, 240 124 C 292 162, 355 194, 426 209" fill="none" stroke="#DC2626" stroke-width="2.8"/>
+  <text x="262" y="102" font-size="11.5" font-weight="bold" fill="#B91C1C">高温 T₂ ＞ T₁（山が低く右へ広がる）</text>
+  <!-- Ea 境界線 -->
+  <line x1="300" y1="54" x2="300" y2="212" stroke="#0F766E" stroke-width="2.2" stroke-dasharray="6 3"/>
+  <text x="300" y="47" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#0F766E">活性化エネルギー Eₐ</text>
+  <line x1="252" y1="68" x2="252" y2="212" stroke="#7C3AED" stroke-width="2" stroke-dasharray="4 3"/>
+  <text x="234" y="64" text-anchor="end" font-size="10.5" font-weight="bold" fill="#6D28D9">触媒あり Eₐ'</text>
+  <text x="372" y="172" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#991B1B">E ≥ Eₐ の分子割合が急増！</text>
+</svg>
+`);
+
+/** エンタルピー変化 ΔH とエントロピー変化 ΔS からみた反応の自発性4象限（新課程） */
+export const FIG_ENTHALPY_ENTROPY = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 255" font-family="sans-serif">
+  <rect width="470" height="255" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="235" y="23" text-anchor="middle" font-size="13" font-weight="bold" fill="#2A3B4C">【新課程】エンタルピー ΔH とエントロピー（乱雑さ）ΔS による自発変化の整理</text>
+  <rect x="64" y="44" width="176" height="84" rx="6" fill="#FEF2F2" stroke="#FCA5A5"/>
+  <rect x="240" y="44" width="176" height="84" rx="6" fill="#FFFBEB" stroke="#FCD34D"/>
+  <rect x="64" y="128" width="176" height="84" rx="6" fill="#EFF6FF" stroke="#93C5FD"/>
+  <rect x="240" y="128" width="176" height="84" rx="6" fill="#ECFDF5" stroke="#6EE7B7"/>
+  <line x1="52" y1="128" x2="428" y2="128" stroke="#334155" stroke-width="2.2"/>
+  <line x1="240" y1="36" x2="240" y2="222" stroke="#334155" stroke-width="2.2"/>
+  <text x="240" y="241" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#334155">横軸：系のエントロピー変化 ΔS（左：減少 ΔS＜0 ／ 右：増大 ΔS＞0）</text>
+  <text x="23" y="130" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#334155" transform="rotate(-90 23 130)">縦軸：ΔH（上：吸熱＞0 ／ 下：発熱＜0）</text>
+  <!-- 各象限ラベル -->
+  <text x="152" y="72" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#B91C1C">ΔH ＞ 0（吸熱）・ΔS ＜ 0</text>
+  <text x="152" y="93" text-anchor="middle" font-size="11" fill="#7F1D1D">どの温度でも自発的に進まない</text>
+  <text x="152" y="112" text-anchor="middle" font-size="10" fill="#991B1B">（例：常温での 3O₂ → 2O₃）</text>
+
+  <text x="328" y="72" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#B45309">ΔH ＞ 0（吸熱）・ΔS ＞ 0</text>
+  <text x="328" y="93" text-anchor="middle" font-size="11" font-weight="bold" fill="#92400E">高温で自発的に進む！</text>
+  <text x="328" y="112" text-anchor="middle" font-size="10" fill="#78350F">（例：氷の融解・CaCO₃熱分解・冷却パック）</text>
+
+  <text x="152" y="156" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#1D4ED8">ΔH ＜ 0（発熱）・ΔS ＜ 0</text>
+  <text x="152" y="177" text-anchor="middle" font-size="11" font-weight="bold" fill="#1E40AF">低温で自発的に進む！</text>
+  <text x="152" y="196" text-anchor="middle" font-size="10" fill="#1E3A8A">（例：水の凝固・NH₃ + HCl → NH₄Cl(固)）</text>
+
+  <text x="328" y="156" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#047857">ΔH ＜ 0（発熱）・ΔS ＞ 0</text>
+  <text x="328" y="177" text-anchor="middle" font-size="11" font-weight="bold" fill="#065F46">すべての温度で自発的に進む！</text>
+  <text x="328" y="196" text-anchor="middle" font-size="10" fill="#064E3B">（例：炭化水素の燃焼・2H₂O₂ → 2H₂O + O₂）</text>
+</svg>
+`);
+
+/** 無機化学の「水酸化物 → 過剰NH₃ / 過剰NaOH 錯イオン再溶解と色」マトリックス図 */
+export const FIG_INORGANIC_COLOR_MAP = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 250" font-family="sans-serif">
+  <rect width="470" height="250" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="235" y="23" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#2A3B4C">金属イオンの塩基沈殿色と「過剰 NaOH vs 過剰 NH₃水」再溶解マップ</text>
+  <!-- ヘッダ -->
+  <rect x="24" y="38" width="422" height="28" rx="4" fill="#334155"/>
+  <text x="68" y="56" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFFFFF">イオン</text>
+  <text x="172" y="56" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFFFFF">少量塩基の沈殿と色</text>
+  <text x="296" y="56" text-anchor="middle" font-size="11" font-weight="bold" fill="#FDE68A">過剰 NaOHaq</text>
+  <text x="396" y="56" text-anchor="middle" font-size="11" font-weight="bold" fill="#BAE6FD">過剰 NH₃水</text>
+  <!-- 行1: Al3+, Pb2+, Sn2+ -->
+  <rect x="24" y="70" width="422" height="32" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="68" y="90" text-anchor="middle" font-size="11" font-weight="bold" fill="#1E293B">Al³⁺ / Pb²⁺</text>
+  <text x="172" y="90" text-anchor="middle" font-size="11" fill="#334155">Al(OH)₃・Pb(OH)₂［白色］</text>
+  <text x="296" y="90" text-anchor="middle" font-size="11" font-weight="bold" fill="#047857">○ 無色錯イオンで溶解</text>
+  <text x="396" y="90" text-anchor="middle" font-size="11" font-weight="bold" fill="#B91C1C">× 溶けない</text>
+  <!-- 行2: Zn2+ -->
+  <rect x="24" y="104" width="422" height="32" fill="#ECFDF5" stroke="#A7F3D0"/>
+  <text x="68" y="124" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#065F46">★ Zn²⁺</text>
+  <text x="172" y="124" text-anchor="middle" font-size="11" fill="#064E3B">Zn(OH)₂［白色］</text>
+  <text x="296" y="124" text-anchor="middle" font-size="11" font-weight="bold" fill="#047857">○ [Zn(OH)₄]²⁻ 無色</text>
+  <text x="396" y="124" text-anchor="middle" font-size="11" font-weight="bold" fill="#0369A1">○ [Zn(NH₃)₄]²⁺ 無色</text>
+  <!-- 行3: Cu2+ -->
+  <rect x="24" y="138" width="422" height="32" fill="#EFF6FF" stroke="#BFDBFE"/>
+  <text x="68" y="158" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#1D4ED8">Cu²⁺</text>
+  <text x="172" y="158" text-anchor="middle" font-size="11" font-weight="bold" fill="#2563EB">Cu(OH)₂［青白色］</text>
+  <text x="296" y="158" text-anchor="middle" font-size="11" font-weight="bold" fill="#B91C1C">×（加熱で黒色 CuO）</text>
+  <text x="396" y="158" text-anchor="middle" font-size="11" font-weight="bold" fill="#1E3A8A">○ 深青色 [Cu(NH₃)₄]²⁺</text>
+  <!-- 行4: Ag+ -->
+  <rect x="24" y="172" width="422" height="32" fill="#FEF3C7" stroke="#FDE68A"/>
+  <text x="68" y="192" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#92400E">Ag⁺</text>
+  <text x="172" y="192" text-anchor="middle" font-size="11" font-weight="bold" fill="#78350F">★ Ag₂O［褐色！］</text>
+  <text x="296" y="192" text-anchor="middle" font-size="11" font-weight="bold" fill="#B91C1C">× 溶けない</text>
+  <text x="396" y="192" text-anchor="middle" font-size="11" font-weight="bold" fill="#0369A1">○ 無色 [Ag(NH₃)₂]⁺</text>
+  <!-- 行5: Fe2+ / Fe3+ -->
+  <rect x="24" y="206" width="422" height="32" fill="#FEF2F2" stroke="#FECACA"/>
+  <text x="68" y="226" text-anchor="middle" font-size="11" font-weight="bold" fill="#991B1B">Fe²⁺ / Fe³⁺</text>
+  <text x="172" y="226" text-anchor="middle" font-size="10.5" fill="#7F1D1D">Fe(OH)₂緑白 / Fe(OH)₃赤褐</text>
+  <text x="296" y="226" text-anchor="middle" font-size="11" font-weight="bold" fill="#B91C1C">× 溶けない</text>
+  <text x="396" y="226" text-anchor="middle" font-size="11" font-weight="bold" fill="#B91C1C">× 溶けない</text>
+</svg>
+`);
+
+/** 酵素反応速度と基質濃度・温度（最適温度と失活）の特性曲線 */
+export const FIG_ENZYME_ACTIVITY = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 245" font-family="sans-serif">
+  <rect width="470" height="245" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="235" y="22" text-anchor="middle" font-size="13" font-weight="bold" fill="#2A3B4C">酵素触媒の反応速度特性（①基質濃度飽和と競争的阻害 ／ ②最適温度と熱変性失活）</text>
+  <!-- 左グラフ：基質濃度 -->
+  <line x1="46" y1="204" x2="222" y2="204" stroke="#475569" stroke-width="2"/>
+  <line x1="46" y1="204" x2="46" y2="48" stroke="#475569" stroke-width="2"/>
+  <text x="134" y="228" text-anchor="middle" font-size="11" fill="#475569">基質濃度 [S]</text>
+  <text x="18" y="126" text-anchor="middle" font-size="11" fill="#475569" transform="rotate(-90 18 126)">反応速度 v</text>
+  <line x1="46" y1="68" x2="220" y2="68" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="82" y="62" font-size="10.5" font-weight="bold" fill="#334155">最大速度 Vmax</text>
+  <path d="M 46 204 Q 72 78 218 71" fill="none" stroke="#2563EB" stroke-width="2.6"/>
+  <text x="150" y="92" font-size="10.5" font-weight="bold" fill="#1D4ED8">阻害剤なし</text>
+  <path d="M 46 204 Q 118 118 218 80" fill="none" stroke="#EA580C" stroke-width="2.2" stroke-dasharray="5 3"/>
+  <text x="166" y="132" font-size="10" font-weight="bold" fill="#C2410C">競争的阻害剤あり</text>
+  <!-- 右グラフ：温度依存 -->
+  <line x1="268" y1="204" x2="444" y2="204" stroke="#475569" stroke-width="2"/>
+  <line x1="268" y1="204" x2="268" y2="48" stroke="#475569" stroke-width="2"/>
+  <text x="356" y="228" text-anchor="middle" font-size="11" fill="#475569">温度 [℃]</text>
+  <text x="292" y="217" text-anchor="middle" font-size="10" fill="#475569">0</text>
+  <text x="352" y="217" text-anchor="middle" font-size="10" font-weight="bold" fill="#047857">約40</text>
+  <text x="408" y="217" text-anchor="middle" font-size="10" fill="#B91C1C">70</text>
+  <!-- 無機触媒 -->
+  <path d="M 276 196 Q 350 172 426 56" fill="none" stroke="#64748B" stroke-width="2" stroke-dasharray="4 3"/>
+  <text x="412" y="52" text-anchor="end" font-size="10" fill="#475569">無機触媒(MnO₂等)</text>
+  <!-- 酵素 -->
+  <path d="M 276 198 C 306 175, 332 68, 352 68 C 370 68, 386 184, 408 204" fill="none" stroke="#059669" stroke-width="2.8"/>
+  <line x1="352" y1="68" x2="352" y2="204" stroke="#10B981" stroke-dasharray="3 3"/>
+  <text x="348" y="60" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#047857">最適温度</text>
+  <text x="408" y="156" text-anchor="middle" font-size="10" font-weight="bold" fill="#B91C1C">熱変性で失活！</text>
+</svg>
+`);
+
+

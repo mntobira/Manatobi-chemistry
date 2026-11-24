@@ -55,12 +55,12 @@ export interface StudySubject {
 }
 
 const DESC_BY_COURSE: Record<string, string> = {
-  chem_basic_matter: '純物質と分離・熱運動・原子と同位体・周期律・化学結合・極性と水素結合（加熱曲線・イオン化エネルギー図版付）',
-  chem_basic_change: 'mol計算・溶液調製・酸塩基と塩の液性・中和滴定と逆滴定・酸化還元・ダニエル電池と金属精錬（滴定・電池図版付）',
-  chem_theory: '気体と蒸気圧・結晶格子・希薄溶液と浸透圧・反応エンタルピー・化学平衡・緩衝液・鉛蓄電池と電気分解',
-  chem_inorganic: '非金属と工業的製法（接触法・オストワルト法・ソルベー法）・典型金属と両性元素・遷移元素と系統分離フロー図',
-  chem_organic: '脂肪族炭化水素・アルコール・アルデヒド・エステル・油脂・芳香族化合物と分液ロート抽出フロー',
-  chem_polymer: '糖類・アミノ酸と等電点・タンパク質呈色・合成繊維（ナイロン・PET・ビニロン）・イオン交換樹脂計算',
+  chem_basic_matter: '純物質と分離・結晶質と非晶質・昇華と凝華・試薬保存法・周期律・化学結合・水素結合（全13単元）',
+  chem_basic_change: 'mol計算・気体発生グラフ探究・酸塩基と塩の液性・二段階滴定・COD逆滴定・漂白剤定量・燃料電池（全16単元）',
+  chem_theory: '気体とボルツマン分布・結晶格子・蒸気圧降下と浸透圧・エンタルピーとエントロピーΔS・半中和点・二次電池と電解（全19単元）',
+  chem_inorganic: '無機反応6大原理・気体製法・工業製法・金属イオンの色と錯イオン・第1〜6属系統分離・セラミックスと環境化学（全16単元）',
+  chem_organic: 'σ/π結合とアセチリド・オゾン分解・アルコール・ヒドロキシ酸とメソ体・油脂・芳香族医薬品と分液抽出（全15単元）',
+  chem_polymer: '糖類アノマー・アミノ酸電気泳動・酵素反応速度・ナイロン/PET/ビニロン・熱硬化性樹脂・加硫ゴムとイオン交換樹脂（全11単元）',
 };
 
 const ICON_BY_COURSE: Record<string, StudyIcon> = {
@@ -97,8 +97,8 @@ export const STUDY_CATALOG: readonly StudySubject[] = [{
       icon: 'briefcase',
       badge: '共通テスト',
       section: 'memorize',
-      description: '『化学基礎』30分/50点模試（全2回）＋『化学』60分/100点総合模試（全2回）。タイマー・見直し付箋・配点採点つき',
-      meta: `全${CHEM_MOCK_EXAMS.length}回（化学基礎2回・化学2回）`,
+      description: '『化学基礎』30分/50点模試（全3回）＋『化学』60分/100点総合模試（全3回）。新課程ΔS・実験グラフ・配点採点つき',
+      meta: `全${CHEM_MOCK_EXAMS.length}回（化学基礎3回・化学3回）`,
       action: { kind: 'mock' },
     },
     {
@@ -106,7 +106,7 @@ export const STUDY_CATALOG: readonly StudySubject[] = [{
       title: '実験考察・構造決定ラボ',
       icon: 'pen',
       section: 'memorize',
-      description: '共洗い誤差・逆滴定・平衡移動・陽イオン分離・C₉H₁₀O₂構造決定・イオン交換樹脂を記述で整理＆自己採点',
+      description: '試薬保存・共洗い誤差・逆滴定・ΔS自発変化・熱水分離・オゾン分解・加硫ゴム計算まで記述で整理＆自己採点',
       meta: `全${CHEM_LAB_TASKS.length}テーマ`,
       action: { kind: 'writing' },
     },
