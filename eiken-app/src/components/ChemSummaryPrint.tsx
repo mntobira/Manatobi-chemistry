@@ -150,7 +150,7 @@ export function ChemSummaryPrint({
                   {sheet.formulas.map((f, idx) => (
                     <li
                       key={idx}
-                      className="rounded-xl border border-teal-100/90 bg-teal-50/45 px-2.5 py-1.5 md:px-3 md:py-2"
+                      className="rounded-xl border border-teal-200/80 border-l-4 border-l-teal-600 bg-teal-50/40 px-2.5 py-1.5 md:px-3 md:py-2"
                     >
                       <div className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-0.5">
                         <span className="text-[11px] font-extrabold text-teal-800 md:text-xs">
@@ -178,14 +178,14 @@ export function ChemSummaryPrint({
                   <AlertTriangle size={14} aria-hidden="true" />
                   <span>共通テストの急所（ひっかけ注意）</span>
                 </h3>
-                <ul className="space-y-1">
+                <ul className="space-y-1.5">
                   {sheet.traps.map((trap, idx) => (
                     <li
                       key={idx}
                       className="flex items-start gap-1.5 text-xs font-semibold leading-snug text-slate-800 md:text-[13px]"
                     >
-                      <span className="mt-0.5 inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-amber-200/80 text-[10px] font-extrabold text-amber-900">
-                        !
+                      <span className="mt-0.5 inline-flex shrink-0 items-center justify-center rounded-md bg-amber-200/90 px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-amber-950">
+                        急所{idx + 1}
                       </span>
                       <span className="min-w-0">{formatText(trap)}</span>
                     </li>
@@ -225,9 +225,9 @@ export function ChemSummaryPrint({
                         {row.map((cell, ci) => (
                           <td
                             key={ci}
-                            className={`px-2 py-1.5 leading-snug md:px-3 md:py-2 ${
+                            className={`px-2 py-1.5 leading-snug align-top md:px-3 md:py-2 ${
                               ci === 0
-                                ? 'font-extrabold text-[#1E293B] whitespace-nowrap'
+                                ? 'font-extrabold text-[#1E293B] sm:whitespace-nowrap'
                                 : 'font-medium text-slate-700'
                             }`}
                           >
