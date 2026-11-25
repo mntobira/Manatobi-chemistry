@@ -7,12 +7,15 @@ import {
   ChevronLeft,
   ChevronRight,
   Clock,
+  FileSpreadsheet,
   FlaskConical,
   LayoutGrid,
   Pause,
   Play,
   RotateCcw,
   Send,
+  Slash,
+  Sparkles,
   XCircle,
 } from 'lucide-react';
 import { DoorMascot } from './DoorMascot';
@@ -37,10 +40,21 @@ import './eiken-mock-exam.css';
 
 export type MockExamKind = 'written' | 'listening';
 
+const KATAKANA_SLOTS = [
+  'ア', 'イ', 'ウ', 'エ', 'オ',
+  'カ', 'キ', 'ク', 'ケ', 'コ',
+  'サ', 'シ', 'ス', 'セ', 'ソ',
+  'タ', 'チ', 'ツ', 'テ', 'ト',
+] as const;
+
+const CIRCLED_NUMS = ['①', '②', '③', '④'] as const;
+
 interface FlatMockEntry {
   section: ChemMockSection;
+  sectionIndex: number;
   item: ChemMockItem;
   globalNo: number;
+  markSlot: string;
 }
 
 function readMock(uid: string): MockProgressState {
@@ -63,11 +77,12 @@ function writeMock(uid: string, next: MockProgressState): void {
 function flattenExam(exam: ChemMockExamSpec): FlatMockEntry[] {
   const out: FlatMockEntry[] = [];
   let n = 1;
-  for (const sec of exam.sections) {
+  exam.sections.forEach((sec, sectionIndex) => {
     for (const item of sec.items) {
-      out.push({ section: sec, item, globalNo: n++ });
+      const slot = item.markSlot || KATAKANA_SLOTS[n - 1] || String(n);
+      out.push({ section: sec, sectionIndex, item, globalNo: n++, markSlot: slot });
     }
-  }
+  });
   return out;
 }
 
@@ -101,6 +116,7 @@ function scoreChemMock(exam: ChemMockExamSpec, answers: Record<string, number>) 
       id: sec.id,
       daimonLabel: sec.daimonLabel,
       title: sec.title,
+      recommendedMinutes: sec.recommendedMinutes,
       earnedPoints: secPts,
       maxPoints: secMax,
       correctCount: secCorrect,
@@ -145,11 +161,13 @@ export function EikenMockExam({
   const [activeExamId, setActiveExamId] = useState<string | null>(null);
 
   const [answers, setAnswers] = useState<Record<string, number>>({});
+  const [eliminated, setEliminated] = useState<Record<string, number[]>>({});
   const [flags, setFlags] = useState<string[]>([]);
   const [sectionIdx, setSectionIdx] = useState(0);
   const [elapsedSec, setElapsedSec] = useState(0);
   const [paused, setPaused] = useState(false);
   const [paletteOpen, setPaletteOpen] = useState(false);
+  const [constantsOpen, setConstantsOpen] = useState(true);
   const [confirmSubmit, setConfirmSubmit] = useState(false);
   const [resultFilter, setResultFilter] = useState<'all' | 'wrong' | 'flagged'>('all');
 
@@ -210,11 +228,13 @@ export function EikenMockExam({
     const savedSession = resume ? mockState.sessions[exam.id] : undefined;
     setActiveExamId(exam.id);
     setAnswers(savedSession?.answers ?? {});
+    setEliminated({});
     setFlags(savedSession?.flags ?? []);
     setElapsedSec(savedSession?.elapsedSec ?? 0);
     setSectionIdx(savedSession ? Math.min(savedSession.currentIndex, exam.sections.length - 1) : 0);
     setPaused(false);
     setPaletteOpen(false);
+    setConstantsOpen(true);
     setConfirmSubmit(false);
     setPhase('running');
     window.scrollTo(0, 0);
@@ -262,8 +282,8 @@ export function EikenMockExam({
             subQuestionId: item.id,
             subLabel: `${sec.daimonLabel} ${item.label}`,
             questionText: item.stem.slice(0, 120),
-            wrongAnswer: Number.isInteger(picked) ? `①②③④`[picked] ?? String(picked + 1) : '未解答',
-            correctAnswer: `${`①②③④`[item.answer] ?? item.answer + 1} ${item.choices[item.answer]}`,
+            wrongAnswer: Number.isInteger(picked) ? CIRCLED_NUMS[picked] ?? String(picked + 1) : '未解答',
+            correctAnswer: `${CIRCLED_NUMS[item.answer] ?? item.answer + 1} ${item.choices[item.answer]}`,
           });
         }
       }
@@ -287,6 +307,26 @@ export function EikenMockExam({
     setFlags(prev => (prev.includes(itemId) ? prev.filter(x => x !== itemId) : [...prev, itemId]));
   };
 
+  const toggleEliminateChoice = (itemId: string, cIdx: number, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setEliminated(prev => {
+      const cur = prev[itemId] ?? [];
+      const next = cur.includes(cIdx) ? cur.filter(x => x !== cIdx) : [...cur, cIdx];
+      return { ...prev, [itemId]: next };
+    });
+  };
+
+  const jumpToQuestion = (secIndex: number, itemId: string) => {
+    setSectionIdx(secIndex);
+    setPaletteOpen(false);
+    window.requestAnimationFrame(() => {
+      const el = document.querySelector(`[data-mock-question="${itemId}"]`);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  };
+
   if (phase === 'select' || !activeExam) {
     return (
       <div className="mtb-page chapter-route em-select-page flex h-[calc(100dvh-env(safe-area-inset-top)-env(safe-area-inset-bottom))] min-h-0 w-full flex-col overflow-hidden notebook-paper p-3 pb-[calc(5.75rem+env(safe-area-inset-bottom))] sm:p-5 sm:pb-[calc(5.75rem+env(safe-area-inset-bottom))] relative font-handwriting">
@@ -296,8 +336,8 @@ export function EikenMockExam({
             <span>{backLabel}</span>
           </button>
           <div className="unit-head-title">
-            <h2 style={{ color: theme.accent }}>共通テスト実戦 通し模試</h2>
-            <p>本番と同じ配点・制限時間で実戦力を測り、全選択肢の正誤根拠を一括復習できます</p>
+            <h2 style={{ color: theme.accent }}>大学入学共通テスト 実戦通し模試</h2>
+            <p>本番準拠「問題冊子＋マーク解答用紙」2ペイン設計・原子量定数欄・消去スラッシュ・2次余裕合格診断つき</p>
           </div>
           <DoorMascot subject={initialGrade} showSpeech={false} size="mini" className="unit-head-mascot w-auto" />
         </header>
@@ -306,7 +346,7 @@ export function EikenMockExam({
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div className="em-grade-pills !grid-cols-3 sm:!w-auto" role="tablist" aria-label="科目区分">
               {([
-                ['all', 'すべて', CHEM_MOCK_EXAMS.length],
+                ['all', '全8回（基礎4＋化学4）', CHEM_MOCK_EXAMS.length],
                 ['basic', '化学基礎（30分・50点）', CHEM_MOCK_EXAMS.filter(e => e.examCategory === 'basic').length],
                 ['advanced', '化学（60分・100点）', CHEM_MOCK_EXAMS.filter(e => e.examCategory === 'advanced').length],
               ] as const).map(([key, label, cnt]) => (
@@ -328,16 +368,16 @@ export function EikenMockExam({
             <div className="em-timer-toggle" role="group" aria-label="タイマー設定">
               <button
                 type="button"
-                className={timedMode ? 'is-on' : ''}
+                className={timedMode ? 'is-active' : ''}
                 aria-pressed={timedMode}
                 onClick={() => setTimedMode(true)}
               >
                 <Clock size={13} aria-hidden="true" />
-                <span>本番タイマーあり</span>
+                <span>本番タイマー（推奨配分つき）</span>
               </button>
               <button
                 type="button"
-                className={!timedMode ? 'is-on' : ''}
+                className={!timedMode ? 'is-active' : ''}
                 aria-pressed={!timedMode}
                 onClick={() => setTimedMode(false)}
               >
@@ -347,56 +387,80 @@ export function EikenMockExam({
           </div>
 
           <section className="em-tab-panel min-h-0 flex-1 overflow-y-auto p-3 sm:p-4">
-            <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
+            <div className="grid grid-cols-1 gap-3.5 lg:grid-cols-2">
               {visibleExams.map(exam => {
                 const session = mockState.sessions[exam.id];
                 const hist = mockState.history[exam.id] ?? [];
                 const latest = hist[0];
+                const bestPct = hist.reduce(
+                  (mx, h) => Math.max(mx, h.total > 0 ? Math.round((h.correct / h.total) * 100) : 0),
+                  0,
+                );
                 const itemCount = exam.sections.reduce((n, s) => n + s.items.length, 0);
                 const answeredInSession = session ? Object.keys(session.answers).length : 0;
 
                 return (
                   <article
                     key={exam.id}
-                    className="rounded-2xl border border-slate-200 bg-[#fffdf8] p-4 shadow-xs flex flex-col justify-between gap-3"
+                    className="em-exam-select-card rounded-2xl border border-slate-200 bg-[#fffdf8] p-4 shadow-xs flex flex-col justify-between gap-3"
                     data-mock-card={exam.id}
                   >
                     <div>
-                      <div className="flex items-center justify-between gap-2">
-                        <span className="inline-flex items-center gap-1 rounded-full bg-[#e6f5f2] px-2.5 py-0.5 text-xs font-extrabold text-[#16697a]">
-                          <FlaskConical size={13} aria-hidden="true" />
-                          {exam.examCategory === 'basic' ? '共通テスト 化学基礎' : '共通テスト 化学'}
-                        </span>
-                        <span className="text-xs font-bold text-slate-500">
-                          制限 {exam.timeLimitMinutes}分 ・ {exam.totalPoints}点満点（全{itemCount}設問）
+                      <div className="flex flex-wrap items-center justify-between gap-1.5">
+                        <div className="flex flex-wrap items-center gap-1.5">
+                          <span className="inline-flex items-center gap-1 rounded-full bg-slate-900 px-2.5 py-0.5 text-[11px] font-extrabold text-white">
+                            <FlaskConical size={12} aria-hidden="true" />
+                            {exam.examCategory === 'basic' ? '理科｜化学基礎' : '理科｜化学'} 第{exam.round}回
+                          </span>
+                          {exam.levelBadge && (
+                            <span className="inline-flex items-center gap-1 rounded-full border border-amber-300 bg-amber-50 px-2 py-0.5 text-[11px] font-extrabold text-amber-900">
+                              {exam.levelBadge}
+                            </span>
+                          )}
+                        </div>
+                        <span className="text-xs font-extrabold text-slate-600">
+                          {exam.timeLimitMinutes}分 ／ {exam.totalPoints}点満点（マーク{itemCount}欄）
                         </span>
                       </div>
+
                       <h3 className="mt-2 text-base font-extrabold text-[#1c2a39]">{exam.title}</h3>
                       <p className="mt-1 text-xs leading-relaxed text-slate-600">{exam.subtitle}</p>
-                      <ul className="mt-2 flex flex-wrap gap-1.5">
-                        {exam.sections.map(sec => (
-                          <li
-                            key={sec.id}
-                            className="rounded-md border border-slate-200/90 bg-white px-2 py-0.5 text-[11px] font-bold text-slate-600"
-                          >
-                            {sec.daimonLabel}：{sec.items.length}問
-                          </li>
-                        ))}
-                      </ul>
+
+                      <div className="mt-2.5 grid grid-cols-2 gap-1.5 sm:grid-cols-3">
+                        {exam.sections.map(sec => {
+                          const secPts = sec.items.reduce((s, i) => s + i.points, 0);
+                          return (
+                            <div
+                              key={sec.id}
+                              className="rounded-lg border border-slate-200/90 bg-white px-2.5 py-1.5 text-[11px]"
+                            >
+                              <div className="flex items-center justify-between font-extrabold text-slate-800">
+                                <span>{sec.daimonLabel}</span>
+                                <span className="text-[#16697a]">{secPts}点</span>
+                              </div>
+                              <div className="mt-0.5 flex items-center justify-between text-[10px] font-bold text-slate-500">
+                                <span>{sec.items.length}設問</span>
+                                {sec.recommendedMinutes && <span>目安{sec.recommendedMinutes}分</span>}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
                     </div>
 
                     <div className="flex flex-wrap items-center justify-between gap-2 border-t border-slate-200/70 pt-3">
                       <div className="text-xs font-bold text-slate-600">
                         {session ? (
                           <span className="text-amber-700">
-                            中断データあり（{answeredInSession}/{itemCount}問解答・経過 {formatDuration(session.elapsedSec)}）
+                            中断中：{answeredInSession}/{itemCount}欄マーク済（経過 {formatDuration(session.elapsedSec)}）
                           </span>
                         ) : latest ? (
-                          <span className="text-emerald-700">
-                            前回スコア：<b>{latest.correct}</b> / {latest.total} 点（{Math.round((latest.correct / latest.total) * 100)}%）
+                          <span className="text-emerald-800">
+                            直近 <b>{latest.correct}</b>/{latest.total}点（{Math.round((latest.correct / latest.total) * 100)}%）
+                            {hist.length > 1 && ` ・ 自己ベスト ${bestPct}%`}
                           </span>
                         ) : (
-                          <span>未受験</span>
+                          <span className="text-slate-500">目標目安：共テ本番 85% ／ 2次余裕圏 92%+</span>
                         )}
                       </div>
 
@@ -418,7 +482,7 @@ export function EikenMockExam({
                           data-mock-start={exam.id}
                         >
                           {latest && !session ? <RotateCcw size={13} aria-hidden="true" /> : <Play size={13} aria-hidden="true" />}
-                          <span>{latest && !session ? 'もう一度受験' : '模試を開始'}</span>
+                          <span>{latest && !session ? '再受験する' : '問題冊子を開く'}</span>
                         </button>
                       </div>
                     </div>
@@ -433,7 +497,9 @@ export function EikenMockExam({
   }
 
   const flatEntries = flattenExam(activeExam);
+  const slotByItemId = new Map(flatEntries.map(e => [e.item.id, e.markSlot]));
   const currentSec = activeExam.sections[sectionIdx] ?? activeExam.sections[0]!;
+  const currentSecPoints = currentSec.items.reduce((s, it) => s + it.points, 0);
   const limitSec = activeExam.timeLimitMinutes * 60;
   const remainingSec = Math.max(0, limitSec - elapsedSec);
   const isTimeOver = timedMode && elapsedSec >= limitSec;
@@ -441,291 +507,504 @@ export function EikenMockExam({
 
   if (phase === 'running') {
     return (
-      <main className="em-page" data-mock-running={activeExam.id}>
-        <header className="sticky top-0 z-20 flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-slate-200 bg-[#fffdf8]/95 px-3.5 py-2.5 shadow-xs backdrop-blur">
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={() => setPhase('select')}
-              className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-50 cursor-pointer"
-            >
-              <ArrowLeft size={15} aria-hidden="true" />
-              中断して一覧へ
-            </button>
-            <strong className="text-xs sm:text-sm font-extrabold text-[#1c2a39]">{activeExam.title}</strong>
+      <main className="em-kyotsu-runner" data-mock-running={activeExam.id}>
+        {/* 上部固定コントロールバー（本番時計・大問タブ・マークシート開閉・採点） */}
+        <header className="em-kyotsu-topbar">
+          <div className="em-kyotsu-topbar-inner">
+            <div className="flex items-center gap-2 min-w-0">
+              <button
+                type="button"
+                onClick={() => setPhase('select')}
+                className="inline-flex items-center gap-1 rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs font-extrabold text-slate-700 hover:bg-slate-50 cursor-pointer shrink-0"
+              >
+                <ArrowLeft size={14} aria-hidden="true" />
+                <span>中断保存</span>
+              </button>
+              <span className="hidden md:inline-flex items-center rounded bg-slate-900 px-2 py-0.5 text-[11px] font-black tracking-wider text-white shrink-0">
+                {activeExam.examCategory === 'basic' ? '理科｜化学基礎' : '理科｜化学'}
+              </span>
+              <strong className="truncate text-xs sm:text-sm font-extrabold text-slate-900">
+                {activeExam.title}
+              </strong>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+              <span
+                className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-black tabular-nums ${
+                  isTimeOver
+                    ? 'bg-rose-600 text-white'
+                    : timedMode && remainingSec <= 300
+                    ? 'bg-amber-200 text-amber-950'
+                    : 'bg-slate-900 text-white'
+                }`}
+              >
+                <Clock size={13} aria-hidden="true" />
+                {timedMode
+                  ? isTimeOver
+                    ? `超過 +${formatDuration(elapsedSec - limitSec)}`
+                    : `残り ${formatDuration(remainingSec)}`
+                  : `経過 ${formatDuration(elapsedSec)}`}
+              </span>
+
+              <button
+                type="button"
+                onClick={() => setPaused(p => !p)}
+                className="inline-flex items-center gap-1 rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-50 cursor-pointer"
+                aria-label={paused ? 'タイマー再開' : '一時停止'}
+              >
+                {paused ? <Play size={13} /> : <Pause size={13} />}
+                <span className="hidden sm:inline">{paused ? '再開' : '停止'}</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setPaletteOpen(o => !o)}
+                className="xl:hidden inline-flex items-center gap-1 rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs font-extrabold text-slate-800 cursor-pointer"
+              >
+                <FileSpreadsheet size={14} aria-hidden="true" />
+                <span>マーク欄 {answeredTotal}/{flatEntries.length}</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setConfirmSubmit(true)}
+                className="inline-flex items-center gap-1 rounded-xl bg-[#1f5c53] px-3 py-1.5 text-xs font-extrabold text-white shadow-xs hover:bg-[#16443d] cursor-pointer"
+                data-mock-submit-trigger
+              >
+                <Send size={13} aria-hidden="true" />
+                <span>答案提出・採点</span>
+              </button>
+            </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2">
-            <span
-              className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-extrabold ${
-                isTimeOver
-                  ? 'bg-rose-100 text-rose-800'
-                  : timedMode && remainingSec <= 300
-                  ? 'bg-amber-100 text-amber-900'
-                  : 'bg-slate-100 text-slate-800'
-              }`}
-            >
-              <Clock size={14} aria-hidden="true" />
-              {timedMode
-                ? isTimeOver
-                  ? `制限時間超過 +${formatDuration(elapsedSec - limitSec)}`
-                  : `残り ${formatDuration(remainingSec)}`
-                : `経過 ${formatDuration(elapsedSec)}`}
-            </span>
-
-            <button
-              type="button"
-              onClick={() => setPaused(p => !p)}
-              className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-bold text-slate-700 cursor-pointer"
-              aria-label={paused ? 'タイマー再開' : '一時停止'}
-            >
-              {paused ? <Play size={14} /> : <Pause size={14} />}
-              <span className="hidden sm:inline">{paused ? '再開' : '一時停止'}</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setPaletteOpen(o => !o)}
-              className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-bold text-slate-700 cursor-pointer"
-            >
-              <LayoutGrid size={14} aria-hidden="true" />
-              <span>解答状況 {answeredTotal}/{flatEntries.length}</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setConfirmSubmit(true)}
-              className="inline-flex items-center gap-1 rounded-xl bg-[#1f5c53] px-3 py-1.5 text-xs font-extrabold text-white hover:bg-[#174740] cursor-pointer"
-              data-mock-submit-trigger
-            >
-              <Send size={13} aria-hidden="true" />
-              採点する
-            </button>
-          </div>
+          {/* 大問ナビゲーション（目安時間・マーク進捗つき） */}
+          <nav className="em-kyotsu-daimon-bar" role="tablist" aria-label="大問切替">
+            {activeExam.sections.map((sec, idx) => {
+              const secDone = sec.items.filter(it => Number.isInteger(answers[it.id])).length;
+              const secAllDone = secDone === sec.items.length;
+              const firstSlot = slotByItemId.get(sec.items[0]?.id ?? '') ?? '';
+              const lastSlot = slotByItemId.get(sec.items[sec.items.length - 1]?.id ?? '') ?? '';
+              const slotRange = firstSlot === lastSlot ? firstSlot : `${firstSlot}〜${lastSlot}`;
+              return (
+                <button
+                  key={sec.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={idx === sectionIdx}
+                  onClick={() => {
+                    setSectionIdx(idx);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className={`em-kyotsu-daimon-tab ${idx === sectionIdx ? 'is-active' : ''} ${secAllDone ? 'is-complete' : ''}`}
+                >
+                  <span className="font-black">{sec.daimonLabel}</span>
+                  <span className="text-[11px] opacity-85">[{slotRange}]</span>
+                  <span className="em-kyotsu-daimon-count">
+                    {secDone}/{sec.items.length}
+                  </span>
+                  {sec.recommendedMinutes && (
+                    <span className="hidden sm:inline text-[10px] opacity-75">目安{sec.recommendedMinutes}分</span>
+                  )}
+                </button>
+              );
+            })}
+          </nav>
         </header>
 
+        {/* モバイル・タブレット用マークシートドロワー */}
         {paletteOpen && (
-          <section className="rounded-2xl border border-slate-200 bg-white p-3 shadow-xs">
-            <p className="mb-2 text-xs font-bold text-slate-600">番号を押すと該当の大問へ移動します（★は見直し付箋）</p>
-            <div className="flex flex-wrap gap-1.5">
+          <section className="em-mobile-marksheet-drawer xl:hidden" aria-label="モバイル用マークシート">
+            <div className="flex items-center justify-between mb-2">
+              <strong className="text-xs font-black text-slate-900">
+                マーク解答用紙（直接マーク・設問ジャンプ可）
+              </strong>
+              <button
+                type="button"
+                onClick={() => setPaletteOpen(false)}
+                className="rounded-md border border-slate-300 bg-white px-2 py-0.5 text-xs font-bold text-slate-600 cursor-pointer"
+              >
+                閉じる
+              </button>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 max-h-72 overflow-y-auto pr-1">
               {flatEntries.map(entry => {
-                const secPos = activeExam.sections.findIndex(s => s.id === entry.section.id);
-                const done = Number.isInteger(answers[entry.item.id]);
+                const picked = answers[entry.item.id];
                 const flagged = flags.includes(entry.item.id);
                 return (
-                  <button
+                  <div
                     key={entry.item.id}
-                    type="button"
-                    onClick={() => {
-                      setSectionIdx(secPos);
-                      setPaletteOpen(false);
-                    }}
-                    className={`min-w-[2.5rem] rounded-lg border px-2 py-1 text-xs font-extrabold cursor-pointer ${
-                      done
-                        ? 'border-emerald-400 bg-emerald-50 text-emerald-900'
-                        : 'border-slate-200 bg-slate-50 text-slate-600'
-                    }`}
+                    className={`em-marksheet-row ${entry.sectionIndex === sectionIdx ? 'is-active-sec' : ''}`}
                   >
-                    {entry.globalNo}{flagged ? '★' : ''}
-                  </button>
+                    <button
+                      type="button"
+                      onClick={() => jumpToQuestion(entry.sectionIndex, entry.item.id)}
+                      className="em-marksheet-slot-btn"
+                    >
+                      <span className="em-mark-katakana">{entry.markSlot}</span>
+                      <span className="text-[10px] font-bold text-slate-500">
+                        {entry.section.daimonLabel}{entry.item.label}
+                        {flagged ? ' ★' : ''}
+                      </span>
+                    </button>
+                    <div className="em-marksheet-bubbles">
+                      {entry.item.choices.map((_, cIdx) => {
+                        const isMarked = picked === cIdx;
+                        return (
+                          <button
+                            key={cIdx}
+                            type="button"
+                            onClick={() => setAnswers(prev => ({ ...prev, [entry.item.id]: cIdx }))}
+                            className={`em-oval-bubble ${isMarked ? 'is-marked' : ''}`}
+                            aria-label={`解答欄${entry.markSlot}の選択肢${cIdx + 1}`}
+                            aria-pressed={isMarked}
+                          >
+                            {cIdx + 1}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
                 );
               })}
             </div>
           </section>
         )}
 
+        {/* 採点確認ダイアログ */}
         {confirmSubmit && (
-          <section className="rounded-2xl border-2 border-[#1f5c53] bg-[#effaf7] p-4 shadow-sm" role="alertdialog" aria-label="採点確認">
-            <p className="text-sm font-extrabold text-[#153f39]">
-              解答済み {answeredTotal} / {flatEntries.length} 問
-              {answeredTotal < flatEntries.length && `（未解答 ${flatEntries.length - answeredTotal} 問あり）`}
-              。答案を提出して採点しますか？
-            </p>
-            <div className="mt-3 flex gap-2">
-              <button
-                type="button"
-                onClick={submitExam}
-                className="rounded-xl bg-[#1f5c53] px-4 py-2 text-xs font-extrabold text-white cursor-pointer"
-                data-mock-confirm-submit
-              >
-                採点して結果を見る
-              </button>
-              <button
-                type="button"
-                onClick={() => setConfirmSubmit(false)}
-                className="rounded-xl border border-slate-300 bg-white px-4 py-2 text-xs font-bold text-slate-700 cursor-pointer"
-              >
-                問題に戻る
-              </button>
+          <div className="em-modal-backdrop" role="alertdialog" aria-label="採点確認">
+            <div className="em-modal">
+              <h2>答案を提出して採点しますか？</h2>
+              <p>
+                マーク済み：<b>{answeredTotal}</b> ／ 全 <b>{flatEntries.length}</b> 欄
+                （経過時間：{formatDuration(elapsedSec)}）
+              </p>
+              {answeredTotal < flatEntries.length && (
+                <p className="em-modal-warn">
+                  未マークの解答欄が {flatEntries.length - answeredTotal} 箇所あります。本番同様、すべてマークしてからの提出を推奨します。
+                </p>
+              )}
+              <div className="em-modal-actions">
+                <button
+                  type="button"
+                  onClick={() => setConfirmSubmit(false)}
+                  className="em-ghost-btn"
+                >
+                  問題冊子に戻る
+                </button>
+                <button
+                  type="button"
+                  onClick={submitExam}
+                  className="em-primary-btn !bg-[#1f5c53]"
+                  data-mock-confirm-submit
+                >
+                  採点して診断結果を見る
+                </button>
+              </div>
             </div>
-          </section>
+          </div>
         )}
 
-        <nav className="flex gap-1.5 overflow-x-auto pb-1" role="tablist" aria-label="大問切替">
-          {activeExam.sections.map((sec, idx) => {
-            const secDone = sec.items.filter(it => Number.isInteger(answers[it.id])).length;
-            return (
-              <button
-                key={sec.id}
-                type="button"
-                role="tab"
-                aria-selected={idx === sectionIdx}
-                onClick={() => {
-                  setSectionIdx(idx);
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
-                className={`shrink-0 rounded-xl border px-3 py-2 text-xs font-extrabold transition cursor-pointer ${
-                  idx === sectionIdx
-                    ? 'border-[#1f5c53] bg-[#1f5c53] text-white'
-                    : 'border-slate-200 bg-[#fffdf8] text-slate-700 hover:bg-white'
-                }`}
-              >
-                {sec.daimonLabel}（{secDone}/{sec.items.length}）
-              </button>
-            );
-          })}
-        </nav>
-
-        <section className="rounded-2xl border border-slate-200 bg-[#fffdf8] p-4 shadow-xs space-y-4">
-          <div className="border-b border-slate-200 pb-3">
-            <span className="inline-block rounded-md bg-slate-800 px-2 py-0.5 text-xs font-extrabold text-white">
-              {currentSec.daimonLabel}
-            </span>
-            <h2 className="mt-1.5 text-base sm:text-lg font-extrabold text-[#1c2a39]">{currentSec.title}</h2>
-            <div className="mt-2 whitespace-pre-line text-sm leading-relaxed text-slate-700">
-              {formatText(currentSec.leadText)}
-            </div>
-            {currentSec.imageUrl && (
-              <figure className="mt-3 rounded-xl border border-slate-200 bg-white p-3">
-                <img
-                  src={currentSec.imageUrl}
-                  alt={currentSec.imageCaption || currentSec.title}
-                  className="mx-auto max-h-72 w-auto max-w-full object-contain"
-                />
-                {currentSec.imageCaption && (
-                  <figcaption className="mt-1.5 text-center text-xs font-bold text-slate-600">
-                    {currentSec.imageCaption}
-                  </figcaption>
-                )}
-              </figure>
-            )}
-          </div>
-
-          <div className="space-y-5">
-            {currentSec.items.map(item => {
-              const picked = answers[item.id];
-              const flagged = flags.includes(item.id);
-              const circled = ['①', '②', '③', '④'];
-              return (
-                <article
-                  key={item.id}
-                  className="rounded-xl border border-slate-200/90 bg-white p-3.5 sm:p-4 shadow-2xs"
-                  data-mock-question={item.id}
+        {/* 2ペイン本体：左＝共通テスト問題冊子（オフホワイト試験紙） ／ 右＝固定マーク解答用紙 */}
+        <div className="em-booklet-split">
+          <section className="em-booklet-paper" aria-label="共通テスト問題冊子">
+            {/* 試験紙ヘッダー枠（本番冊子の黒枠見出しを再現） */}
+            <div className="em-booklet-banner">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div className="flex items-center gap-2">
+                  <span className="em-booklet-subject-chip">
+                    {activeExam.examCategory === 'basic' ? '化学基礎' : '化　学'}
+                  </span>
+                  <span className="text-xs font-bold text-slate-700">
+                    （解答番号 <span className="em-inline-slot-box">{flatEntries[0]?.markSlot}</span> 〜{' '}
+                    <span className="em-inline-slot-box">{flatEntries[flatEntries.length - 1]?.markSlot}</span>）
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setConstantsOpen(o => !o)}
+                  className="rounded border border-slate-400 bg-white px-2 py-0.5 text-[11px] font-extrabold text-slate-800 hover:bg-slate-100 cursor-pointer"
                 >
-                  <div className="flex items-center justify-between gap-2 mb-2">
-                    <div className="flex items-center gap-2">
-                      <span className="rounded-md bg-[#e6f5f2] px-2 py-0.5 text-xs font-extrabold text-[#16697a]">
-                        {item.label}
-                      </span>
-                      <span className="text-xs font-bold text-slate-500">配点 {item.points}点 ・ {item.skill}</span>
-                    </div>
-                    <button
-                      type="button"
-                      onClick={() => toggleFlag(item.id)}
-                      className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-xs font-bold cursor-pointer ${
-                        flagged
-                          ? 'border-amber-400 bg-amber-50 text-amber-800'
-                          : 'border-slate-200 bg-slate-50 text-slate-500 hover:bg-slate-100'
-                      }`}
-                    >
-                      {flagged ? <BookmarkCheck size={13} /> : <Bookmark size={13} />}
-                      <span>{flagged ? '見直し中' : '見直し付箋'}</span>
-                    </button>
-                  </div>
+                  {constantsOpen ? '▲ 原子量・定数欄をたたむ' : '▼ 原子量・定数欄を開く'}
+                </button>
+              </div>
 
-                  <div className="whitespace-pre-line text-sm leading-relaxed text-[#1c2a39] mb-3">
-                    {formatText(item.stem)}
-                  </div>
+              {constantsOpen && activeExam.constantsNote && (
+                <div className="em-booklet-constants-box">
+                  {activeExam.constantsNote}
+                </div>
+              )}
+            </div>
 
-                  {item.imageUrl && (
-                    <figure className="mb-3 rounded-xl border border-slate-200 bg-[#fdfcf8] p-2.5">
-                      <img
-                        src={item.imageUrl}
-                        alt={item.imageCaption || item.label}
-                        className="mx-auto max-h-64 w-auto max-w-full object-contain"
-                      />
-                      {item.imageCaption && (
-                        <figcaption className="mt-1 text-center text-xs font-bold text-slate-600">
-                          {item.imageCaption}
-                        </figcaption>
-                      )}
-                    </figure>
+            {/* 大問見出し・リード文・実験図 */}
+            <div className="em-daimon-header">
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
+                <div className="flex items-baseline gap-2.5">
+                  <span className="em-daimon-box">{currentSec.daimonLabel}</span>
+                  <h2 className="text-base sm:text-lg font-black text-slate-900">
+                    {currentSec.title}
+                  </h2>
+                </div>
+                <span className="text-xs font-extrabold text-slate-600 shrink-0">
+                  必答問題（配点 {currentSecPoints}点{currentSec.recommendedMinutes ? `・目安 ${currentSec.recommendedMinutes}分` : ''}）
+                </span>
+              </div>
+
+              {currentSec.leadText && (
+                <div className="mt-2.5 whitespace-pre-line text-sm leading-relaxed text-slate-800">
+                  {formatText(currentSec.leadText)}
+                </div>
+              )}
+
+              {currentSec.imageUrl && (
+                <figure className="em-booklet-figure mt-3">
+                  <img
+                    src={currentSec.imageUrl}
+                    alt={currentSec.imageCaption || currentSec.title}
+                    className="mx-auto max-h-80 w-auto max-w-full object-contain"
+                  />
+                  {currentSec.imageCaption && (
+                    <figcaption className="mt-1.5 text-center text-xs font-bold text-slate-700">
+                      {currentSec.imageCaption}
+                    </figcaption>
                   )}
+                </figure>
+              )}
+            </div>
 
-                  <div className="grid grid-cols-1 gap-2">
-                    {item.choices.map((choice, cIdx) => {
-                      const selected = picked === cIdx;
-                      return (
+            {/* 設問リスト */}
+            <div className="space-y-6 mt-5">
+              {currentSec.items.map(item => {
+                const picked = answers[item.id];
+                const itemElims = eliminated[item.id] ?? [];
+                const flagged = flags.includes(item.id);
+                const slot = slotByItemId.get(item.id) ?? '?';
+
+                return (
+                  <article
+                    key={item.id}
+                    className={`em-booklet-question ${Number.isInteger(picked) ? 'is-answered' : ''}`}
+                    data-mock-question={item.id}
+                  >
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="em-question-label">{item.label}</span>
+                        <span className="text-xs font-extrabold text-slate-800">
+                          解答番号 <span className="em-inline-slot-box">{slot}</span>
+                        </span>
+                        <span className="rounded bg-slate-100 px-2 py-0.5 text-[11px] font-bold text-slate-600">
+                          配点 {item.points}点
+                        </span>
+                      </div>
+
+                      <div className="flex items-center gap-1.5">
+                        <span className="hidden sm:inline text-[11px] font-bold text-slate-400">
+                          ×ボタンで選択肢を消去できます
+                        </span>
                         <button
-                          key={cIdx}
                           type="button"
-                          aria-pressed={selected}
-                          onClick={() => setAnswers(prev => ({ ...prev, [item.id]: cIdx }))}
-                          className={`flex items-start gap-2.5 rounded-xl border p-3 text-left text-sm leading-relaxed transition cursor-pointer ${
-                            selected
-                              ? 'border-[#1f5c53] bg-[#edf9f6] font-bold text-[#123c36] shadow-2xs'
-                              : 'border-slate-200 bg-[#fffdf9] text-slate-800 hover:border-slate-300 hover:bg-white'
+                          onClick={() => toggleFlag(item.id)}
+                          className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-xs font-extrabold cursor-pointer ${
+                            flagged
+                              ? 'border-amber-500 bg-amber-50 text-amber-900'
+                              : 'border-slate-300 bg-white text-slate-600 hover:bg-slate-50'
                           }`}
                         >
-                          <span className="font-extrabold text-[#1f5c53] shrink-0">{circled[cIdx] ?? cIdx + 1}</span>
-                          <span className="min-w-0 break-words">{formatText(choice)}</span>
+                          {flagged ? <BookmarkCheck size={13} /> : <Bookmark size={13} />}
+                          <span>{flagged ? '見直し★' : '付箋'}</span>
                         </button>
-                      );
-                    })}
-                  </div>
-                </article>
-              );
-            })}
-          </div>
+                      </div>
+                    </div>
 
-          <div className="flex items-center justify-between border-t border-slate-200 pt-3">
-            <button
-              type="button"
-              disabled={sectionIdx === 0}
-              onClick={() => {
-                setSectionIdx(i => Math.max(0, i - 1));
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              className="inline-flex items-center gap-1 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-bold text-slate-700 disabled:opacity-40 cursor-pointer"
-            >
-              <ChevronLeft size={15} />
-              前の大問へ
-            </button>
+                    <div className="em-booklet-stem whitespace-pre-line">
+                      {formatText(item.stem)}
+                    </div>
 
-            {sectionIdx < activeExam.sections.length - 1 ? (
+                    {item.imageUrl && (
+                      <figure className="em-booklet-figure my-3">
+                        <img
+                          src={item.imageUrl}
+                          alt={item.imageCaption || item.label}
+                          className="mx-auto max-h-64 w-auto max-w-full object-contain"
+                        />
+                        {item.imageCaption && (
+                          <figcaption className="mt-1 text-center text-xs font-bold text-slate-700">
+                            {item.imageCaption}
+                          </figcaption>
+                        )}
+                      </figure>
+                    )}
+
+                    <div className="mt-3 space-y-2">
+                      {item.choices.map((choice, cIdx) => {
+                        const selected = picked === cIdx;
+                        const isEliminated = itemElims.includes(cIdx) && !selected;
+                        return (
+                          <div key={cIdx} className="flex items-stretch gap-1.5">
+                            <button
+                              type="button"
+                              aria-pressed={selected}
+                              onClick={() => setAnswers(prev => ({ ...prev, [item.id]: cIdx }))}
+                              className={`em-booklet-choice flex-1 ${selected ? 'is-selected' : ''} ${
+                                isEliminated ? 'is-eliminated' : ''
+                              }`}
+                            >
+                              <span className={`em-booklet-choice-num ${selected ? 'is-selected' : ''}`}>
+                                {CIRCLED_NUMS[cIdx] ?? cIdx + 1}
+                              </span>
+                              <span className="min-w-0 flex-1 break-words text-left">
+                                {formatText(choice)}
+                              </span>
+                            </button>
+                            <button
+                              type="button"
+                              title={itemElims.includes(cIdx) ? '消去スラッシュを解除' : 'この選択肢を消去（×）'}
+                              aria-label={`選択肢${cIdx + 1}を消去`}
+                              aria-pressed={itemElims.includes(cIdx)}
+                              onClick={e => toggleEliminateChoice(item.id, cIdx, e)}
+                              className={`em-slash-btn ${itemElims.includes(cIdx) ? 'is-active' : ''}`}
+                            >
+                              <Slash size={13} aria-hidden="true" />
+                            </button>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+
+            {/* 冊子下部ページ送り */}
+            <div className="mt-6 flex items-center justify-between border-t-2 border-slate-800 pt-4">
               <button
                 type="button"
+                disabled={sectionIdx === 0}
                 onClick={() => {
-                  setSectionIdx(i => Math.min(activeExam.sections.length - 1, i + 1));
+                  setSectionIdx(i => Math.max(0, i - 1));
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="inline-flex items-center gap-1 rounded-xl bg-[#1f5c53] px-4 py-2 text-xs font-extrabold text-white cursor-pointer"
+                className="inline-flex items-center gap-1 rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-xs font-extrabold text-slate-800 disabled:opacity-40 cursor-pointer"
               >
-                次の大問へ
-                <ChevronRight size={15} />
+                <ChevronLeft size={15} />
+                前の大問へ
               </button>
-            ) : (
+
+              <span className="text-xs font-black text-slate-600">
+                {sectionIdx + 1} / {activeExam.sections.length} 大問
+              </span>
+
+              {sectionIdx < activeExam.sections.length - 1 ? (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSectionIdx(i => Math.min(activeExam.sections.length - 1, i + 1));
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="inline-flex items-center gap-1 rounded-xl bg-slate-900 px-4 py-2.5 text-xs font-extrabold text-white hover:bg-slate-800 cursor-pointer"
+                >
+                  次の大問へ
+                  <ChevronRight size={15} />
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setConfirmSubmit(true)}
+                  className="inline-flex items-center gap-1 rounded-xl bg-[#1f5c53] px-4 py-2.5 text-xs font-extrabold text-white hover:bg-[#16443d] cursor-pointer"
+                >
+                  <Send size={14} />
+                  答案を提出して採点
+                </button>
+              )}
+            </div>
+          </section>
+
+          {/* 右ペイン（PC常時表示）：本番型マーク解答用紙 */}
+          <aside className="em-marksheet-pane hidden xl:flex" aria-label="マーク解答用紙">
+            <div className="em-marksheet-header">
+              <div className="flex items-center justify-between">
+                <strong className="text-xs font-black tracking-wide text-emerald-950">
+                  マーク解答用紙（{activeExam.examCategory === 'basic' ? '化学基礎' : '化学'}）
+                </strong>
+                <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-[11px] font-black text-emerald-900">
+                  {answeredTotal} / {flatEntries.length} 塗潰済
+                </span>
+              </div>
+              <p className="mt-0.5 text-[11px] font-bold text-slate-500">
+                解答番号を押すと設問へ移動・楕円①〜④で直接マーク可能
+              </p>
+            </div>
+
+            <div className="em-marksheet-body">
+              {flatEntries.map((entry, idx) => {
+                const picked = answers[entry.item.id];
+                const flagged = flags.includes(entry.item.id);
+                const prevSecId = idx > 0 ? flatEntries[idx - 1]?.section.id : null;
+                const showDaimonDivider = entry.section.id !== prevSecId;
+
+                return (
+                  <React.Fragment key={entry.item.id}>
+                    {showDaimonDivider && (
+                      <div className="em-marksheet-daimon-divider">
+                        <span>{entry.section.daimonLabel}</span>
+                        {entry.section.recommendedMinutes && (
+                          <span>目安 {entry.section.recommendedMinutes}分</span>
+                        )}
+                      </div>
+                    )}
+                    <div
+                      className={`em-marksheet-row ${
+                        entry.sectionIndex === sectionIdx ? 'is-active-sec' : ''
+                      } ${flagged ? 'is-flagged' : ''}`}
+                    >
+                      <button
+                        type="button"
+                        onClick={() => jumpToQuestion(entry.sectionIndex, entry.item.id)}
+                        className="em-marksheet-slot-btn"
+                        title={`${entry.section.daimonLabel} ${entry.item.label}へ移動`}
+                      >
+                        <span className="em-mark-katakana">{entry.markSlot}</span>
+                        <span className="text-[10px] font-bold text-slate-500">
+                          {entry.item.label}
+                          {flagged ? '★' : ''}
+                        </span>
+                      </button>
+
+                      <div className="em-marksheet-bubbles">
+                        {entry.item.choices.map((_, cIdx) => {
+                          const isMarked = picked === cIdx;
+                          return (
+                            <button
+                              key={cIdx}
+                              type="button"
+                              onClick={() => setAnswers(prev => ({ ...prev, [entry.item.id]: cIdx }))}
+                              className={`em-oval-bubble ${isMarked ? 'is-marked' : ''}`}
+                              aria-label={`解答欄${entry.markSlot} 選択肢${cIdx + 1}`}
+                              aria-pressed={isMarked}
+                            >
+                              {cIdx + 1}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </React.Fragment>
+                );
+              })}
+            </div>
+
+            <div className="em-marksheet-footer">
               <button
                 type="button"
                 onClick={() => setConfirmSubmit(true)}
-                className="inline-flex items-center gap-1 rounded-xl bg-[#1f5c53] px-4 py-2 text-xs font-extrabold text-white cursor-pointer"
+                className="w-full inline-flex items-center justify-center gap-1.5 rounded-xl bg-[#1f5c53] py-2.5 text-xs font-extrabold text-white shadow-xs hover:bg-[#16443d] cursor-pointer"
               >
-                <Send size={14} />
-                答案を提出して採点する
+                <Send size={14} aria-hidden="true" />
+                答案を提出して一括採点する
               </button>
-            )}
-          </div>
-        </section>
+            </div>
+          </aside>
+        </div>
       </main>
     );
   }
@@ -737,18 +1016,46 @@ export function EikenMockExam({
     return true;
   });
 
+  const targetDiagnosis =
+    score.pct >= 92
+      ? {
+          badge: 'S判定：共テ満点圏・国公立2次余裕合格レベル！',
+          tone: 'bg-emerald-100 text-emerald-950 border-emerald-300',
+          detail: '共通テスト本番で9割超を安定確保でき、難関国公立・医学部の2次記述にも余裕をもって挑める完成度です。',
+        }
+      : score.pct >= 84
+      ? {
+          badge: 'A判定：共通テスト85%突破・難関国公立合格圏！',
+          tone: 'bg-teal-100 text-teal-950 border-teal-300',
+          detail: '共通テスト本番の目標ライン（85%）に到達しています。失点した設問の計算トラップを潰せば9割・満点に届きます。',
+        }
+      : score.pct >= 70
+      ? {
+          badge: 'B判定：共通テスト標準突破（あと2〜3問で85%圏！）',
+          tone: 'bg-amber-100 text-amber-950 border-amber-300',
+          detail: '基礎〜標準知識は定着しています。大問別の得点率が低い分野を単元演習の「★★★共テ満点・2次」で補強しましょう。',
+        }
+      : {
+          badge: 'C判定：基礎〜標準単元の優先固めフェーズ',
+          tone: 'bg-slate-100 text-slate-800 border-slate-300',
+          detail: 'まずは「誤答・未解答」タブで【正解までの道すじ】を確認し、該当単元の要点まとめシートから復習しましょう。',
+        };
+
   return (
     <main className="em-page" data-mock-result={activeExam.id}>
       <header className="flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-slate-200 bg-[#fffdf8] p-4 shadow-xs">
         <div>
-          <span className="text-xs font-extrabold text-[#16697a]">共通テスト実戦模試 採点結果</span>
-          <h1 className="text-lg font-extrabold text-[#1c2a39]">{activeExam.title}</h1>
+          <span className="inline-flex items-center gap-1 text-xs font-extrabold text-[#16697a]">
+            <Sparkles size={13} aria-hidden="true" />
+            大学入学共通テスト 実戦模試 採点・2次力診断シート
+          </span>
+          <h1 className="mt-0.5 text-lg font-extrabold text-[#1c2a39]">{activeExam.title}</h1>
         </div>
         <div className="flex gap-2">
           <button
             type="button"
             onClick={() => startExam(activeExam, false)}
-            className="inline-flex items-center gap-1 rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs font-bold text-slate-700 cursor-pointer"
+            className="inline-flex items-center gap-1 rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50 cursor-pointer"
           >
             <RotateCcw size={14} />
             解き直す
@@ -756,61 +1063,97 @@ export function EikenMockExam({
           <button
             type="button"
             onClick={() => setPhase('select')}
-            className="inline-flex items-center gap-1 rounded-xl bg-[#1f5c53] px-3.5 py-2 text-xs font-extrabold text-white cursor-pointer"
+            className="inline-flex items-center gap-1 rounded-xl bg-[#1f5c53] px-3.5 py-2 text-xs font-extrabold text-white hover:bg-[#16443d] cursor-pointer"
           >
+            <LayoutGrid size={14} />
             模試一覧へ
           </button>
         </div>
       </header>
 
-      <section className="rounded-2xl border border-slate-200 bg-white p-4 shadow-xs">
-        <div className="flex flex-wrap items-baseline justify-between gap-4 border-b border-slate-200 pb-3">
-          <div className="flex flex-wrap items-baseline gap-3">
+      {/* 総合スコア＆共通テスト基準ライン比較 */}
+      <section className="rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 shadow-xs space-y-4">
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-4">
+          <div className="flex flex-wrap items-baseline gap-4">
             <div>
-              <span className="text-xs font-bold text-slate-500">総合得点</span>
-              <div className="text-3xl font-black text-[#1f5c53]">
-                {score.earnedPoints} <small className="text-base font-bold text-slate-500">/ {score.totalPoints} 点（{score.pct}%）</small>
+              <span className="text-xs font-extrabold text-slate-500">総合得点（マーク換算）</span>
+              <div className="text-3xl sm:text-4xl font-black text-[#1f5c53] tabular-nums">
+                {score.earnedPoints}{' '}
+                <small className="text-base font-bold text-slate-500">
+                  / {score.totalPoints} 点（{score.pct}%）
+                </small>
               </div>
             </div>
-            <span
-              className={`rounded-full px-3 py-1 text-xs font-extrabold ${
-                score.pct >= 90
-                  ? 'bg-emerald-100 text-emerald-900'
-                  : score.pct >= 80
-                  ? 'bg-teal-100 text-teal-900'
-                  : score.pct >= 65
-                  ? 'bg-amber-100 text-amber-900'
-                  : 'bg-slate-100 text-slate-700'
-              }`}
-            >
-              {score.pct >= 90
-                ? '共通テスト9割突破・最難関圏'
-                : score.pct >= 80
-                ? '共通テスト8割突破・難関国公立圏'
-                : score.pct >= 65
-                ? '共通テスト標準突破圏（あと一歩で8割！）'
-                : '重要単元のまとめプリントから復習しよう'}
-            </span>
+            <div className={`rounded-xl border px-3 py-2 text-xs ${targetDiagnosis.tone}`}>
+              <div className="font-black">{targetDiagnosis.badge}</div>
+              <p className="mt-0.5 text-[11px] font-semibold opacity-90">{targetDiagnosis.detail}</p>
+            </div>
           </div>
-          <div className="text-xs font-bold text-slate-600 space-x-3">
-            <span>正解数：{score.correctCount} / {score.totalCount} 問</span>
-            <span>所要時間：{formatDuration(elapsedSec)} / 目安 {activeExam.timeLimitMinutes}分</span>
+
+          <div className="text-xs font-bold text-slate-600 space-y-1">
+            <div>正解マーク数：{score.correctCount} / {score.totalCount} 欄</div>
+            <div>所要時間：{formatDuration(elapsedSec)} ／ 制限 {activeExam.timeLimitMinutes}分</div>
           </div>
         </div>
 
-        <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+        {/* 基準ラインゲージ（全国平均60% / 難関国公立85% / 医・旧帝2次余裕92%） */}
+        <div>
+          <div className="flex items-center justify-between text-[11px] font-bold text-slate-500 mb-1">
+            <span>得点率ゲージ（共通テスト目標ライン比較）</span>
+            <span>全国平均目安 60% ／ 難関国公立 85% ／ 2次余裕合格 92%</span>
+          </div>
+          <div className="relative h-3 w-full rounded-full bg-slate-100 overflow-hidden border border-slate-200">
+            <div
+              className="h-full rounded-full bg-gradient-to-r from-[#2a8c82] to-[#16594f] transition-all"
+              style={{ width: `${Math.min(100, score.pct)}%` }}
+            />
+            <div className="absolute top-0 bottom-0 w-0.5 bg-slate-400" style={{ left: '60%' }} title="平均目安 60%" />
+            <div className="absolute top-0 bottom-0 w-0.5 bg-amber-500" style={{ left: '85%' }} title="難関国公立 85%" />
+            <div className="absolute top-0 bottom-0 w-0.5 bg-emerald-700" style={{ left: '92%' }} title="2次余裕 92%" />
+          </div>
+        </div>
+
+        {/* マーク番号別 ○× 一覧ストリップ */}
+        <div className="flex flex-wrap gap-1.5 pt-1">
+          {flatEntries.map(entry => {
+            const picked = answers[entry.item.id];
+            const ok = picked === entry.item.answer;
+            return (
+              <a
+                key={entry.item.id}
+                href={`#rev-${entry.item.id}`}
+                className={`inline-flex flex-col items-center rounded-lg border px-2 py-1 text-[11px] font-extrabold no-underline ${
+                  ok
+                    ? 'border-emerald-300 bg-emerald-50 text-emerald-900'
+                    : 'border-rose-300 bg-rose-50 text-rose-900'
+                }`}
+              >
+                <span>[{entry.markSlot}]</span>
+                <span>{ok ? '○' : '×'}</span>
+              </a>
+            );
+          })}
+        </div>
+
+        {/* 大問別スコア分析 */}
+        <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
           {score.sectionScores.map(sec => {
             const secPct = sec.maxPoints > 0 ? Math.round((sec.earnedPoints / sec.maxPoints) * 100) : 0;
             return (
-              <div key={sec.id} className="rounded-xl border border-slate-200/90 bg-[#fffdf8] p-2.5 text-xs">
+              <div key={sec.id} className="rounded-xl border border-slate-200/90 bg-[#fffdf8] p-3 text-xs">
                 <div className="flex items-center justify-between font-extrabold text-slate-800">
-                  <span>{sec.daimonLabel}</span>
-                  <span>{sec.earnedPoints} / {sec.maxPoints} 点（{secPct}%）</span>
+                  <span>
+                    {sec.daimonLabel}
+                    {sec.recommendedMinutes ? `（目安${sec.recommendedMinutes}分）` : ''}
+                  </span>
+                  <span className="tabular-nums">
+                    {sec.earnedPoints} / {sec.maxPoints} 点（{secPct}%）
+                  </span>
                 </div>
                 <p className="mt-0.5 truncate text-slate-500">{sec.title}</p>
                 <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-slate-200/80" aria-hidden="true">
                   <div
-                    className={`h-full rounded-full ${secPct >= 80 ? 'bg-emerald-600' : secPct >= 60 ? 'bg-amber-500' : 'bg-rose-500'}`}
+                    className={`h-full rounded-full ${secPct >= 85 ? 'bg-emerald-600' : secPct >= 65 ? 'bg-amber-500' : 'bg-rose-500'}`}
                     style={{ width: `${secPct}%` }}
                   />
                 </div>
@@ -822,18 +1165,18 @@ export function EikenMockExam({
 
       <div className="flex flex-wrap gap-1.5" role="tablist" aria-label="解説フィルター">
         {([
-          ['all', `全問（${flatEntries.length}）`],
-          ['wrong', `誤答・未解答（${flatEntries.length - score.correctCount}）`],
-          ['flagged', `見直し付箋（${flags.length}）`],
+          ['all', `全設問（${flatEntries.length}）`],
+          ['wrong', `誤答・未マークのみ（${flatEntries.length - score.correctCount}）`],
+          ['flagged', `見直し付箋★（${flags.length}）`],
         ] as const).map(([key, label]) => (
           <button
             key={key}
             type="button"
             onClick={() => setResultFilter(key)}
-            className={`rounded-full border px-3 py-1.5 text-xs font-extrabold cursor-pointer ${
+            className={`rounded-full border px-3.5 py-1.5 text-xs font-extrabold cursor-pointer ${
               resultFilter === key
                 ? 'border-[#1f5c53] bg-[#1f5c53] text-white'
-                : 'border-slate-200 bg-white text-slate-700'
+                : 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50'
             }`}
           >
             {label}
@@ -842,33 +1185,34 @@ export function EikenMockExam({
       </div>
 
       <section className="space-y-4">
-        {filteredEntries.map(({ section, item, globalNo }) => {
+        {filteredEntries.map(({ section, item, markSlot }) => {
           const picked = answers[item.id];
           const isCorrect = picked === item.answer;
-          const circled = ['①', '②', '③', '④'];
           return (
             <article
+              id={`rev-${item.id}`}
               key={item.id}
               className="rounded-2xl border border-slate-200 bg-white p-4 shadow-xs space-y-3"
             >
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   {isCorrect ? (
                     <CheckCircle2 size={18} className="text-emerald-600 shrink-0" />
                   ) : (
                     <XCircle size={18} className="text-rose-600 shrink-0" />
                   )}
+                  <span className="em-inline-slot-box">{markSlot}</span>
                   <strong className="text-sm font-extrabold text-slate-800">
-                    通し問{globalNo}（{section.daimonLabel} {item.label}）
+                    {section.daimonLabel} {item.label}
                   </strong>
-                  <span className="text-xs font-bold text-slate-500">{item.points}点 ・ {item.skill}</span>
+                  <span className="text-xs font-bold text-slate-500">配点 {item.points}点 ・ {item.skill}</span>
                 </div>
                 <span
                   className={`rounded-full px-2.5 py-0.5 text-xs font-extrabold ${
                     isCorrect ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'
                   }`}
                 >
-                  あなたの解答：{Number.isInteger(picked) ? circled[picked] : '未解答'} ／ 正解：{circled[item.answer]}
+                  あなたのマーク：{Number.isInteger(picked) ? CIRCLED_NUMS[picked] : '未マーク'} ／ 正解：{CIRCLED_NUMS[item.answer]}
                 </span>
               </div>
 
@@ -935,7 +1279,7 @@ export function EikenMockExam({
                     >
                       <div className="flex items-start justify-between gap-2">
                         <div>
-                          <span className="font-extrabold mr-1">{circled[cIdx]}</span>
+                          <span className="font-extrabold mr-1">{CIRCLED_NUMS[cIdx]}</span>
                           {formatText(choice)}
                         </div>
                         {(isAns || isUserPick) && (

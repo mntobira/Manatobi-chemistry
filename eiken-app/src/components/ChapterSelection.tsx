@@ -55,6 +55,7 @@ export function ChapterSelection({
   const groups = useMemo(() => getChapterGroups(subject), [subject]);
 
   const [expandedChapterId, setExpandedChapterId] = useState<string | null>(null);
+  const [levelFilter, setLevelFilter] = useState<'all' | 'foundation' | 'kyotsu_standard' | 'kyotsu_2ji'>('all');
   const [activeGroupTitle, setActiveGroupTitle] = useState(
     groups.some(g => g.title === rememberedGroup) ? rememberedGroup! : groups[0]?.title || '',
   );
@@ -80,18 +81,38 @@ export function ChapterSelection({
 
   const activeGroup = groups.find(group => group.title === activeGroupTitle) || groups[0];
 
+  const allCourseChapters = useMemo(() => groups.flatMap(g => g.chapters), [groups]);
+
+  const courseTierStats = useMemo(() => {
+    const counts = {
+      total: allCourseChapters.length,
+      foundation: 0,
+      kyotsu_standard: 0,
+      kyotsu_2ji: 0,
+    };
+    for (const c of allCourseChapters) {
+      const lv = c.targetLevel ?? 'kyotsu_standard';
+      counts[lv] += 1;
+    }
+    return counts;
+  }, [allCourseChapters]);
+
   const chapterNumberById = useMemo(() => {
     const m = new Map<string, number>();
-    groups.flatMap(g => g.chapters).forEach((c, i) => m.set(c.id, i));
+    allCourseChapters.forEach((c, i) => m.set(c.id, i));
     return m;
-  }, [groups]);
+  }, [allCourseChapters]);
 
   const unitSections = useMemo(() => {
-    const chapters = activeGroup?.chapters ?? [];
+    const rawChapters = activeGroup?.chapters ?? [];
+    const chapters =
+      levelFilter === 'all'
+        ? rawChapters
+        : rawChapters.filter(c => (c.targetLevel ?? 'kyotsu_standard') === levelFilter);
     return buildUnitSections<Chapter>(subject, chapters, c =>
       (mode === 'mini_test' ? c.miniTest || [] : c.practiceProblems || []).length,
     );
-  }, [subject, activeGroup, mode]);
+  }, [subject, activeGroup, mode, levelFilter]);
 
   const orderedChapters = useMemo(() => unitSections.flatMap(sec => sec.chapters), [unitSections]);
   const unitSectionByChapter = useMemo(() => {
@@ -218,31 +239,59 @@ export function ChapterSelection({
             tabIndex={0}
             className="min-h-0 flex-1 touch-pan-y overflow-y-auto overscroll-contain rounded-2xl border border-slate-200/80 bg-white/35 p-3 pb-6 sm:p-4 sm:pb-6 [-webkit-overflow-scrolling:touch] [scrollbar-gutter:stable]"
           >
-            <div className="mb-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-200/70 pb-2.5">
-              <div className="flex items-center gap-2 min-w-0">
-                <span
-                  className="inline-flex items-center rounded-md px-2 py-0.5 text-[11px] font-extrabold text-white"
-                  style={{ backgroundColor: theme.accent }}
-                >
-                  {splitTabTitle(activeGroup.title, groups.indexOf(activeGroup)).kicker}
+            <div className="mb-3 flex flex-col gap-2 border-b border-slate-200/70 pb-2.5">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div className="flex items-center gap-2 min-w-0">
+                  <span
+                    className="inline-flex items-center rounded-md px-2 py-0.5 text-[11px] font-extrabold text-white"
+                    style={{ backgroundColor: theme.accent }}
+                  >
+                    {splitTabTitle(activeGroup.title, groups.indexOf(activeGroup)).kicker}
+                  </span>
+                  <p className="text-sm font-extrabold text-slate-800 truncate">
+                    {splitTabTitle(activeGroup.title, groups.indexOf(activeGroup)).label}
+                  </p>
+                </div>
+                <span className="text-xs font-bold text-slate-500">
+                  全{courseTierStats.total}単元網羅（表示中 {orderedChapters.length}単元・計
+                  {orderedChapters.reduce(
+                    (acc, c) =>
+                      acc +
+                      (mode === 'mini_test' ? c.miniTest || [] : c.practiceProblems || []).reduce(
+                        (s, q) => s + (q.subQuestions?.length || 1),
+                        0,
+                      ),
+                    0,
+                  )}
+                  問）
                 </span>
-                <p className="text-sm font-extrabold text-slate-800 truncate">
-                  {splitTabTitle(activeGroup.title, groups.indexOf(activeGroup)).label}
-                </p>
               </div>
-              <span className="text-xs font-bold text-slate-500">
-                {orderedChapters.length}単元・計
-                {orderedChapters.reduce(
-                  (acc, c) =>
-                    acc +
-                    (mode === 'mini_test' ? c.miniTest || [] : c.practiceProblems || []).reduce(
-                      (s, q) => s + (q.subQuestions?.length || 1),
-                      0,
-                    ),
-                  0,
-                )}
-                問（1画面まとめプリントつき）
-              </span>
+
+              <div className="flex flex-wrap items-center gap-1.5" role="group" aria-label="難易度レベル絞り込み">
+                {([
+                  ['all', `すべて（分野全${courseTierStats.total}単元）`],
+                  ['foundation', `★基礎固め（${courseTierStats.foundation}）`],
+                  ['kyotsu_standard', `★★共テ本番85%（${courseTierStats.kyotsu_standard}）`],
+                  ['kyotsu_2ji', `★★★共テ満点・2次余裕（${courseTierStats.kyotsu_2ji}）`],
+                ] as const).map(([key, label]) => (
+                  <button
+                    key={key}
+                    type="button"
+                    aria-pressed={levelFilter === key}
+                    onClick={() => {
+                      setLevelFilter(key);
+                      setExpandedChapterId(null);
+                    }}
+                    className={`rounded-full border px-2.5 py-1 text-[11px] font-extrabold transition cursor-pointer ${
+                      levelFilter === key
+                        ? 'border-slate-800 bg-slate-800 text-white'
+                        : 'border-slate-200 bg-white/90 text-slate-600 hover:bg-white'
+                    }`}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
             </div>
 
             <div className="chapter-route-list unit-card-list xl:!grid-cols-2">
@@ -287,6 +336,13 @@ export function ChapterSelection({
                   ) : null;
                 const expanded = expandedChapterId === chapter.id;
                 const totalSubQuestions = questions.reduce((sum, q) => sum + (q.subQuestions?.length || 1), 0);
+                const tier = chapter.targetLevel ?? 'kyotsu_standard';
+                const levelBadge =
+                  tier === 'foundation'
+                    ? { label: '★基礎固め', tier: 'foundation' as const }
+                    : tier === 'kyotsu_2ji'
+                    ? { label: '★★★満点・2次', tier: 'kyotsu_2ji' as const }
+                    : { label: '★★共テ本番', tier: 'kyotsu_standard' as const };
 
                 return (
                   <React.Fragment key={chapter.id}>
@@ -297,6 +353,7 @@ export function ChapterSelection({
                         title={chapter.abstractTitle}
                         topics={chapter.topics}
                         questionCount={questions.length}
+                        levelBadge={levelBadge}
                         subCountLabel={`全${totalSubQuestions}問`}
                         countLabel={`1画面まとめプリント ＋ 大問${questions.length}題（設問${totalSubQuestions}問）`}
                         status={status}

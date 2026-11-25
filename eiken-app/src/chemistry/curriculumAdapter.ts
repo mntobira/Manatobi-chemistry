@@ -1,7 +1,7 @@
 import type { Chapter, Part, Problem, SubQuestion } from '../types/curriculum';
 import { SQ_BODY_MARK, SQ_MARK } from '../utils/explanationFormat';
 import { CHEM_COURSES, type ChemCourseId } from '../eiken/config';
-import type { ChemChapterSpec, ChemProblemSpec, ChemSubItem } from './types';
+import type { ChemChapterSpec, ChemDifficultyLevel, ChemProblemSpec, ChemSubItem } from './types';
 import { BASIC_MATTER_CHAPTERS } from './materials/basicMatter';
 import { BASIC_CHANGE_CHAPTERS } from './materials/basicChange';
 import { THEORY_CHAPTERS } from './materials/theory';
@@ -47,8 +47,58 @@ function deriveStructuredSteps(sub: ChemSubItem): string[] {
   ];
 }
 
-function toSubQuestion(sub: ChemSubItem): SubQuestion {
+function difficultyLevelToScore(level: ChemDifficultyLevel): number {
+  switch (level) {
+    case 'foundation':
+      return 2;
+    case 'kyotsu_standard':
+      return 4;
+    case 'kyotsu_2ji':
+      return 5;
+  }
+}
+
+export function inferChapterTargetLevel(spec: ChemChapterSpec): ChemDifficultyLevel {
+  if (spec.targetLevel) return spec.targetLevel;
+  const subDiffs = spec.problems.flatMap(p => p.subItems.map(s => s.difficulty).filter(Boolean));
+  if (subDiffs.includes('kyotsu_2ji')) return 'kyotsu_2ji';
+  if (subDiffs.includes('kyotsu_standard')) return 'kyotsu_standard';
+
+  const m = spec.id.match(/_ch(\d+)$/);
+  const chNo = m ? Number(m[1]) : 1;
+  switch (spec.course) {
+    case 'chem_basic_matter':
+      if (chNo <= 5) return 'foundation';
+      if (chNo <= 12) return 'kyotsu_standard';
+      return 'kyotsu_2ji';
+    case 'chem_basic_change':
+      if (chNo <= 5) return 'foundation';
+      if (chNo <= 14) return 'kyotsu_standard';
+      return 'kyotsu_2ji';
+    case 'chem_theory':
+      if (chNo <= 5) return 'foundation';
+      if (chNo <= 15) return 'kyotsu_standard';
+      return 'kyotsu_2ji';
+    case 'chem_inorganic':
+      if (chNo <= 5) return 'foundation';
+      if (chNo <= 13) return 'kyotsu_standard';
+      return 'kyotsu_2ji';
+    case 'chem_organic':
+      if (chNo <= 5) return 'foundation';
+      if (chNo <= 12) return 'kyotsu_standard';
+      return 'kyotsu_2ji';
+    case 'chem_polymer':
+      if (chNo <= 3) return 'foundation';
+      if (chNo <= 9) return 'kyotsu_standard';
+      return 'kyotsu_2ji';
+    default:
+      return 'kyotsu_standard';
+  }
+}
+
+function toSubQuestion(sub: ChemSubItem, fallbackLevel: ChemDifficultyLevel): SubQuestion {
   const fullLabel = sub.prompt ? `${sub.label}　${sub.prompt}` : sub.label;
+  const level = sub.difficulty ?? fallbackLevel;
   return {
     id: sub.id,
     label: fullLabel,
@@ -62,13 +112,17 @@ function toSubQuestion(sub: ChemSubItem): SubQuestion {
     detailedExplanation: {
       theme: sub.skill,
       steps: deriveStructuredSteps(sub),
+      difficulty: difficultyLevelToScore(level),
     },
     distractors: sub.reasons.map((why, index) => ({ no: index + 1, why })),
   };
 }
 
-export function chemProblemToCurriculum(spec: ChemProblemSpec): Problem {
-  const subs = spec.subItems.map(toSubQuestion);
+export function chemProblemToCurriculum(
+  spec: ChemProblemSpec,
+  fallbackLevel: ChemDifficultyLevel = 'kyotsu_standard',
+): Problem {
+  const subs = spec.subItems.map(s => toSubQuestion(s, fallbackLevel));
   const explanationBlocks = spec.subItems.map((sub, idx) => {
     const sqId = subs[idx]!.id;
     return `${SQ_MARK(sqId)}${SQ_BODY_MARK}${sub.explanation}`;
@@ -95,7 +149,8 @@ export function cleanChemUnitTitle(raw: string): string {
 }
 
 export function chemChapterToCurriculum(spec: ChemChapterSpec): Chapter {
-  const problems = spec.problems.map(chemProblemToCurriculum);
+  const targetLevel = inferChapterTargetLevel(spec);
+  const problems = spec.problems.map(p => chemProblemToCurriculum(p, targetLevel));
   const totalMarks = problems.reduce((sum, p) => sum + p.subQuestions.length, 0);
   const cleanUnit = cleanChemUnitTitle(spec.unitTitle);
   return {
@@ -104,6 +159,7 @@ export function chemChapterToCurriculum(spec: ChemChapterSpec): Chapter {
     abstractTitle: cleanUnit,
     realTitle: spec.tabTitle,
     questionGroup: spec.tabTitle,
+    targetLevel,
     topics: [...spec.topics],
     marks: totalMarks,
     ...(spec.summarySheet ? { summarySheet: spec.summarySheet } : {}),

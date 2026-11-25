@@ -1,5 +1,10 @@
 import type { ChemCourseId } from '../eiken/config';
 
+export type ChemDifficultyLevel =
+  | 'foundation'        // ★☆☆ 共通テスト基礎固め（確実に満点を取る土台）
+  | 'kyotsu_standard'   // ★★☆ 共通テスト本番レベル（85%突破の主戦場）
+  | 'kyotsu_2ji';       // ★★★ 共通テスト満点・国公立2次余裕レベル（差がつく探究・複合計算）
+
 export type ChemQuestionFormat =
   | 'statement_judge'      // 正誤判定（適当／誤りを含むものを選べ）
   | 'calculation'          // 量的関係・数値計算（mol・濃度・pH・滴定・平衡・熱・電池）
@@ -13,6 +18,8 @@ export interface ChemSubItem {
   label: string;
   /** 小問の問いかけ（単独大問では省略可） */
   prompt?: string;
+  /** 共通テスト本番形式のマーク番号ラベル（例: "ア", "イ", "1", "2"）。省略時は通し番号から自動付与 */
+  markSlot?: string;
   /** 4択の選択肢（①〜④） */
   choices: readonly [string, string, string, string];
   /** 正解の 0-based index (0..3) */
@@ -27,6 +34,8 @@ export interface ChemSubItem {
   steps?: readonly string[];
   /** 配点（共通テスト換算の目安） */
   points?: number;
+  /** 難易度レベル（基礎／共テ本番／共テ満点・2次余裕） */
+  difficulty?: ChemDifficultyLevel;
 }
 
 export interface ChemProblemSpec {
@@ -79,6 +88,8 @@ export interface ChemChapterSpec {
   topics: readonly string[];
   /** 演習の前に1画面で提示する「まとめプリント」（問題中・解説中も再表示可能） */
   summarySheet?: ChemSummarySheet;
+  /** 単元の標準ターゲット難易度（省略時は自動判定） */
+  targetLevel?: ChemDifficultyLevel;
   problems: readonly ChemProblemSpec[];
 }
 
@@ -87,12 +98,16 @@ export interface ChemMockItem extends ChemSubItem {
   points: number;
   imageUrl?: string;
   imageCaption?: string;
+  /** 目標解答時間の目安（分） */
+  targetMinutes?: number;
 }
 
 export interface ChemMockSection {
   id: string;
   daimonLabel: string;
   title: string;
+  /** 大問ごとの目安解答時間（分） */
+  recommendedMinutes?: number;
   leadText?: string;
   imageUrl?: string;
   imageCaption?: string;
@@ -107,6 +122,10 @@ export interface ChemMockExamSpec {
   round: number;
   title: string;
   subtitle: string;
+  /** 模試全体の難易度・対象レベル表示 */
+  levelBadge?: string;
+  /** 問題冊子冒頭の「必要があれば次の値を用いよ」共通定数・原子量一覧 */
+  constantsNote?: string;
   timeLimitMinutes: number;
   totalPoints: number;
   sections: readonly ChemMockSection[];

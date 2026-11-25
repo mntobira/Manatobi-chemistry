@@ -688,5 +688,65 @@ export const FIG_PETROLEUM_FRACTIONATION = svgDataUri(`
 </svg>
 `);
 
+/** 一次反応の一定半減期グラフ（[A] vs t）と アレニウスプロット（ln k vs 1/T） */
+export const FIG_FIRST_ORDER_ARRHENIUS = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 245" font-family="sans-serif">
+  <rect width="470" height="245" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="235" y="22" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#2A3B4C">共通テスト・2次頻出（①一次反応の一定半減期 t₁/₂ ／ ②アレニウスプロット ln k vs 1/T）</text>
+  <line x1="48" y1="202" x2="222" y2="202" stroke="#475569" stroke-width="2"/>
+  <line x1="48" y1="202" x2="48" y2="46" stroke="#475569" stroke-width="2"/>
+  <text x="135" y="230" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#334155">時間 t（一定間隔ごとに濃度が 1/2！）</text>
+  <text x="18" y="125" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#334155" transform="rotate(-90 18 125)">[N₂O₅]</text>
+  <path d="M 48 62 Q 82 118 102 132 Q 132 158 156 167 Q 186 181 212 185" fill="none" stroke="#0F766E" stroke-width="2.8"/>
+  <line x1="48" y1="132" x2="102" y2="132" stroke="#94A3B8" stroke-dasharray="3 3"/>
+  <line x1="102" y1="132" x2="102" y2="202" stroke="#94A3B8" stroke-dasharray="3 3"/>
+  <line x1="48" y1="167" x2="156" y2="167" stroke="#94A3B8" stroke-dasharray="3 3"/>
+  <line x1="156" y1="167" x2="156" y2="202" stroke="#94A3B8" stroke-dasharray="3 3"/>
+  <circle cx="48" cy="62" r="4" fill="#0F766E"/>
+  <circle cx="102" cy="132" r="4" fill="#0F766E"/>
+  <circle cx="156" cy="167" r="4" fill="#0F766E"/>
+  <text x="43" y="66" text-anchor="end" font-size="9.5" font-weight="bold" fill="#0F766E">c₀</text>
+  <text x="43" y="136" text-anchor="end" font-size="9.5" font-weight="bold" fill="#0F766E">c₀/2</text>
+  <text x="43" y="171" text-anchor="end" font-size="9.5" font-weight="bold" fill="#0F766E">c₀/4</text>
+  <text x="102" y="214" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#334155">t₁/₂</text>
+  <text x="156" y="214" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#334155">2t₁/₂</text>
+  <line x1="272" y1="202" x2="444" y2="202" stroke="#475569" stroke-width="2"/>
+  <line x1="272" y1="202" x2="272" y2="46" stroke="#475569" stroke-width="2"/>
+  <text x="358" y="230" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#334155">絶対温度の逆数 1 / T [K⁻¹]（右ほど低温）</text>
+  <text x="253" y="125" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#334155" transform="rotate(-90 253 125)">ln k</text>
+  <line x1="286" y1="68" x2="422" y2="190" stroke="#DC2626" stroke-width="2.6"/>
+  <text x="380" y="182" font-size="10" font-weight="bold" fill="#B91C1C">触媒なし（傾き −Ea/R）</text>
+  <line x1="286" y1="62" x2="432" y2="132" stroke="#2563EB" stroke-width="2.6" stroke-dasharray="5 3"/>
+  <text x="382" y="96" font-size="10" font-weight="bold" fill="#1D4ED8">正触媒あり（Ea小→傾き緩）</text>
+</svg>
+`);
+
+/** 薄層クロマトグラフィー（Rf値）と強酸性陽イオン交換カラムの模式図 */
+export const FIG_CHROMATOGRAPHY_ION_EXCHANGE = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 245" font-family="sans-serif">
+  <rect width="470" height="245" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="235" y="22" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#2A3B4C">クロマトグラフィーの吸着分離（左：Rf値）と強酸性陽イオン交換樹脂カラム（右）</text>
+  <rect x="44" y="48" width="142" height="156" rx="4" fill="#FFFFFF" stroke="#475569" stroke-width="2"/>
+  <line x1="44" y1="68" x2="186" y2="68" stroke="#0284C7" stroke-width="1.8" stroke-dasharray="4 3"/>
+  <text x="192" y="72" font-size="9.5" font-weight="bold" fill="#0369A1">溶媒先端 (b)</text>
+  <line x1="44" y1="184" x2="186" y2="184" stroke="#64748B" stroke-width="1.6"/>
+  <text x="192" y="188" font-size="9.5" font-weight="bold" fill="#334155">原点ライン</text>
+  <circle cx="92" cy="96" r="7" fill="#F59E0B"/>
+  <text x="115" y="99" font-size="10" font-weight="bold" fill="#B45309">成分P（吸着弱・Rf大）</text>
+  <circle cx="92" cy="146" r="7" fill="#10B981"/>
+  <text x="115" y="149" font-size="10" font-weight="bold" fill="#047857">成分Q（吸着強・Rf小）</text>
+  <text x="115" y="224" text-anchor="middle" font-size="10" font-weight="bold" fill="#334155">Rf ＝ 原点〜スポット距離 a ÷ 原点〜溶媒先端 b</text>
+  <rect x="292" y="48" width="108" height="136" rx="8" fill="#FEF3C7" stroke="#B45309" stroke-width="2"/>
+  <text x="346" y="72" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#92400E">R−SO₃H 型樹脂</text>
+  <text x="346" y="94" text-anchor="middle" font-size="10" fill="#78350F">Na⁺ 1個 → H⁺ 1個</text>
+  <text x="346" y="114" text-anchor="middle" font-size="10" font-weight="bold" fill="#B91C1C">Cu²⁺ 1個 → H⁺ 2個</text>
+  <text x="346" y="134" text-anchor="middle" font-size="10" font-weight="bold" fill="#7C2D12">Al³⁺ 1個 → H⁺ 3個</text>
+  <text x="346" y="160" text-anchor="middle" font-size="9.5" fill="#475569">(陰イオンは素通り)</text>
+  <line x1="346" y1="184" x2="346" y2="210" stroke="#2563EB" stroke-width="3"/>
+  <polygon points="340,206 352,206 346,215" fill="#2563EB"/>
+  <text x="346" y="229" text-anchor="middle" font-size="10" font-weight="bold" fill="#1D4ED8">流出 H⁺ mol ＝ 陽イオン電荷総 mol！</text>
+</svg>
+`);
+
 
 

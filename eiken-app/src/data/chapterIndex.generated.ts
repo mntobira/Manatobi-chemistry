@@ -50,6 +50,13 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "problemCount": 2
       },
       {
+        "id": "chem_basic_matter_ch16",
+        "title": "第1章 物質の構成と分離｜ペーパークロマトグラフィー・TLC の Rf 値計算と二段階抽出分離",
+        "abstractTitle": "ペーパークロマトグラフィー・TLC の Rf 値計算と二段階抽出分離",
+        "realTitle": "第1章 物質の構成と分離",
+        "problemCount": 1
+      },
+      {
         "id": "chem_basic_matter_ch05",
         "title": "第2章 原子の構造と周期律｜原子の構造・イオンの電子数・同位体と放射線（半減期）",
         "abstractTitle": "原子の構造・イオンの電子数・同位体と放射線（半減期）",
@@ -111,6 +118,13 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "abstractTitle": "【新課程】結晶質と非晶質（アモルファス）・昇華と凝華・粒子の熱運動",
         "realTitle": "第3章 化学結合と結晶",
         "problemCount": 2
+      },
+      {
+        "id": "chem_basic_matter_ch17",
+        "title": "第3章 化学結合と結晶｜分子結晶・イオン結晶・共有結合結晶の沸点／融点比較と配位結合・極性の完全攻略",
+        "abstractTitle": "分子結晶・イオン結晶・共有結合結晶の沸点／融点比較と配位結合・極性の完全攻略",
+        "realTitle": "第3章 化学結合と結晶",
+        "problemCount": 1
       }
     ]
   },
@@ -210,6 +224,13 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "problemCount": 2
       },
       {
+        "id": "chem_basic_change_ch19",
+        "title": "第3章 中和滴定と二段階滴定｜NaOH＋Na₂CO₃ 混合塩基（空気中 CO₂ 吸収劣化）の二段階滴定（ワルダー法）完全攻略",
+        "abstractTitle": "NaOH＋Na₂CO₃ 混合塩基（空気中 CO₂ 吸収劣化）の二段階滴定（ワルダー法）完全攻略",
+        "realTitle": "第3章 中和滴定と二段階滴定",
+        "problemCount": 1
+      },
+      {
         "id": "chem_basic_change_ch11",
         "title": "第4章 酸化還元と金属・電池｜酸化還元の定義・酸化数の決定ルール（例外含む）・酸化剤と還元剤",
         "abstractTitle": "酸化還元の定義・酸化数の決定ルール（例外含む）・酸化剤と還元剤",
@@ -243,6 +264,13 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "abstractTitle": "COD（化学的酸素要求量）の逆滴定と日常の酸化還元定量（漂白剤・ビタミンC）",
         "realTitle": "第4章 酸化還元と金属・電池",
         "problemCount": 2
+      },
+      {
+        "id": "chem_basic_change_ch20",
+        "title": "第4章 酸化還元と金属・電池｜実用一次電池・金属腐食と電気防食（トタン vs ブリキ・犠牲陽極）の完全比較",
+        "abstractTitle": "実用一次電池・金属腐食と電気防食（トタン vs ブリキ・犠牲陽極）の完全比較",
+        "realTitle": "第4章 酸化還元と金属・電池",
+        "problemCount": 1
       }
     ]
   },
@@ -349,6 +377,13 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "problemCount": 2
       },
       {
+        "id": "chem_theory_ch22",
+        "title": "第4章 熱化学と反応速度｜一次反応の「半減期一定則」グラフ解析とアレニウスの式（ln k vs 1/T）完全攻略",
+        "abstractTitle": "一次反応の「半減期一定則」グラフ解析とアレニウスの式（ln k vs 1/T）完全攻略",
+        "realTitle": "第4章 熱化学と反応速度",
+        "problemCount": 1
+      },
+      {
         "id": "chem_theory_ch12",
         "title": "第5章 化学平衡と電解質平衡｜化学平衡の法則（Kc・Kp・不均一系・解離度）とルシャトリエの原理",
         "abstractTitle": "化学平衡の法則（Kc・Kp・不均一系・解離度）とルシャトリエの原理",
@@ -396,6 +431,13 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "abstractTitle": "電気分解とファラデーの法則（極反応判定・イオン交換膜法・銅の電解精錬）",
         "realTitle": "第6章 電気化学（実用電池と電気分解）",
         "problemCount": 2
+      },
+      {
+        "id": "chem_theory_ch23",
+        "title": "第6章 電気化学（実用電池と電気分解）｜直列・並列電解槽のファラデー計算と混合電解液（Ag⁺・Cu²⁺・H⁺）の析出順序・過電圧",
+        "abstractTitle": "直列・並列電解槽のファラデー計算と混合電解液（Ag⁺・Cu²⁺・H⁺）の析出順序・過電圧",
+        "realTitle": "第6章 電気化学（実用電池と電気分解）",
+        "problemCount": 1
       }
     ]
   },
@@ -502,6 +544,13 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "problemCount": 2
       },
       {
+        "id": "chem_inorganic_ch19",
+        "title": "第3章 遷移元素（Fe・Cu・Ag・Cr・Mn）｜日常生活の合金（ステンレス・黄銅・青銅・ジュラルミン・白銅）と金属製錬の定量総合",
+        "abstractTitle": "日常生活の合金（ステンレス・黄銅・青銅・ジュラルミン・白銅）と金属製錬の定量総合",
+        "realTitle": "第3章 遷移元素（Fe・Cu・Ag・Cr・Mn）",
+        "problemCount": 1
+      },
+      {
         "id": "chem_inorganic_ch12",
         "title": "第4章 金属イオンの系統分離と定性分析｜金属陽イオンの系統分離（第1〜第6属）と陰イオン検出・総合推理",
         "abstractTitle": "金属陽イオンの系統分離（第1〜第6属）と陰イオン検出・総合推理",
@@ -528,6 +577,13 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "abstractTitle": "第1属（AgCl/PbCl₂ 熱湯分離・PbCrO₄）〜第6属の別ルート分離と陰イオン総合判定",
         "realTitle": "第4章 金属イオンの系統分離と定性分析",
         "problemCount": 2
+      },
+      {
+        "id": "chem_inorganic_ch20",
+        "title": "第4章 金属イオンの系統分離と定性分析｜金属硫化物（CuS vs ZnS）の溶解度積 Ksp と pH 制御による選択沈殿の定量計算",
+        "abstractTitle": "金属硫化物（CuS vs ZnS）の溶解度積 Ksp と pH 制御による選択沈殿の定量計算",
+        "realTitle": "第4章 金属イオンの系統分離と定性分析",
+        "problemCount": 1
       }
     ]
   },
@@ -606,6 +662,13 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "problemCount": 2
       },
       {
+        "id": "chem_organic_ch18",
+        "title": "第2章 酸素を含む脂肪族化合物｜エステル化平衡定数 K（＝4.0）の量的計算と環状エステル（ラクトン）・環状アミド（ラクタム）",
+        "abstractTitle": "エステル化平衡定数 K（＝4.0）の量的計算と環状エステル（ラクトン）・環状アミド（ラクタム）",
+        "realTitle": "第2章 酸素を含む脂肪族化合物",
+        "problemCount": 1
+      },
+      {
         "id": "chem_organic_ch08",
         "title": "第3章 芳香族化合物｜芳香族炭化水素（ベンゼンの構造と置換反応・光付加・トルエンとキシレンの酸化）",
         "abstractTitle": "芳香族炭化水素（ベンゼンの構造と置換反応・光付加・トルエンとキシレンの酸化）",
@@ -632,6 +695,13 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "abstractTitle": "芳香族アミンとアゾ化合物（アニリン製法・アセトアニリド・ジアゾ化とカップリング）",
         "realTitle": "第3章 芳香族化合物",
         "problemCount": 2
+      },
+      {
+        "id": "chem_organic_ch19",
+        "title": "第3章 芳香族化合物｜芳香族異性体総数（C₇H₈O・C₈H₁₀・C₈H₁₀O）と二置換ベンゼン位置決定（コルナーの絶対法）",
+        "abstractTitle": "芳香族異性体総数（C₇H₈O・C₈H₁₀・C₈H₁₀O）と二置換ベンゼン位置決定（コルナーの絶対法）",
+        "realTitle": "第3章 芳香族化合物",
+        "problemCount": 1
       },
       {
         "id": "chem_organic_ch12",
@@ -717,6 +787,13 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "problemCount": 2
       },
       {
+        "id": "chem_polymer_ch14",
+        "title": "第1章 天然高分子化合物（糖・タンパク質・核酸）｜ペプチドのアミノ酸配列決定（部分加水分解パズル・N末端／C末端）と最小分子量計算",
+        "abstractTitle": "ペプチドのアミノ酸配列決定（部分加水分解パズル・N末端／C末端）と最小分子量計算",
+        "realTitle": "第1章 天然高分子化合物（糖・タンパク質・核酸）",
+        "problemCount": 1
+      },
+      {
         "id": "chem_polymer_ch06",
         "title": "第2章 合成高分子化合物（繊維・樹脂・ゴム・機能性）｜合成繊維（6,6-ナイロン・6-ナイロン開環重合・アラミド・PET・ビニロンのアセタール化計算）",
         "abstractTitle": "合成繊維（6,6-ナイロン・6-ナイロン開環重合・アラミド・PET・ビニロンのアセタール化計算）",
@@ -750,46 +827,53 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "abstractTitle": "ポリビニルアルコール（PVA）のアセタール化度計算（ビニロン・ブチラール）とポリイミド",
         "realTitle": "第2章 合成高分子化合物（繊維・樹脂・ゴム・機能性）",
         "problemCount": 2
+      },
+      {
+        "id": "chem_polymer_ch15",
+        "title": "第2章 合成高分子化合物（繊維・樹脂・ゴム・機能性）｜SBR・NBR 共重合ゴムの組成比計算とイオン交換樹脂カラム（混合塩・アミノ酸分離）の完全攻略",
+        "abstractTitle": "SBR・NBR 共重合ゴムの組成比計算とイオン交換樹脂カラム（混合塩・アミノ酸分離）の完全攻略",
+        "realTitle": "第2章 合成高分子化合物（繊維・樹脂・ゴム・機能性）",
+        "problemCount": 1
       }
     ]
   }
 ];
 export const SUBJECT_STATS: Readonly<Record<string, SubjectStatsEntry>> = {
   "chem_basic_matter": {
-    "chapters": 15,
-    "units": 15,
-    "questions": 30,
-    "marks": 61
-  },
-  "chem_basic_change": {
-    "chapters": 18,
-    "units": 18,
-    "questions": 36,
-    "marks": 72
-  },
-  "chem_theory": {
-    "chapters": 21,
-    "units": 21,
-    "questions": 42,
-    "marks": 84
-  },
-  "chem_inorganic": {
-    "chapters": 18,
-    "units": 18,
-    "questions": 36,
-    "marks": 72
-  },
-  "chem_organic": {
     "chapters": 17,
     "units": 17,
-    "questions": 34,
-    "marks": 68
+    "questions": 32,
+    "marks": 69
+  },
+  "chem_basic_change": {
+    "chapters": 20,
+    "units": 20,
+    "questions": 38,
+    "marks": 80
+  },
+  "chem_theory": {
+    "chapters": 23,
+    "units": 23,
+    "questions": 44,
+    "marks": 92
+  },
+  "chem_inorganic": {
+    "chapters": 20,
+    "units": 20,
+    "questions": 38,
+    "marks": 80
+  },
+  "chem_organic": {
+    "chapters": 19,
+    "units": 19,
+    "questions": 36,
+    "marks": 76
   },
   "chem_polymer": {
-    "chapters": 13,
-    "units": 13,
-    "questions": 26,
-    "marks": 52
+    "chapters": 15,
+    "units": 15,
+    "questions": 28,
+    "marks": 60
   }
 };
 export function getChapterIndexOfSubject(subjectId: string | null | undefined): readonly ChapterIndexEntry[] {

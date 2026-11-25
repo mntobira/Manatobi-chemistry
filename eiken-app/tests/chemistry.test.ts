@@ -18,13 +18,13 @@ import { renderLatex, toChemLatex } from '../src/utils/mathTypeset';
 describe('Manatobi Chemistry Common Test Curriculum & Isolation', () => {
   it('registers all 6 chemistry courses with valid chapters, 1-screen summary sheets, 4+ questions per unit, and detailed explanations', () => {
     expect(CHEM_COURSES).toHaveLength(6);
-    expect(ALL_CHEM_CHAPTER_SPECS).toHaveLength(102);
-    expect(FLAT_CHEM_QUESTIONS.length).toBeGreaterThanOrEqual(409);
+    expect(ALL_CHEM_CHAPTER_SPECS).toHaveLength(114);
+    expect(FLAT_CHEM_QUESTIONS.length).toBeGreaterThanOrEqual(457);
 
     for (const course of CHEM_COURSES) {
       const chapters = getChaptersOfSubject(course.id);
       const stats = getSubjectStats(course.id);
-      expect(chapters.length).toBeGreaterThanOrEqual(2);
+      expect(chapters.length).toBeGreaterThanOrEqual(15);
       expect(stats.chapters).toBe(chapters.length);
 
       const parts = partsForCourse(course.id);
@@ -32,6 +32,7 @@ describe('Manatobi Chemistry Common Test Curriculum & Isolation', () => {
 
       for (const ch of chapters) {
         expect(ch.id.startsWith(`${course.id}_`)).toBe(true);
+        expect(['foundation', 'kyotsu_standard', 'kyotsu_2ji']).toContain(ch.targetLevel);
         expect(ch.summarySheet).toBeDefined();
         expect(ch.summarySheet?.formulas.length).toBeGreaterThanOrEqual(2);
         expect(ch.summarySheet?.table.rows.length).toBeGreaterThanOrEqual(3);
@@ -55,15 +56,26 @@ describe('Manatobi Chemistry Common Test Curriculum & Isolation', () => {
     }
   });
 
-  it('validates all 8 Common Test full mock exams (50pt Basic x4, 100pt Chemistry x4) with exact point totals', () => {
+  it('validates all 8 Common Test full mock exams (50pt Basic x4, 100pt Chemistry x4) with exact point totals and authentic structure', () => {
     expect(CHEM_MOCK_EXAMS).toHaveLength(8);
     for (const exam of CHEM_MOCK_EXAMS) {
+      expect(exam.levelBadge).toBeTruthy();
+      expect(exam.constantsNote).toBeTruthy();
+      const totalItems = exam.sections.reduce((acc, sec) => acc + sec.items.length, 0);
+      if (exam.examCategory === 'basic') {
+        expect(totalItems).toBeGreaterThanOrEqual(9);
+        expect(exam.sections).toHaveLength(2);
+      } else {
+        expect(totalItems).toBe(15);
+        expect(exam.sections).toHaveLength(5);
+      }
       const sumPoints = exam.sections.reduce(
         (acc, sec) => acc + sec.items.reduce((s, it) => s + it.points, 0),
         0,
       );
       expect(sumPoints, `${exam.id} totalPoints`).toBe(exam.totalPoints);
       for (const sec of exam.sections) {
+        expect(sec.recommendedMinutes).toBeGreaterThan(0);
         for (const item of sec.items) {
           expect(item.choices).toHaveLength(4);
           expect(item.answer).toBeGreaterThanOrEqual(0);

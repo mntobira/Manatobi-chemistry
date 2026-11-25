@@ -173,6 +173,7 @@ export interface Chapter {
   readCount?: 1 | 2;
   speakers?: string;
   // ---- 化学・まとめプリント固有 ----
+  targetLevel?: 'foundation' | 'kyotsu_standard' | 'kyotsu_2ji';
   summarySheet?: {
     subtitle: string;
     formulas: readonly { label: string; expr: string; note?: string }[];
