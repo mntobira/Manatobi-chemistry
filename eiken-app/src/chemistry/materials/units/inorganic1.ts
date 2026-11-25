@@ -1,4 +1,5 @@
 import type { ChemChapterSpec } from '../../types';
+import { FIG_INDUSTRIAL_INORGANIC_FLOW } from '../../figures';
 
 export const INORGANIC_UNITS_1: readonly ChemChapterSpec[] = [
   {
@@ -201,6 +202,10 @@ export const INORGANIC_UNITS_1: readonly ChemChapterSpec[] = [
               '正しい。S₈ 分子からなる斜方硫黄（常温安定）と単斜硫黄（95.6 ℃以上で安定）は CS₂ に可溶、鎖状高分子のゴム状硫黄は CS₂ に不溶である。',
               '誤り！硫黄の同素体はいずれも水に不溶の絶縁体（分子結晶／無定形高分子）であり、イオン結晶でも金属結晶でもない。',
             ],
+            steps: [
+              '① 硫黄の3同素体（斜方・単斜＝S₈ 環状分子で CS₂ に可溶、ゴム状＝S_x 鎖状高分子で CS₂ に不溶）を整理する！',
+              '② すべて非金属単体の分子結晶（または非晶質高分子）で水不溶・電気不導体の絶縁体なので④が誤り。',
+            ],
           },
           {
             id: 'chem_inorganic_ch02_p1_q2',
@@ -234,6 +239,8 @@ export const INORGANIC_UNITS_1: readonly ChemChapterSpec[] = [
         id: 'chem_inorganic_ch02_p2',
         title: '接触法による硫酸製造の計算と濃硫酸・希硫酸の性質識別',
         format: 'calculation',
+        imageUrl: FIG_INDUSTRIAL_INORGANIC_FLOW,
+        imageCaption: '4大無機工業製法（ソルベー法・接触法・オストワルト法・融解塩電解）の反応条件と物質フロー',
         stem: `接触法では、硫黄 S（または黄鉄鉱 FeS₂）を燃焼させて得た二酸化硫黄 SO₂ を酸化バナジウム(V) V₂O₅ を触媒として酸素で酸化して三酸化硫黄 SO₃ とし、最終的に硫酸 H₂SO₄ を製造する。原子量を H=1.0, O=16, S=32（H₂SO₄ = 98）とする。`,
         subItems: [
           {
@@ -656,6 +663,10 @@ export const INORGANIC_UNITS_1: readonly ChemChapterSpec[] = [
               'F₂ は淡黄色で水と激しく反応し、N₂O₄ は水に溶ける。',
               'NO₂ は赤褐色（黄緑色ではない）、SO₂ は腐卵臭ではない。',
             ],
+            steps: [
+              '① 水溶性かつ塩基性＋濃塩酸で白煙 ⇒ A＝NH₃、無色難溶で空気に触れ赤褐色 ⇒ B＝NO と即決！',
+              '② 黄緑色＋KIデンプン紙青紫変 ⇒ C＝Cl₂、腐卵臭＋酢酸鉛紙黒変(PbS) ⇒ D＝H₂S（①が正解）。',
+            ],
           },
         ],
         surroundingKnowledge: [
@@ -709,6 +720,10 @@ export const INORGANIC_UNITS_1: readonly ChemChapterSpec[] = [
               '希硫酸にそのような作用はなく、CO₂ はすでに炭素の最高酸化数(+4)である。',
               '正しい！水に難溶な CaSO₄ が CaCO₃ 表面をコーティングして反応を停止させるため、必ず水溶性の CaCl₂ になる希塩酸を用いる！',
               '不動態は Fe, Al, Ni などの金属単体が濃硝酸等で酸化被膜をつくる現象であり、CaCO₃ には当てはまらない。',
+            ],
+            steps: [
+              '① CaCO₃ に希硫酸を加えると「難溶性塩の硫酸カルシウム CaSO₄」が生じることに注目する！',
+              '② CaSO₄ が CaCO₃ 塊の表面を覆って反応を止めてしまうため、水溶性 CaCl₂ になる希塩酸を使う（③が正解）。',
             ],
           },
         ],
@@ -794,6 +809,10 @@ export const INORGANIC_UNITS_1: readonly ChemChapterSpec[] = [
               '正しい。イオン交換複分解反応で溶解度が最小の NaHCO₃ が選択的に析出する。',
               '正しい！① CaCO₃ → CaO + CO₂（CO₂ 供給）、② CaO + H₂O → Ca(OH)₂、③ 2NH₄Cl + Ca(OH)₂ → CaCl₂ + 2H₂O + 2NH₃（NH₃ 完全回収！）という究極の無無駄リサイクル工場である！',
               '正しい。外部から投入する原料は食塩 NaCl と石灰石 CaCO₃ だけであり、最終生成物は Na₂CO₃ と副産物 CaCl₂（乾燥剤・融雪剤に利用）である（なお実際の常温水溶液中で 2NaCl + CaCO₃ を直接混ぜても逆向きの CaCO₃ 沈殿が安定なため直接は絶対に進まないからこそ5段階に分けて回している！）。',
+            ],
+            steps: [
+              '① アンモニアソーダ法の吹き込み順序：「水によく溶ける塩基性 NH₃ を先に飽和 → そこへ酸性 CO₂ を吹き込んで大量の HCO₃⁻ をつくる」！',
+              '② 順序を「先に CO₂ → 次に NH₃」と逆転させている①が誤り。',
             ],
           },
         ],

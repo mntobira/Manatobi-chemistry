@@ -55,12 +55,12 @@ export interface StudySubject {
 }
 
 const DESC_BY_COURSE: Record<string, string> = {
-  chem_basic_matter: '純物質と分離・白色粉末定性・質量分析MS・ランベルトベール吸光度・周期律・化学結合・水素結合（全15単元）',
-  chem_basic_change: 'mol計算・過不足実験表からの濃度範囲・気体逸散と元素質量%変化・中和誤差・硫安逆滴定・COD・燃料電池（全18単元）',
-  chem_theory: '密閉燃焼と水凝縮・逆浸透法と蒸気圧・炭酸水ヘンリー逆算・弱酸希釈pH曲線・ΔS自発変化・化学発光・二次電池（全21単元）',
-  chem_inorganic: 'ヨウ素かん水製法・過リン酸石灰・水ガラスとシリカゲル・鉄シアノ錯塩原子価則・バナジウム滴定・EDTAキレート（全18単元）',
-  chem_organic: '原油分留塔とナフサ改質・オゾン分解・ヒドロキシ酸メソ体・イミド環化条件・芳香族分液抽出・多段階構造決定（全17単元）',
-  chem_polymer: '糖類・グルタチオンγペプチドとGSSG酸化・酵素速度・PVBブチラール化・ポリイミド2段階合成・加硫ゴム（全13単元）',
+  chem_basic_matter: '純物質とクロマトRf/多段抽出・白色粉末定性・質量分析MS・吸光度・周期律・分子極性(CH₂Cl₂/SO₂)・C₆₀結晶（全17単元）',
+  chem_basic_change: 'mol計算・過不足濃度範囲・気体逸散と元素%・ワルダー二段滴定・硫安逆滴定・COD・一次電池・トタンとブリキ（全20単元）',
+  chem_theory: '密閉燃焼・逆浸透・ヘンリー・弱酸希釈pH・ΔS自発変化・一次反応半減期・アレニウス式・直列並列電気分解（全23単元）',
+  chem_inorganic: 'ヨウ素製法・水ガラスとシリカゲル・鉄シアノ錯塩・実用合金・銑鉄/バイヤー計算・H₂S×Ksp選択沈殿・EDTA（全20単元）',
+  chem_organic: '原油分留・オゾン分解・エステル化平衡K=4.0・環状ラクトン・芳香族異性体完全制覇(コルナー法)・多段階構造決定（全19単元）',
+  chem_polymer: '糖類・グルタチオンGSSG・ペンタペプチド配列決定・微量S分子量・PVB・ポリイミド・共重合ゴムSBR/NBR・イオン交換連立（全15単元）',
 };
 
 const ICON_BY_COURSE: Record<string, StudyIcon> = {
@@ -95,10 +95,10 @@ export const STUDY_CATALOG: readonly StudySubject[] = [{
       id: 'chem_mock',
       title: '共通テスト実戦 通し模試',
       icon: 'briefcase',
-      badge: '共通テスト',
+      badge: '冊子＋マークシート',
       section: 'memorize',
-      description: '『化学基礎』30分/50点模試（全4回）＋『化学』60分/100点総合模試（全4回）。2023〜2026共通テスト型の探究・実験図表・配点採点つき',
-      meta: `全${CHEM_MOCK_EXAMS.length}回（化学基礎4回・化学4回）`,
+      description: '『化学基礎』30分/50点（全4回）＋『化学』60分/100点・5大問15設問（全4回）。本番準拠「問題冊子＋マーク解答用紙」・消去スラッシュ・2次余裕合格診断つき',
+      meta: `全${CHEM_MOCK_EXAMS.length}回（基礎4回・化学4回）`,
       action: { kind: 'mock' },
     },
     {

@@ -16,6 +16,16 @@ import {
   FIG_REVERSE_OSMOSIS_VAPOR,
   FIG_WEAK_ACID_DILUTION_EQUIL,
   FIG_PETROLEUM_FRACTIONATION,
+  FIG_FIRST_ORDER_ARRHENIUS,
+  FIG_CHROMATOGRAPHY_ION_EXCHANGE,
+  FIG_HEATING_CURVE,
+  FIG_IONIZATION_ENERGY,
+  FIG_CRYSTAL_LATTICES,
+  FIG_WARDER_DOUBLE_TITRATION,
+  FIG_CORROSION_GALVANIC,
+  FIG_INDUSTRIAL_INORGANIC_FLOW,
+  FIG_SALICYLIC_REACTION_MAP,
+  FIG_ORGANIC_STRUCTURE_PUZZLE,
 } from '../figures';
 
 export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
@@ -25,19 +35,34 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
     examCategory: 'basic',
     round: 1,
     title: '共通テスト実戦模試『化学基礎』第1回',
-    subtitle: '第1問（物質の構成・周期律・化学結合・分野横断小問）＋ 第2問（中和滴定・酸化還元・電池の総合問題）',
+    subtitle: '第1問（物質の構成・分離Rf・周期律・結合・燃焼計算）＋ 第2問（中和滴定曲線・逆滴定・酸化還元・イオン化傾向）',
+    levelBadge: '★★☆ 共通テスト標準〜85%突破',
+    constantsNote: '必要があれば、次の値を用いよ。原子量：H = 1.0, C = 12, N = 14, O = 16, Na = 23, S = 32, Cl = 35.5, Ba = 137 ／ アボガドロ定数 NA = 6.0×10²³ /mol ／ 標準状態の気体のモル体積 22.4 L/mol ／ 25 ℃ の水のイオン積 Kw = 1.0×10⁻¹⁴ (mol/L)²',
     timeLimitMinutes: 30,
     totalPoints: 50,
     sections: [
       {
         id: 'sec_basic1_d1',
         daimonLabel: '第1問',
-        title: '物質の構成・化学結合と物質の変化の基礎（小問集合）',
-        leadText: '必要があれば原子量 H = 1.0, C = 12, N = 14, O = 16, Na = 23, Cl = 35.5、アボガドロ定数 6.0×10²³ /mol、標準状態の気体モル体積 22.4 L/mol を用いよ。',
+        title: '物質の構成・化学結合と物質の変化の基礎（必答・配点 26点）',
+        recommendedMinutes: 14,
+        leadText: '物質の分類・分離操作、原子の構造と周期表、化学結合、および気体燃焼と pH に関する次の問い（問1〜6）に答えよ。必要であれば図1の加熱曲線および表1の代表的な物質の性質を参照せよ。',
+        imageUrl: FIG_HEATING_CURVE,
+        imageCaption: '図1 純物質A（エタノールまたは水）と液体混合物Bの加熱時間と温度変化の比較',
+        dataTable: {
+          caption: '表1 代表的な物質の結合様式・結晶分類と電気伝導性',
+          headers: ['物質（化学式）', '結晶の種類', '固体の電気伝導性', '融解液・水溶液の電気伝導性'],
+          rows: [
+            ['ドライアイス（CO₂）・氷（H₂O）', '分子結晶', '通さない', '通さない（純物質）'],
+            ['ダイヤモンド（C）・二酸化ケイ素（SiO₂）', '共有結合の結晶', '通さない（※黒鉛のみ通す）', '水に不溶・超高融点'],
+            ['塩化ナトリウム（NaCl）', 'イオン結晶', '通さない', '融解液・水溶液ともに通す'],
+          ],
+        },
         items: [
           {
             id: 'chem_mock_basic_01_q1',
             label: '問1',
+            difficulty: 'foundation',
             stem: '日常生活に関わる物質の分類（純物質か混合物か）と分離操作に関する記述として最も適当なものを、①〜④のうちから一つ選べ。',
             choices: [
               '液体空気から沸点の差を利用して窒素と酸素を分離する操作を分留といい、ドライアイスや氷は純物質である。',
@@ -46,7 +71,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '茶葉からお湯でカフェインやカテキンを取り出す操作を昇華法といい、アンモニア水は化合物（純物質）である。',
             ],
             answer: 0,
-            points: 5,
+            points: 4,
             skill: '物質の分類と分離・精製',
             explanation: '2種類以上の液体の混合物を沸点の差で分離する操作を「分留（分別蒸留）」という。ドライアイス（CO₂）や氷（H₂O）は1種類の化合物からなる純物質である。一方、塩酸・水道水・アンモニア水はいずれも混合物である。',
             reasons: [
@@ -55,10 +80,15 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '海水から水を得る操作は蒸留であり、水道水やミネラルウォーターは混合物である。',
               '溶媒に目的成分を溶かし出す操作は抽出であり、アンモニア水は混合物である。',
             ],
+            steps: [
+              '① 「塩酸・アンモニア水・水道水＝混合物」の鉄則で ②・③・④ の後半を即座に切る。',
+              '② 液体空気（N₂ 沸点 −196 ℃ / O₂ −183 ℃）の沸点差分離＝「分留」かつドライアイス・氷＝純物質より ① が正解。',
+            ],
           },
           {
             id: 'chem_mock_basic_01_q2',
             label: '問2',
+            difficulty: 'foundation',
             stem: '第3周期までの典型元素の原子・イオンの電子配置と性質に関する記述として誤りを含むものを、①〜④のうちから一つ選べ。',
             choices: [
               'マグネシウムイオン Mg²⁺ と酸化物イオン O²⁻ は、どちらもネオン Ne と同じ電子配置をもち、イオン半径は O²⁻ の方が大きい。',
@@ -67,7 +97,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '硫化物イオン S²⁻ と塩化物イオン Cl⁻ とカリウムイオン K⁺ は、いずれもアルゴン Ar と同じ K(2)L(8)M(8) の電子配置をもつ。',
             ],
             answer: 2,
-            points: 5,
+            points: 4,
             skill: '周期律とイオン半径・電子配置',
             explanation: '同一周期で右へ進む（原子番号が大きくなる）ほど、同じ電子殻に対して原子核の正電荷（陽子数）が増えるため最外殻電子が強く引きつけられ、第1イオン化エネルギーは全体的に「大きく」なり、陰イオンになりやすくなる。',
             reasons: [
@@ -76,10 +106,15 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '誤り。同一周期（貴ガスを除く）で原子番号が増えるほど第1イオン化エネルギーは大きくなる傾向がある。',
               '正しい記述。S²⁻(Z=16+2=18)、Cl⁻(17+1=18)、K⁺(19−1=18) はすべて Ar と同じ18個の電子をもつ。',
             ],
+            steps: [
+              '① 等電子イオン半径 O²⁻(Z=8) ＞ Mg²⁺(Z=12)、同位体の化学的性質一致、18電子配置をそれぞれ確認。',
+              '② 同一周期で右へ行くほど核電荷が増して第1イオン化エネルギーは「大きく」なるため ③ が誤り。',
+            ],
           },
           {
             id: 'chem_mock_basic_01_q3',
             label: '問3',
+            difficulty: 'foundation',
             stem: '化学結合・分子の形と極性・結晶の性質に関する記述として正しいものを、①〜④のうちから一つ選べ。',
             choices: [
               '二酸化炭素 CO₂ とアンモニア NH₃ はどちらも分子内に極性のある共有結合をもつ無極性分子である。',
@@ -88,7 +123,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '塩化ナトリウム NaCl の結晶は水に溶けると電離して電気を通すが、高温で融解させた液体状態では電気を通さない。',
             ],
             answer: 2,
-            points: 5,
+            points: 4,
             skill: '化学結合・極性と水素結合',
             explanation: 'F・O・N に直接結合した H 原子をもつ HF・H₂O・NH₃ は分子間に水素結合を形成するため、沸点が著しく高い。なお NH₃ は三角錐形の極性分子であり、ダイヤモンドや SiO₂ は電気を通さず、イオン結晶 NaCl は融解液でもイオンが自由に動けるため電気を通す。',
             reasons: [
@@ -97,10 +132,15 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '正しい。電気陰性度の大きい F・O・N の水素化合物は水素結合により沸点が高い。',
               'イオン結晶は固体では電気を通さないが、水溶液だけでなく融解液（液体）でもイオンが移動して電気を通す。',
             ],
+            steps: [
+              '① NH₃＝三角錐形の極性分子（①×）、共有結合結晶で導電性は黒鉛のみ（②×）、イオン結晶の融解液は導電性あり（④×）。',
+              '② F・O・N の水素化合物（HF・H₂O・NH₃）の水素結合による高沸点を述べた ③ が正解。',
+            ],
           },
           {
             id: 'chem_mock_basic_01_q4',
             label: '問4',
+            difficulty: 'kyotsu_standard',
             stem: '標準状態でプロパン C₃H₈ とメタン CH₄ の混合気体が 11.2 L あり、これを完全燃焼させたところ二酸化炭素 CO₂ が標準状態で 22.4 L 生成した。もとの混合気体中のプロパン C₃H₈ の物質量 [mol] はいくらか。①〜④から選べ。',
             choices: [
               '0.15 mol',
@@ -109,7 +149,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '0.35 mol',
             ],
             answer: 1,
-            points: 6,
+            points: 5,
             skill: '混合気体の燃焼計算（連立方程式）',
             explanation: '混合気体の全物質量は 11.2 / 22.4 = 0.50 mol。プロパン C₃H₈ を x [mol]、メタン CH₄ を y [mol] とおくと x + y = 0.50。\n炭素原子 C の物質量保存より、生成した CO₂ は 22.4 / 22.4 = 1.00 mol だから、3x + y = 1.00。\n2式を引くと 2x = 0.50 → x = 0.25 mol（y = 0.25 mol）。',
             reasons: [
@@ -118,10 +158,15 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '3×0.30 + 0.20 = 1.10 mol となり CO₂ が多すぎる。',
               '3×0.35 + 0.15 = 1.20 mol となり一致しない。',
             ],
+            steps: [
+              '① 混合気体 x + y = 11.2 / 22.4 = 0.50 mol、生成 CO₂ = 22.4 / 22.4 = 1.00 mol。',
+              '② 炭素原子保存 3x + y = 1.00 と連立して 2x = 0.50 ⇒ x = 0.25 mol（②が正解）。',
+            ],
           },
           {
             id: 'chem_mock_basic_01_q5',
             label: '問5',
+            difficulty: 'kyotsu_standard',
             stem: '25 ℃（Kw = 1.0×10⁻¹⁴ (mol/L)²）において、0.020 mol/L の塩酸 5.0 mL と 0.010 mol/L の水酸化バリウム Ba(OH)₂ 水溶液 15 mL を混合した水溶液（体積の和は 20 mL とする）の pH として正しいものを①〜④から選べ。ただし強酸・強塩基は完全電離とする。',
             choices: [
               'pH = 2',
@@ -139,21 +184,57 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '[OH⁻] = 1.0×10⁻³ mol/L のときの値であり1桁異なる。',
               '正しい。残った OH⁻ 濃度が 1.0×10⁻² mol/L となるため [H⁺] = 1.0×10⁻¹² mol/L より pH = 12 となる。',
             ],
+            steps: [
+              '① n(H⁺) = 1 × 0.020 × 0.0050 = 1.0×10⁻⁴ mol、n(OH⁻) = 2 × 0.010 × 0.015 = 3.0×10⁻⁴ mol（2価注意！）。',
+              '② 残余 OH⁻ = 2.0×10⁻⁴ mol ÷ 0.020 L = 1.0×10⁻² mol/L ⇒ [H⁺] = 1.0×10⁻¹² mol/L ⇒ pH = 12（④が正解）。',
+            ],
+          },
+          {
+            id: 'chem_mock_basic_01_q5b',
+            label: '問6',
+            difficulty: 'kyotsu_standard',
+            stem: '下端から 2.0 cm の位置に鉛筆で原点ラインを引いたろ紙に色素 X をスポットし、展開溶媒で展開して下端から 10.0 cm の位置に溶媒先端が達したところで取り出した。色素 X のスポット中心が下端から 6.8 cm の位置にあったとき、色素 X の Rf 値として正しいものを①〜④から一つ選べ。',
+            choices: [
+              '0.60',
+              '0.68',
+              '0.75',
+              '0.85',
+            ],
+            answer: 0,
+            points: 4,
+            skill: 'ペーパークロマトグラフィーにおける原点基準補正つき Rf 値計算',
+            explanation: '下端から原点までの 2.0 cm を差し引くと、原点から溶媒先端までの距離は 10.0 − 2.0 = 8.0 cm、原点から色素 X スポットまでの距離は 6.8 − 2.0 = 4.8 cm である。\nよって Rf = 4.8 / 8.0 = 0.60 となる。',
+            reasons: [
+              '正しい。(6.8 − 2.0) ÷ (10.0 − 2.0) = 4.8 ÷ 8.0 = 0.60 である。',
+              '原点までの 2.0 cm を引かずに 6.8 ÷ 10.0 = 0.68 とした最頻出の誤り！',
+              '計算比率の誤りである。',
+              '6.8 ÷ 8.0 = 0.85（分子から 2.0 cm を引き忘れた誤り）。',
+            ],
+            steps: [
+              '① 原点からの移動距離に補正する：色素 a = 6.8 − 2.0 = 4.8 cm、溶媒先端 b = 10.0 − 2.0 = 8.0 cm。',
+              '② Rf = 4.8 ÷ 8.0 = 0.60（①が正解）。',
+            ],
           },
         ],
       },
       {
         id: 'sec_basic1_d2',
         daimonLabel: '第2問',
-        title: '中和滴定曲線と酸化還元・化学電池の総合探究',
-        leadText: '下の図1（酸の滴定曲線）およびダニエル電池の知見をもとに、各問いに答えよ。',
+        title: '中和滴定曲線と酸化還元・化学電池の総合探究（必答・配点 24点）',
+        recommendedMinutes: 16,
+        leadText: '下の図2（酸の滴定曲線）および生徒と先生の探究会話をもとに、中和滴定・逆滴定・酸化還元滴定・イオン化傾向に関する各問い（問1〜4）に答えよ。',
+        dialogue: [
+          { speaker: '生徒', text: '0.10 mol/L の酢酸と塩酸を 10 mL ずつとって NaOH 水溶液で滴定すると、最初の pH は違うのに中和に必要な体積は同じ 10 mL になるのですね。' },
+          { speaker: '先生', text: 'その通り。ただし中和点での塩の加水分解によって pH ジャンプの位置が変わるため、指示薬の選択には注意が必要ですよ。気体の NH₃ 定量では過剰の希硫酸に吸収させる「逆滴定」も活躍します。' },
+        ],
         imageUrl: FIG_TITRATION_CURVE,
-        imageCaption: '図1 0.10 mol/L の酸 10 mL を 0.10 mol/L NaOH 水溶液で滴定した曲線',
+        imageCaption: '図2 0.10 mol/L の酸 10 mL を 0.10 mol/L NaOH 水溶液で滴定した曲線',
         items: [
           {
             id: 'chem_mock_basic_01_q6',
             label: '問1',
-            stem: '図1の曲線X（酢酸 CH₃COOH）と曲線Y（塩酸 HCl）を比較した記述として誤りを含むものを、①〜④のうちから一つ選べ。',
+            difficulty: 'kyotsu_standard',
+            stem: '図2の曲線X（酢酸 CH₃COOH）と曲線Y（塩酸 HCl）を比較した記述として誤りを含むものを、①〜④のうちから一つ選べ。',
             choices: [
               '滴下開始前（滴下量 0 mL）の pH が曲線Xの方が大きいのは、酢酸の電離度が塩酸より小さく [H⁺] が小さいためである。',
               'どちらも 1価の酸でモル濃度と体積が等しいため、中和点に達するまでに必要な NaOH 水溶液の体積はともに 10 mL で等しい。',
@@ -170,10 +251,15 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '正しい記述。CH₃COO⁻ + H₂O ⇄ CH₃COOH + OH⁻ により弱塩基性となる。',
               '誤り。曲線X（弱酸＋強塩基）ではフェノールフタレインは使えるがメチルオレンジは使えない。',
             ],
+            steps: [
+              '① 曲線X（弱酸CH₃COOH＋強塩基NaOH）の中和点は塩基性側に寄るため pH ジャンプは pH 7〜10.5 に位置する。',
+              '② 酸性側（pH 3.1〜4.4）で変色するメチルオレンジは pH ジャンプから外れるため使用不可 ⇒ ④が誤り。',
+            ],
           },
           {
             id: 'chem_mock_basic_01_q7',
             label: '問2',
+            difficulty: 'kyotsu_2ji',
             stem: 'アンモニア NH₃ を含む気体試料中の NH₃ の物質量を求めるため、0.100 mol/L の希硫酸 H₂SO₄ 20.0 mL に NH₃ をすべて吸収させたのち、残った硫酸を 0.100 mol/L の水酸化ナトリウム NaOH 水溶液で滴定したところ 14.0 mL を要した（逆滴定）。吸収されたアンモニア NH₃ の物質量 [mol] として正しいものを①〜④から選べ。',
             choices: [
               '6.0×10⁻⁴ mol',
@@ -191,10 +277,15 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '正しい。2 × 0.100 × 0.0200 − 1 × 0.100 × 0.0140 = 2.6×10⁻³ mol である。',
               '引き算ではなく足し算をした誤り。',
             ],
+            steps: [
+              '① 全 H⁺ = 2 × 0.100 × 0.0200 = 4.00×10⁻³ mol（硫酸は2価！）。',
+              '② 残余 H⁺ を中和した NaOH = 1 × 0.100 × 0.0140 = 1.40×10⁻³ mol ⇒ n(NH₃) = (4.00 − 1.40)×10⁻³ = 2.6×10⁻³ mol（③）。',
+            ],
           },
           {
             id: 'chem_mock_basic_01_q8',
             label: '問3',
+            difficulty: 'kyotsu_standard',
             stem: '濃度 0.050 mol/L のシュウ酸 (COOH)₂ 水溶液 10 mL に希硫酸を加えて温め、濃度 c [mol/L] の過マンガン酸カリウム KMnO₄ 水溶液を滴下したところ、8.0 mL で微紅色が消えなくなった。KMnO₄ 水溶液のモル濃度 c [mol/L] として正しいものを①〜④から選べ。ただしシュウ酸は (COOH)₂ → 2CO₂ + 2H⁺ + 2e⁻ と酸化される。',
             choices: [
               '0.025 mol/L',
@@ -212,10 +303,15 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '1 : 1 で計算した（0.050 × 10 / 8.0 = 0.0625）誤り。',
               '5 と 2 を逆に掛けた誤り。',
             ],
+            steps: [
+              '① 電子収支式：5（KMnO₄価数）× c × 8.0 mL ＝ 2（シュウ酸価数）× 0.050 mol/L × 10 mL。',
+              '② 40c = 1.0 ⇒ c = 0.025 mol/L（①が正解）。',
+            ],
           },
           {
             id: 'chem_mock_basic_01_q9',
             label: '問4',
+            difficulty: 'kyotsu_standard',
             stem: '金属 A, B, C について次の実験結果(1)〜(3)が得られた。イオン化傾向の大きい順として正しいものを①〜④から選べ。\n(1) 希塩酸に入れると、A と C は水素を発生して溶けたが、B は溶けなかった。\n(2) 金属 A の単体片を金属 C の陽イオンを含む水溶液に浸すと、A が溶けて表面に金属 C の単体が析出した。\n(3) 金属 B は希硝酸には一酸化窒素 NO を発生して溶けた。',
             choices: [
               'A ＞ C ＞ B',
@@ -233,6 +329,10 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               'B は希塩酸に溶けないため H₂ より小さく最小である。',
               'B はイオン化傾向が最も小さい。',
             ],
+            steps: [
+              '① 条件(1)：希塩酸に溶けない B は H₂ よりイオン化傾向が小さく最小（(A, C) ＞ H₂ ＞ B）。',
+              '② 条件(2)：単体 A が溶けて C が析出（金属樹反応）⇒ 陽イオンになりやすい A ＞ C ⇒ A ＞ C ＞ B（①）。',
+            ],
           },
         ],
       },
@@ -244,18 +344,35 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
     examCategory: 'basic',
     round: 2,
     title: '共通テスト実戦模試『化学基礎』第2回',
-    subtitle: '第1問（原子構造・結合・結晶・極性・溶液濃度）＋ 第2問（二段階中和・COD/ヨウ素滴定・燃料電池）',
+    subtitle: '第1問（電子配置・結晶・酸化定量・濃度・塩の液性）＋ 第2問（ヨウ素滴定・燃料電池・ワルダー法二段階滴定）',
+    levelBadge: '★★☆ 共通テスト85%〜満点狙い',
+    constantsNote: '必要があれば、次の値を用いよ。原子量：H = 1.0, C = 12, N = 14, O = 16, Na = 23, Mg = 24, S = 32, Cl = 35.5, Ca = 40, Fe = 56, Cu = 64 ／ 標準状態の気体のモル体積 22.4 L/mol',
     timeLimitMinutes: 30,
     totalPoints: 50,
     sections: [
       {
         id: 'sec_basic2_d1',
         daimonLabel: '第1問',
-        title: '原子・結合・結晶と溶液の量的関係',
+        title: '原子・結合・結晶と溶液の量的関係（必答・配点 25点）',
+        recommendedMinutes: 14,
+        leadText: '原子・イオンの電子数、結晶の結合様式、金属酸化物の組成決定、および溶液濃度と塩の液性に関する次の問い（問1〜5）に答えよ。必要であれば図1の第1イオン化エネルギーの推移および表1の4種の塩の分類を参照せよ。',
+        imageUrl: FIG_IONIZATION_ENERGY,
+        imageCaption: '図1 原子番号 1〜20 の第1イオン化エネルギーの周期変化',
+        dataTable: {
+          caption: '表1 0.10 mol/L 水溶液で比較する代表的な塩の分類と電離の特徴',
+          headers: ['塩の化学式', '塩の分類', '水溶液中の主な変化', '25 ℃ での液性目安'],
+          rows: [
+            ['NaHSO₄', '酸性塩（強酸由来）', 'HSO₄⁻ ⇄ H⁺ ＋ SO₄²⁻（電離大）', '強めの酸性（pH ≒ 1.5）'],
+            ['NH₄Cl', '正塩（強酸＋弱塩基）', 'NH₄⁺ ＋ H₂O ⇄ NH₃ ＋ H₃O⁺', '弱酸性（pH ≒ 5.1）'],
+            ['NaHCO₃', '酸性塩（弱酸由来）', 'HCO₃⁻ ＋ H₂O ⇄ H₂CO₃ ＋ OH⁻ が優勢', '弱塩基性（pH ≒ 8.3）'],
+            ['NaCl', '正塩（強酸＋強塩基）', '加水分解しない', '中性（pH ＝ 7.0）'],
+          ],
+        },
         items: [
           {
             id: 'chem_mock_basic_02_q1',
             label: '問1',
+            difficulty: 'foundation',
             stem: '次のイオンまたは分子のうち、「1粒子中に含まれる電子の総数が 10個ではないもの」を①〜④から一つ選べ。ただし原子番号は H=1, C=6, N=7, O=8, Na=11, S=16, Cl=17 とする。',
             choices: [
               'アンモニウムイオン NH₄⁺',
@@ -264,7 +381,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '塩化物イオン Cl⁻',
             ],
             answer: 3,
-            points: 6,
+            points: 5,
             skill: '多原子イオンと分子の総電子数',
             explanation: '各粒子の総電子数を計算する（陽イオンは電荷分引き、陰イオンは電荷分足す）：\n① NH₄⁺：7 + 1×4 − 1 = 10個\n② OH⁻：8 + 1 + 1 = 10個\n③ CH₄：6 + 1×4 = 10個\n④ Cl⁻：17 + 1 = 18個（Ar型配置）。よって④だけ 18個である。',
             reasons: [
@@ -273,10 +390,15 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               'CH₄ は 6 + 4 = 10個の電子をもつ。',
               '正しい。Cl⁻ は 17 + 1 = 18個の電子をもつため 10個ではない。',
             ],
+            steps: [
+              '① 陽イオンは電荷分引き、陰イオンは電荷分足す：NH₄⁺ = 7+4−1 = 10、OH⁻ = 8+1+1 = 10、CH₄ = 6+4 = 10。',
+              '② Cl⁻ = 17 + 1 = 18個（Ar型電子配置）より ④ だけ 10個ではない。',
+            ],
           },
           {
             id: 'chem_mock_basic_02_q2',
             label: '問2',
+            difficulty: 'foundation',
             stem: '二酸化ケイ素 SiO₂、ドライアイス CO₂、塩化カルシウム CaCl₂、銀 Ag の4物質に関する記述として正しいものを①〜④から選べ。',
             choices: [
               'ドライアイス CO₂ と二酸化ケイ素 SiO₂ はどちらも 14族元素の酸化物であるため、ともに分子結晶をつくり昇華性をもつ。',
@@ -285,7 +407,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '4つの物質を融点の高い順に並べると、CO₂ ＞ CaCl₂ ＞ Ag ＞ SiO₂ となる。',
             ],
             answer: 1,
-            points: 6,
+            points: 5,
             skill: '結晶の性質と金属結合',
             explanation: '銀 Ag は金属結晶の中で最大の電気伝導性・熱伝導性をもち、外力を加えても自由電子が金属陽イオン間をつなぎとめるため薄く広がる展性・細く伸びる延性を示す。なお CO₂ は分子結晶で昇華するが、同族でも SiO₂ は立体網目状の共有結合の結晶で融点が極めて高い。',
             reasons: [
@@ -294,10 +416,15 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               'CaCl₂ は Ca²⁺ と Cl⁻ からなるイオン結晶であり、水によく溶け融解液も電気を通す。',
               '分子結晶のドライアイス CO₂ が最も融点（昇華点 −78.5 ℃）が低く、共有結合結晶の SiO₂ が最も高い。',
             ],
+            steps: [
+              '① CO₂＝分子結晶に対し SiO₂＝共有結合結晶（①・④×）、CaCl₂＝イオン結晶（③×）。',
+              '② 全金属中で電気・熱伝導性最大の Ag と自由電子による展性・延性を述べた ② が正解。',
+            ],
           },
           {
             id: 'chem_mock_basic_02_q3',
             label: '問3',
+            difficulty: 'kyotsu_standard',
             stem: 'ある2価の金属 M の単体 1.2 g を空気中で強熱して完全に酸化させたところ、組成式 MO で表される酸化物が 2.0 g 得られた。酸素の原子量を O = 16 としたとき、金属 M の原子量と元素記号の組合せとして最も適当なものを①〜④から選べ。',
             choices: [
               '原子量：24（Mg）',
@@ -306,7 +433,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '原子量：64（Cu）',
             ],
             answer: 0,
-            points: 7,
+            points: 5,
             skill: '金属の酸化と原子量の決定',
             explanation: '結びついた酸素原子 O の質量は 2.0 − 1.2 = 0.80 g。組成式が MO なので、M 原子と O 原子の物質量比は 1 : 1 である。\n金属 M の原子量を M とおくと、1.2 / M = 0.80 / 16 = 0.050 mol → M = 1.2 / 0.050 = 24（マグネシウム Mg）。',
             reasons: [
@@ -315,10 +442,15 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '原子量 56 とは物質量比が一致しない。',
               '原子量 64（Cu）なら Cu 1.2 g に対する CuO は 1.5 g である。',
             ],
+            steps: [
+              '① 化合した酸素質量 = 2.0 − 1.2 = 0.80 g ⇒ n(O) = 0.80 / 16 = 0.050 mol。',
+              '② 組成式 MO より n(M) = 0.050 mol ⇒ 原子量 M = 1.2 ÷ 0.050 = 24（Mg：①が正解）。',
+            ],
           },
           {
             id: 'chem_mock_basic_02_q4',
             label: '問4',
+            difficulty: 'foundation',
             stem: '10% の塩化ナトリウム水溶液 180 g と 20% の塩化ナトリウム水溶液 120 g を混合し、さらに純水 100 g を加えた水溶液の質量パーセント濃度 [%] として正しいものを①〜④から選べ。',
             choices: [
               '8.5 %',
@@ -327,7 +459,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '15.0 %',
             ],
             answer: 1,
-            points: 6,
+            points: 5,
             skill: '溶液の混合と質量パーセント濃度',
             explanation: '溶質 NaCl の合計質量 ＝ 180 × 0.10 + 120 × 0.20 = 18 + 24 = 42 g。\n混合・希釈後の溶液全体の質量 ＝ 180 + 120 + 100 = 400 g。\nよって質量パーセント濃度 ＝ (42 / 400) × 100 = 10.5 %。',
             reasons: [
@@ -336,19 +468,56 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '純水 100 g を分母に足し忘れた（42 ÷ 300 × 100 = 14.0 %）典型的な誤り。',
               '10% と 20% の単純平均をとった誤り。',
             ],
+            steps: [
+              '① 溶質 NaCl 総量 = 180×0.10 + 120×0.20 = 18 + 24 = 42 g。',
+              '② 溶液総質量 = 180 + 120 + 100 = 400 g ⇒ (42 / 400)×100 = 10.5 %（②が正解）。',
+            ],
+          },
+          {
+            id: 'chem_mock_basic_02_q4b',
+            label: '問5',
+            difficulty: 'kyotsu_standard',
+            stem: '同じモル濃度（0.10 mol/L）の次の 4 種類の水溶液 ①〜④ のうち、25 ℃ における pH の値が最も小さい（最も酸性が強い）ものを一つ選べ。',
+            choices: [
+              '硫酸水素ナトリウム NaHSO₄ 水溶液',
+              '塩化アンモニウム NH₄Cl 水溶液',
+              '炭酸水素ナトリウム NaHCO₃ 水溶液',
+              '塩化ナトリウム NaCl 水溶液',
+            ],
+            answer: 0,
+            points: 5,
+            skill: '酸性塩 NaHSO₄（HSO₄⁻強電離で強めの酸性）と NH₄Cl・NaHCO₃・NaCl の pH 序列',
+            explanation: '① NaHSO₄ は水中で HSO₄⁻ ⇄ H⁺ + SO₄²⁻ が大きく電離するため強い酸性（pH ≒ 1〜2）を示す。\n② NH₄Cl は弱塩基と強酸の正塩で加水分解による弱酸性（pH ≒ 5）。\n③ NaHCO₃ は弱塩基性（pH ≒ 8.3）、④ NaCl は中性（pH = 7.0）。よって最も pH が小さいのは①である。',
+            reasons: [
+              '正しい。HSO₄⁻ が大きく電離して H⁺ を放出するため 4 種の中で最も pH が小さい強い酸性となる。',
+              'NH₄Cl は加水分解によるごく弱い酸性（pH ≒ 5）にとどまる。',
+              'NaHCO₃ は酸性塩に分類されるが水溶液は弱塩基性（pH ＞ 7）である。',
+              'NaCl 水溶液は中性（pH = 7）である。',
+            ],
+            steps: [
+              '① 各塩の水溶液の液性を判定：NaHSO₄＝強めの酸性、NH₄Cl＝弱酸性、NaCl＝中性、NaHCO₃＝弱塩基性。',
+              '② pH が最小（酸性が最強）である ① を選ぶ。',
+            ],
           },
         ],
       },
       {
         id: 'sec_basic2_d2',
         daimonLabel: '第2問',
-        title: 'ヨウ素滴定と水素燃料電池・金属製錬',
+        title: 'ヨウ素滴定・水素燃料電池・混合塩基の二段階中和（必答・配点 25点）',
+        recommendedMinutes: 16,
+        leadText: '酸化還元滴定（ヨウ素滴定）、水素燃料電池の量的関係、および空気中の CO₂ を吸収した NaOH 水溶液の二段階中和に関する次の問い（問1〜4）に答えよ。',
+        dialogue: [
+          { speaker: '生徒', text: '水酸化ナトリウム水溶液の試薬瓶の栓をゆるめたまま放置すると、空気中の二酸化炭素を吸収して炭酸ナトリウム Na₂CO₃ が混ざってしまいますよね。' },
+          { speaker: '先生', text: 'はい。そこでフェノールフタレインとメチルオレンジを段階的に使う「ワルダー法」で滴定すると、第2段階の追加滴下量から Na₂CO₃ の量が分かり、引き算で残存 NaOH 濃度も正確に求まります。' },
+        ],
         imageUrl: FIG_DANIELL_CELL,
-        imageCaption: '参考図 化学電池における電子移動の概念図',
+        imageCaption: '図2 化学電池における負極（酸化）・正極（還元）の電子移動モデル',
         items: [
           {
             id: 'chem_mock_basic_02_q5',
             label: '問1',
+            difficulty: 'kyotsu_standard',
             stem: '過酸化水素水 10.0 mL に希硫酸と過剰のヨウ化カリウム KI 水溶液を加えると、H₂O₂ + 2I⁻ + 2H⁺ → 2H₂O + I₂ によりヨウ素 I₂ が遊離した。この I₂ をデンプンを指示薬として 0.100 mol/L のチオ硫酸ナトリウム Na₂S₂O₃ 水溶液（I₂ + 2S₂O₃²⁻ → 2I⁻ + S₄O₆²⁻）で滴定したところ、12.0 mL で青紫色が消えた。もとの過酸化水素水のモル濃度 [mol/L] を①〜④から選べ。',
             choices: [
               '0.0300 mol/L',
@@ -357,7 +526,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '0.240 mol/L',
             ],
             answer: 1,
-            points: 9,
+            points: 7,
             skill: 'ヨウ素滴定（2段階酸化還元）',
             explanation: '第2反応 I₂ + 2S₂O₃²⁻ → 2I⁻ + S₄O₆²⁻ より、遊離していた I₂ の物質量は S₂O₃²⁻ の 1/2 倍：\nn(I₂) = (1/2) × 0.100 × (12.0 / 1000) = 6.00×10⁻⁴ mol。\n第1反応 H₂O₂ + 2I⁻ + 2H⁺ → 2H₂O + I₂ では H₂O₂ と I₂ の係数比は 1 : 1 なので、n(H₂O₂) = n(I₂) = 6.00×10⁻⁴ mol。\n試料体積 10.0 mL（0.0100 L）で割ると c = (6.00×10⁻⁴) / 0.0100 = 0.0600 mol/L。',
             reasons: [
@@ -366,10 +535,15 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               'I₂ : S₂O₃²⁻ = 1 : 2 の係数比を見落として 1 : 1 とした誤り。',
               '係数比 2 を逆に掛けた誤り。',
             ],
+            steps: [
+              '① 1 mol H₂O₂ → 1 mol I₂ → 2 mol S₂O₃²⁻ より、n(H₂O₂) = (1/2) × 0.100 × 0.0120 = 6.00×10⁻⁴ mol。',
+              '② 試料 0.0100 L で割り、c = 6.00×10⁻⁴ ÷ 0.0100 = 0.0600 mol/L（②が正解）。',
+            ],
           },
           {
             id: 'chem_mock_basic_02_q6',
             label: '問2',
+            difficulty: 'foundation',
             stem: 'リン酸形燃料電池（酸性電解質を用いる水素−酸素燃料電池）および金属の製錬に関する記述として最も適当なものを①〜④から選べ。',
             choices: [
               'リン酸形燃料電池では、負極に水素 H₂ を供給して H₂ → 2H⁺ + 2e⁻ の酸化反応が起こり、正極に酸素 O₂ を供給して O₂ + 4H⁺ + 4e⁻ → 2H₂O の還元反応が起こる。',
@@ -378,7 +552,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '鉄の製錬では、赤鉄鉱（主成分 Fe₂O₃）を水酸化ナトリウム水溶液に溶かしてから室温で電気分解して銑鉄を得ている。',
             ],
             answer: 0,
-            points: 8,
+            points: 6,
             skill: '燃料電池と金属の製錬',
             explanation: 'リン酸形や固体高分子形（酸性電解質）の水素燃料電池では、負極で燃料 H₂ が酸化（H₂ → 2H⁺ + 2e⁻）、正極で酸化剤 O₂ が還元（O₂ + 4H⁺ + 4e⁻ → 2H₂O）され、生成物は水 H₂O のみである。なおアルミニウム Al はイオン化傾向が非常に大きいため炭素では還元できず、アルミナ Al₂O₃ を氷晶石 Na₃AlF₆ に溶かして「溶融塩電解」で得る（鉄は溶鉱炉で一酸化炭素 CO により還元する）。',
             reasons: [
@@ -387,10 +561,15 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               'Al はイオン化傾向が大きいためコークス還元は不可であり、氷晶石を用いた溶融塩電解で製造する。',
               '鉄の製錬は溶鉱炉で赤鉄鉱 Fe₂O₃ をコークス由来の CO で段階的に還元して銑鉄を得る（ボーキサイト＋NaOH はバイヤー法による Al₂O₃ 精製）。',
             ],
+            steps: [
+              '① 水素燃料電池の排出物は H₂O のみ（②×）、Al は溶融塩電解（③×）、Fe は溶鉱炉 CO 還元（④×）。',
+              '② リン酸形（酸性）における負極 H₂ → 2H⁺ + 2e⁻・正極 O₂ + 4H⁺ + 4e⁻ → 2H₂O を正しく示した ① が正解。',
+            ],
           },
           {
             id: 'chem_mock_basic_02_q7',
             label: '問3',
+            difficulty: 'kyotsu_standard',
             stem: 'リン酸形燃料電池に標準状態で 11.2 L の水素 H₂ を供給し、すべて反応させて発電したとき、外部回路を流れた電子 e⁻ の物質量 [mol] と生成した水 H₂O の質量 [g]（H=1.0, O=16）の組合せとして正しいものを①〜④から選べ。',
             choices: [
               '電子：0.50 mol　水：9.0 g',
@@ -399,7 +578,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '電子：2.0 mol　水：18 g',
             ],
             answer: 1,
-            points: 8,
+            points: 6,
             skill: '燃料電池の電気量と生成物計算',
             explanation: '供給した H₂ の物質量は 11.2 / 22.4 = 0.50 mol。\n負極の半反応式 H₂ → 2H⁺ + 2e⁻ より、流れる電子 e⁻ は H₂ の 2倍 ＝ 0.50 × 2 = 1.0 mol。\n全体反応式 2H₂ + O₂ → 2H₂O より、生成する H₂O の物質量は H₂ と 1 : 1 で 0.50 mol → 質量は 18 × 0.50 = 9.0 g。',
             reasons: [
@@ -407,6 +586,36 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '正しい。H₂ 0.50 mol から電子 1.0 mol が流れ、H₂O 0.50 mol（9.0 g）が生じる。',
               'H₂O の物質量を電子と同じ 1.0 mol としてしまった誤り。',
               'H₂ の物質量を 1.0 mol と見誤った計算である。',
+            ],
+            steps: [
+              '① n(H₂) = 11.2 / 22.4 = 0.50 mol ⇒ H₂ → 2H⁺ + 2e⁻ より n(e⁻) = 2 × 0.50 = 1.0 mol。',
+              '② 2H₂ + O₂ → 2H₂O より生成 n(H₂O) = 0.50 mol ⇒ 18 × 0.50 = 9.0 g（②が正解）。',
+            ],
+          },
+          {
+            id: 'chem_mock_basic_02_q8',
+            label: '問4',
+            difficulty: 'kyotsu_2ji',
+            stem: '水酸化ナトリウム NaOH と炭酸ナトリウム Na₂CO₃ の混合水溶液 10.0 mL にフェノールフタレインを加えて 0.100 mol/L の塩酸で滴定したところ、15.0 mL で赤色が消えた（第1中和点）。続けてメチルオレンジを加えて滴定すると、さらに 4.0 mL 滴下したところで赤橙色に変色した（第2中和点）。もとの混合水溶液中の NaOH のモル濃度 [mol/L] はいくらか。',
+            choices: [
+              '0.040 mol/L',
+              '0.11 mol/L',
+              '0.15 mol/L',
+              '0.19 mol/L',
+            ],
+            answer: 1,
+            points: 6,
+            skill: 'ワルダー法（二段階中和滴定）における NaOH 濃度の引き算決定',
+            explanation: '第2段の追加 4.0 mL が NaHCO₃ → CO₂ の中和に相当するため、第1段でも Na₂CO₃ → NaHCO₃ に同じ 4.0 mL の塩酸が消費されている。\nしたがって NaOH の中和に使われた塩酸は 15.0 − 4.0 = 11.0 mL であり、[NaOH] = 0.100 × (11.0 / 10.0) = 0.11 mol/L となる。',
+            reasons: [
+              '0.040 mol/L は Na₂CO₃ のモル濃度である。',
+              '正しい！第1段 15.0 mL から Na₂CO₃ 分の 4.0 mL を引いた 11.0 mL 相当より 0.11 mol/L。',
+              '第1段の Na₂CO₃ 消費分（4.0 mL）を引き忘れた典型ミス。',
+              '通算滴下量 19.0 mL をそのまま当てた誤算（劣化前の元の NaOH 濃度に相当）。',
+            ],
+            steps: [
+              '① 第2段の追加滴下量 4.0 mL ＝ Na₂CO₃ が第1段で消費した塩酸体積。',
+              '② NaOH 分の塩酸 ＝ 15.0 − 4.0 ＝ 11.0 mL ⇒ 0.100 × 11.0 / 10.0 ＝ 0.11 mol/L（②が正解）。',
             ],
           },
         ],
@@ -418,19 +627,26 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
     course: 'chem_theory',
     examCategory: 'advanced',
     round: 1,
-    title: '共通テスト実戦模試『化学』第1回（総合演習）',
-    subtitle: '第1問 状態・溶液 ／ 第2問 熱・速度・平衡・電解 ／ 第3問 無機物質 ／ 第4問 有機化合物 ／ 第5問 高分子',
+    title: '共通テスト実戦模試『化学』第1回（全分野標準〜85%完成）',
+    subtitle: '第1問 状態・結晶・浸透圧 ／ 第2問 緩衝液・鉛蓄電池・一次反応 ／ 第3問 系統分離・ハロゲン・合金 ／ 第4問 エステル構造・抽出・平衡 ／ 第5問 多糖・PET・イオン交換樹脂',
+    levelBadge: '★★☆ 共通テスト本番標準〜85%突破',
+    constantsNote: '必要があれば、次の値を用いよ。原子量：H = 1.0, C = 12, N = 14, O = 16, Na = 23, S = 32, Cl = 35.5, Cu = 64, Zn = 65, Pb = 207 ／ 気体定数 R = 8.3×10³ Pa·L/(K·mol) ／ アボガドロ定数 NA = 6.0×10²³ /mol ／ ファラデー定数 F = 9.65×10⁴ C/mol',
     timeLimitMinutes: 60,
     totalPoints: 100,
     sections: [
       {
         id: 'sec_adv1_d1',
         daimonLabel: '第1問',
-        title: '物質の状態・結晶格子・希薄溶液の性質',
+        title: '物質の状態・結晶格子・希薄溶液の性質（配点 20点）',
+        recommendedMinutes: 12,
+        leadText: '気体の燃焼反応と状態方程式、高分子水溶液の浸透圧、およびイオン結晶の限界イオン半径比に関する次の問い（問1〜3）に答えよ。必要であれば図1の代表的な結晶格子モデルを参照せよ。',
+        imageUrl: FIG_CRYSTAL_LATTICES,
+        imageCaption: '図1 金属結晶およびイオン結晶（NaCl型6配位・CsCl型8配位）の単位格子モデル',
         items: [
           {
             id: 'chem_mock_adv_01_q1',
             label: '問1',
+            difficulty: 'kyotsu_standard',
             stem: '容積 8.3 L の耐圧容器に 0.20 mol のメタン CH₄ と 0.50 mol の酸素 O₂ を封入し、点火して完全燃焼させたのち容器全体を 400 K（約 127 ℃、水はすべて気体とみなせる）に保った。燃焼後の容器内の全圧 [Pa] はいくらか。ただし気体定数を R = 8.3×10³ Pa·L/(K·mol) とする。',
             choices: [
               '2.0×10⁵ Pa',
@@ -439,7 +655,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '3.6×10⁵ Pa',
             ],
             answer: 2,
-            points: 10,
+            points: 6,
             skill: '燃焼前後の気体状態方程式',
             explanation: 'CH₄(気) + 2O₂(気) → CO₂(気) + 2H₂O(気) において、CH₄ 0.20 mol に対し O₂ が 0.40 mol 反応し、O₂ が 0.10 mol 余る。生成する CO₂ は 0.20 mol、H₂O(気) は 0.40 mol（気体分子数の増減はない反応なので全物質量は反応前と同じ 0.20 + 0.50 = 0.70 mol！）。\nPV = nRT より P = (0.70 × 8.3×10³ × 400) / 8.3 = 0.70 × 4.0×10⁵ = 2.8×10⁵ Pa。',
             reasons: [
@@ -448,10 +664,15 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '正しい。400 K では水もすべて水蒸気（0.40 mol）として存在し、全気体物質量は 0.70 mol となるため P = 2.8×10⁵ Pa。',
               '物質量の足し算を誤った値である。',
             ],
+            steps: [
+              '① 400 K では H₂O も気体のため CH₄ + 2O₂ → CO₂ + 2H₂O の前後で気体総物質量は変化せず n_全 = 0.20 + 0.50 = 0.70 mol。',
+              '② P = nRT / V = (0.70 × 8.3×10³ × 400) ÷ 8.3 = 2.8×10⁵ Pa（③が正解）。',
+            ],
           },
           {
             id: 'chem_mock_adv_01_q2',
             label: '問2',
+            difficulty: 'kyotsu_standard',
             stem: '分子量未知の非電解質であるタンパク質 1.66 g を水に溶かして 100 mL にした水溶液の 27 ℃（300 K）における浸透圧を測定したところ、4.98×10² Pa であった。このタンパク質の分子量として最も適当なものを①〜④から選べ（R = 8.3×10³ Pa·L/(K·mol)）。',
             choices: [
               '8.3×10³',
@@ -460,7 +681,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '1.7×10⁵',
             ],
             answer: 2,
-            points: 10,
+            points: 7,
             skill: '浸透圧からの高分子の分子量決定',
             explanation: 'ファントホッフの法則 ΠV = (w / M)RT より、M = wRT / (ΠV)。\nw = 1.66 g, V = 0.100 L, T = 300 K, Π = 4.98×10² Pa を代入すると：\nM = (1.66 × 8.3×10³ × 300) / (4.98×10² × 0.100) = (4.98 × 8.3×10⁵) / 49.8 = 0.10 × 8.3×10⁵ = 8.3×10⁴。',
             reasons: [
@@ -469,19 +690,52 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '正しい。ΠV = (w/M)RT より M = 8.3×10⁴ と求まる。',
               '2倍大きく見積もった誤りである。',
             ],
+            steps: [
+              '① ファントホッフの式 ΠV = (w/M)RT を M について解き、V = 0.100 L・T = 300 K に単位を揃える。',
+              '② M = (1.66 × 8.3×10³ × 300) ÷ (4.98×10² × 0.100) = 8.3×10⁴（③が正解）。',
+            ],
+          },
+          {
+            id: 'chem_mock_adv_01_q2b',
+            label: '問3',
+            difficulty: 'kyotsu_2ji',
+            stem: '塩化セシウム CsCl 型結晶格子（単位格子の中心に陽イオン、8つの頂点に陰イオンが配置し配位数8）において、陽イオン（半径 r⁺）と陰イオン（半径 r⁻）が体対角線上で接し、かつ隣り合う陰イオンどうしが辺上でちょうど接して安定を保つ限界のイオン半径比 r⁺ / r⁻ の値として正しいものを①〜④から選べ（√2 = 1.41, √3 = 1.73）。',
+            choices: [
+              '0.225',
+              '0.414',
+              '0.732',
+              '0.866',
+            ],
+            answer: 2,
+            points: 7,
+            skill: 'CsCl 型イオン結晶の限界イオン半径比（√3 − 1 = 0.732）の幾何学的導出',
+            explanation: '一辺の長さを a とすると、①体対角線上で陽イオンと陰イオンが接するから 2(r⁺ + r⁻) = √3 a。②限界状態では一辺上で陰イオンどうしが接するから 2r⁻ = a。\n①に a = 2r⁻ を代入すると 2(r⁺ + r⁻) = 2√3 r⁻ ⇒ r⁺ / r⁻ = √3 − 1 ≒ 1.732 − 1 = 0.732！（なお NaCl 型6配位の限界は √2 − 1 = 0.414）。',
+            reasons: [
+              'ZnS 型（4配位）の限界イオン半径比（√(3/2) − 1 ≒ 0.225）である。',
+              'NaCl 型（6配位）の限界イオン半径比（√2 − 1 ≒ 0.414）と取り違えた誤り。',
+              '正しい！体対角線 2(r⁺ + r⁻) = √3 a と辺 2r⁻ = a より r⁺ / r⁻ = √3 − 1 ≒ 0.732。',
+              '√3 / 2 = 0.866 をそのまま答えて 1 を引き忘れた誤算。',
+            ],
+            steps: [
+              '① 体対角線：2(r⁺ + r⁻) = √3 a、限界の辺：2r⁻ = a。',
+              '② 辺々割って 1 + r⁺/r⁻ = √3 ⇒ r⁺/r⁻ = √3 − 1 ≒ 0.732（③が正解）。',
+            ],
           },
         ],
       },
       {
         id: 'sec_adv1_d2',
         daimonLabel: '第2問',
-        title: '化学平衡・緩衝液・鉛蓄電池',
+        title: '化学平衡・緩衝液・鉛蓄電池・一次反応（配点 20点）',
+        recommendedMinutes: 13,
+        leadText: '可逆反応の化学平衡、弱酸とその塩からなる緩衝液、鉛蓄電池の電極質量変化、および一次反応の半減期に関する次の問い（問1〜3）に答えよ。',
         imageUrl: FIG_HABER_EQUILIBRIUM,
-        imageCaption: '図1 気体平衡における温度・圧力依存性の参考グラフ',
+        imageCaption: '図2 気体平衡における温度・圧力依存性の参考グラフ',
         items: [
           {
             id: 'chem_mock_adv_01_q3',
             label: '問1',
+            difficulty: 'kyotsu_standard',
             stem: '酢酸の電離定数を Ka = 2.7×10⁻⁵ mol/L とする。0.20 mol/L の酢酸水溶液 100 mL と 0.30 mol/L の酢酸ナトリウム水溶液 100 mL を混合した緩衝液の水素イオン濃度 [H⁺] [mol/L] として最も適当なものを①〜④から選べ。',
             choices: [
               '1.8×10⁻⁵ mol/L',
@@ -490,7 +744,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '5.4×10⁻⁵ mol/L',
             ],
             answer: 0,
-            points: 10,
+            points: 6,
             skill: '緩衝液の水素イオン濃度計算',
             explanation: '緩衝液中では酢酸の電離はほぼ完全に抑えられ、酢酸ナトリウムは完全電離しているため、[CH₃COOH] : [CH₃COO⁻] は混合した物質量比 (0.20 × 0.100) : (0.30 × 0.100) = 2 : 3 に等しい。\nKa = [CH₃COO⁻][H⁺] / [CH₃COOH] より：\n[H⁺] = Ka × ([CH₃COOH] / [CH₃COO⁻]) = 2.7×10⁻⁵ × (2 / 3) = 1.8×10⁻⁵ mol/L。',
             reasons: [
@@ -499,10 +753,15 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '酸と塩の比 2/3 を逆数の 3/2 にして掛けた（2.7×1.5 = 4.05）誤り。',
               '2倍をそのまま掛けた誤り。',
             ],
+            steps: [
+              '① 混合後の酸と塩の物質量比 n(酸) : n(塩) = (0.20×0.100) : (0.30×0.100) = 2 : 3。',
+              '② 緩衝液の公式 [H⁺] = Ka × (n_酸 / n_塩) = 2.7×10⁻⁵ × (2/3) = 1.8×10⁻⁵ mol/L（①が正解）。',
+            ],
           },
           {
             id: 'chem_mock_adv_01_q4',
             label: '問2',
+            difficulty: 'kyotsu_standard',
             stem: '鉛蓄電池 ( − ) Pb | H₂SO₄aq | PbO₂ ( ＋ ) を放電させたとき、外部回路に電子 e⁻ が 0.20 mol 流れた。このときの両極の質量変化および電解液（希硫酸）の濃度変化に関する記述として正しいものを①〜④から選べ（H=1.0, O=16, S=32, Pb=207）。',
             choices: [
               '負極（Pb）と正極（PbO₂）はどちらも硫酸鉛(II) PbSO₄ に変化して質量が増加し、負極は 9.6 g 増加、正極は 6.4 g 増加し、電解液中の H₂SO₄ 濃度は低下する。',
@@ -511,7 +770,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '鉛蓄電池を充電するときは、外部電源の正極を鉛（Pb）極に、負極を酸化鉛(IV)（PbO₂）極につなぐ。',
             ],
             answer: 0,
-            points: 10,
+            points: 7,
             skill: '鉛蓄電池の放電反応と電極質量変化',
             explanation: '鉛蓄電池の放電反応式は Pb + PbO₂ + 2H₂SO₄ → 2PbSO₄ + 2H₂O（2mol の e⁻ が流れる）。\n・負極：Pb → PbSO₄（SO₄ 分 = 96 g/mol 増加）。2e⁻ で +96 g なので、0.20 mol の e⁻ では +96 × (0.20 / 2) = +9.6 g 増加。\n・正極：PbO₂ → PbSO₄（SO₄ − O₂ = 96 − 32 = +64 g/mol 増加）。2e⁻ で +64 g なので、0.20 mol の e⁻ では +64 × (0.20 / 2) = +6.4 g 増加。\nまた H₂SO₄ が消費され H₂O が生じるため希硫酸の濃度（および密度）は低下する。',
             reasons: [
@@ -520,20 +779,53 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '2e⁻ あたりの変化量をさらに 2 で割ってしまった誤り。',
               '充電時は必ず「外部電源の正極を電池の正極（PbO₂側）、負極を電池の負極（Pb側）」につなぐ！',
             ],
+            steps: [
+              '① 2 mol e⁻ あたり負極 Pb → PbSO₄（+96 g）、正極 PbO₂ → PbSO₄（+64 g）と増加幅を把握する。',
+              '② 0.20 mol e⁻ はその 0.10 倍なので負極 +9.6 g・正極 +6.4 g かつ硫酸濃度低下 ⇒ ①が正解。',
+            ],
+          },
+          {
+            id: 'chem_mock_adv_01_q4b',
+            label: '問3',
+            difficulty: 'kyotsu_2ji',
+            stem: '一定温度において五酸化二窒素の分解反応 2N₂O₅ → 4NO₂ + O₂ は一次反応 v = k[N₂O₅] に従い、N₂O₅ の濃度が半分になる時間（半減期）は初期濃度によらず 15 分であった。初濃度 0.80 mol/L の N₂O₅ を反応開始から 45 分間反応させたとき、分解せずに残っている N₂O₅ の濃度と、それまでに生成した酸素 O₂ の濃度の組合せとして正しいものを①〜④から選べ（体積一定とする）。',
+            choices: [
+              '残存 [N₂O₅] = 0.10 mol/L　／　生成 [O₂] = 0.35 mol/L',
+              '残存 [N₂O₅] = 0.10 mol/L　／　生成 [O₂] = 0.70 mol/L',
+              '残存 [N₂O₅] = 0.20 mol/L　／　生成 [O₂] = 0.30 mol/L',
+              '残存 [N₂O₅] = 0.27 mol/L　／　生成 [O₂] = 0.27 mol/L',
+            ],
+            answer: 0,
+            points: 7,
+            skill: '一次反応の半減期（3半減期＝1/8残存）と係数比 2N₂O₅ → O₂ による生成量計算',
+            explanation: '45 分間は半減期 15 分のちょうど 3 回分なので、残存 [N₂O₅] = 0.80 × (1/2)³ = 0.10 mol/L。\n分解した N₂O₅ は 0.80 − 0.10 = 0.70 mol/L であり、反応式 2N₂O₅ → 4NO₂ + O₂ の係数比 2 : 1 より生成した [O₂] = 0.70 × (1/2) = 0.35 mol/L！',
+            reasons: [
+              '正しい！3半減期で残存 0.10 mol/L、分解分 0.70 mol/L の 1/2 倍より生成 [O₂] = 0.35 mol/L。',
+              '係数比 2N₂O₅ → O₂ の 1/2 倍を忘れて分解量 0.70 mol/L をそのまま答えた典型ミス！',
+              '45 分を 2半減期（1/4 = 0.20 mol/L）と数え誤った値。',
+              '0.80 ÷ 3 ≒ 0.27 と単純割り算した誤り。',
+            ],
+            steps: [
+              '① 45 分 ÷ 15 分 = 3 半減期 ⇒ 残存 [N₂O₅] = 0.80 × (1/2)³ = 0.10 mol/L。',
+              '② 分解量 0.70 mol/L × (1/2) = 生成 [O₂] = 0.35 mol/L（①が正解）。',
+            ],
           },
         ],
       },
       {
         id: 'sec_adv1_d3',
         daimonLabel: '第3問',
-        title: '無機物質と陽イオン系統分離',
+        title: '無機物質・陽イオン系統分離・実用合金（配点 20点）',
+        recommendedMinutes: 11,
+        leadText: '図3に示す金属陽イオン混合水溶液の系統分離フロー、ハロゲン単体・化合物の性質、および黄銅（Cu−Zn 合金）の定量分析に関する次の問い（問1〜3）に答えよ。',
         imageUrl: FIG_CATION_SEPARATION,
-        imageCaption: '図2 陽イオン混合液の分離フロー',
+        imageCaption: '図3 陽イオン混合液の分離フロー',
         items: [
           {
             id: 'chem_mock_adv_01_q5',
             label: '問1',
-            stem: '図2の系統分離において、操作③のあとの「ろ液（[Zn(NH₃)₄]²⁺ と Ca²⁺ を含む塩基性水溶液）」に硫化水素 H₂S を通じたときに生じる沈殿の色・化学式と、さらにそのろ液に炭酸アンモニウム (NH₄)₂CO₃ 水溶液を加えたときに生じる沈殿の組合せとして正しいものを①〜④から選べ。',
+            difficulty: 'kyotsu_standard',
+            stem: '図3の系統分離において、操作③のあとの「ろ液（[Zn(NH₃)₄]²⁺ と Ca²⁺ を含む塩基性水溶液）」に硫化水素 H₂S を通じたときに生じる沈殿の色・化学式と、さらにそのろ液に炭酸アンモニウム (NH₄)₂CO₃ 水溶液を加えたときに生じる沈殿の組合せとして正しいものを①〜④から選べ。',
             choices: [
               'H₂S 通気：白色沈殿 ZnS ／ (NH₄)₂CO₃ 添加：白色沈殿 CaCO₃',
               'H₂S 通気：黒色沈殿 ZnS ／ (NH₄)₂CO₃ 添加：赤色沈殿 CaCO₃',
@@ -541,7 +833,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               'H₂S 通気：青白色沈殿 Zn(OH)₂ ／ (NH₄)₂CO₃ 添加：沈殿なし',
             ],
             answer: 0,
-            points: 10,
+            points: 6,
             skill: '第4属・第5属陽イオンの沈殿と色',
             explanation: '塩基性条件下では H₂S の電離が進み [S²⁻] が大きくなるため、第4属の Zn²⁺ が金属硫化物の中で例外的な「白色沈殿 ZnS」を生じる！さらに残ったろ液中の第5属（アルカリ土類金属）Ca²⁺ は (NH₄)₂CO₃ 添加により白色沈殿 CaCO₃ として分離される。',
             reasons: [
@@ -550,10 +842,15 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '塩基性で H₂S を通じると ZnS が確実に沈殿する。',
               'H₂S 通気によって生じるのは水酸化物ではなく硫化物 ZnS である。',
             ],
+            steps: [
+              '① 塩基性 H₂S 通気で第4属 Zn²⁺ が沈殿 ⇒ 硫化物の中で唯一の「白色沈殿 ZnS」！',
+              '② 残った第5属 Ca²⁺ は (NH₄)₂CO₃ 添加で「白色沈殿 CaCO₃」⇒ ①が正解。',
+            ],
           },
           {
             id: 'chem_mock_adv_01_q6',
             label: '問2',
+            difficulty: 'foundation',
             stem: 'ハロゲンおよびその化合物の性質に関する記述として正しいものを、①〜④のうちから一つ選べ。',
             choices: [
               'ハロゲン化水素の沸点は HF ＞ HCl ＞ HBr ＞ HI の順に単調に低くなり、水溶液の酸の強さも HF が最強酸である。',
@@ -562,7 +859,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '塩素 Cl₂ を水に溶かした塩素水は強塩基性を示し、漂白・殺菌作用はもたない。',
             ],
             answer: 1,
-            points: 10,
+            points: 7,
             skill: 'ハロゲン化合物（HF・AgX・さらし粉）',
             explanation: 'ハロゲン化銀の中で AgF のみ水によく溶け、AgCl（白）・AgBr（淡黄）・AgI（黄）は難溶性沈殿で光により分解して銀を遊離する感光性をもつ（AgI はアンモニア水にも溶けないが Na₂S₂O₃ 水溶液には溶ける）。なお HF は水素結合のため沸点が高く電離しにくい「弱酸」であり（HCl, HBr, HI は強酸）、沸点は HF が突出して高く次いで HI ＞ HBr ＞ HCl の順となる。',
             reasons: [
@@ -571,19 +868,52 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               'さらし粉に強酸（塩酸）を加えると塩素 Cl₂ が発生する（実験室での塩素製法の一つ）。',
               'Cl₂ + H₂O ⇄ HCl + HClO より塩素水は酸性を示し、次亜塩素酸 HClO の強い酸化力により漂白・殺菌作用を示す。',
             ],
+            steps: [
+              '① HF＝弱酸かつ沸点 HF ＞ HI ＞ HBr ＞ HCl（①×）、さらし粉＋HCl＝Cl₂発生（③×）、塩素水＝酸性・漂白性（④×）。',
+              '② AgFのみ水溶性、AgCl(白)・AgBr(淡黄)・AgI(黄)は難溶・感光性を述べた ② が正解。',
+            ],
+          },
+          {
+            id: 'chem_mock_adv_01_q6b',
+            label: '問3',
+            difficulty: 'kyotsu_standard',
+            stem: '黄銅（しんちゅう：銅 Cu と亜鉛 Zn の合金）の試料 5.20 g に十分な量の希塩酸を加えたところ、一部が溶け残り、発生した水素 H₂ を捕集すると標準状態で 0.672 L であった。この黄銅中の銅 Cu の質量パーセント [%] に最も近い値を①〜④から選べ（Cu = 64, Zn = 65、標準状態のモル体積 22.4 L/mol）。',
+            choices: [
+              '37.5 %',
+              '50.0 %',
+              '62.5 %',
+              '75.0 %',
+            ],
+            answer: 2,
+            points: 7,
+            skill: '黄銅（Cu + Zn）の希塩酸反応における Zn のみ溶解と Cu 含有率計算',
+            explanation: 'Cu は水素よりイオン化傾向が小さいため希塩酸に溶けず、Zn のみが Zn + 2HCl → ZnCl₂ + H₂↑ で溶ける。\n発生した H₂ = 0.672 / 22.4 = 0.0300 mol = n(Zn)。よって w(Zn) = 65 × 0.0300 = 1.95 g。\n溶け残った銅は w(Cu) = 5.20 − 1.95 = 3.25 g であり、含有率は (3.25 / 5.20) × 100 = 62.5 %！',
+            reasons: [
+              '37.5 %（1.95 / 5.20）は亜鉛 Zn の質量パーセントであり、問われている銅 Cu と取り違えた典型ミス！',
+              '1 : 1 と概算した誤り。',
+              '正しい！Zn = 1.95 g より Cu = 3.25 g ⇒ 3.25 / 5.20 × 100 = 62.5 %。',
+              '発生 H₂ のモル数を誤算した値。',
+            ],
+            steps: [
+              '① H₂ = 0.672 / 22.4 = 0.0300 mol = n(Zn) ⇒ w(Zn) = 65 × 0.0300 = 1.95 g。',
+              '② w(Cu) = 5.20 − 1.95 = 3.25 g ⇒ 3.25 / 5.20 × 100 = 62.5 %（③が正解）。',
+            ],
           },
         ],
       },
       {
         id: 'sec_adv1_d4',
         daimonLabel: '第4問',
-        title: '有機化合物の抽出分離とエステル構造決定',
+        title: '有機化合物の抽出分離・エステル構造決定と平衡（配点 20点）',
+        recommendedMinutes: 12,
+        leadText: 'エステル C₅H₁₀O₂ の加水分解による構造決定、図4の分液ロートを用いた芳香族化合物の系統抽出、およびエステル化平衡（K = 4.0）の収率計算に関する次の問い（問1〜3）に答えよ。',
         imageUrl: FIG_ORGANIC_EXTRACTION,
-        imageCaption: '図3 芳香族化合物の分液抽出操作',
+        imageCaption: '図4 芳香族化合物の分液抽出操作',
         items: [
           {
             id: 'chem_mock_adv_01_q7',
             label: '問1',
+            difficulty: 'kyotsu_standard',
             stem: '分子式 C₅H₁₀O₂ で表されるエステル X を希硫酸とともに加熱して加水分解したところ、カルボン酸 A とアルコール B が得られた。A は銀鏡反応を示し、B を二クロム酸カリウム硫酸酸性溶液で穏やかに酸化するとケトン C が生じ、さらに B はヨードホルム反応に陽性であった。ただし B には不斉炭素原子が存在した。エステル X の名称として正しいものを①〜④から選べ。',
             choices: [
               '酢酸イソプロピル',
@@ -592,7 +922,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               'プロピオン酸エチル',
             ],
             answer: 1,
-            points: 10,
+            points: 6,
             skill: 'エステルの加水分解からの構造決定',
             explanation: '① カルボン酸 A が銀鏡反応を示す → A は唯一の還元性カルボン酸である「ギ酸 HCOOH」（炭素数1）。\n② もとのエステルが C₅H₁₀O₂ なので、アルコール B は炭素数 5 − 1 = 4 の飽和1価アルコール C₄H₉OH。\n③ B は酸化するとケトン C になる（第2級アルコール）かつ不斉炭素原子をもちヨードホルム反応陽性 → B は「2-ブタノール CH₃CH(OH)CH₂CH₃」。\nしたがってエステル X はギ酸と 2-ブタノールからなる「ギ酸 2-ブチル（ギ酸 sec-ブチル）HCOOCH(CH₃)CH₂CH₃」。',
             reasons: [
@@ -601,11 +931,16 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '1-ブタノールは第1級アルコールであり、酸化するとアルデヒド→カルボン酸になり不斉炭素ももたない。',
               'プロピオン酸は銀鏡反応を示さず、エタノールには不斉炭素がない。',
             ],
+            steps: [
+              '① カルボン酸 A が銀鏡反応陽性 ⇒ A ＝ ギ酸 HCOOH（C1）、残りアルコール B は C4（C₄H₉OH）。',
+              '② B は第2級（酸化でケトン）・ヨードホルム陽性・不斉炭素あり ⇒ 2-ブタノール ⇒ ギ酸 2-ブチル（②）。',
+            ],
           },
           {
             id: 'chem_mock_adv_01_q8',
             label: '問2',
-            stem: '図3の分液ロート抽出において、水層C（ナトリウムフェノキシド C₆H₅ONa 水溶液）から遊離のフェノールを油状液体として再び分離したい。水層Cに行う操作として最も適当なものを①〜④から選べ。',
+            difficulty: 'kyotsu_standard',
+            stem: '図4の分液ロート抽出において、水層C（ナトリウムフェノキシド C₆H₅ONa 水溶液）から遊離のフェノールを油状液体として再び分離したい。水層Cに行う操作として最も適当なものを①〜④から選べ。',
             choices: [
               '二酸化炭素 CO₂ を十分に吹き込む（または希塩酸を加える）。',
               '水酸化ナトリウム NaOH の固体をさらに加える。',
@@ -613,7 +948,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               'アンモニア NH₃ 気体を吹き込む。',
             ],
             answer: 0,
-            points: 10,
+            points: 7,
             skill: '弱酸の遊離によるフェノールの再生',
             explanation: '酸の強さは「塩酸 ＞ 炭酸 ＞ フェノール」であるため、フェノールの塩（ナトリウムフェノキシド C₆H₅ONa）の水溶液にそれより強い酸である炭酸（CO₂ + H₂O）または希塩酸を加えると、弱酸の遊離反応（C₆H₅ONa + CO₂ + H₂O → C₆H₅OH + NaHCO₃）が起こり、水に溶けにくいフェノールが遊離する。',
             reasons: [
@@ -622,17 +957,52 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               'Na₂CO₃ は塩基性を示す塩であり、CO₂ を吹き込まなければフェノールは遊離しない（むしろフェノールは Na₂CO₃ 水溶液と反応して NaHCO₃ になる側）。',
               'NH₃ は塩基なのでフェノキシドからフェノールを遊離させられない。',
             ],
+            steps: [
+              '① 酸性度序列「塩酸 ＞ 炭酸(H₂CO₃) ＞ フェノール ＞ HCO₃⁻」を確認する。',
+              '② C₆H₅ONa 水溶液に CO₂ を通じると弱酸の遊離で C₆H₅OH が遊離する ⇒ ①が正解。',
+            ],
+          },
+          {
+            id: 'chem_mock_adv_01_q8b',
+            label: '問3',
+            difficulty: 'kyotsu_2ji',
+            stem: '酢酸とエタノールのエステル化平衡 CH₃COOH + C₂H₅OH ⇄ CH₃COOC₂H₅ + H₂O の平衡定数が K = 4.0 である温度において、酢酸 1.0 mol とエタノール 2.0 mol（水とエステルは 0 mol）を混合し平衡に達したとき、生成している酢酸エチルの物質量 [mol] に最も近い値を①〜④から選べ（√3 = 1.73 とする）。',
+            choices: [
+              '0.67 mol',
+              '0.75 mol',
+              '0.85 mol',
+              '0.95 mol',
+            ],
+            answer: 2,
+            points: 7,
+            skill: 'エステル化平衡 K = 4.0 における片方過剰仕込み（1:2）の二次方程式収率計算',
+            explanation: '生成した酢酸エチル（＝水）を x [mol]（0 < x < 1.0）とおくと、残存する酢酸は (1.0 − x) mol、エタノールは (2.0 − x) mol。\nK = x² / {(1.0 − x)(2.0 − x)} = 4.0 より x² = 4(2 − 3x + x²) ⇒ 3x² − 12x + 8 = 0。\n0 < x < 1.0 の解は x = (6 − √(36 − 24)) / 3 = (6 − 2√3) / 3 ≒ (6 − 3.46) / 3 = 2.54 / 3 ≒ 0.85 mol！（1 : 1 仕込みの 0.67 mol から 0.85 mol へ大きく収率が上がる）。',
+            reasons: [
+              '1 : 1 仕込みのときの平衡値（2/3 ≒ 0.67 mol）をそのまま答えた誤り。',
+              '3/4 = 0.75 mol と概算した誤り。',
+              '正しい！3x² − 12x + 8 = 0（0 < x < 1）より x = (6 − 2√3) / 3 ≒ 0.85 mol となる。',
+              'エタノール大過剰（8倍以上）のときの値と混同した誤り。',
+            ],
+            steps: [
+              '① K = x² / {(1 − x)(2 − x)} = 4.0 ⇒ 3x² − 12x + 8 = 0。',
+              '② 0 < x < 1 より x = (6 − 2√3)/3 ≒ 2.54/3 ≒ 0.85 mol（③が正解）。',
+            ],
           },
         ],
       },
       {
         id: 'sec_adv1_d5',
         daimonLabel: '第5問',
-        title: '天然高分子と合成高分子の量的関係',
+        title: '天然高分子・合成高分子・イオン交換樹脂の量的関係（配点 20点）',
+        recommendedMinutes: 12,
+        leadText: '多糖類（デンプン）の加水分解とアルコール発酵、ポリエステル（PET）の平均重合度とエステル結合数、および図5の強酸性陽イオン交換樹脂カラムによるイオン定量に関する次の問い（問1〜3）に答えよ。',
+        imageUrl: FIG_CHROMATOGRAPHY_ION_EXCHANGE,
+        imageCaption: '図5 クロマトグラフィーと強酸性陽イオン交換樹脂カラム（右）の反応モデル',
         items: [
           {
             id: 'chem_mock_adv_01_q9',
             label: '問1',
+            difficulty: 'kyotsu_standard',
             stem: 'デンプン (C₆H₁₀O₅)n 32.4 g を希硫酸で完全に加水分解してグルコース C₆H₁₂O₆ のみを得た。得られたグルコースの質量 [g] はいくらか。また、このグルコースをチマーゼ（酵素）で完全にアルコール発酵させたとき発生する二酸化炭素 CO₂ は何 mol か（H=1.0, C=12, O=16）。正しい組合せを①〜④から選べ。',
             choices: [
               'グルコース：32.4 g　CO₂：0.20 mol',
@@ -641,7 +1011,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               'グルコース：39.6 g　CO₂：0.40 mol',
             ],
             answer: 2,
-            points: 10,
+            points: 6,
             skill: '多糖類の加水分解とアルコール発酵の計算',
             explanation: 'デンプンの構成単位 C₆H₁₀O₅ の式量は 72 + 10 + 80 = 162。デンプン 32.4 g 中に含まれるグルコース単位の物質量は 32.4 / 162 = 0.20 mol。\n加水分解 (C₆H₁₀O₅)n + nH₂O → nC₆H₁₂O₆ により水が付加するため、グルコース（分子量 180）が 0.20 mol 生成し、その質量は 180 × 0.20 = 36.0 g（水 0.20 mol = 3.6 g 分だけ質量が増える！）。\nさらにアルコール発酵 C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂ より、グルコース 1 mol から 2 mol の CO₂ が生じるため、0.20 × 2 = 0.40 mol。',
             reasons: [
@@ -650,10 +1020,15 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '正しい。グルコース単位 0.20 mol → グルコース 180 × 0.20 = 36.0 g → CO₂ は2倍の 0.40 mol。',
               '付加する水の量を2倍に誤算した値である。',
             ],
+            steps: [
+              '① デンプン単位数 = 32.4 ÷ 162 = 0.20 mol ⇒ 水が付加してグルコース 180 × 0.20 = 36.0 g。',
+              '② C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂ より CO₂ = 2 × 0.20 = 0.40 mol（③が正解）。',
+            ],
           },
           {
             id: 'chem_mock_adv_01_q10',
             label: '問2',
+            difficulty: 'kyotsu_standard',
             stem: 'ポリエチレンテレフタラート（PET：繰り返し単位 −OC−C₆H₄−COO−CH₂CH₂−O− の式量 192）の平均分子量が 3.84×10⁴ であった。この PET 1分子をつくるために縮合重合で結合したテレフタル酸の分子数（平均重合度）と、この PET 1分子中に含まれるエステル結合の平均個数の組合せとして最も適当なものを①〜④から選べ（末端基の質量は無視する）。',
             choices: [
               'テレフタル酸：100個　エステル結合：200個',
@@ -662,7 +1037,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               'テレフタル酸：400個　エステル結合：400個',
             ],
             answer: 2,
-            points: 10,
+            points: 7,
             skill: '縮合重合の平均重合度とエステル結合数',
             explanation: '繰り返し単位1個（式量 192）の数は n = (3.84×10⁴) / 192 = 200。繰り返し単位1個はテレフタル酸1分子とエチレングリコール1分子から水2分子が取れてできているため、結合したテレフタル酸は 200個。また「繰り返し単位1個あたりにエステル結合 −COO− は2か所」含まれるため、1分子中のエステル結合は約 2n = 400個（厳密には 2n − 1 = 399 ≒ 400個）となる！',
             reasons: [
@@ -670,6 +1045,36 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '繰り返し単位1個の中にエステル結合が「2個」あることを見落として n 個としてしまった典型的な誤り！',
               '正しい。重合度 n = 200 よりテレフタル酸は 200個、1単位中に2つのエステル結合があるため計 400個となる。',
               'テレフタル酸の数まで2倍にしてしまった誤り。',
+            ],
+            steps: [
+              '① 重合度 n = 3.84×10⁴ ÷ 192 = 200 ⇒ テレフタル酸は 200個。',
+              '② PET は 1単位中にエステル結合が「2個」あるため 2n = 400個（③が正解）。',
+            ],
+          },
+          {
+            id: 'chem_mock_adv_01_q10b',
+            label: '問3',
+            difficulty: 'kyotsu_2ji',
+            stem: '十分に再生した強酸性陽イオン交換樹脂（R−SO₃H 型）を詰めたカラムに、0.15 mol/L の硫酸銅(II) CuSO₄ 水溶液 20.0 mL を通して完全にイオン交換させたのち純水で洗い流した。流出した全溶液を過不足なく中和するのに必要な 0.20 mol/L 水酸化ナトリウム水溶液の体積は何 mL か。①〜④から選べ。',
+            choices: [
+              '15.0 mL',
+              '20.0 mL',
+              '30.0 mL',
+              '60.0 mL',
+            ],
+            answer: 2,
+            points: 7,
+            skill: '陽イオン交換樹脂における2価陽イオン（Cu²⁺ 1 mol → 2H⁺ 放出）の電荷保存滴定',
+            explanation: '2R−SO₃H + Cu²⁺ → (R−SO₃)₂Cu + 2H⁺ より、2価の Cu²⁺（0.15 mol/L × 20.0 mL = 3.0 mmol）1個につき H⁺ が 2個放出されるため、流出液中の H⁺ は 2 × 3.0 = 6.0 mmol！\nこれを 0.20 mol/L の NaOH で中和するので、0.20 × V = 6.0 mmol ⇒ V = 30.0 mL！',
+            reasons: [
+              'Cu²⁺ が2価であること（2倍の H⁺ 放出）を忘れて 3.0 / 0.20 = 15.0 mL とした最頻出ミス！',
+              'もとの体積 20.0 mL をそのまま答えた誤り。',
+              '正しい！n(H⁺) = 2 × n(Cu²⁺) = 6.0 mmol より 6.0 / 0.20 = 30.0 mL。',
+              '2倍を二重に掛けた誤算。',
+            ],
+            steps: [
+              '① n(Cu²⁺) = 0.15 × 20.0 = 3.0 mmol ⇒ 電荷保存より放出 n(H⁺) = 2 × 3.0 = 6.0 mmol。',
+              '② V(NaOH) = 6.0 ÷ 0.20 = 30.0 mL（③が正解）。',
             ],
           },
         ],
@@ -681,21 +1086,26 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
     course: 'chem_theory',
     examCategory: 'advanced',
     round: 2,
-    title: '共通テスト実戦模試『化学』第2回（融合・応用演習）',
-    subtitle: '第1問 結晶格子・水和物析出 ／ 第2問 反応速度・鉛蓄電池 ／ 第3問 工業化学・錯イオン ／ 第4問 アセチルサリチル酸・油脂 ／ 第5問 電気泳動・ビニロン',
+    title: '共通テスト実戦模試『化学』第2回（90%突破・融合応用演習）',
+    subtitle: '第1問 結晶格子・水和物・連結気体 ／ 第2問 反応速度・鉛蓄電池・直列電解 ／ 第3問 工業化学・錯イオン・Ksp分離 ／ 第4問 アスピリン・油脂・芳香族異性体 ／ 第5問 電気泳動・ビニロン・SBRゴム',
+    levelBadge: '★★★ 共通テスト90%〜難関大合格圏',
+    constantsNote: '必要があれば、次の値を用いよ。原子量：H = 1.0, C = 12, N = 14, O = 16, S = 32, Cu = 64, Zn = 65, Br = 80, Ag = 108, Pb = 207 ／ アボガドロ定数 NA = 6.0×10²³ /mol ／ ファラデー定数 F = 9.65×10⁴ C/mol',
     timeLimitMinutes: 60,
     totalPoints: 100,
     sections: [
       {
         id: 'sec_adv2_d1',
         daimonLabel: '第1問',
-        title: '面心立方格子の密度計算と水和物結晶の溶解度析出',
+        title: '面心立方格子・水和物析出・コック付き連結容器（配点 20点）',
+        recommendedMinutes: 12,
+        leadText: '金属結晶（面心立方格子）の密度、図1に示す溶解度曲線を用いた水和物結晶の析出量、および温度の異なる連結容器内の気体全圧に関する次の問い（問1〜3）に答えよ。',
         imageUrl: FIG_SOLUBILITY_CURVE,
         imageCaption: '図1 温度による固体の溶解度曲線と再結晶',
         items: [
           {
             id: 'chem_mock_adv_02_q1',
             label: '問1',
+            difficulty: 'kyotsu_standard',
             stem: '銅 Cu は面心立方格子をとり、単位格子の一辺の長さを a = 3.6×10⁻⁸ cm、アボガドロ定数を N_A = 6.0×10²³ /mol、原子量を Cu = 64 とする。銅の結晶の密度 [g/cm³] に最も近い値を①〜④から選べ（必要なら 3.6³ ≒ 47 を用いよ）。',
             choices: [
               '4.5 g/cm³',
@@ -704,7 +1114,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '18 g/cm³',
             ],
             answer: 2,
-            points: 10,
+            points: 6,
             skill: '面心立方格子の単位格子密度計算',
             explanation: '面心立方格子の単位格子あたりに含まれる原子数は Z = 8×(1/8) + 6×(1/2) = 4個。\n単位格子1個の質量 ＝ (4 × 64) / (6.0×10²³) [g]、体積 a³ ＝ (3.6×10⁻⁸)³ ＝ 47×10⁻²⁴ = 4.7×10⁻²³ [cm³]。\nよって密度 d ＝ 256 / (6.0×10²³ × 4.7×10⁻²³) ＝ 256 / 28.2 ≒ 9.08 ≒ 9.1 g/cm³。',
             reasons: [
@@ -713,10 +1123,15 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '正しい。Z = 4 より d = (4 × 64) / (6.0×10²³ × 4.7×10⁻²³) ≒ 9.1 g/cm³ となる。',
               '原子数を Z = 8 と数え誤った値である。',
             ],
+            steps: [
+              '① 面心立方格子の単位格子内原子数 Z = 8×(1/8) + 6×(1/2) = 4 個。',
+              '② d = ZM / (N_A a³) = (4×64) ÷ (6.0×10²³ × 4.7×10⁻²³) = 256 ÷ 28.2 ≒ 9.1 g/cm³（③）。',
+            ],
           },
           {
             id: 'chem_mock_adv_02_q2',
             label: '問2',
+            difficulty: 'kyotsu_2ji',
             stem: '無水硫酸銅(II) CuSO₄（式量 160）の水 100 g に対する溶解度は、60 ℃ で 40、20 ℃ で 20 である。60 ℃ の硫酸銅(II)飽和水溶液 140 g を 20 ℃ まで冷却したとき、析出する硫酸銅(II)五水和物 CuSO₄·5H₂O（式量 250）は何 g か。最も適当な数値を①〜④から選べ。',
             choices: [
               '20.0 g',
@@ -725,14 +1140,44 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '35.2 g',
             ],
             answer: 3,
-            points: 10,
+            points: 7,
             skill: '水和物結晶（CuSO₄·5H₂O）の析出量計算',
             explanation: '60 ℃ の飽和水溶液 140 g（＝ 水 100 g ＋ CuSO₄ 40 g）から CuSO₄·5H₂O（式量 250、うち CuSO₄ 160）が x [g] 析出したとする。\n残った 20 ℃ 飽和水溶液全体の質量は (140 − x) [g]、その中に溶け残っている無水 CuSO₄ の質量は 40 − (160/250)x = (40 − 0.64x) [g]。\n20 ℃ での溶解度は 20（飽和水溶液 120 g 中に溶質 20 g）なので比例式を立てると：\n(40 − 0.64x) / (140 − x) = 20 / 120 = 1 / 6\n6(40 − 0.64x) = 140 − x　→　240 − 3.84x = 140 − x　→　2.84x = 100　→　x = 100 / 2.84 ≒ 35.21 ≒ 35.2 g。',
             reasons: [
               '無水塩のまま析出した（40 − 20 = 20.0 g）とする初歩的な誤り。',
               '無水塩の差 20 g を単純に 250/200 倍した誤り。',
-              '結晶水として奪われる溶媒（水）の減少を無視し、20 × (250/160) = 31.25 ≒ 31.3 g とした典型的な誤り！',
+              '結晶水として奪われる溶媒（水）の減少を無視し、20 × (250/160) = 31.25 ≒ 31.3 g と計算した典型的な誤り！',
               '正しい。(40 − 0.64x) / (140 − x) = 20 / 120 より x ≒ 35.2 g が得られる。',
+            ],
+            steps: [
+              '① 五水和物 x [g] 析出後の残存溶質 CuSO₄ = 40 − (160/250)x、残存飽和水溶液全体 = 140 − x。',
+              '② 20 ℃ 飽和比 (40 − 0.64x) / (140 − x) = 20 / 120 ⇒ 2.84x = 100 ⇒ x ≒ 35.2 g（④が正解）。',
+            ],
+          },
+          {
+            id: 'chem_mock_adv_02_q2b',
+            label: '問3',
+            difficulty: 'kyotsu_2ji',
+            stem: '体積無視のコックでつながれた容積 2.0 L の容器A（300 K、圧力 3.0×10⁵ Pa の He を封入）と容積 3.0 L の容器B（300 K、圧力 2.0×10⁵ Pa の Ne を封入）がある。コックを開いたのち、容器Aのみを 300 K、容器Bのみを 450 K に保って十分な時間が経過し圧力がつり合ったとき、容器内の全圧 P [Pa] はいくらか。①〜④から選べ。',
+            choices: [
+              '2.4×10⁵ Pa',
+              '2.8×10⁵ Pa',
+              '3.0×10⁵ Pa',
+              '3.2×10⁵ Pa',
+            ],
+            answer: 2,
+            points: 7,
+            skill: '温度が異なる2室連結容器の気体総物質量保存（n_A + n_B = 一定）による全圧計算',
+            explanation: '気体定数を R とすると、混合前の全物質量 n_全 = (3.0×10⁵ × 2.0)/(300R) + (2.0×10⁵ × 3.0)/(300R) = (12.0×10⁵)/(300R)。\n温度変更後、両室の全圧は同じ P になってつり合うため、n_A′ + n_B′ = (P × 2.0)/(300R) + (P × 3.0)/(450R) = P × (2.0/300 + 2.0/300)/R = (4.0 P)/(300R)。\n総物質量保存より 4.0 P = 12.0×10⁵ ⇒ P = 3.0×10⁵ Pa！',
+            reasons: [
+              '300 K 同温のままコックを開いたときの全圧（12×10⁵ / 5.0 = 2.4×10⁵ Pa）である。',
+              '両室の平均温度を使って誤算した値である。',
+              '正しい！PV/(RT) の和が保存されるため (2.0/300 + 3.0/450)P = 12.0×10⁵/300 より P = 3.0×10⁵ Pa。',
+              '全体が 400 K になったと誤認した値（2.4×10⁵ × 400/300 = 3.2×10⁵ Pa）。',
+            ],
+            steps: [
+              '① 混合前：P_AV_A/T + P_BV_B/T = (6.0×10⁵ + 6.0×10⁵)/300 = 4.0×10³。',
+              '② 温度変更後：P(2.0/300 + 3.0/450) = P(4.0/300) = 4.0×10³ ⇒ P = 3.0×10⁵ Pa（③が正解）。',
             ],
           },
         ],
@@ -740,14 +1185,26 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
       {
         id: 'sec_adv2_d2',
         daimonLabel: '第2問',
-        title: '反応速度式の決定と鉛蓄電池の充放電計算',
+        title: '反応速度式・鉛蓄電池・直列電気分解（配点 20点）',
+        recommendedMinutes: 13,
+        leadText: '表1に示す初期反応速度の実験データ、図2の鉛蓄電池における電解液濃度変化、および直列連結した電解槽における気体発生量に関する次の問い（問1〜3）に答えよ。',
+        dataTable: {
+          caption: '表1 気体反応 2A ＋ B → 2C における初期濃度と初期反応速度 v（一定温度）',
+          headers: ['実験番号', '[A]₀ [mol/L]', '[B]₀ [mol/L]', '初期反応速度 v [mol/(L·s)]'],
+          rows: [
+            ['実験 1', '0.10', '0.10', '2.0 × 10⁻³'],
+            ['実験 2', '0.20', '0.10', '8.0 × 10⁻³'],
+            ['実験 3', '0.20', '0.30', '2.4 × 10⁻²'],
+          ],
+        },
         imageUrl: FIG_LEAD_ACID_BATTERY,
         imageCaption: '図2 鉛蓄電池の放電時における電極変化とイオン移動',
         items: [
           {
             id: 'chem_mock_adv_02_q3',
             label: '問1',
-            stem: '気体反応 2A + B → 2C について、一定温度で初期濃度 [A], [B] を変えて初期反応速度 v を測定したところ、実験1（[A]=0.10 mol/L, [B]=0.10 mol/L）で v = 2.0×10⁻³ mol/(L·s)、実験2（[A]=0.20 mol/L, [B]=0.10 mol/L）で v = 8.0×10⁻³ mol/(L·s)、実験3（[A]=0.20 mol/L, [B]=0.30 mol/L）で v = 2.4×10⁻² mol/(L·s) であった。この温度における反応速度定数 k の数値として正しいものを①〜④から選べ。',
+            difficulty: 'kyotsu_standard',
+            stem: '表1の気体反応 2A + B → 2C の実験1〜3の結果から、この温度における反応速度定数 k の数値と単位として正しいものを①〜④から選べ。',
             choices: [
               '0.20 L/(mol·s)',
               '2.0 L²/(mol²·s)',
@@ -755,7 +1212,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '200 L²/(mol²·s)',
             ],
             answer: 1,
-            points: 10,
+            points: 6,
             skill: '実験データからの反応次数と速度定数 k の決定',
             explanation: 'v = k[A]^x[B]^y とおく。\n・実験1→2：[B] 一定で [A] を 2倍にすると、v は 2.0×10⁻³ → 8.0×10⁻³ で「4倍（= 2²）」になっているので x = 2。\n・実験2→3：[A] 一定で [B] を 3倍にすると、v は 8.0×10⁻³ → 2.4×10⁻²（= 24×10⁻³）で「3倍（= 3¹）」になっているので y = 1。\nよって反応速度式は v = k[A]²[B]。実験1の値を代入すると：\n2.0×10⁻³ = k × (0.10)² × (0.10) = k × 1.0×10⁻³　→　k = 2.0 L²/(mol²·s)。',
             reasons: [
@@ -764,10 +1221,15 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '小数点の桁を1桁誤った値である。',
               '小数点の桁を2桁誤った値である。',
             ],
+            steps: [
+              '① 実験1→2で [A] 2倍 ⇒ v 4倍より x = 2、実験2→3で [B] 3倍 ⇒ v 3倍より y = 1（v = k[A]²[B]）。',
+              '② 実験1を代入：k = 2.0×10⁻³ ÷ {(0.10)²×0.10} = 2.0 L²/(mol²·s)（②が正解）。',
+            ],
           },
           {
             id: 'chem_mock_adv_02_q4',
             label: '問2',
+            difficulty: 'kyotsu_2ji',
             stem: '図2の鉛蓄電池（放電反応：Pb + PbO₂ + 2H₂SO₄ → 2PbSO₄ + 2H₂O）において、30.0 % の希硫酸 200 g を電解液として入れ、外部回路に 2.0 A の一定電流を 9650 秒間流して放電させた。放電後の電解液中の硫酸の質量パーセント濃度 [%] に最も近い値を①〜④から選べ（ファラデー定数 F = 9.65×10⁴ C/mol、原子量 H=1.0, O=16, S=32, Pb=207）。',
             choices: [
               '20.2 %',
@@ -776,7 +1238,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '26.1 %',
             ],
             answer: 2,
-            points: 10,
+            points: 7,
             skill: '鉛蓄電池の放電に伴う電解液の濃度変化計算',
             explanation: '① 流れた電子の物質量 n(e⁻) = (2.0 × 9650) / (9.65×10⁴) = 19300 / 96500 = 0.20 mol。\n② 放電反応 Pb + PbO₂ + 2H₂SO₄ → 2PbSO₄ + 2H₂O は「2 mol の e⁻ が流れるごとに、電解液から 2 mol の H₂SO₄（式量 98）が消費され、代わりに 2 mol の H₂O（分子量 18）が生じる」反応である。\n③ よって e⁻ = 0.20 mol 放電すると：\n・最初の硫酸質量 ＝ 200 × 0.300 = 60.0 g。\n・消費された H₂SO₄ ＝ 0.20 mol × 98 g/mol = 19.6 g → 放電後の硫酸質量 ＝ 60.0 − 19.6 = 40.4 g。\n・生成した H₂O ＝ 0.20 mol × 18 g/mol = 3.6 g → 放電後の電解液全体の質量 ＝ 200 − 19.6 + 3.6 = 184.0 g。\n④ したがって放電後の質量パーセント濃度 ＝ (40.4 / 184.0) × 100 ≒ 21.96 % ≒ 22.0 %！',
             reasons: [
@@ -785,17 +1247,53 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '正しい。溶質 40.4 g ÷ 電解液全体 184.0 g × 100 ≒ 22.0 % となる。',
               'H₂SO₄ の消費モル数を半分（0.10 mol ＝ 9.8 g）と見誤った値である。',
             ],
+            steps: [
+              '① n(e⁻) = (2.0×9650)/(9.65×10⁴) = 0.20 mol ⇒ 消費 H₂SO₄ = 0.20×98 = 19.6 g、生成 H₂O = 0.20×18 = 3.6 g。',
+              '② 残存硫酸 = 60.0 − 19.6 = 40.4 g、溶液全体 = 200 − 19.6 + 3.6 = 184.0 g ⇒ 40.4 / 184.0 × 100 ≒ 22.0 %（③）。',
+            ],
+          },
+          {
+            id: 'chem_mock_adv_02_q4b',
+            label: '問3',
+            difficulty: 'kyotsu_2ji',
+            stem: '白金電極を入れた 0.10 mol/L の硫酸銅(II) CuSO₄ 水溶液 200 mL（電解槽Ⅰ）と、白金電極を入れた硝酸銀 AgNO₃ 水溶液（電解槽Ⅱ：Ag⁺ は十分量）を直列につないで電気分解したところ、電解槽Ⅱの陰極に 6.48 g の銀 Ag（原子量 108）が析出した。この間に電解槽Ⅰの陰極と陽極で発生した気体の合計物質量 [mol] はいくらか。①〜④から選べ。',
+            choices: [
+              '0.015 mol',
+              '0.025 mol',
+              '0.030 mol',
+              '0.045 mol',
+            ],
+            answer: 1,
+            points: 7,
+            skill: '直列電解における Cu²⁺ 枯渇後の陰極 H₂ 切り替え発生と陽極 O₂ の合算（2次頻出）',
+            explanation: '① 電解槽Ⅱで Ag⁺ + e⁻ → Ag が 6.48 / 108 = 0.060 mol 析出したので、直列の電解槽Ⅰにも e⁻ = 0.060 mol が流れた。\n② 電解槽Ⅰの初期 Cu²⁺ は 0.10 × 0.200 = 0.020 mol しかない！Cu²⁺ + 2e⁻ → Cu で最初の e⁻ = 0.040 mol を使って Cu が全量析出し（ここまで気体 0）、残りの e⁻ = 0.060 − 0.040 = 0.020 mol で水が還元されて H₂ が 0.020 / 2 = 0.010 mol 発生する！\n③ 一方、電解槽Ⅰの白金陽極では最初から最後まで 2H₂O → O₂ + 4H⁺ + 4e⁻ が起こるため、O₂ が 0.060 / 4 = 0.015 mol 発生する。\n④ よって電解槽Ⅰの両極から発生した気体の合計は 0.010 + 0.015 = 0.025 mol！',
+            reasons: [
+              '陽極の O₂（0.015 mol）だけを数え、Cu²⁺ 枯渇後に陰極から出る H₂（0.010 mol）を見落としたミス！',
+              '正しい！陰極 H₂（残り 0.020 mol e⁻ ÷ 2 = 0.010 mol）＋ 陽極 O₂（0.060 ÷ 4 = 0.015 mol）＝ 0.025 mol。',
+              '最初から陰極でも H₂ が出たと誤認した値。',
+              '最初から水の電気分解のみが起こったとした誤算（0.030 + 0.015 = 0.045 mol）。',
+            ],
+            steps: [
+              '① n(e⁻) = n(Ag) = 6.48 / 108 = 0.060 mol。',
+              '② 陰極：Cu²⁺ 0.020 mol が 0.040 mol e⁻ を消費して枯渇 → 残り 0.020 mol e⁻ で H₂ = 0.010 mol 発生。',
+              '③ 陽極：O₂ = 0.060 / 4 = 0.015 mol ⇒ 合計 0.010 + 0.015 = 0.025 mol（②が正解）。',
+            ],
           },
         ],
       },
       {
         id: 'sec_adv2_d3',
         daimonLabel: '第3問',
-        title: 'アンモニアソーダ法・オストワルト法と遷移金属錯イオン',
+        title: '無機工業化学・錯イオン・溶解度積 Ksp 分離（配点 20点）',
+        recommendedMinutes: 11,
+        leadText: '図3に整理した無機4大工業製法（ソルベー法・接触法・オストワルト法・ホール・エルー法）、遷移金属錯イオンの立体構造と呈色、および溶解度積 Ksp に基づく金属硫化物の選択沈殿に関する次の問い（問1〜3）に答えよ。',
+        imageUrl: FIG_INDUSTRIAL_INORGANIC_FLOW,
+        imageCaption: '図3 無機4大工業製法の触媒・中間体・回収ループ総整理',
         items: [
           {
             id: 'chem_mock_adv_02_q5',
             label: '問1',
+            difficulty: 'kyotsu_standard',
             stem: '無機物質の工業的製法（接触法・オストワルト法・アンモニアソーダ法・ホール・エルー法）に関する記述として誤りを含むものを、①〜④から一つ選べ。',
             choices: [
               '接触法では酸化バナジウム(V) V₂O₅ を触媒として SO₂ を SO₃ へ酸化し、発熱によるミスト化を防ぐため SO₃ を濃硫酸に吸収させて発煙硫酸としてから希硫酸で薄める。',
@@ -804,7 +1302,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               'ホール・エルー法では融解した氷晶石 Na₃AlF₆ に酸化アルミニウム Al₂O₃ を溶かして炭素電極で融解塩電解を行い、陽極の炭素自身が酸化されて CO や CO₂ として消耗する。',
             ],
             answer: 2,
-            points: 10,
+            points: 6,
             skill: '4大無機工業製法の比較と誤り指摘',
             explanation: 'アンモニアソーダ法では、(1) 中性・酸性の水に CO₂ はほとんど溶けないため、先に「水によく溶ける塩基性の NH₃ を十分に吸収させてから CO₂ を吹き込む」のが鉄則であり、(2) 直接沈殿するのは水への溶解度が比較的小さい「炭酸水素ナトリウム NaHCO₃」である（これをろ過・熱分解して Na₂CO₃ にする）。よって③が二重に誤り！',
             reasons: [
@@ -813,10 +1311,15 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '誤り！先に NH₃ を吸収させて液を塩基性にしないと CO₂ が大量に溶けず、また沈殿するのは Na₂CO₃ ではなく溶解度の小さい NaHCO₃ である！',
               '正しい。ホール・エルー法の融剤（氷晶石）と陽極炭素の消耗反応として正しい。',
             ],
+            steps: [
+              '① ソルベー法の2大急所「先に NH₃ を吸収させる」「溶解度小の NaHCO₃ を沈殿させる」を確認。',
+              '② 順序も沈殿化学種も逆になっている ③ が誤り。',
+            ],
           },
           {
             id: 'chem_mock_adv_02_q6',
             label: '問2',
+            difficulty: 'kyotsu_standard',
             stem: '金属イオンの沈殿と錯イオンの立体構造・色に関する記述として正しいものを、①〜④から一つ選べ。',
             choices: [
               'テトラアンミン銅(II)イオン [Cu(NH₃)₄]²⁺（深青色）とテトラアンミン亜鉛(II)イオン [Zn(NH₃)₄]²⁺（無色）は、ともに配位数 4 であり立体構造もともに正四面体形である。',
@@ -825,7 +1328,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '黄色のクロム酸カリウム K₂CrO₄ 水溶液に希硫酸を加えると橙赤色の二クロム酸イオン Cr₂O₇²⁻ に変化し、この変化ではクロム原子の酸化数（+6）は変化していない。',
             ],
             answer: 3,
-            points: 10,
+            points: 7,
             skill: '錯イオンの立体構造・AgX溶解性・クロム酸平衡',
             explanation: '① [Cu(NH₃)₄]²⁺ は「正方形（平面四角形）」、[Zn(NH₃)₄]²⁺ は「正四面体形」であり立体構造が異なる（超頻出ひっかけ！）。\n② AgI（および難溶の AgBr 大半）は溶解度積が極小のためアンモニア水には溶けない（チオ硫酸ナトリウム水溶液には溶ける）。\n③ ミョウバンは錯塩ではなく「複塩」であり、水中では Al³⁺, K⁺, SO₄²⁻ に電離するため BaSO₄ 白沈を生じ、Al³⁺ の加水分解により「弱酸性」を示す。\n④ 2CrO₄²⁻(黄) + 2H⁺ ⇄ Cr₂O₇²⁻(橙赤) + H₂O では左右とも Cr の酸化数は +6 のままであり、酸化還元反応ではない。よって④が正しい！',
             reasons: [
@@ -834,17 +1337,52 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               'ミョウバンは複塩なので SO₄²⁻ が遊離して BaSO₄ が沈殿し、液性は弱酸性である。',
               '正しい。液性による CrO₄²⁻ ⇄ Cr₂O₇²⁻ の色変化（黄⇄橙赤）であり、酸化数は +6 のまま変化しない。',
             ],
+            steps: [
+              '① [Cu(NH₃)₄]²⁺＝正方形 vs [Zn(NH₃)₄]²⁺＝正四面体（①×）、AgIはNH₃水に不溶（②×）、ミョウバンは複塩・弱酸性（③×）。',
+              '② 2CrO₄²⁻(黄) + 2H⁺ ⇄ Cr₂O₇²⁻(橙赤) + H₂O（Cr 酸化数 +6 不変）の ④ が正解。',
+            ],
+          },
+          {
+            id: 'chem_mock_adv_02_q6b',
+            label: '問3',
+            difficulty: 'kyotsu_2ji',
+            stem: '0.10 mol/L の Cu²⁺ と 0.10 mol/L の Zn²⁺ を含む水溶液に H₂S を飽和（[H₂S] = 0.10 mol/L 一定）させる。H₂S の電離定数の積を [H⁺]²[S²⁻]/[H₂S] = 1.0×10⁻²¹ (mol/L)²、溶解度積を Ksp(CuS) = 6.0×10⁻³⁶ (mol/L)²、Ksp(ZnS) = 1.0×10⁻²¹ (mol/L)² とするとき、CuS は沈殿するが ZnS は沈殿しないようにするための水素イオン濃度 [H⁺] の条件として正しいものを①〜④から選べ。',
+            choices: [
+              '[H⁺] ＞ 0.10 mol/L（pH ＜ 1.0）',
+              '[H⁺] ＜ 0.10 mol/L（pH ＞ 1.0）',
+              '[H⁺] ＞ 0.010 mol/L（pH ＜ 2.0）',
+              '[H⁺] ＞ 1.0 mol/L（pH ＜ 0）',
+            ],
+            answer: 0,
+            points: 7,
+            skill: '硫化物の溶解度積 Ksp と H₂S 二段階電離からの選択沈殿 pH 境界計算',
+            explanation: 'ZnS が沈殿しない条件は [Zn²⁺][S²⁻] ＜ Ksp(ZnS) すなわち 0.10 × [S²⁻] ＜ 1.0×10⁻²¹ ⇒ [S²⁻] ＜ 1.0×10⁻²⁰ mol/L。\n一方 [H⁺]²[S²⁻] = 1.0×10⁻²¹ × [H₂S] = 1.0×10⁻²² なので、[S²⁻] = 1.0×10⁻²² / [H⁺]² ＜ 1.0×10⁻²⁰ ⇒ [H⁺]² ＞ 1.0×10⁻² ⇒ [H⁺] ＞ 0.10 mol/L（すなわち pH ＜ 1.0）！\nこのとき CuS のイオン積は [H⁺] = 1.0 mol/L でも 0.10 × 10⁻²² = 10⁻²³ ≫ 6.0×10⁻³⁶ となるため、CuS のみが確実に黒色沈殿し Zn²⁺ は溶液中に残る。',
+            reasons: [
+              '正しい！ZnS を沈殿させないためには [S²⁻] を抑える強酸性（[H⁺] ＞ 0.10 mol/L、すなわち pH ＜ 1.0）に保つ必要がある。',
+              '不等号の向きが逆であり、pH ＞ 1（塩基性寄り）にすると [S²⁻] が増えて ZnS まで一緒に沈殿してしまう。',
+              '指数計算で 1桁取り違えた境界値である。',
+              '[H₂S] = 0.10 mol/L を掛け忘れた値である。',
+            ],
+            steps: [
+              '① ZnS 非沈殿：0.10 × [S²⁻] ＜ 1.0×10⁻²¹ ⇒ [S²⁻] ＜ 1.0×10⁻²⁰ mol/L。',
+              '② [H⁺]²[S²⁻] = 1.0×10⁻²² を代入して [H⁺] ＞ 0.10 mol/L（pH ＜ 1.0）を導く（①が正解）。',
+            ],
           },
         ],
       },
       {
         id: 'sec_adv2_d4',
         daimonLabel: '第4問',
-        title: 'アセチルサリチル酸の定量と油脂のけん化・ヨウ素付加',
+        title: 'アセチルサリチル酸の逆滴定・油脂・芳香族異性体（配点 20点）',
+        recommendedMinutes: 12,
+        leadText: '図4のサリチル酸誘導体の反応関係、不飽和油脂への臭素付加による脂肪酸決定、および分子式 C₈H₁₀ の芳香族異性体における環一臭素化物数に関する次の問い（問1〜3）に答えよ。',
+        imageUrl: FIG_SALICYLIC_REACTION_MAP,
+        imageCaption: '図4 サリチル酸誘導体の官能基・FeCl₃呈色・熱NaOH消費モル比較',
         items: [
           {
             id: 'chem_mock_adv_02_q7',
             label: '問1',
+            difficulty: 'kyotsu_2ji',
             stem: 'アセチルサリチル酸（分子量 180）0.90 g に 0.50 mol/L の水酸化ナトリウム水溶液 50 mL を加えて十分に加熱し、エステル結合を完全に加水分解（けん化）させた。冷却後、残っている水酸化ナトリウムを過不足なく中和するのに必要な 0.50 mol/L 塩酸は何 mL か。最も適当な数値を①〜④から選べ。',
             choices: [
               '10 mL',
@@ -853,7 +1391,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '40 mL',
             ],
             answer: 1,
-            points: 10,
+            points: 6,
             skill: 'アセチルサリチル酸の熱NaOH消費量（3倍モル）と逆滴定',
             explanation: 'アセチルサリチル酸 CH₃COO−C₆H₄−COOH（M=180）の物質量は 0.90 / 180 = 5.0×10⁻³ mol（5.0 mmol）。\n★最大の急所：アセチルサリチル酸 1 mol を過剰の NaOH 水溶液と加熱すると、①元の −COOH（1 mol）、②加水分解で生じる酢酸 CH₃COOH（1 mol）、③加水分解で新たに露出するフェノール性 −OH（1 mol）の合計「3 mol の NaOH」を消費する！\n・最初に加えた NaOH ＝ 0.50 mol/L × 50 mL = 25 mmol。\n・アセチルサリチル酸が消費した NaOH ＝ 5.0 mmol × 3 = 15 mmol。\n・残った NaOH ＝ 25 − 15 = 10 mmol。\nこれを 0.50 mol/L 塩酸（1価）で中和するので、0.50 × V = 10 mmol → V = 20 mL！',
             reasons: [
@@ -862,10 +1400,15 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               'フェノール性 −OH の中和を見落として 2倍モル（10 mmol 消費 → 残り 15 mmol → 30 mL）とした最頻出の誤り！',
               '元の −COOH しか反応しない（1倍モル＝5.0 mmol 消費 → 40 mL）とした誤り。',
             ],
+            steps: [
+              '① アセチルサリチル酸 0.90 / 180 = 5.0 mmol はフェノールエステルのため熱 NaOH を 3倍（15 mmol）消費する！',
+              '② 残余 NaOH = 25 − 15 = 10 mmol ⇒ 0.50 mol/L 塩酸 V = 10 ÷ 0.50 = 20 mL（②が正解）。',
+            ],
           },
           {
             id: 'chem_mock_adv_02_q8',
             label: '問2',
+            difficulty: 'kyotsu_standard',
             stem: '単一の不飽和脂肪酸 R−COOH 3分子とグリセリン 1分子のみから構成される油脂 X（分子量 884）がある。この油脂 X 44.2 g に臭素 Br₂（分子量 160）を完全に付加させたところ、24.0 g の臭素が消費された。油脂 X を構成する脂肪酸 R−COOH の名称として正しいものを①〜④から選べ（H=1.0, C=12, O=16）。',
             choices: [
               'ステアリン酸（C₁₇H₃₅COOH）',
@@ -874,7 +1417,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               'リノレン酸（C₁₇H₂₉COOH）',
             ],
             answer: 1,
-            points: 10,
+            points: 7,
             skill: '油脂の分子量と付加臭素量からの構成脂肪酸決定',
             explanation: '① 油脂 X 44.2 g の物質量 ＝ 44.2 / 884 = 0.0500 mol。\n② 付加した臭素 Br₂ の物質量 ＝ 24.0 / 160 = 0.150 mol。\n③ 油脂 1 mol あたりに付加した Br₂ は 0.150 / 0.0500 = 3.00 mol → すなわち油脂 1分子中に C=C 二重結合が「合計 3個」あり、単一の脂肪酸3本で構成されているので脂肪酸 1分子あたり二重結合は「1個」！\n④ 分子量検算：3M(脂肪酸) + 38 = 884 → 3M = 846 → M = 282 ＝ C₁₇H₃₃COOH（オレイン酸：二重結合1個）と完全一致！',
             reasons: [
@@ -883,20 +1426,53 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               'リノール酸（二重結合2個）のみなら油脂 1 mol に Br₂ が 6 mol 付加し、油脂分子量は 878 になる。',
               'リノレン酸（二重結合3個）のみなら油脂 1 mol に Br₂ が 9 mol 付加し、油脂分子量は 872 になる。',
             ],
+            steps: [
+              '① n(油脂) = 44.2 / 884 = 0.0500 mol、n(Br₂) = 24.0 / 160 = 0.150 mol ⇒ 油脂1分子に C=C 3個（脂肪酸1本に1個）。',
+              '② 3M + 38 = 884 より M = 282 = C₁₇H₃₃COOH（オレイン酸：②が正解）。',
+            ],
+          },
+          {
+            id: 'chem_mock_adv_02_q8b',
+            label: '問3',
+            difficulty: 'kyotsu_2ji',
+            stem: '分子式 C₈H₁₀ で表される芳香族炭化水素の異性体 A〜D がある。A〜D のそれぞれのベンゼン環上の水素原子 1個のみを臭素原子 Br に置換した一置換体を合成したところ、A からは 1種類、B からは 2種類、C と D からはそれぞれ 3種類の芳香族一置換体が生じた。異性体 A と B の名称の組合せとして正しいものを①〜④から選べ。',
+            choices: [
+              'A：p-キシレン　／　B：o-キシレン',
+              'A：o-キシレン　／　B：p-キシレン',
+              'A：p-キシレン　／　B：エチルベンゼン',
+              'A：m-キシレン　／　B：p-キシレン',
+            ],
+            answer: 0,
+            points: 7,
+            skill: 'C₈H₁₀ 芳香族4異性体の環一臭素化物数（コルナーの絶対法：p=1, o=2, m=3, エチル=3）',
+            explanation: 'C₈H₁₀ の芳香族異性体は o-, m-, p-キシレンとエチルベンゼンの全4種である。ベンゼン環上の等価でない H の種類数（＝環一臭素化物の異性体数）は：\n・p-キシレン：上下左右対称で4つの環 H がすべて等価 → 『1種類』（＝ A）！\n・o-キシレン：3,6位と4,5位の2組 → 『2種類』（＝ B）！\n・m-キシレン（2位・4,6位・5位）およびエチルベンゼン（o・m・p位）→ いずれも『3種類』（＝ C, D）！',
+            reasons: [
+              '正しい！環一置換体は p-キシレンが 1種類（A）、o-キシレンが 2種類（B）、m-キシレンとエチルベンゼンが 3種類である。',
+              'A（1種）と B（2種）の対応が逆である。',
+              'エチルベンゼンの環一置換体は o・m・p の 3種類であり 2種類ではない。',
+              'm-キシレンの環一置換体は 2位・4(6)位・5位の 3種類である。',
+            ],
+            steps: [
+              '① C₈H₁₀ の環一置換体数：p-キシレン＝1種、o-キシレン＝2種、m-キシレン＝3種、エチルベンゼン＝3種。',
+              '② よって 1種の A＝p-キシレン、2種の B＝o-キシレン（①が正解）。',
+            ],
           },
         ],
       },
       {
         id: 'sec_adv2_d5',
         daimonLabel: '第5問',
-        title: 'アミノ酸の電気泳動とビニロンのアセタール化計算',
+        title: 'アミノ酸電気泳動・ビニロン・共重合ゴム SBR 定量（配点 20点）',
+        recommendedMinutes: 12,
+        leadText: '図5に示す α-アミノ酸混合水溶液の電気泳動、PVA のアセタール化によるビニロン合成、および共重合合成ゴム（SBR）の臭素付加定量に関する次の問い（問1〜3）に答えよ。',
         imageUrl: FIG_AMINO_ELECTROPHORESIS,
-        imageCaption: '図3 緩衝液（pH 6.0）中での α-アミノ酸のろ紙電気泳動',
+        imageCaption: '図5 緩衝液（pH 6.0）中での α-アミノ酸のろ紙電気泳動',
         items: [
           {
             id: 'chem_mock_adv_02_q9',
             label: '問1',
-            stem: 'アラニン（等電点 6.0）、グルタミン酸（等電点 3.2）、リシン（等電点 9.7）の混合水溶液を pH 6.0 の緩衝液で湿らせたろ紙の中央（原点）につけて直流電圧をかけた（図3）。各アミノ酸の移動結果に関する記述として正しいものを①〜④から選べ。',
+            difficulty: 'kyotsu_standard',
+            stem: 'アラニン（等電点 6.0）、グルタミン酸（等電点 3.2）、リシン（等電点 9.7）の混合水溶液を pH 6.0 の緩衝液で湿らせたろ紙の中央（原点）につけて直流電圧をかけた（図5）。各アミノ酸の移動結果に関する記述として正しいものを①〜④から選べ。',
             choices: [
               'グルタミン酸は陽極（＋）側へ、リシンは陰極（−）側へ移動し、アラニンは原点付近にとどまる。',
               'グルタミン酸は陰極（−）側へ、リシンは陽極（＋）側へ移動し、アラニンは原点付近にとどまる。',
@@ -904,7 +1480,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               'アラニンのみ陽極（＋）側へ移動し、グルタミン酸とリシンは原点にとどまる。',
             ],
             answer: 0,
-            points: 10,
+            points: 6,
             skill: '等電点 pI と緩衝液 pH の比較による電気泳動方向',
             explanation: '・アラニン（pI = 6.0）：pH = pI なので双性イオンとして正味の電荷が 0 となり、原点付近にとどまる。\n・グルタミン酸（pI = 3.2）：pH 6.0 は等電点より高い（塩基性側）ので H⁺ を放出して「陰イオン（−1価主体）」となり、反対符号の「陽極（＋）側」へ引かれて移動する。\n・リシン（pI = 9.7）：pH 6.0 は等電点より低い（酸性側）ので H⁺ を受け取って「陽イオン（＋1価主体）」となり、「陰極（−）側」へ引かれて移動する。',
             reasons: [
@@ -913,10 +1489,15 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               'すべてが陽イオンになって陰極へ動くのは pH 1〜2 のような強酸性緩衝液を用いた場合である。',
               '等電点と pH が一致しているアラニンこそ電荷 0 で原点にとどまる。',
             ],
+            steps: [
+              '① pH 6.0 において Ala(pI 6.0)＝電荷0、Glu(pI 3.2)＝陰イオン(−)、Lys(pI 9.7)＝陽イオン(＋)と判定。',
+              '② 陰イオン Glu は陽極(＋)へ、陽イオン Lys は陰極(−)へ移動し Ala は原点にとどまる ⇒ ①が正解。',
+            ],
           },
           {
             id: 'chem_mock_adv_02_q10',
             label: '問2',
+            difficulty: 'kyotsu_2ji',
             stem: 'ポリビニルアルコール（PVA：繰り返し単位 −CH₂−CH(OH)− の式量 44）44.0 g にホルムアルデヒド水溶液を酸触媒下で反応させて一部のヒドロキシ基をアセタール化したところ、46.4 g のビニロンが得られた。PVA 中の全ヒドロキシ基のうちアセタール化された割合 [%] は何 % か（H=1.0, C=12, O=16）。',
             choices: [
               '20.0 %',
@@ -925,7 +1506,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '60.0 %',
             ],
             answer: 2,
-            points: 10,
+            points: 7,
             skill: 'ビニロンのアセタール化度計算（質量増加÷6の法則）',
             explanation: '① もとの PVA 44.0 g 中に含まれる −CH₂−CH(OH)− 単位（＝ −OH 基の総物質量）は 44.0 / 44 = 1.00 mol。\n② アセタール化では、2個の −OH（−OH × 2 ＝ 式量 34）から H₂O（18）が取れてホルムアルデヒド HCHO（30）が入り −O−CH₂−O−（式量 46）になるため、「反応1回（2 mol の −OH がアセタール化）ごとに質量が 30 − 18 = +12.0 g 増加」する（すなわち反応した −OH 1 mol あたり +6.0 g 増加！）。\n③ 実際の質量増加は 46.4 − 44.0 = +2.4 g なので、アセタール化された −OH の物質量は 2.4 / 6.0 = 0.400 mol！\n④ したがってアセタール化された割合は (0.400 / 1.00) × 100 = 40.0 %！',
             reasons: [
@@ -933,6 +1514,36 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '計算途中の比率誤りである。',
               '正しい！質量増加 +2.4 g ＝ 反応回数 0.200 mol 分 ＝ 消費された −OH は2倍の 0.400 mol なので 40.0 % となる。',
               '質量増加の式量を誤った値である。',
+            ],
+            steps: [
+              '① PVA 44.0 g = 1.00 mol 単位（−OH 総量 1.00 mol）。反応1回（−OH 2 mol 消費）で +HCHO − H₂O = +12.0 g 増加。',
+              '② Δw = +2.4 g ⇒ 反応回数 2.4 / 12 = 0.200 mol ⇒ 消費 −OH = 2 × 0.200 = 0.400 mol ⇒ 40.0 %（③が正解）。',
+            ],
+          },
+          {
+            id: 'chem_mock_adv_02_q10b',
+            label: '問3',
+            difficulty: 'kyotsu_2ji',
+            stem: '1,3-ブタジエン（C₄H₆ = 54）とスチレン（C₈H₈ = 104）を共重合させたスチレン・ブタジエンゴム（SBR）5.32 g に十分な量の臭素 Br₂（分子量 160）を穏やかに付加させたところ、9.60 g の臭素が付加した（ベンゼン環には付加しない）。この SBR 中の【ブタジエン単位 : スチレン単位の物質量比】として正しいものを①〜④から選べ。',
+            choices: [
+              '1 : 1',
+              '2 : 1',
+              '3 : 1',
+              '4 : 1',
+            ],
+            answer: 2,
+            points: 7,
+            skill: '共重合ゴム SBR の臭素付加量からの構成単量体モル比決定（国公立2次定番）',
+            explanation: '① SBR 中で脂肪族 C=C 二重結合を1個残しているのは『ブタジエン単位』のみである！付加した Br₂ = 9.60 / 160 = 0.0600 mol より、ブタジエン単位の物質量 n_B = 0.0600 mol。\n② ブタジエン単位の質量 = 54 × 0.0600 = 3.24 g。\n③ 残りがスチレン単位の質量 = 5.32 − 3.24 = 2.08 g ⇒ スチレン単位の物質量 n_S = 2.08 / 104 = 0.0200 mol！\n④ よって n_B : n_S = 0.0600 : 0.0200 = 3 : 1！',
+            reasons: [
+              '質量比をそのまま概算した誤り。',
+              '計算途中で式量を取り違えた値。',
+              '正しい！n_B = 9.60/160 = 0.060 mol（3.24 g）、残りスチレン 2.08 g ÷ 104 = 0.020 mol より 3 : 1！',
+              'ブタジエン1単位に Br₂ が2分子付加すると誤認した値。',
+            ],
+            steps: [
+              '① n(ブタジエン単位) = n(Br₂) = 9.60 / 160 = 0.060 mol ⇒ 質量 54 × 0.060 = 3.24 g。',
+              '② スチレン質量 = 5.32 − 3.24 = 2.08 g ⇒ 2.08 / 104 = 0.020 mol ⇒ 比は 3 : 1（③が正解）。',
             ],
           },
         ],
@@ -945,19 +1556,34 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
     examCategory: 'basic',
     round: 3,
     title: '共通テスト実戦模試『化学基礎』第3回（新課程・実験探究強化編）',
-    subtitle: '第1問（結晶質と非晶質・昇華と凝華・試薬保存・水素結合）＋ 第2問（気体発生折れ曲がり点・漂白剤ヨウ素滴定・COD・塩基性燃料電池）',
+    subtitle: '第1問（結晶質と非晶質・昇華と凝華・試薬保存・水素結合・多段抽出）＋ 第2問（折れ曲がり点・ヨウ素滴定・ワルダー法・塩基性燃料電池）',
+    levelBadge: '★★★ 共通テスト90%〜満点突破',
+    constantsNote: '必要があれば、次の値を用いよ。原子量：H = 1.0, C = 12, N = 14, O = 16, Na = 23, Mg = 24, Al = 27, S = 32, Cl = 35.5, Cu = 64 ／ 標準状態の気体のモル体積 22.4 L/mol',
     timeLimitMinutes: 30,
     totalPoints: 50,
     sections: [
       {
         id: 'sec_basic3_d1',
         daimonLabel: '第1問',
-        title: '物質の構成・状態変化（新課程）・試薬の保存と化学結合',
-        leadText: '必要があれば原子量 H = 1.0, C = 12, N = 14, O = 16, Mg = 24, Al = 27, S = 32, Cl = 35.5, Cu = 64、標準状態の気体モル体積 22.4 L/mol を用いよ。',
+        title: '物質の構成・状態変化（新課程）・試薬保存・結合と多段抽出（配点 25点）',
+        recommendedMinutes: 14,
+        leadText: '物質の分類（結晶質と非晶質）・状態変化の熱運動と新課程用語・実験室における危険試薬の保存法・化学結合の様式および有機溶媒による多段抽出の分配計算に関する次の問い（問1〜5）に答えよ。',
+        imageUrl: FIG_HEATING_CURVE,
+        imageCaption: '図1　純物質の加熱曲線（融解熱＜蒸発熱）と結晶質・非晶質および三態変化の概念整理',
+        dataTable: {
+          caption: '表1　代表的な固体の構成粒子配列と試薬保存の注意点',
+          headers: ['対象物質', '分類・特徴', '実験室での保存・取扱いの要点'],
+          rows: [
+            ['水晶 / ソーダガラス', '水晶＝結晶質（一定融点あり） / ガラス＝非晶質（一定融点なし）', 'HF 水溶液は SiO₂ を溶かすためポリエチレン容器に保存'],
+            ['黄リン P₄ / ナトリウム Na', '単体（同素体・アルカリ金属）', '黄リン＝水中保存（自然発火防止） / Na＝石油中保存'],
+            ['濃硝酸・硝酸銀・過酸化水素水', '光分解性試薬', '褐色瓶に入れて冷暗所に保存（濃硫酸希釈は必ず水に注ぐ）'],
+          ],
+        },
         items: [
           {
             id: 'chem_mock_basic_03_q1',
             label: '問1',
+            difficulty: 'foundation',
             stem: '固体の分類（結晶質・非晶質）および物質の三態変化（新課程の用語）に関する記述として最も適当なものを、①〜④のうちから一つ選べ。',
             choices: [
               '二酸化ケイ素 SiO₂ を主成分とする水晶（石英）は非晶質（アモルファス）であり一定の融点をもたないが、窓ガラス（ソーダガラス）は結晶質であり明確な一定の融点をもつ。',
@@ -966,7 +1592,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               'セルシウス温度を 20 ℃ から 40 ℃ へ上昇させると、気体分子の平均運動エネルギーはちょうど 2倍になる。',
             ],
             answer: 1,
-            points: 6,
+            points: 5,
             skill: '結晶質vs非晶質・新課程「昇華と凝華」・融解熱＜蒸発熱・絶対温度比例',
             explanation: '①逆！水晶は規則配列した結晶質（一定融点あり）、ガラスは不規則配列の非晶質［アモルファス］（一定融点なし）。\n②正しい！新課程では「固体→気体＝昇華」「気体→固体＝凝華」と明確に区別する。水蒸気（気体）→霜（固体）は凝華である。\n③逆！分子間力を完全に断ち切る蒸発熱（40.7 kJ/mol）の方が融解熱（6.0 kJ/mol）よりはるかに大きい。\n④平均運動エネルギーは絶対温度 K に比例するので (273+40)/(273+20) = 313/293 ≒ 1.07倍にしかならない。',
             reasons: [
@@ -983,6 +1609,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
           {
             id: 'chem_mock_basic_03_q2',
             label: '問2',
+            difficulty: 'foundation',
             stem: '実験室における試薬の保存方法および基本操作に関する記述として「誤りを含むもの」を、①〜④のうちから一つ選べ。',
             choices: [
               '黄リン P₄ は空気中で自然発火するため水中に沈めて保存し、ナトリウム Na の単体は水とも酸素とも激しく反応するため石油（灯油）中に沈めて保存する。',
@@ -991,7 +1618,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '濃硫酸を水で薄めるときは、ビーカーに入れた濃硫酸の上から純水を少しずつ注ぎ入れる。',
             ],
             answer: 3,
-            points: 6,
+            points: 5,
             skill: '5大試薬保存法と濃硫酸希釈の絶対禁忌',
             explanation: '濃硫酸（密度 1.84 g/cm³）に上から水（1.0 g/cm³）を注ぐと、軽い水が表面に浮いた境界面で巨大な水和熱により局所沸騰（突沸）し、熱い濃硫酸が周囲に飛び散って大事故になる！必ず「多量の水に、濃硫酸をガラス棒を伝わせて少しずつ注ぎ、かき混ぜながら希釈する」！',
             reasons: [
@@ -1008,6 +1635,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
           {
             id: 'chem_mock_basic_03_q3',
             label: '問3',
+            difficulty: 'kyotsu_standard',
             stem: '分子の形・極性・分子間力（ファンデルワールス力・水素結合）に関する記述として最も適当なものを、①〜④のうちから一つ選べ。',
             choices: [
               '二酸化炭素 O=C=O と水 H−O−H はどちらも3原子分子で折れ線形の極性分子である。',
@@ -1016,7 +1644,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               'アンモニウムイオン NH₄⁺ の4本の N−H 結合のうち、H⁺ に配位結合した1本だけは他の3本の共有結合よりも長さが短く区別できる。',
             ],
             answer: 2,
-            points: 6,
+            points: 5,
             skill: '分子の形と極性・水素結合（F,O,Nのみ）・氷の隙間構造・配位結合の同等性',
             explanation: '① CO₂ は「直線形」なので極性が打ち消し合う「無極性分子」である。\n② 水素結合をつくるのは電気陰性度が極めて大きい F・O・N に H が直結した HF・H₂O・NH₃ の3つだけであり、無極性の CH₄ は水素結合をつくらず沸点は −161.5 ℃ と第14族水素化合物の中で最も低い！\n③ 正しい！氷が水に浮く理由そのものである。\n④ いったん形成された配位結合は他の共有結合と完全に同等で一切区別できない正四面体形になる。',
             reasons: [
@@ -1033,6 +1661,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
           {
             id: 'chem_mock_basic_03_q4',
             label: '問4',
+            difficulty: 'kyotsu_standard',
             stem: '次の塩の水溶液の組合せのうち、「どちらも酸性塩（組成式中に電離しうる H を残す塩）であるが、水溶液の液性が一方は弱塩基性、もう一方は酸性を示すペア」として正しいものを①〜④から選べ。',
             choices: [
               '炭酸水素ナトリウム NaHCO₃ と 硫酸水素ナトリウム NaHSO₄',
@@ -1041,7 +1670,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '硫酸ナトリウム Na₂SO₄ と 硝酸カリウム KNO₃',
             ],
             answer: 0,
-            points: 6,
+            points: 5,
             skill: '塩の組成上の分類（酸性塩）と水溶液の実際の液性（NaHCO₃弱塩基性 vs NaHSO₄酸性）の完全区別',
             explanation: '組成上はどちらも H が残った「酸性塩」でありながら：\n・炭酸水素ナトリウム NaHCO₃：HCO₃⁻ の電離よりも加水分解（HCO₃⁻ + H₂O ⇄ H₂CO₃ + OH⁻）が勝つため水溶液は『弱塩基性』！\n・硫酸水素ナトリウム NaHSO₄：水中で HSO₄⁻ → H⁺ + SO₄²⁻ と強く電離するため水溶液は『酸性』！\n「酸性塩＝酸性とは限らない」ことを突く共通テストの王道問題である。',
             reasons: [
@@ -1055,16 +1684,51 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '② 液性も NaHCO₃＝弱塩基性、NaHSO₄＝酸性で条件と完全一致することを確認。',
             ],
           },
+          {
+            id: 'chem_mock_basic_03_q4b',
+            label: '問5',
+            difficulty: 'kyotsu_2ji',
+            stem: '水と有機溶媒（水と混じり合わない）の間で溶質Xの濃度比（有機層濃度／水層濃度）が常に 4.0 になる分配平衡が成り立つ。溶質X 100 mg を溶かした水溶液 100 mL から有機溶媒を用いて抽出するとき、「有機溶媒 50 mL ずつで 2 回に分けて抽出」した場合に水層に溶け残る X の質量 [mg] はいくらか。①〜④から選べ。',
+            choices: [
+              '4.0 mg',
+              '11.1 mg',
+              '20.0 mg',
+              '33.3 mg',
+            ],
+            answer: 1,
+            points: 5,
+            skill: '分液ロートにおける分割多段抽出（50 mL×2回）の残存量計算',
+            explanation: '1回あたり有機溶媒 50 mL と水 100 mL を使うとき、水層に残る質量を w₁ とすると濃度比 ((w₀ − w₁)/50) / (w₁/100) = 4.0 ⇒ 2(w₀ − w₁)/w₁ = 4.0 ⇒ w₁/w₀ = 1/3（1回の抽出で水層残存量は 1/3 になる！）。\n新しい有機溶媒 50 mL で 2 回繰り返すと、水層残存量は 100 mg × (1/3)² = 100 / 9 ≒ 11.1 mg！（100 mL 一括抽出の残存 20.0 mg より効率が高い）。',
+            reasons: [
+              '濃度比 4.0 から 1/5 × 1/5 = 1/25（4.0 mg）と体積比（50 mL : 100 mL）を忘れた誤り。',
+              '正しい！1回ごとに水層に 1/3 が残るため、2回抽出後は 100 × (1/3)² ≒ 11.1 mg となる。',
+              '有機溶媒 100 mL で 1 回だけ一括抽出したときの残存量（100 × 1/5 = 20.0 mg）である。',
+              '1回目の抽出終了時点での残存量（100 × 1/3 ≒ 33.3 mg）である。',
+            ],
+            steps: [
+              '① 1回（有機50 mL・水100 mL）：質量比 有機 : 水 = (4.0×50) : (1×100) = 2 : 1 ⇒ 水層残存率 1/3。',
+              '② 2回反復で残存量 = 100 × (1/3)² ≒ 11.1 mg（②が正解）。',
+            ],
+          },
         ],
       },
       {
         id: 'sec_basic3_d2',
         daimonLabel: '第2問',
-        title: '気体発生グラフ探究・漂白剤のヨウ素滴定・水酸化カリウム型燃料電池',
+        title: '気体発生探究・ワルダー二段滴定・ヨウ素滴定・塩基性燃料電池（配点 25点）',
+        recommendedMinutes: 16,
+        leadText: '化学反応の量的関係（折れ曲がり点と合金定量）、酸化還元・ワルダー二段滴定、および水素燃料電池に関する次の問い（問1〜5）に答えよ。',
+        imageUrl: FIG_WARDER_DOUBLE_TITRATION,
+        imageCaption: '図2　NaOH＋Na₂CO₃ 混合水溶液の塩酸によるワルダー二段滴定曲線（第1終点 V₁ と第2終点 V₂）',
+        dialogue: [
+          { speaker: '生徒', text: '空気中の CO₂ を吸って一部が Na₂CO₃ になった NaOH 水溶液は、指示薬を2段階切り替えればそれぞれの物質量を求められるのですね。' },
+          { speaker: '先生', text: 'その通り。フェノールフタレインが消える第1終点 V₁ では「NaOH 全量 ＋ Na₂CO₃ → NaHCO₃（1段目）」が完了し、そこからメチルオレンジが赤変するまでの追加滴下量（V₂ − V₁）が「NaHCO₃ → H₂CO₃（2段目）」の物質量に一致します。' },
+        ],
         items: [
           {
             id: 'chem_mock_basic_03_q5',
             label: '問1',
+            difficulty: 'kyotsu_standard',
             stem: '一定濃度の希塩酸 100 mL に炭酸カルシウム CaCO₃（式量 100）の粉末を少しずつ変えて加え、完全に反応させた後に発生した二酸化炭素 CO₂ の標準状態での体積 V [L] を測定したところ、CaCO₃ を 5.00 g 加えたところでちょうど V = 1.12 L の折れ曲がり点に達し、6.00 g 以上加えても V = 1.12 L で一定となった。もとの希塩酸のモル濃度 [mol/L] として正しいものを①〜④から選べ。',
             choices: [
               '0.50 mol/L',
@@ -1073,7 +1737,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '2.0 mol/L',
             ],
             answer: 1,
-            points: 6,
+            points: 5,
             skill: '気体発生の折れ曲がり点（過不足ゼロ）と CaCO₃ + 2HCl の係数2倍計算',
             explanation: '折れ曲がり点（CaCO₃ 5.00 g ＝ 0.0500 mol、CO₂ 1.12 L ＝ 0.0500 mol）で希塩酸 100 mL 中の HCl がちょうど全量消費されている！\n反応式「CaCO₃ + 2HCl → CaCl₂ + H₂O + CO₂↑」より、HCl の物質量は CaCO₃ の『2倍』：\nn(HCl) ＝ 2 × 0.0500 ＝ 0.100 mol。\nこれが 100 mL（= 0.100 L）中に溶けていたから、モル濃度 c ＝ 0.100 mol ÷ 0.100 L ＝『1.0 mol/L』！',
             reasons: [
@@ -1091,6 +1755,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
           {
             id: 'chem_mock_basic_03_q6',
             label: '問2',
+            difficulty: 'kyotsu_standard',
             stem: 'アルミニウム Al（原子量 27）と銅 Cu（原子量 64）の混合粉末 3.35 g に十分な量の希塩酸を加えたところ、一部が溶け残り、標準状態で 1.68 L の水素 H₂ が発生した。混合粉末中の銅 Cu の質量パーセント [%] に最も近い値を①〜④から選べ。',
             choices: [
               '40 %',
@@ -1099,7 +1764,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '80 %',
             ],
             answer: 2,
-            points: 7,
+            points: 5,
             skill: '合金（Al＋Cu）の希塩酸反応における Cu 不溶と 2Al → 3H₂ 定量',
             explanation: '① Cu は水素よりイオン化傾向が小さいため希塩酸と反応せず、発生した H₂（1.68 L ＝ 1.68 / 22.4 ＝ 0.0750 mol）はすべて Al 由来である。\n② 2Al + 6HCl → 2AlCl₃ + 3H₂ より、n(Al) ＝ 0.0750 × (2/3) ＝ 0.0500 mol。\n③ Al の質量 ＝ 0.0500 × 27 ＝ 1.35 g。\n④ したがって溶け残った銅 Cu の質量 ＝ 3.35 − 1.35 ＝『2.00 g』！\n銅の質量パーセント ＝ (2.00 / 3.35) × 100 ≒ 59.7 % ≒『60 %』！',
             reasons: [
@@ -1117,6 +1782,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
           {
             id: 'chem_mock_basic_03_q7',
             label: '問3',
+            difficulty: 'kyotsu_standard',
             stem: '次亜塩素酸イオン ClO⁻ を含む水溶液 10.0 mL に過剰の KI 水溶液と希塩酸を加えて I₂ を遊離させ（ClO⁻ + 2I⁻ + 2H⁺ → Cl⁻ + I₂ + H₂O）、これを 0.100 mol/L のチオ硫酸ナトリウム Na₂S₂O₃ 水溶液で滴定（I₂ + 2S₂O₃²⁻ → 2I⁻ + S₄O₆²⁻）したところ、終点までに 12.0 mL を要した。もとの水溶液中の ClO⁻ のモル濃度 [mol/L] はいくらか。①〜④から選べ。',
             choices: [
               '0.030 mol/L',
@@ -1125,7 +1791,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '0.24 mol/L',
             ],
             answer: 1,
-            points: 6,
+            points: 5,
             skill: '次亜塩素酸イオンの2段階ヨウ素還元滴定計算',
             explanation: '2つの反応式をつなぐと「1 mol の ClO⁻ → 1 mol の I₂ → 2 mol の S₂O₃²⁻」だから：\nn(ClO⁻) ＝ (1/2) × n(S₂O₃²⁻) ＝ (1/2) × 0.100 mol/L × 0.0120 L ＝ 6.00×10⁻⁴ mol。\nこれが試料 10.0 mL（= 0.0100 L）中に含まれていたから、\n[ClO⁻] ＝ 6.00×10⁻⁴ mol ÷ 0.0100 L ＝『0.060 mol/L』！',
             reasons: [
@@ -1140,8 +1806,35 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
             ],
           },
           {
-            id: 'chem_mock_basic_03_q8',
+            id: 'chem_mock_basic_03_q7b',
             label: '問4',
+            difficulty: 'kyotsu_2ji',
+            stem: '空気中の CO₂ を一部吸収して炭酸ナトリウム Na₂CO₃ が混ざった水酸化ナトリウム NaOH 混合水溶液 20.0 mL を 0.100 mol/L 塩酸で二段滴定（ワルダー法）したところ、フェノールフタレインの赤色が消える第1終点までに 18.0 mL を要し、続けてメチルオレンジを加えて赤変する第2終点までに【さらに 4.0 mL】を要した。この混合水溶液 20.0 mL 中に含まれていた NaOH の物質量は何 mmol か。①〜④から選べ。',
+            choices: [
+              '1.0 mmol',
+              '1.4 mmol',
+              '1.8 mmol',
+              '2.2 mmol',
+            ],
+            answer: 1,
+            points: 5,
+            skill: 'ワルダー法（二段中和滴定）における第1終点・第2終点差からの NaOH 定量',
+            explanation: '第1終点→第2終点の追加滴下量 ΔV = 4.0 mL は「NaHCO₃ → H₂CO₃」の1段階分であり、もとの Na₂CO₃ と等物質量である：n(Na₂CO₃) = 0.100 × 4.0 = 0.40 mmol。\n第1終点までの 18.0 mL（1.80 mmol）では「NaOH の中和 ＋ Na₂CO₃ → NaHCO₃（0.40 mmol）」が起こっているので、n(NaOH) = 1.80 − 0.40 = 1.40 mmol！',
+            reasons: [
+              '0.40 mmol を2回引いて 1.80 − 0.80 = 1.0 mmol としたミス。',
+              '正しい！第2段 4.0 mL より Na₂CO₃ = 0.40 mmol、第1段 1.80 mmol から引いて NaOH = 1.4 mmol！',
+              '第1終点までの塩酸量 1.80 mmol をそのまま NaOH と誤認した値。',
+              '全塩酸量（18.0 + 4.0 = 22.0 mL ⇒ 2.2 mmol）を答えた値（これは変質前の初期 NaOH 総量にあたる）。',
+            ],
+            steps: [
+              '① 追加 4.0 mL より n(Na₂CO₃) = 0.100 × 4.0 = 0.40 mmol。',
+              '② 第1段 1.80 mmol − 0.40 mmol = n(NaOH) = 1.4 mmol（②が正解）。',
+            ],
+          },
+          {
+            id: 'chem_mock_basic_03_q8',
+            label: '問5',
+            difficulty: 'kyotsu_standard',
             stem: '水酸化カリウム KOH 水溶液（塩基性電解液）を用いた水素燃料電池において、放電時に負極（水素極）および正極（酸素極）で起こる反応のイオン反応式の組合せとして正しいものを①〜④から選べ。',
             choices: [
               '負極：H₂ → 2H⁺ + 2e⁻　／　正極：O₂ + 4H⁺ + 4e⁻ → 2H₂O',
@@ -1150,7 +1843,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '負極：2H₂O + 2e⁻ → H₂ + 2OH⁻　／　正極：4OH⁻ → O₂ + 2H₂O + 4e⁻',
             ],
             answer: 1,
-            points: 7,
+            points: 5,
             skill: '塩基性型（KOH型）水素燃料電池の両極半反応式（H⁺禁止・OH⁻で書く！）',
             explanation: '電解液が『塩基性（KOH 水溶液）』のときは、溶液中に多量の H⁺ は存在できないため、酸性型の式（H₂ → 2H⁺ + 2e⁻）の両辺に 2OH⁻ を足して H⁺ を H₂O に書き換える！\n・負極（H₂ が酸化されて e⁻ を放出）：『H₂ + 2OH⁻ → 2H₂O + 2e⁻』\n・正極（O₂ が還元されて e⁻ を受取）：『O₂ + 2H₂O + 4e⁻ → 4OH⁻』\n（2倍して足すと全体反応は酸性型と全く同じ 2H₂ + O₂ → 2H₂O になる！）',
             reasons: [
@@ -1173,21 +1866,26 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
     course: 'chem_theory',
     examCategory: 'advanced',
     round: 3,
-    title: '共通テスト実戦模試『化学』第3回（新課程・全範囲高難度完成編）',
-    subtitle: '第1問 ボルツマン分布と蒸気圧降下 ／ 第2問 エントロピーΔSと半中和点pH ／ 第3問 無機の色・熱水分離・環境脱硫 ／ 第4問 オゾン分解と芳香族アミドエステル構造決定 ／ 第5問 スクロース・酵素反応と加硫ゴム計算',
+    title: '共通テスト実戦模試『化学』第3回（共テ満点・国公立2次余裕突破編）',
+    subtitle: '第1問 ボルツマン・蒸気圧・ヘンリー ／ 第2問 ΔS・半中和点・アレニウスプロット ／ 第3問 錯塩・排煙脱硫・銑鉄精錬 ／ 第4問 医薬品・オゾン分解・ラクトン ／ 第5問 酵素・6,6-ナイロン・ペプチド配列',
+    levelBadge: '★★★ 共テ満点・国公立2次余裕合格レベル',
+    constantsNote: '必要があれば、次の値を用いよ。原子量：H = 1.0, C = 12, N = 14, O = 16, S = 32, Cl = 35.5, Ca = 40, Fe = 56 ／ 気体定数 R = 8.3×10³ Pa·L/(K·mol) = 8.3 J/(K·mol) ／ 標準状態の気体モル体積 22.4 L/mol ／ log₁₀ 2 = 0.30',
     timeLimitMinutes: 60,
     totalPoints: 100,
     sections: [
       {
         id: 'sec_adv3_d1',
         daimonLabel: '第1問',
-        title: '気体の運動エネルギー分布とラウールの法則（蒸気圧降下）',
+        title: 'ボルツマン分布・ラウールの法則・ヘンリーの法則（配点 20点）',
+        recommendedMinutes: 12,
+        leadText: '気体分子の熱運動エネルギー分布、電離する溶質を含む希薄溶液の蒸気圧降下、および混合気体の溶解度に関する次の問い（問1〜3）に答えよ。',
         imageUrl: FIG_MAXWELL_BOLTZMANN,
         imageCaption: '図1 低温 T₁ と高温 T₂ における気体分子の運動エネルギー分布と活性化エネルギー',
         items: [
           {
             id: 'chem_mock_adv_03_q1',
             label: '問1',
+            difficulty: 'kyotsu_standard',
             stem: '図1のマクスウェル・ボルツマン分布および気体分子の熱運動に関する記述として最も適当なものを、①〜④のうちから一つ選べ。',
             choices: [
               '温度を T₁ から T₂ へ上げると、曲線と横軸で囲まれた全面積は T₂/T₁ 倍に増大し、山の頂点も高くなる。',
@@ -1196,7 +1894,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '触媒を加えると正反応の活性化エネルギーだけが下がり逆反応の活性化エネルギーは変わらないため、化学平衡が生成物側へ大きく移動する。',
             ],
             answer: 1,
-            points: 10,
+            points: 6,
             skill: 'ボルツマン分布における温度効果と触媒効果の本質的区別',
             explanation: '①縦軸は全分子数に対する割合なので全面積は温度によらず常に 1（一定）であり、高温では裾が広がる分だけ頂点は低くなる。\n②正しい！温度一定なら分布曲線は不変で、触媒は Eₐ のしきい値を左（Eₐ′）へ下げる。\n③1分子の平均並進運動エネルギーは絶対温度 T のみに比例し分子量によらず等しい（速さ v が H₂ の方が 4倍速い）。\n④触媒は正・逆両方の活性化エネルギーを同じ幅だけ下げるため ΔH も平衡位置も一切変えない。',
             reasons: [
@@ -1213,6 +1911,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
           {
             id: 'chem_mock_adv_03_q2',
             label: '問2',
+            difficulty: 'kyotsu_2ji',
             stem: 'ある温度における純水（H₂O = 18）の飽和蒸気圧を 3.00×10³ Pa とする。純水 162 g に塩化カルシウム CaCl₂（式量 111、水溶液中で完全に Ca²⁺ と 2Cl⁻ に電離するものとする）55.5 g を溶かした水溶液の蒸気圧 P [Pa] に最も近い値を①〜④から選べ（理想溶液近似とする）。',
             choices: [
               '2.57×10³ Pa',
@@ -1221,7 +1920,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '2.90×10³ Pa',
             ],
             answer: 0,
-            points: 10,
+            points: 7,
             skill: '電離する溶質（CaCl₂ → 3粒子！）を含むラウールの法則計算',
             explanation: '① 溶媒である水の物質量 N ＝ 162 g ÷ 18 g/mol ＝ 9.00 mol。\n② 溶かした CaCl₂ の物質量 ＝ 55.5 g ÷ 111 g/mol ＝ 0.500 mol。\n★最大の急所：CaCl₂ → Ca²⁺ + 2Cl⁻ と『1 mol あたり 3 mol のイオン粒子』に完全電離するため、溶液中の全溶質粒子物質量 n_全 は：\nn_全 ＝ 0.500 mol × **3** ＝『1.50 mol』！\n③ ラウールの法則より、溶液の蒸気圧 P は溶媒のモル分率倍：\nP ＝ 3.00×10³ × [9.00 / (9.00 + 1.50)] ＝ 3.00×10³ × (9.00 / 10.5) ＝ 3.00×10³ × (6 / 7) ≒『2.57×10³ Pa』！',
             reasons: [
@@ -1236,18 +1935,47 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '③ P = 3000 × 9.00 / (9.00 + 1.50) = 3000 × (6/7) ≒ 2.57×10³ Pa！',
             ],
           },
+          {
+            id: 'chem_mock_adv_03_q2b',
+            label: '問3',
+            difficulty: 'kyotsu_2ji',
+            stem: '0 ℃・1.0×10⁵ Pa の酸素 O₂ は水 1.0 L に 2.2×10⁻³ mol 溶ける。いま 0 ℃ で全圧 5.0×10⁵ Pa の空気（体積比 N₂ : O₂ = 4 : 1）を水 2.0 L に接しさせて飽和させたとき、この水 2.0 L に溶けている酸素の「その気相における圧力（または酸素分圧 1.0×10⁵ Pa）のもとで換算した体積 [mL]」と「溶けた酸素の物質量 [mol]」の組合せとして正しいものを①〜④から選べ（0 ℃・1.0×10⁵ Pa の気体モル体積を 22.7 L/mol とする）。',
+            choices: [
+              '溶けた O₂ の物質量：4.4×10⁻³ mol　／　O₂ 分圧（1.0×10⁵ Pa）下での体積：約 100 mL',
+              '溶けた O₂ の物質量：2.2×10⁻² mol　／　全圧（5.0×10⁵ Pa）下での体積：約 500 mL',
+              '溶けた O₂ の物質量：8.8×10⁻⁴ mol　／　O₂ 分圧下での体積：約 20 mL',
+              '溶けた O₂ の物質量：4.4×10⁻³ mol　／　O₂ 分圧（1.0×10⁵ Pa）下での体積：約 20 mL',
+            ],
+            answer: 0,
+            points: 7,
+            skill: '混合気体（空気）におけるヘンリーの法則（全圧ではなく分圧を使う！）と溶解気体体積不変の原理',
+            explanation: '① 全圧 5.0×10⁵ Pa の空気中の酸素分圧は P(O₂) = 5.0×10⁵ × (1/5) = 1.0×10⁵ Pa！\n② 水 1.0 L に 1.0×10⁵ Pa で 2.2×10⁻³ mol 溶けるので、水 2.0 L には 2倍の n(O₂) = 4.4×10⁻³ mol 溶ける！\n③ その酸素分圧 1.0×10⁵ Pa・0 ℃ における体積は V = 4.4×10⁻³ mol × 22.7 L/mol ≒ 0.0999 L ≒ 100 mL（ボイルの法則により「溶けている気体をその分圧下で測った体積」は圧力によらず水 1 L あたり一定値 ≒ 50 mL × 2 L = 100 mL）！',
+            reasons: [
+              '正しい！P(O₂) = 1.0×10⁵ Pa、水 2.0 L より n = 4.4×10⁻³ mol、V = 4.4×10⁻³ × 22.7 L ≒ 100 mL。',
+              '酸素分圧（1.0×10⁵ Pa）ではなく空気の全圧（5.0×10⁵ Pa）をそのまま掛けてしまった最頻出ミス！',
+              '1/5 を二重に掛けてしまった誤算。',
+              '体積換算でさらに 5 で割ってしまった誤り（酸素分圧はすでに 1.0×10⁵ Pa である）。',
+            ],
+            steps: [
+              '① P(O₂) = 5.0×10⁵ × (1/5) = 1.0×10⁵ Pa ⇒ 水 2.0 L に溶ける n(O₂) = 2.2×10⁻³ × 2 = 4.4×10⁻³ mol。',
+              '② 1.0×10⁵ Pa 下での体積 V = 4.4×10⁻³ × 22700 mL ≒ 100 mL（①が正解）。',
+            ],
+          },
         ],
       },
       {
         id: 'sec_adv3_d2',
         daimonLabel: '第2問',
-        title: '【新課程】エントロピー変化 ΔS と自発変化・弱酸滴定の半中和点と加水分解',
+        title: 'エントロピー ΔS・弱酸滴定の半中和点・アレニウスの式（配点 20点）',
+        recommendedMinutes: 13,
+        leadText: 'エンタルピー変化 ΔH とエントロピー変化 ΔS による反応の自発性、弱酸の中和滴定における半中和点・中和点 pH、および反応速度の温度依存性に関する次の問い（問1〜3）に答えよ。',
         imageUrl: FIG_ENTHALPY_ENTROPY,
         imageCaption: '図2 エンタルピー変化 ΔH とエントロピー変化 ΔS からみた自発変化の温度依存性',
         items: [
           {
             id: 'chem_mock_adv_03_q3',
             label: '問1',
+            difficulty: 'kyotsu_standard',
             stem: '図2を参考に、次の化学変化・状態変化に関する記述のうち「誤りを含むもの」を①〜④から一つ選べ。',
             choices: [
               '過酸化水素の分解反応 2H₂O₂(液) → 2H₂O(液) + O₂(気)　ΔH = −196 kJ は、発熱（ΔH ＜ 0）かつ気体発生により系のエントロピーが増大（ΔS ＞ 0）するため、どの温度でも熱力学的には自発変化の向きである。',
@@ -1256,7 +1984,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '結晶の塩化ナトリウム NaCl(固) の格子エネルギーは、2価陽イオンと2価陰イオンからなる酸化マグネシウム MgO(固) の格子エネルギーよりも小さい。',
             ],
             answer: 2,
-            points: 10,
+            points: 6,
             skill: 'ΔHとΔSの符号判定および気体→固体反応（ΔS＜0・低温自発）の識別',
             explanation: 'NH₃(気) + HCl(気) → NH₄Cl(固) では、自由に飛び回っていた気体 2 mol が規則正しい固体結晶（気体 0 mol）に閉じ込められるため、系のエントロピーは大きく『減少（ΔS ＜ 0）』する！常温で自発的に進むのは大きな発熱（ΔH = −176 kJ ＜ 0）によって外界のエントロピーが増大するからであり、図2の左下象限（ΔH ＜ 0, ΔS ＜ 0）なので『低温ほど自発的に進みやすく、高温では逆に熱解離（左向き）が進む』！',
             reasons: [
@@ -1273,6 +2001,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
           {
             id: 'chem_mock_adv_03_q4',
             label: '問2',
+            difficulty: 'kyotsu_2ji',
             stem: '0.20 mol/L の酢酸 CH₃COOH 水溶液 20.0 mL に、0.20 mol/L の水酸化ナトリウム NaOH 水溶液を「10.0 mL」加えた混合溶液 A と、「20.0 mL」加えた混合溶液 B（中和点）をつくった。酢酸の電離定数を Ka = 2.5×10⁻⁵ mol/L、水のイオン積を Kw = 1.0×10⁻¹⁴ (mol/L)²、log₁₀ 2 = 0.30 とするとき、溶液 A の pH と溶液 B の pH の組合せとして正しいものを①〜④から選べ。',
             choices: [
               '溶液 A の pH = 4.60　／　溶液 B の pH = 8.80',
@@ -1281,7 +2010,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '溶液 A の pH = 4.60　／　溶液 B の pH = 8.95',
             ],
             answer: 0,
-            points: 10,
+            points: 7,
             skill: '半中和点（pH=pKa）と中和点加水分解（体積2倍希釈 c′=0.10 mol/L！）の同時攻略',
             explanation: '① 溶液 A（20 mL に対し 10 mL 滴下 ＝『半中和点』！）：\n[CH₃COOH] ＝ [CH₃COO⁻] より、[H⁺] ＝ Ka ＝ 2.5×10⁻⁵ ＝ (10 / 2²)×10⁻⁵ ＝ 10⁻⁴ / 2²。\npH_A ＝ −log₁₀(10⁻⁴ / 2²) ＝ 4 + 2 log₁₀ 2 ＝ 4 + 0.60 ＝『4.60』！\n② 溶液 B（20 mL ＋ 20 mL ＝『中和点』！合計体積 40.0 mL に2倍希釈！）：\n生成した酢酸ナトリウム CH₃COONa のモル濃度 c′ ＝ 0.20 × (20 / 40) ＝『0.10 mol/L』！\n加水分解より [OH⁻] ＝ √(c′ · Kw / Ka) ＝ √(0.10 × 1.0×10⁻¹⁴ / 2.5×10⁻⁵) ＝ √(0.40×10⁻¹⁰) ＝ √(40×10⁻¹²) ＝ 2×10⁰.⁵×10⁻⁶ ＝ 2×10⁻⁵.⁵ mol/L。\nしたがって [H⁺] ＝ 1.0×10⁻¹⁴ / (2×10⁻⁵.⁵) ＝ 10⁻⁸.⁵ / 2 mol/L となり、\npH_B ＝ −log₁₀(10⁻⁸.⁵ / 2) ＝ 8.5 + log₁₀ 2 ＝ 8.5 + 0.30 ＝『8.80』！',
             reasons: [
@@ -1296,18 +2025,49 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '③ pOH = 5.5 − log₁₀ 2 = 5.20 ⇒ pH = 14 − 5.20 = 8.80！',
             ],
           },
+          {
+            id: 'chem_mock_adv_03_q4b',
+            label: '問3',
+            difficulty: 'kyotsu_2ji',
+            imageUrl: FIG_FIRST_ORDER_ARRHENIUS,
+            imageCaption: '参考図 一次反応の半減期（左）とアレニウスプロット ln k vs 1/T（右）',
+            stem: '反応速度定数 k と絶対温度 T [K] の間にはアレニウスの式 ln k = ln A − Ea / (RT)（A：頻度因子、Ea：活性化エネルギー、R = 8.3 J/(K·mol)）が成り立つ。ある反応について横軸に 1/T [K⁻¹]、縦軸に ln k をとったグラフが傾き −1.0×10⁴ [K] の直線となった。この反応の活性化エネルギー Ea [kJ/mol] として最も適当な値を①〜④から選べ。',
+            choices: [
+              '8.3 kJ/mol',
+              '42 kJ/mol',
+              '83 kJ/mol',
+              '1.2×10³ kJ/mol',
+            ],
+            answer: 2,
+            points: 7,
+            skill: 'アレニウスプロット（ln k vs 1/T）の傾き −Ea/R からの活性化エネルギー算出',
+            explanation: 'ln k = (−Ea / R) × (1/T) + ln A より、直線の傾きは −Ea / R = −1.0×10⁴ [K]。\nしたがって Ea = R × 1.0×10⁴ = 8.3 J/(K·mol) × 1.0×10⁴ K = 8.3×10⁴ J/mol = 83 kJ/mol！',
+            reasons: [
+              '10³ J = 1 kJ の単位換算で1桁誤った値（8.3 kJ/mol）。',
+              '半分にしてしまった誤算。',
+              '正しい！Ea = 8.3 × 1.0×10⁴ = 8.3×10⁴ J/mol = 83 kJ/mol。',
+              '傾きを R で掛けずに R で割ってしまった誤り（10000 / 8.3 ≒ 1205）。',
+            ],
+            steps: [
+              '① 傾き −Ea / R = −1.0×10⁴ K ⇒ Ea = 8.3 × 1.0×10⁴ = 8.3×10⁴ J/mol。',
+              '② kJ/mol に直して 83 kJ/mol（③が正解）。',
+            ],
+          },
         ],
       },
       {
         id: 'sec_adv3_d3',
         daimonLabel: '第3問',
-        title: '無機イオンの色・系統分離の操作理由と火力発電所の排煙脱硫計算',
+        title: '無機イオンの色・排煙脱硫・鉄鉱石の溶鉱炉精錬計算（配点 20点）',
+        recommendedMinutes: 11,
+        leadText: '金属陽イオンの沈殿・錯イオン形成による分離、火力発電所の排煙脱硫プロセス、および溶鉱炉による銑鉄製造の物質収支に関する次の問い（問1〜3）に答えよ。',
         imageUrl: FIG_INORGANIC_COLOR_MAP,
         imageCaption: '図3 金属陽イオンの塩基による沈殿色と過剰 NaOH / 過剰 NH₃ 水による錯イオン溶解マップ',
         items: [
           {
             id: 'chem_mock_adv_03_q5',
             label: '問1',
+            difficulty: 'kyotsu_standard',
             stem: '図3および無機物質の反応・定性分析に関する記述として「誤りを含むもの」を、①〜④のうちから一つ選べ。',
             choices: [
               'Ag⁺ と Pb²⁺ の混合水溶液に希塩酸を加えて生じた白色沈殿混合物に十分な熱湯を注いでろ過すると、PbCl₂ だけが溶けてろ液に移り、そのろ液に K₂CrO₄ 水溶液を加えると黄色の PbCrO₄ 沈殿が生じる。',
@@ -1316,7 +2076,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               'BaCl₂ 水溶液を加えて生じた白色沈殿が希塩酸に溶けなければ硫酸バリウム BaSO₄ であり、刺激臭の気体を出して溶ければ亜硫酸バリウム BaSO₃ である。',
             ],
             answer: 2,
-            points: 10,
+            points: 6,
             skill: 'Al³⁺（過剰NH₃不溶！）vs Zn²⁺（過剰NH₃溶解）・第1属熱水分離・NH₄NO₂窒素製法・Ba塩識別',
             explanation: '図3の最上段と2段目の対比そのものである！\nAl³⁺ と Zn²⁺ はどちらも過剰の『NaOH 水溶液』には [Al(OH)₄]⁻・[Zn(OH)₄]²⁻ となって溶けるが、過剰の『アンモニア水 NH₃』に対しては、『Zn(OH)₂ は [Zn(NH₃)₄]²⁺ となって溶けるのに対し、Al(OH)₃ はアンミン錯イオンをつくらず白色沈殿のまま溶けずに残る』！',
             reasons: [
@@ -1333,6 +2093,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
           {
             id: 'chem_mock_adv_03_q6',
             label: '問2',
+            difficulty: 'kyotsu_standard',
             stem: '排ガス中の二酸化硫黄 SO₂ を炭酸カルシウム CaCO₃ と酸素 O₂ と水を用いてセッコウ CaSO₄·2H₂O（式量 172）として回収する排煙脱硫装置（2SO₂ + 2CaCO₃ + O₂ + 4H₂O → 2(CaSO₄·2H₂O) + 2CO₂）がある。標準状態で 56.0 L の SO₂ を 100 % 処理したとき、得られるセッコウ CaSO₄·2H₂O の質量 [g] は何 g か。①〜④から選べ（標準状態のモル体積 22.4 L/mol）。',
             choices: [
               '215 g',
@@ -1341,7 +2102,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '860 g',
             ],
             answer: 2,
-            points: 10,
+            points: 7,
             skill: '排煙脱硫反応における硫黄原子保存（SO₂ 1 mol → CaSO₄·2H₂O 1 mol）の定量計算',
             explanation: '① 標準状態で 56.0 L の SO₂ の物質量：\nn(SO₂) ＝ 56.0 L ÷ 22.4 L/mol ＝『2.50 mol』。\n② 反応式の係数比 2SO₂ : 2(CaSO₄·2H₂O) ＝ 1 : 1（硫黄原子保存）より、生成するセッコウ CaSO₄·2H₂O の物質量も『2.50 mol』！\n③ 得られるセッコウの質量 ＝ 2.50 mol × 172 g/mol ＝『430 g』！',
             reasons: [
@@ -1356,16 +2117,47 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '③ w = 2.50 × 172 = 430 g！',
             ],
           },
+          {
+            id: 'chem_mock_adv_03_q6b',
+            label: '問3',
+            difficulty: 'kyotsu_2ji',
+            stem: '酸化鉄(III) Fe₂O₃（式量 160）を質量パーセントで 80.0 % 含む鉄鉱石（他の成分は Fe を含まない）100 kg を溶鉱炉ですべて還元し、炭素を質量パーセントで 4.0 % 含む銑鉄（残り 96.0 % はすべて Fe：原子量 56）を得た。得られる銑鉄の質量 [kg] に最も近い値を①〜④から選べ。',
+            choices: [
+              '53.8 kg',
+              '56.0 kg',
+              '58.3 kg',
+              '70.0 kg',
+            ],
+            answer: 2,
+            points: 7,
+            skill: '鉄鉱石純度と炭素含有銑鉄（w_Fe / 0.960）の鉄原子保存工業計算',
+            explanation: '① 鉄鉱石 100 kg 中の Fe₂O₃ の質量 = 100 × 0.800 = 80.0 kg。\n② 鉄原子保存より含まれる純鉄 Fe の質量 w(Fe) = 80.0 kg × (2×56 / 160) = 80.0 × 0.700 = 56.0 kg！\n③ 得られる銑鉄全体の質量を W [kg] とおくと、その 96.0 %（100 − 4.0 %）が Fe 56.0 kg に等しいから、0.960 W = 56.0 ⇒ W = 56.0 / 0.960 ≒ 58.33 ≒ 58.3 kg！',
+            reasons: [
+              '56.0 × 0.960 = 53.76 kg と掛け算してしまった典型ひっかけ！',
+              '純粋な鉄単体 Fe の質量（56.0 kg）であり、銑鉄中に 4.0 % 含まれる炭素分を足し忘れたミス！',
+              '正しい！純鉄 56.0 kg が銑鉄全体の 96.0 % を占めるため 56.0 / 0.960 ≒ 58.3 kg！',
+              '鉄鉱石の純度 80.0 % を掛け忘れた値（100 × 112/160 = 70.0 kg）。',
+            ],
+            steps: [
+              '① Fe₂O₃ = 80.0 kg ⇒ 純鉄 w(Fe) = 80.0 × (112/160) = 56.0 kg。',
+              '② 銑鉄質量 W = 56.0 ÷ 0.960 ≒ 58.3 kg（③が正解）。',
+            ],
+          },
         ],
       },
       {
         id: 'sec_adv3_d4',
         daimonLabel: '第4問',
-        title: 'アルケンのオゾン分解・末端アルキンと芳香族医薬品の構造決定',
+        title: '芳香族医薬品・アルケンのオゾン分解・環状エステル（配点 20点）',
+        recommendedMinutes: 12,
+        leadText: '脂肪族・芳香族化合物の官能基識別反応、アルケンのオゾン分解による炭素骨格決定、および不飽和度 2 の環状エステル（ラクトン）の構造決定に関する次の問い（問1〜3）に答えよ。',
+        imageUrl: FIG_ORGANIC_STRUCTURE_PUZZLE,
+        imageCaption: '図4 有機構造決定の3大定石（不飽和度 U・オゾン分解の逆結合・ラクトンの加水分解閉環）',
         items: [
           {
             id: 'chem_mock_adv_03_q7',
             label: '問1',
+            difficulty: 'kyotsu_standard',
             stem: '脂肪族および芳香族有機化合物の識別反応に関する記述として「誤りを含むもの」を、①〜④のうちから一つ選べ。',
             choices: [
               '分子式 C₄H₆ の 1-ブチンと 2-ブチンは、アンモニア性硝酸銀水溶液に通じたとき 1-ブチンのみが白色沈殿（銀アセチリド）を生じることで区別できる。',
@@ -1374,7 +2166,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '解熱鎮痛薬のアセトアミノフェン（p-ヒドロキシアセトアニリド）とサリチル酸メチルは、どちらも塩化鉄(III) 水溶液を加えても呈色しない。',
             ],
             answer: 3,
-            points: 10,
+            points: 6,
             skill: '末端アルキン識別・乳酸と酒石酸メソ体とクエン酸・アセトアミノフェンとサリチル酸メチルのFeCl₃呈色陽性',
             explanation: 'アセトアミノフェン（HO−C₆H₄−NHCOCH₃）もサリチル酸メチル（o-HO−C₆H₄−COOCH₃）も、ともにベンゼン環に直接結合した遊離の『フェノール性ヒドロキシ基 −OH』をもっているため、どちらも塩化鉄(III) FeCl₃ 水溶液を加えると『紫色〜赤紫色に呈色する（陽性）』！（呈色しないのは −OH がアセチル化されているアスピリンや、−OH をもたないアセトアニリド！）',
             reasons: [
@@ -1391,6 +2183,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
           {
             id: 'chem_mock_adv_03_q8',
             label: '問2',
+            difficulty: 'kyotsu_2ji',
             stem: '分子式 C₆H₁₂ で表される鎖式アルケン A にはシス・トランス異性体が存在しない。アルケン A をオゾン分解（O₃ 反応後に Zn・水処理）したところ、炭素数 3 のケトン B と、銀鏡反応を示す炭素数 3 のアルデヒド C が 1 : 1 の物質量比で得られた。アルケン A の IUPAC 名称として正しいものを①〜④から選べ。',
             choices: [
               '2-ヘキセン',
@@ -1399,7 +2192,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '3-メチル-2-ペンテン',
             ],
             answer: 2,
-            points: 10,
+            points: 7,
             skill: 'オゾン分解生成物（アセトン＋プロピオンアルデヒド）の逆結合と幾何異性体なし条件の照合',
             explanation: '① 炭素数 3 のケトン B は唯一『アセトン (CH₃)₂C=O』！\n② 炭素数 3 のアルデヒド C は唯一『プロピオンアルデヒド（プロパナール）O=CH−CH₂CH₃』！\n③ 両者の「=O」を消して二重結合で直結すると：\n『(CH₃)₂C ＝ CH − CH₂ − CH₃』！\n二重結合炭素の左側に同じメチル基 CH₃ が2個ついているため、リード文の「シス・トランス異性体が存在しない」条件も完璧に満たしている！\n主鎖は炭素数 5 のペンテンで、左端から番号を振ると 2位にメチル基と 2位に二重結合があるから、名称は『2-メチル-2-ペンテン』！',
             reasons: [
@@ -1413,18 +2206,47 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '② O を消して直結：(CH₃)₂C=CH−CH₂CH₃ ⇒ 幾何異性体なし確認 ⇒ 名称『2-メチル-2-ペンテン』（③）！',
             ],
           },
+          {
+            id: 'chem_mock_adv_03_q8b',
+            label: '問3',
+            difficulty: 'kyotsu_2ji',
+            stem: '分子式 C₅H₈O₂ で表される中性の環状化合物 X（臭素水を脱色せず C=C 二重結合をもたない）を水酸化ナトリウム水溶液と加熱して加水分解したのち希硫酸で酸性にすると、分子式 C₅H₁₀O₃ の【単一の化合物 Y のみ】が得られた。Y には不斉炭素原子が1個存在し、Y はヨードホルム反応に陽性であった。環状化合物 X が環内に含む環員数（環を構成する原子の総数）と、Y の構造として正しい組合せを①〜④から選べ。',
+            choices: [
+              '五員環ラクトン（環構成原子 5 個）　／　Y：CH₃CH(OH)CH₂CH₂COOH',
+              '六員環ラクトン（環構成原子 6 個）　／　Y：HOCH₂CH₂CH₂CH₂COOH',
+              '四員環ラクトン（環構成原子 4 個）　／　Y：CH₃CH₂CH(OH)CH₂COOH',
+              '五員環エーテル（環構成原子 5 個）　／　Y：CH₃COCH₂CH₂COOH',
+            ],
+            answer: 0,
+            points: 7,
+            skill: '不飽和度 2 の加水分解非分裂（環状エステル＝ラクトン）とヨードホルム陽性ヒドロキシ酸の構造決定',
+            explanation: '① C₅H₈O₂ の不飽和度は 2 で C=C がなく、加水分解で2分子に割れず水1分子が付加した単一化合物 Y（C₅H₁₀O₃）のみを生じることから、X は分子内環状エステル（ラクトン）であり、Y はヒドロキシ酸である！\n② Y（C₅H₁₀O₃）が不斉炭素をもちヨードホルム反応陽性（CH₃CH(OH)− 構造をもつ！）であるのは：\n・CH₃CH*(OH)CH₂CH₂COOH（4-ヒドロキシペンタン酸）：分子内脱水するとカルボキシ基炭素(C1)〜C2〜C3〜C4〜環内酸素O の『五員環ラクトン（γ-バレロラクトン：環構成原子 5個）』を形成する！（なお 3-ヒドロキシペンタン酸 CH₃CH₂CH(OH)CH₂COOH はヨードホルム反応陰性）。',
+            reasons: [
+              '正しい！Y = CH₃CH*(OH)CH₂CH₂COOH は CH₃CH(OH)− をもちヨードホルム陽性・不斉炭素1個で、分子内エステル化により安定な五員環ラクトン（C4個＋O1個＝5員環）をつくる！',
+              'HO(CH₂)₄COOH には不斉炭素がなくヨードホルム反応も陰性である。',
+              'CH₃CH₂CH(OH)CH₂COOH は CH₃CH(OH)− をもたないためヨードホルム反応陰性である。',
+              '環状エーテルは NaOH 水溶液では加水分解されない。',
+            ],
+            steps: [
+              '① 加水分解で炭素数が減らず C₅H₈O₂ + H₂O → C₅H₁₀O₃ 1種のみ ⇒ X は環状エステル（ラクトン）、Y はヒドロキシ酸。',
+              '② ヨードホルム陽性 CH₃CH*(OH)− をもつ Y = CH₃CH(OH)CH₂CH₂COOH ⇒ 閉環すると C1-C2-C3-C4-O の五員環ラクトン（①が正解）。',
+            ],
+          },
         ],
       },
       {
         id: 'sec_adv3_d5',
         daimonLabel: '第5問',
-        title: '酵素反応の速度特性と合成樹脂・天然ゴム加硫の定量計算',
+        title: '酵素反応・6,6-ナイロン・ペプチド配列決定（配点 20点）',
+        recommendedMinutes: 12,
+        leadText: '酵素反応の阻害様式、ポリアミド合成繊維の重合度とアミド結合数、および酵素特異的切断を用いたテトラペプチドの配列決定に関する次の問い（問1〜3）に答えよ。',
         imageUrl: FIG_ENZYME_ACTIVITY,
-        imageCaption: '図4 酵素反応の基質濃度飽和曲線（競争的阻害との比較）と温度依存曲線',
+        imageCaption: '図5 酵素反応の基質濃度飽和曲線（競争的阻害との比較）と温度依存曲線',
         items: [
           {
             id: 'chem_mock_adv_03_q9',
             label: '問1',
+            difficulty: 'kyotsu_standard',
             stem: '図4の酵素反応および天然・合成高分子化合物に関する記述として最も適当なものを、①〜④のうちから一つ選べ。',
             choices: [
               '酵素反応に競争的阻害剤を加えると、基質濃度 [S] をどれほど大きくしても最大反応速度 Vmax は阻害剤がないときの半分以下に低下したまま戻らない。',
@@ -1433,7 +2255,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               'デンプンもセルロースも分子の右端に1個だけヘミアセタール構造が残っているため、水溶液や懸濁液はグルコースと同様にフェーリング液を強く還元する。',
             ],
             answer: 1,
-            points: 10,
+            points: 6,
             skill: '競争的阻害のVmax不変・デオキシリボースC₅H₁₀O₄・グリプタル熱硬化vsPC熱可塑・多糖類の非還元性',
             explanation: '①競争的阻害では基質濃度 [S] を十分高くすれば阻害剤に打ち勝って同じ Vmax に漸近する（図4左参照）。\n②正しい！リボース C₅H₁₀O₅ の 2位の酸素が1個少ない 2-デオキシリボース『C₅H₁₀O₄』が DNA の糖である。\n③逆！3価グリセリンで架橋するグリプタル樹脂が『熱硬化性』、直鎖のポリカーボネートが『熱可塑性』である。\n④多糖類は分子量が巨大で末端1個の割合が無視できるほど小さいため還元性を示さない。',
             reasons: [
@@ -1450,6 +2272,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
           {
             id: 'chem_mock_adv_03_q10',
             label: '問2',
+            difficulty: 'kyotsu_2ji',
             stem: '6,6-ナイロン（繰り返し単位 −NH−(CH₂)₆−NH−CO−(CH₂)₄−CO−：式量 226）の平均分子量が 3.39×10⁴ である試料がある。この 6,6-ナイロン 1分子中に含まれる「アミド結合（−CONH−）の平均個数」と、この 6,6-ナイロン 45.2 g を合成するのに理論上必要なアジピン酸 HOOC(CH₂)₄COOH（分子量 146）の質量 [g] の組合せとして正しいものを①〜④から選べ（末端の影響は無視できるものとする）。',
             choices: [
               'アミド結合：約 150 個　／　アジピン酸：29.2 g',
@@ -1458,7 +2281,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               'アミド結合：約 150 個　／　アジピン酸：14.6 g',
             ],
             answer: 1,
-            points: 10,
+            points: 7,
             skill: '6,6-ナイロンの平均重合度 n と「1単位あたりアミド結合 2個（2n 個）！」および原料質量計算',
             explanation: '① 平均重合度 n ＝ 平均分子量 3.39×10⁴ ÷ 単位式量 226 ＝『150』。\n★最大の急所：6,6-ナイロンの繰り返し単位 1個「−NH−(CH₂)₆−NH−CO−(CH₂)₄−CO−」の中には、アミド結合 −NH−CO− が『2個』含まれている！（6-ナイロンなら1単位に1個だが、6,6-ナイロンと PET は1単位に『2個』！）\nしたがって 1分子（150 単位）中のアミド結合の個数は 2n ＝ 2 × 150 ＝『約 300 個』！\n② 6,6-ナイロン 45.2 g に含まれる繰り返し単位の物質量 ＝ 45.2 g ÷ 226 g/mol ＝『0.200 mol』。\n1単位をつくるのにアジピン酸は 1分子必要だから、必要なアジピン酸も『0.200 mol』：\n質量 ＝ 0.200 mol × 146 g/mol ＝『29.2 g』！',
             reasons: [
@@ -1472,6 +2295,32 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '② 45.2 g ÷ 226 ＝ 0.200 mol 単位 ⇒ 必要なアジピン酸 ＝ 0.200 × 146 ＝ 29.2 g！（②が正解！）',
             ],
           },
+          {
+            id: 'chem_mock_adv_03_q10b',
+            label: '問3',
+            difficulty: 'kyotsu_2ji',
+            stem: '4種類の異なる α-アミノ酸（グリシン Gly、アラニン Ala、グルタミン酸 Glu、チロシン Tyr）が1個ずつ縮合した鎖状テトラペプチド P がある。実験の結果、① P の N末端（アミノ基側末端）のアミノ酸には不斉炭素原子がなかった。② 酵素キモトリプシンは芳香族アミノ酸（Tyr）のカルボキシ基側のペプチド結合のみを選択的に切断するが、P にキモトリプシンを作用させても切断されなかった。③ P を希酸で部分加水分解すると、ジペプチドとして Glu−Tyr と Ala−Glu が検出された。P の N末端から C末端への配列として正しいものを①〜④から選べ。',
+            choices: [
+              'Gly − Ala − Glu − Tyr',
+              'Gly − Glu − Tyr − Ala',
+              'Tyr − Glu − Ala − Gly',
+              'Ala − Gly − Glu − Tyr',
+            ],
+            answer: 0,
+            points: 7,
+            skill: '酵素特異的切断の不発（C末端＝芳香族アミノ酸！）と部分加水分解パズルによるペプチド配列決定',
+            explanation: '① N末端に不斉炭素がない → N末端は唯一の光学不活性アミノ酸である『Gly』！\n② Tyr の C末端側を切るキモトリプシンで「切断が起こらない」ということは、Tyr の右隣にアミノ酸が存在しない、すなわち『Tyr が C末端（一番右端）』にあることを意味する！（2次試験の最重要ロジック！）\n③ 断片 Ala−Glu と Glu−Tyr を重ねると Ala−Glu−Tyr となり、左端の Gly とつなげて『Gly − Ala − Glu − Tyr』に一意決定！',
+            reasons: [
+              '正しい！N末端＝Gly（不斉Cなし）、C末端＝Tyr（キモトリプシン非切断）、断片 Ala−Glu と Glu−Tyr がすべて完全一致する！',
+              'Tyr の右側に Ala があるためキモトリプシンで Gly−Glu−Tyr と Ala に切断されてしまい条件②に反する。',
+              'N末端が Tyr になっており条件①・②ともに反する。',
+              'N末端が Ala（不斉Cあり）になっており条件①に反する。',
+            ],
+            steps: [
+              '① N末端＝不斉炭素なし ⇒ 左端は Gly。',
+              '② Tyr の C側を切る酵素で切れない ⇒ 右端（C末端）は Tyr！断片 Ala−Glu, Glu−Tyr より Gly−Ala−Glu−Tyr（①が正解）。',
+            ],
+          },
         ],
       },
     ],
@@ -1481,22 +2330,35 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
     course: 'chem_basic_change',
     examCategory: 'basic',
     round: 4,
-    title: '共通テスト実戦模試『化学基礎』第4回（2025–2026最新傾向型）',
-    subtitle: '第1問（白色粉末識別・質量スペクトル・吸光度検量線・溶け残り濃度範囲）＋ 第2問（化成肥料の元素含有率変化とアンモニア逆滴定）',
+    title: '共通テスト実戦模試『化学基礎』第4回（2025–2026最新本試完全対応）',
+    subtitle: '第1問（白色粉末識別・質量スペクトル・吸光度検量線・溶け残り濃度範囲）＋ 第2問（化成肥料の元素含有率変化・逆滴定・局部電池腐食）',
+    levelBadge: '★★★ 共通テスト満点・最新傾向総仕上げ',
+    constantsNote: '必要があれば、次の値を用いよ。原子量：H = 1.0, C = 12, N = 14.0, O = 16, Mg = 24, S = 32, Cl = 35.5, Ca = 40, Fe = 56, Zn = 65, Sn = 119',
     timeLimitMinutes: 30,
     totalPoints: 50,
     sections: [
       {
         id: 'chem_mock_basic_04_sec1',
         daimonLabel: '第1問',
-        title: '物質の構成・機器分析グラフと過不足反応による濃度範囲の決定（配点 30点）',
-        leadText: '日常生活や実験室で扱う物質の識別・機器分析データ（吸光度と質量スペクトル）・過不足のある反応実験に関する次の問い（問1〜5）に答えよ（H＝1.0, C＝12, O＝16, Mg＝24, Cl＝35.5, Ca＝40）。',
+        title: '物質の構成・機器分析グラフと過不足反応による濃度範囲の決定（配点 26点）',
+        recommendedMinutes: 14,
+        leadText: '日常生活や実験室で扱う物質の識別・機器分析データ（吸光度と質量スペクトル）・過不足のある反応実験に関する次の問い（問1〜5）に答えよ。',
         imageUrl: FIG_SPECTROPHOTOMETRY_MS,
         imageCaption: '図1　着色成分の吸光度検量線（左：セル長 1.0 cm）とジクロロメタン CH₂Cl₂⁺ の質量スペクトル（右）',
+        dataTable: {
+          caption: '表1　問4におけるマグネシウム Mg と未知濃度の希塩酸 HCl（c [mol/L]）の反応実験結果',
+          headers: ['実験番号', '加えた Mg の質量 [g]', '加えた希塩酸の体積 [mL]', '気体発生終了後の観察結果'],
+          rows: [
+            ['実験Ⅰ', '0.36 g（0.015 mol）', '50.0 mL', 'Mg がわずかに溶け残った'],
+            ['実験Ⅱ', '0.36 g（0.015 mol）', '60.0 mL', 'Mg はすべて溶けた'],
+            ['実験Ⅲ', '0.48 g（0.020 mol）', '75.0 mL', 'Mg はすべて溶けた'],
+          ],
+        },
         items: [
           {
             id: 'chem_mock_basic_04_q1',
             label: '問1',
+            difficulty: 'foundation',
             stem: '炭酸水素ナトリウム NaHCO₃ と塩化ナトリウム NaCl の白色粉末または水溶液を区別する実験操作と結果に関する記述として【誤りを含むもの】を①〜④から1つ選べ。',
             choices: [
               'それぞれの飽和水溶液にフェノールフタレイン溶液を加えると、NaHCO₃ 側は薄い赤色を呈するが NaCl 側は変化しない',
@@ -1505,7 +2367,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               'それぞれの粉末に希塩酸を加えると、NaHCO₃ 側からのみ激しく発泡して二酸化炭素が発生する',
             ],
             answer: 2,
-            points: 6,
+            points: 5,
             skill: 'NaHCO₃ と NaCl の多面的識別（液性・熱分解・炎色反応・弱酸遊離）',
             explanation: '炎色反応は化合物の種類ではなく「含まれる金属元素」に固有の現象である。NaHCO₃ と NaCl はどちらもナトリウム（Na）を含むため、ともに【黄色】の炎色反応を示し、炎色反応では区別できない。よって③が誤り。',
             reasons: [
@@ -1522,6 +2384,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
           {
             id: 'chem_mock_basic_04_q2',
             label: '問2',
+            difficulty: 'kyotsu_standard',
             stem: '図1右のように塩素には ³⁵Cl（75%）と ³⁷Cl（25%）が存在する。水素が ¹H（100%）のみからなる塩化水素 HCl と単体の塩素 Cl₂ の 1価分子イオン（HCl⁺, Cl₂⁺）をそれぞれ質量分析したときに観測されるピークの本数と強度比の組合せとして正しいものを①〜④から1つ選べ。',
             choices: [
               'HCl⁺：m/z＝36, 38 の2本（3 : 1） ／ Cl₂⁺：m/z＝70, 72, 74 の3本（9 : 6 : 1）',
@@ -1530,7 +2393,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               'HCl⁺：m/z＝35, 37 の2本（3 : 1） ／ Cl₂⁺：m/z＝70, 74 の2本（9 : 1）',
             ],
             answer: 0,
-            points: 6,
+            points: 5,
             skill: '同位体存在比（3:1）と二原子分子イオンの二項分布ピーク強度比（9:6:1）',
             explanation: 'HCl⁺ は ¹H³⁵Cl⁺（m/z＝36）と ¹H³⁷Cl⁺（m/z＝38）が 3 : 1 で現れる。\nCl₂⁺ は (³⁵Cl,³⁵Cl)＝(3/4)²＝9/16［m/z＝70］、(³⁵Cl,³⁷Cl)と(³⁷Cl,³⁵Cl)の2通り＝2×(3/4)(1/4)＝6/16［m/z＝72］、(³⁷Cl,³⁷Cl)＝(1/4)²＝1/16［m/z＝74］より 9 : 6 : 1 となる。',
             reasons: [
@@ -1547,6 +2410,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
           {
             id: 'chem_mock_basic_04_q3',
             label: '問3',
+            difficulty: 'kyotsu_standard',
             stem: '図1左の検量線（セル長 1.0 cm のときモル濃度 2.0 mmol/L で吸光度 A ＝ 0.45）に従う着色成分を含む原液を、ホールピペットで 10.0 mL 取りメスフラスコで 250 mL に希釈した。この希釈液をセル長 1.0 cm で測定したところ吸光度 A ＝ 0.36 であった。元の原液のモル濃度は何 mmol/L か。',
             choices: [
               '1.6 mmol/L',
@@ -1555,7 +2419,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '56 mmol/L',
             ],
             answer: 2,
-            points: 6,
+            points: 5,
             skill: '吸光度検量線の比例読解と希釈倍率（25倍）の逆算',
             explanation: '検量線より希釈液の濃度 c_希 は\nc_希 ＝ 2.0 × (0.36 / 0.45) ＝ 2.0 × 0.80 ＝ 1.6 mmol/L。\n原液 10.0 mL を 250 mL（25倍）に薄めているため、原液の濃度は 1.6 × (250 / 10.0) ＝ 40 mmol/L である。',
             reasons: [
@@ -1572,6 +2436,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
           {
             id: 'chem_mock_basic_04_q4',
             label: '問4',
+            difficulty: 'kyotsu_2ji',
             stem: '金属マグネシウム Mg（原子量 24）と濃度未知の希塩酸（モル濃度 c [mol/L]）を用いて次の3つの実験を行った。\n・実験Ⅰ：Mg 0.36 g に希塩酸 50.0 mL を加えると、気体発生終了後に Mg がわずかに【溶け残った】。\n・実験Ⅱ：Mg 0.36 g に希塩酸 60.0 mL を加えると、Mg は【すべて溶けた】。\n・実験Ⅲ：Mg 0.48 g に希塩酸 75.0 mL を加えると、Mg は【すべて溶けた】。\n希塩酸のモル濃度 c [mol/L] の範囲として最も適当なものを①〜④から1つ選べ。',
             choices: [
               '0.50 mol/L ≦ c ＜ 0.60 mol/L',
@@ -1597,6 +2462,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
           {
             id: 'chem_mock_basic_04_q5',
             label: '問5',
+            difficulty: 'foundation',
             stem: '結晶性のケイ素 Si（ダイヤモンド型構造）と非晶質（アモルファス）の石英ガラスやアモルファスシリコン、および状態変化の用語に関する記述として正しいものを①〜④から1つ選べ。',
             choices: [
               '非晶質（アモルファス）の固体は構成粒子が規則正しく配列しているため、純物質と同様に一定の明確な融点を示す',
@@ -1605,7 +2471,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '水晶と通常の窓ガラス（ソーダ石灰ガラス）はいずれも純粋な SiO₂ のみからなる同素体どうしである',
             ],
             answer: 1,
-            points: 6,
+            points: 5,
             skill: '新課程用語（結晶質 vs 非晶質・昇華 vs 凝華）と分子結晶の状態変化',
             explanation: '新課程では固体→気体を「昇華」、気体→固体を「凝華」と区別してよぶため②が正しい。\n①非晶質は不規則配列のため一定の融点をもたない。③ドライアイスの昇華で切れるのは分子間力であり共有結合は切れない。④同素体は単体どうしにのみ使う用語であり、またソーダ石灰ガラスは混合物である。',
             reasons: [
@@ -1624,12 +2490,16 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
       {
         id: 'chem_mock_basic_04_sec2',
         daimonLabel: '第2問',
-        title: '肥料として用いられる物質の性質・元素含有率変化と逆滴定（配点 20点）',
-        leadText: '植物の生育に欠かせない三大要素（窒素 N・リン P・カリウム K）を供給する化学肥料（硫酸アンモニウム (NH₄)₂SO₄・炭酸水素アンモニウム NH₄HCO₃・塩化カリウム KCl など）に関する次の問い（問1〜3）に答えよ（H＝1.0, C＝12, N＝14.0, O＝16, S＝32）。',
+        title: '肥料の性質・元素含有率変化・逆滴定・トタンとブリキの局部電池（配点 24点）',
+        recommendedMinutes: 16,
+        leadText: '植物の生育に欠かせない化学肥料（硫酸アンモニウム (NH₄)₂SO₄ など）と、農機具・屋根材に用いられるめっき鋼板の腐食に関する次の問い（問1〜4）に答えよ。',
+        imageUrl: FIG_CORROSION_GALVANIC,
+        imageCaption: '図2　傷がついたトタン（Zn めっき）とブリキ（Sn めっき）の雨水接触部における局部電池と電子移動',
         items: [
           {
             id: 'chem_mock_basic_04_q6',
             label: '問1',
+            difficulty: 'foundation',
             stem: '硫酸アンモニウム (NH₄)₂SO₄ 水溶液の液性、およびこの肥料に消石灰 Ca(OH)₂ を混ぜて施用してはいけない化学的理由の組合せとして正しいものを①〜④から1つ選べ。',
             choices: [
               '液性：弱酸性 ／ 理由：強塩基の Ca(OH)₂ と反応して弱塩基のアンモニア NH₃ が気体として逃げてしまい窒素分が失われるから',
@@ -1655,6 +2525,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
           {
             id: 'chem_mock_basic_04_q7',
             label: '問2',
+            difficulty: 'kyotsu_standard',
             stem: '硫酸アンモニウム (NH₄)₂SO₄（式量 132）を高温で慎重に加熱すると、1分子のアンモニア NH₃（分子量 17）が脱離して硫酸水素アンモニウム NH₄HSO₄（式量 115）の固体になる：\n(NH₄)₂SO₄(固) → NH₄HSO₄(固) ＋ NH₃↑\nこの反応の前後における固体中の【窒素（N）の質量パーセント含有率】と【硫黄（S）の質量パーセント含有率】の変化として正しいものを①〜④から1つ選べ。',
             choices: [
               'N の含有率：増加する ／ S の含有率：増加する',
@@ -1663,7 +2534,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               'N の含有率：変化しない ／ S の含有率：減少する',
             ],
             answer: 1,
-            points: 7,
+            points: 6,
             skill: '気体脱離反応に伴う残存固体の各元素含有率（質量%）の増減比較（2026共通テスト第2問型）',
             explanation: '・窒素 N：元の含有率は 28/132 ≒ 21.2%、抜ける NH₃ 中の N 含有率は 14/17 ≒ 82.4% と非常に高いため、残った固体 NH₄HSO₄ 中の N 含有率は 14/115 ≒ 12.2% へ【減少】する。\n・硫黄 S：気体として一切抜けず（分子が 32 のまま）、固体の全体質量（分母）が 132 → 115 に減るため、32/132(24.2%) → 32/115(27.8%) へ【増加】する。',
             reasons: [
@@ -1680,6 +2551,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
           {
             id: 'chem_mock_basic_04_q8',
             label: '問3',
+            difficulty: 'kyotsu_2ji',
             stem: '不純物を含む硫酸アンモニウム肥料 1.50 g に 1.00 mol/L の NaOH 水溶液 30.0 mL（過剰量）を加えて加熱し、発生した NH₃ をすべて追い出した。冷却後、残った NaOH を中和するのに 0.500 mol/L の希塩酸 HCl を 20.0 mL 要した。この肥料 1.50 g 中の【窒素（N）の質量パーセント含有率】は何 % か（不純物は反応しないものとする）。',
             choices: [
               '9.33%',
@@ -1688,7 +2560,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '37.3%',
             ],
             answer: 1,
-            points: 7,
+            points: 6,
             skill: 'アンモニウム塩の間接逆滴定と窒素元素（N＝14.0）換算含有率の計算',
             explanation: '最初に加えた NaOH ＝ 1.00 × 0.0300 ＝ 0.0300 mol。\n残っていた NaOH ＝ 1価の HCl と等物質量 ＝ 0.500 × 0.0200 ＝ 0.0100 mol。\nよって NH₄⁺ と反応して発生した NH₃（＝ N 原子の物質量）は 0.0300 − 0.0100 ＝ 0.0200 mol。\n窒素原子の質量 w(N) ＝ 14.0 × 0.0200 ＝ 0.280 g。\n肥料 1.50 g 中の含有率は (0.280 / 1.50) × 100 ＝ 18.66… ≒ 18.7%！',
             reasons: [
@@ -1702,6 +2574,32 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
               '② N 原子質量 ＝ 14.0 × 0.0200 ＝ 0.280 g → (0.280 / 1.50) × 100 ≒ 18.7%（②が正解）。',
             ],
           },
+          {
+            id: 'chem_mock_basic_04_q9',
+            label: '問4',
+            difficulty: 'kyotsu_standard',
+            stem: '鉄板の表面に亜鉛 Zn をめっきした「トタン」と、スズ Sn をめっきした「ブリキ」のめっき層にそれぞれ深い傷がつき、内部の鉄 Fe とめっき金属の両方が雨水（電解質水溶液）に同時に触れた状態になった。イオン化傾向（Zn ＞ Fe ＞ Sn）に基づき、傷口で起こる変化として正しいものを①〜④から1つ選べ。',
+            choices: [
+              'トタンでは Fe よりイオン化傾向の大きい Zn が負極となって先に溶け出すため内部の Fe はさびにくく、ブリキでは Sn よりイオン化傾向の大きい Fe が負極となって急速にさびる',
+              'トタンでもブリキでも、表面積の大きいめっき金属（Zn や Sn）が先に溶けて内部の Fe を保護する',
+              'トタンでは Fe が負極となって先にさび、ブリキでは Sn が負極となって先に溶け出す',
+              'トタンでもブリキでも、イオン化傾向の小さい金属側から電子が流れ出して先に酸化される',
+            ],
+            answer: 0,
+            points: 6,
+            skill: 'トタン（Znめっき・傷に強い犠牲防食）とブリキ（Snめっき・傷口でFe急腐食）の局部電池比較',
+            explanation: '2種類の異種金属が電解質水溶液中で接触すると局部電池が形成され、【イオン化傾向が大きい方の金属が負極となって優先的に酸化溶解】する！\n・トタン（Zn ＞ Fe）：Zn が身代わりに溶け（犠牲防食）、傷口でも Fe は守られる。\n・ブリキ（Fe ＞ Sn）：ひとたび傷がつくと内部の Fe が負極となって電子を奪われ、むき出しの鉄以上に急速に腐食が進む！',
+            reasons: [
+              '正しい！イオン化傾向 Zn ＞ Fe ＞ Sn より、トタンでは Zn が溶けて Fe を守り、ブリキでは傷口で Fe が負極となって急腐食する。',
+              'ブリキ（Sn めっき）では Fe ＞ Sn のため Sn は Fe を電気化学的に保護できない。',
+              'トタンとブリキの負極になる金属が完全に逆である。',
+              '電子を放出して先に酸化されるのはイオン化傾向の「大きい」金属である。',
+            ],
+            steps: [
+              '① イオン化傾向 Zn ＞ Fe ＞ Sn を確認し、接触時に大きい方が負極（溶解）と判定。',
+              '② トタン＝Zn溶解でFe保護、ブリキ＝傷口でFe溶解（①が正解）。',
+            ],
+          },
         ],
       },
     ],
@@ -1711,8 +2609,10 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
     course: 'chem_theory',
     examCategory: 'advanced',
     round: 4,
-    title: '共通テスト実戦模試『化学』第4回（2025–2026本試完全対応・総合5大問）',
+    title: '共通テスト実戦模試『化学』第4回（2025–2026本試完全対応・満点＆2次余裕総仕上げ）',
     subtitle: '第1問 状態・逆浸透・燃焼圧力 ／ 第2問 化学発光・二次電池・弱酸希釈・平衡 ／ 第3問 遷移元素・ケイ素・ヨウ素製造 ／ 第4問 有機・ブチラール・グルタチオン ／ 第5問 原油分留・バナジウム・ポリイミド',
+    levelBadge: '★★★ 共テ満点・国公立2次余裕合格レベル',
+    constantsNote: '必要があれば、次の値を用いよ。原子量：H = 1.0, C = 12, N = 14, O = 16, S = 32, V = 51.0, Cd = 112, I = 127 ／ 気体定数 R = 8.3×10³ Pa·L/(K·mol) ／ log₁₀ 2 = 0.30',
     timeLimitMinutes: 60,
     totalPoints: 100,
     sections: [
@@ -1720,6 +2620,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
         id: 'chem_mock_adv_04_sec1',
         daimonLabel: '第1問',
         title: '物質の状態・逆浸透法による淡水化と密閉燃焼の圧力変化（配点 20点）',
+        recommendedMinutes: 12,
         leadText: '気体・希薄溶液の性質と海水淡水化・密閉容器反応に関する次の問い（問1〜3）に答えよ（R ＝ 8.3×10³ Pa・L/(K・mol)）。',
         imageUrl: FIG_REVERSE_OSMOSIS_VAPOR,
         imageCaption: '図1　半透膜を用いた逆浸透セル（左）と純水・電解質水溶液の蒸気圧曲線（右）',
@@ -1727,6 +2628,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
           {
             id: 'chem_mock_adv_04_q1',
             label: '問1',
+            difficulty: 'kyotsu_standard',
             stem: 'コロイド溶液および実在気体の性質に関する記述として【誤りを含むもの】を①〜④から1つ選べ。',
             choices: [
               '牛乳やマヨネーズのように液体中に別の微細な液滴が分散したコロイドを乳濁液（エマルション）といい、泥水のような固体微粒子の分散系と区別される',
@@ -1752,6 +2654,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
           {
             id: 'chem_mock_adv_04_q2',
             label: '問2',
+            difficulty: 'kyotsu_2ji',
             stem: '図1左の逆浸透装置において、左室に完全電離する 0.40 mol/L の NaCl 水溶液 10 L、右室に純水を入れ、300 K に保って右室を大気圧 1.0×10⁵ Pa、左室ピストンに 2.59×10⁶ Pa の一定圧力を加えて平衡に達するまで放置した。左室から右室へ移動した純水の体積は何 L か。',
             choices: [
               '1.0 L',
@@ -1777,6 +2680,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
           {
             id: 'chem_mock_adv_04_q3',
             label: '問3',
+            difficulty: 'kyotsu_2ji',
             stem: '容積一定の密閉容器に気体のプロパン C₃H₈ 0.010 mol と酸素 O₂ 0.080 mol を入れ、400 K（すべての成分が気体）での全圧を P₁ とした。点火してプロパンを完全燃焼させた後、同じ 400 K に戻したときの全圧 P₂ と、さらに 300 K に冷却して生成した水蒸気がすべて液体に凝縮したとき（水の蒸気圧と液体体積は無視）の全圧 P₃ の比（P₂/P₁ および P₃/P₁）の組合せとして正しいものを①〜④から1つ選べ。',
             choices: [
               'P₂ / P₁ ＝ 1.11　／　P₃ / P₁ ＝ 0.50',
@@ -1805,6 +2709,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
         id: 'chem_mock_adv_04_sec2',
         daimonLabel: '第2問',
         title: '化学発光・二次電池の物質収支・弱酸希釈曲線と圧平衡定数（配点 20点）',
+        recommendedMinutes: 13,
         leadText: '化学エネルギーと光・電気エネルギーの変換および電離平衡・気体平衡に関する次の問い（問1〜3）に答えよ（H＝1.0, O＝16, Cd＝112, log₁₀2 ＝ 0.30）。',
         imageUrl: FIG_WEAK_ACID_DILUTION_EQUIL,
         imageCaption: '図2　強酸・弱酸の希釈倍率と pH 変化（左）および発熱可逆反応の温度変更曲線（右）',
@@ -1812,6 +2717,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
           {
             id: 'chem_mock_adv_04_q4',
             label: '問1',
+            difficulty: 'kyotsu_2ji',
             stem: 'ニッケル・カドミウム電池（アルカリ蓄電池）の放電時の両極反応は次のとおりである。\n負極：Cd ＋ 2OH⁻ → Cd(OH)₂ ＋ 2e⁻\n正極：NiO(OH) ＋ H₂O ＋ e⁻ → Ni(OH)₂ ＋ OH⁻\nこの電池を放電させたところ、負極の質量が 2.55 g 増加した。この放電によって電解液中から【全体として消費された水 H₂O の質量】は何 g か（生成物はすべて電極上に付着するものとする）。',
             choices: [
               '1.35 g',
@@ -1837,6 +2743,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
           {
             id: 'chem_mock_adv_04_q5',
             label: '問2',
+            difficulty: 'kyotsu_standard',
             stem: '図2左を参照し、25 ℃ で pH ＝ 3.5 である1価の弱酸 HA 水溶液（電離度 α ≪ 1）に純水を加えて体積を元の 40 倍に希釈したときの pH の値として最も適当なものを①〜④から1つ選べ（希釈後も α ≪ 1 が成り立つものとし、log₁₀2 ＝ 0.30 とする）。',
             choices: [
               '4.1',
@@ -1862,6 +2769,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
           {
             id: 'chem_mock_adv_04_q6',
             label: '問3',
+            difficulty: 'kyotsu_2ji',
             stem: '接触法の主反応 2SO₂(気) ＋ O₂(気) ⇄ 2SO₃(気)（ΔH ＝ −198 kJ）において、温度 T [K]・気体定数 R のもとでの圧平衡定数 Kp を濃度平衡定数 Kc で表した式、および温度を高くしたときの図2右のような生成物量の時間変化の特徴として正しいものを①〜④から1つ選べ。',
             choices: [
               'Kp ＝ Kc / (RT)　／　立ち上がりは急になり、平衡時の SO₃ 量は減少する',
@@ -1890,13 +2798,15 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
         id: 'chem_mock_adv_04_sec3',
         daimonLabel: '第3問',
         title: '無機物質（遷移元素錯塩・水ガラスとシリカゲル・ヨウ素製造の化学量） （配点 20点）',
-        leadText: '無機物質の性質・製法および天然資源からの単体製造に関する次の問い（問1〜3）に答えよ（I ＝ 127）。',
+        recommendedMinutes: 11,
+        leadText: 'ケイ素化合物（水ガラスとシリカゲル）・遷移金属イオンの錯塩形成と沈殿呈色反応、および天然かん水（ヨウ化物イオン含有水）からのヨウ素単体製造プロセスにおける化学量計算に関する次の問い（問1〜3）に答えよ（原子量：I ＝ 127）。',
         imageUrl: FIG_INORGANIC_COLOR_MAP,
         imageCaption: '図3　金属イオンの水酸化物沈殿色と過剰 NaOH / NH₃ 水による錯イオン再溶解整理',
         items: [
           {
             id: 'chem_mock_adv_04_q7',
             label: '問1',
+            difficulty: 'kyotsu_standard',
             stem: 'ケイ素化合物および遷移金属イオンの反応に関する記述として【誤りを含むもの】を①〜④から1つ選べ。',
             choices: [
               '二酸化ケイ素 SiO₂ に水酸化ナトリウムを加えて加熱融解し水を加えて加熱溶解させると水ガラスが得られ、これに塩酸を加えるとケイ酸のゲルが析出する',
@@ -1922,6 +2832,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
           {
             id: 'chem_mock_adv_04_q8',
             label: '問2',
+            difficulty: 'kyotsu_standard',
             stem: '次の化学反応式（ア）〜（エ）で発生する気体の捕集法・保存法・性質に関する記述として【誤りを含むもの】を①〜④から1つ選べ。\n（ア）Cu ＋ 4HNO₃(濃) → Cu(NO₃)₂ ＋ 2H₂O ＋ 2 [気体ア]\n（イ）3Cu ＋ 8HNO₃(希) → 3Cu(NO₃)₂ ＋ 4H₂O ＋ 2 [気体イ]\n（ウ）CaF₂ ＋ H₂SO₄(濃) →（加熱）→ CaSO₄ ＋ 2 [気体ウ]\n（エ）NH₄NO₂ →（加熱）→ 2H₂O ＋ [気体エ]',
             choices: [
               '気体ア（NO₂）は赤褐色で水に溶けて硝酸を生じるため、上方置換ではなく下方置換で捕集する',
@@ -1947,6 +2858,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
           {
             id: 'chem_mock_adv_04_q9',
             label: '問3',
+            difficulty: 'kyotsu_standard',
             stem: 'チリ硝石廃液中のヨウ素酸ナトリウム NaIO₃ から次の反応で単体ヨウ素 I₂（モル質量 254 g/mol）を製造する：\n2NaIO₃ ＋ 5NaHSO₃ → 3NaHSO₄ ＋ 2Na₂SO₄ ＋ H₂O ＋ I₂\nいま十分な量の NaIO₃ に対し NaHSO₃ を 1.00 kmol（1000 mol）反応させたときに理論上得られる単体ヨウ素 I₂ の質量は何 kg か。',
             choices: [
               '25.4 kg',
@@ -1975,11 +2887,19 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
         id: 'chem_mock_adv_04_sec4',
         daimonLabel: '第4問',
         title: '有機化合物・天然ペプチドとポリビニルブチラールの定量（配点 20点）',
+        recommendedMinutes: 12,
         leadText: '有機化合物の反応性・生体内トリペプチド（グルタチオン）・PVA のアセタール化に関する次の問い（問1〜3）に答えよ（H＝1.0, C＝12, N＝14, O＝16, S＝32）。',
+        imageUrl: FIG_SALICYLIC_REACTION_MAP,
+        imageCaption: '図4　サリチル酸誘導体の官能基変換（アセチル化・エステル化）と呈色・酸塩基反応マップ',
+        dialogue: [
+          { speaker: '生徒', text: 'PVA のアセタール化では、1ユニット（式量 44）ごとにアルデヒド 1分子が反応すると計算してしまいがちです。' },
+          { speaker: '先生', text: 'そこが最大の急所です。環状アセタールは「隣り合う2個の −OH（＝PVA 2ユニット1組：式量 88）」に対してアルデヒド 1分子が縮合して水 1分子（18）が抜けるので、ペア単位で質量増減を追跡しましょう。' },
+        ],
         items: [
           {
             id: 'chem_mock_adv_04_q10',
             label: '問1',
+            difficulty: 'kyotsu_standard',
             stem: '酸素を含む有機化合物および糖類・アミノ酸の性質に関する記述として【誤りを含むもの】を①〜④から1つ選べ。',
             choices: [
               'フェノール水溶液に炭酸水素ナトリウム水溶液を加えても二酸化炭素は発生しないが、サリチル酸や酢酸に炭酸水素ナトリウム水溶液を加えると二酸化炭素が発生する',
@@ -2005,6 +2925,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
           {
             id: 'chem_mock_adv_04_q11',
             label: '問2',
+            difficulty: 'kyotsu_2ji',
             stem: 'ポリビニルアルコール（PVA、繰り返し単位 −CH₂−CH(OH)−：式量 44）44.0 g にブタナール C₃H₇CHO（分子量 72）を酸触媒下で反応させ、全ヒドロキシ基のうちちょうど 50 % を環状アセタール化してポリビニルブチラール（PVB）を得た。得られた PVB の質量は何 g か。',
             choices: [
               '57.5 g',
@@ -2030,6 +2951,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
           {
             id: 'chem_mock_adv_04_q12',
             label: '問3',
+            difficulty: 'kyotsu_2ji',
             stem: '還元型グルタチオン GSH（Glu-Cys-Gly、分子量 307）2分子のチオール基（−SH）が酸化されてジスルフィド結合（−S−S−）1本で結ばれた酸化型グルタチオン GSSG 1分子になるとき、GSSG の分子量と GSSG 1分子中の不斉炭素原子の総数の組合せとして正しいものを①〜④から1つ選べ。',
             choices: [
               '分子量：612　／　不斉炭素原子：4 個',
@@ -2058,13 +2980,15 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
         id: 'chem_mock_adv_04_sec5',
         daimonLabel: '第5問',
         title: '総合問題：原油の分留・バナジウム触媒と熱力学・耐熱ポリイミド（配点 20点）',
+        recommendedMinutes: 12,
         leadText: '石油精製から得られる化学物質、重油灰に含まれるバナジウム（原子量 51.0）、および芳香族高分子の合成に関する次の問い（問1〜3）に答えよ。',
         imageUrl: FIG_PETROLEUM_FRACTIONATION,
-        imageCaption: '図4　原油の常圧分留塔における温度勾配と各留分の取り出し段',
+        imageCaption: '図5　原油の常圧分留塔における温度勾配と各留分の取り出し段',
         items: [
           {
             id: 'chem_mock_adv_04_q13',
             label: '問1',
+            difficulty: 'kyotsu_standard',
             stem: '図4の原油の常圧分留および石油化学製品に関する記述として正しいものを①〜④から1つ選べ。',
             choices: [
               '分留塔では沸点の低い成分ほど下段から取り出されるため、ナフサは重油より下から得られる',
@@ -2090,6 +3014,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
           {
             id: 'chem_mock_adv_04_q14',
             label: '問2',
+            difficulty: 'kyotsu_2ji',
             stem: '酸化バナジウム(V) V₂O₅（生成エンタルピー −1550 kJ/mol）から金属バナジウム V（単体）を得る次の2つの還元反応を考える（単体の生成エンタルピーは 0、CaO(固) は −636 kJ/mol、H₂O(気) は −242 kJ/mol とする）。\n経路Ⅰ：V₂O₅(固) ＋ 5Ca(固) → 2V(固) ＋ 5CaO(固)　（反応エンタルピー ΔH₁）\n経路Ⅱ：V₂O₅(固) ＋ 2H₂(気) ＋ 3Ca(固) → 2V(固) ＋ 2H₂O(気) ＋ 3CaO(固)　（反応エンタルピー ΔH₂）\nΔH₁ と ΔH₂ の値の組合せとして正しいものを①〜④から1つ選べ。',
             choices: [
               'ΔH₁ ＝ −1630 kJ　／　ΔH₂ ＝ −842 kJ',
@@ -2115,6 +3040,7 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
           {
             id: 'chem_mock_adv_04_q15',
             label: '問3',
+            difficulty: 'kyotsu_2ji',
             stem: 'ピロメリット酸二無水物（分子量 218）と芳香族ジアミン H₂N−C₆H₄−CH₂−C₆H₄−NH₂（分子量 198）を 1 : 1 で反応させ、開環付加重合に続いて加熱脱水閉環させて得られるポリイミド（1単位あたりイミド環が2個形成され水2分子が脱離する）について、平均分子量 1.14×10⁵ のポリイミド 1分子あたりの【平均重合度 n】として最も適当な数値を①〜④から1つ選べ（末端は無視する）。',
             choices: [
               '150',

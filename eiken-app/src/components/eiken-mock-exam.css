@@ -1808,6 +1808,576 @@
   border-top: 1px solid #ebe4d5;
 }
 
+/* ============================================================
+   4. 大学入学共通テスト「問題冊子＋マーク解答用紙」専用レイアウト
+   ============================================================ */
+.em-exam-select-card {
+  transition: transform 0.14s ease, box-shadow 0.14s ease, border-color 0.14s ease;
+}
+
+.em-exam-select-card:hover {
+  border-color: #9ecfc7;
+  box-shadow: 0 6px 16px rgba(22, 89, 79, 0.08);
+}
+
+.em-kyotsu-runner {
+  min-height: 100dvh;
+  background: #f3efe6;
+  padding-bottom: calc(var(--app-nav-h, 76px) + 28px);
+  color: #111827;
+  font-family: var(--mt-font-body);
+}
+
+.em-kyotsu-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 35;
+  background: rgba(255, 253, 248, 0.97);
+  backdrop-filter: blur(8px);
+  border-bottom: 1.5px solid #d8cfbe;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+}
+
+.em-kyotsu-topbar-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.em-kyotsu-daimon-bar {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 6px 14px 8px;
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  border-top: 1px solid #ebe4d5;
+  scrollbar-width: thin;
+}
+
+.em-kyotsu-daimon-tab {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 0 11px;
+  border-radius: 9px;
+  border: 1.5px solid #d6cdbc;
+  background: #faf7f0;
+  color: #334155;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.em-kyotsu-daimon-tab:hover {
+  background: #ffffff;
+  border-color: #94a3b8;
+}
+
+.em-kyotsu-daimon-tab.is-active {
+  background: #111827;
+  border-color: #111827;
+  color: #ffffff;
+  box-shadow: 0 2px 0 #374151;
+}
+
+.em-kyotsu-daimon-count {
+  padding: 1px 6px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 900;
+  background: rgba(15, 23, 42, 0.08);
+  font-variant-numeric: tabular-nums;
+}
+
+.em-kyotsu-daimon-tab.is-active .em-kyotsu-daimon-count {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.em-kyotsu-daimon-tab.is-complete:not(.is-active) .em-kyotsu-daimon-count {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.em-mobile-marksheet-drawer {
+  max-width: 1320px;
+  margin: 8px auto 0;
+  padding: 12px 14px;
+  background: #f8fcf9;
+  border-bottom: 2px solid #86efac;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+}
+
+/* 2ペイングリッド（PCでは左：問題冊子 ／ 右：固定マーク解答用紙） */
+.em-booklet-split {
+  max-width: 1320px;
+  margin: 14px auto 0;
+  padding: 0 12px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+@media (min-width: 1280px) {
+  .em-booklet-split {
+    grid-template-columns: minmax(0, 1fr) 336px;
+  }
+}
+
+/* 問題冊子（試験紙風オフホワイト＋二重黒罫線） */
+.em-booklet-paper {
+  background: #fffefb;
+  border: 1.5px solid #cfc6b4;
+  border-radius: 14px;
+  padding: 18px 16px 22px;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.05);
+}
+
+@media (min-width: 640px) {
+  .em-booklet-paper {
+    padding: 24px 28px 28px;
+  }
+}
+
+.em-booklet-banner {
+  border: 2px solid #1e293b;
+  background: #fcfaf4;
+  padding: 10px 12px;
+  margin-bottom: 18px;
+}
+
+.em-booklet-subject-chip {
+  display: inline-block;
+  border: 2px solid #111827;
+  background: #111827;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  padding: 2px 10px;
+}
+
+.em-booklet-constants-box {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed #94a3b8;
+  font-size: 12px;
+  line-height: 1.6;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.em-inline-slot-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 22px;
+  padding: 0 6px;
+  border: 1.8px solid #111827;
+  background: #ffffff;
+  color: #111827;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.em-daimon-header {
+  border-bottom: 2px solid #1e293b;
+  padding-bottom: 14px;
+}
+
+.em-daimon-box {
+  display: inline-block;
+  border: 2px solid #111827;
+  padding: 2px 9px;
+  font-size: 14px;
+  font-weight: 900;
+  color: #111827;
+  background: #f8f5ec;
+  flex-shrink: 0;
+}
+
+.em-booklet-figure {
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 12px;
+}
+
+.em-booklet-table-wrap {
+  border: 1.5px solid #1e293b;
+  border-radius: 8px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.em-booklet-table-caption {
+  padding: 6px 10px;
+  background: #f1f5f9;
+  border-bottom: 1.5px solid #1e293b;
+  font-size: 12px;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.em-booklet-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+.em-booklet-table th {
+  background: #f8fafc;
+  border-bottom: 1.5px solid #334155;
+  border-right: 1px solid #cbd5e1;
+  padding: 6px 10px;
+  text-align: left;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.em-booklet-table th:last-child {
+  border-right: 0;
+}
+
+.em-booklet-table td {
+  border-bottom: 1px solid #e2e8f0;
+  border-right: 1px solid #e2e8f0;
+  padding: 6px 10px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.em-booklet-table td:last-child {
+  border-right: 0;
+}
+
+.em-booklet-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.em-booklet-dialogue {
+  border: 1.5px solid #94a3b8;
+  border-radius: 9px;
+  background: #fcfaf4;
+  padding: 10px 12px;
+}
+
+.em-booklet-dialogue-title {
+  font-size: 11.5px;
+  font-weight: 900;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+.em-booklet-dialogue-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.em-booklet-speaker {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  padding: 1px 7px;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 900;
+  margin-top: 2px;
+}
+
+.em-booklet-speaker.is-student {
+  background: #e0f2fe;
+  color: #0c4a6e;
+  border: 1px solid #bae6fd;
+}
+
+.em-booklet-speaker.is-teacher {
+  background: #dcfce7;
+  color: #14532d;
+  border: 1px solid #bbf7d0;
+}
+
+.em-scratchpad-drawer {
+  max-width: 1320px;
+  margin: 8px auto 0;
+  padding: 10px 14px;
+  background: #fffbeb;
+  border-top: 1px solid #fde68a;
+  border-bottom: 2px solid #f59e0b;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.05);
+}
+
+.em-scratchpad-textarea {
+  width: 100%;
+  border-radius: 8px;
+  border: 1.5px solid #fcd34d;
+  background: #ffffff;
+  padding: 8px 10px;
+  font-size: 13px;
+  line-height: 1.55;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  color: #1e293b;
+  resize: vertical;
+}
+
+.em-scratchpad-textarea:focus {
+  outline: none;
+  border-color: #d97706;
+  box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.16);
+}
+
+.em-booklet-question.is-focused {
+  box-shadow: 0 0 0 2px rgba(31, 92, 83, 0.22);
+}
+
+.em-booklet-question {
+  border: 1.5px solid #e2dac9;
+  border-left: 4px solid #94a3b8;
+  border-radius: 10px;
+  background: #ffffff;
+  padding: 14px 14px 16px;
+  transition: border-color 0.14s ease;
+}
+
+.em-booklet-question.is-answered {
+  border-left-color: #1f5c53;
+}
+
+.em-question-label {
+  display: inline-block;
+  background: #1e293b;
+  color: #ffffff;
+  font-size: 12.5px;
+  font-weight: 900;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.em-booklet-stem {
+  font-size: 14.5px;
+  line-height: 1.78;
+  font-weight: 600;
+  color: #111827;
+}
+
+.em-booklet-choice {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 9px;
+  border: 1.5px solid #ded6c5;
+  background: #fffefb;
+  color: #111827;
+  font-size: 14px;
+  line-height: 1.58;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.em-booklet-choice:hover {
+  border-color: #94a3b8;
+  background: #f8fafc;
+}
+
+.em-booklet-choice.is-selected {
+  border-color: #1f5c53;
+  background: #ecf9f6;
+  color: #0f3832;
+  font-weight: 800;
+  box-shadow: 0 0 0 1px #1f5c53 inset;
+}
+
+.em-booklet-choice.is-eliminated {
+  opacity: 0.42;
+  background: #f8fafc;
+  text-decoration: line-through;
+  text-decoration-color: #dc2626;
+  text-decoration-thickness: 2px;
+}
+
+.em-booklet-choice-num {
+  flex: 0 0 auto;
+  font-size: 15px;
+  font-weight: 900;
+  color: #1e293b;
+  line-height: 1.4;
+}
+
+.em-booklet-choice-num.is-selected {
+  color: #1f5c53;
+}
+
+.em-slash-btn {
+  flex: 0 0 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  border: 1.5px solid #e2dac9;
+  background: #faf8f2;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.em-slash-btn:hover {
+  border-color: #fca5a5;
+  color: #dc2626;
+  background: #fef2f2;
+}
+
+.em-slash-btn.is-active {
+  border-color: #ef4444;
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+/* 右側固定マーク解答用紙（OCRグリーン帳票風） */
+.em-marksheet-pane {
+  position: sticky;
+  top: 102px;
+  max-height: calc(100dvh - 122px);
+  flex-direction: column;
+  border: 2px solid #529c82;
+  border-radius: 14px;
+  background: #f9fdfb;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+  overflow: hidden;
+}
+
+.em-marksheet-header {
+  padding: 11px 13px 9px;
+  background: #e6f6ef;
+  border-bottom: 1.5px solid #9ad3bc;
+}
+
+.em-marksheet-body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.em-marksheet-daimon-divider {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3px 7px;
+  margin-top: 3px;
+  border-radius: 5px;
+  background: #dff2ea;
+  color: #065f46;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.em-marksheet-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 4px 6px;
+  border-radius: 7px;
+  border: 1px solid #d1eadf;
+  background: #ffffff;
+}
+
+.em-marksheet-row.is-active-sec {
+  border-color: #529c82;
+  background: #f2fbf7;
+}
+
+.em-marksheet-row.is-flagged {
+  border-color: #f59e0b;
+  background: #fffbeb;
+}
+
+.em-marksheet-slot-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.em-mark-katakana {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 21px;
+  border: 1.5px solid #065f46;
+  background: #ffffff;
+  color: #064e3b;
+  font-size: 11.5px;
+  font-weight: 900;
+}
+
+.em-marksheet-bubbles {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* 共通テスト本番特有の横長楕円（オーバル）マーク欄 */
+.em-oval-bubble {
+  width: 34px;
+  height: 21px;
+  border-radius: 999px;
+  border: 1.5px solid #3c9d7e;
+  background: #ffffff;
+  color: #2c7a62;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.em-oval-bubble:hover {
+  background: #e6f7f1;
+}
+
+.em-oval-bubble.is-marked {
+  background: #1f2937;
+  border-color: #111827;
+  color: #ffffff;
+  box-shadow: 0 0 0 1px #111827;
+}
+
+.em-marksheet-footer {
+  padding: 10px 12px;
+  border-top: 1.5px solid #9ad3bc;
+  background: #effaf5;
+}
+
 .em-rev-lbl {
   display: inline-flex;
   align-items: center;

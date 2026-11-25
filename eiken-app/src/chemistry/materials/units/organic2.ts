@@ -1,5 +1,5 @@
 import type { ChemChapterSpec } from '../../types';
-import { FIG_ORGANIC_EXTRACTION } from '../../figures';
+import { FIG_ORGANIC_EXTRACTION, FIG_SALICYLIC_REACTION_MAP } from '../../figures';
 
 export const ORGANIC_UNITS_2: readonly ChemChapterSpec[] = [
   {
@@ -78,6 +78,10 @@ export const ORGANIC_UNITS_2: readonly ChemChapterSpec[] = [
               '正しい。親水コロイドに多量の電解質（NaCl）を加えて析出させる操作が「塩析」である（副産物のグリセリンは水層に残る）。',
               '誤り！セッケンは硬水中の Ca²⁺・Mg²⁺ と難溶性塩をつくって沈殿するため、硬水中では洗浄力を失う！',
               '正しい。表面張力を低下させて布に浸透し、疎水基を内側にして油滴を包み込むミセル形成（乳化作用）で汚れを落とす。',
+            ],
+            steps: [
+              '①「セッケン R−COONa ＝ 弱塩基性・硬水で (RCOO)₂Ca が沈殿して洗浄力喪失」「合成洗剤 R−SO₃Na ＝ 中性・硬水でも泡立つ」を対比！',
+              '② セッケンが硬水中でも高い洗浄力を保つとした③が誤り。',
             ],
           },
         ],
@@ -467,6 +471,8 @@ export const ORGANIC_UNITS_2: readonly ChemChapterSpec[] = [
         id: 'chem_organic_ch10_p1',
         title: 'サリチル酸の合成（コルベ・シュミット法）と2大医薬品誘導体の完全識別',
         format: 'structure_synthesis',
+        imageUrl: FIG_SALICYLIC_REACTION_MAP,
+        imageCaption: 'サリチル酸と2大医薬品誘導体（アセチルサリチル酸・サリチル酸メチル）の官能基・呈色・NaOH消費モルマップ',
         stem: `ベンゼン環の隣り合う炭素原子（オルト位）にヒドロキシ基 −OH とカルボキシ基 −COOH が結合した「サリチル酸（o-ヒドロキシ安息香酸：分子式 C₇H₆O₃、分子量 138）」は、人類最古級の合成医薬品である解熱鎮痛薬と消炎鎮痛塗布薬の共通母体である。`,
         subItems: [
           {
@@ -510,6 +516,10 @@ export const ORGANIC_UNITS_2: readonly ChemChapterSpec[] = [
               '正しい！C₆H₄(OCOCH₃)COOH + H₂O → C₆H₄(OH)COOH + CH₃COOH の加水分解によりサリチル酸が生じて FeCl₃ 陽性になる！',
               '穏やかな放置や温水では脱炭酸は起きず、ベンゼンも FeCl₃ で呈色しない。',
               'ベンゼン環は極めて安定であり開裂しない。',
+            ],
+            steps: [
+              '① 純粋なアセチルサリチル酸はフェノール性 −OH が封鎖されているため FeCl₃ 陰性である。',
+              '② 湿気や温水でエステル結合が一部加水分解されて「サリチル酸（フェノール性 −OH あり）＋ 酢酸」に戻ったため FeCl₃ 赤紫呈色を示す（②）。',
             ],
           },
         ],
@@ -801,6 +811,10 @@ export const ORGANIC_UNITS_2: readonly ChemChapterSpec[] = [
               'アセチルサリチル酸とサリチル酸メチルの持つ酸性官能基を取り違えている。',
               'アセチルサリチル酸は −COOH をもつため NaHCO₃ 水溶液に確実に溶ける。',
               'サリチル酸メチルは −COOH をもたないため NaHCO₃ 水溶液には溶けない。',
+            ],
+            steps: [
+              '① 分液ロートの鉄則：「NaHCO₃ 水溶液 ⇒ −COOH だけ抽出」「NaOH 水溶液 ⇒ フェノール性 −OH を抽出」「エーテル層 ⇒ 中性物質が残留」！',
+              '② ①アセチルサリチル酸（−COOH あり）、②サリチル酸メチル（フェノール性 −OH あり）、③トルエン（中性）の順となる①を選ぶ。',
             ],
           },
         ],
