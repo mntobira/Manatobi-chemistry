@@ -1,4 +1,5 @@
 import type { ChemChapterSpec } from '../../types';
+import { FIG_ORGANIC_STRUCTURE_PUZZLE } from '../../figures';
 
 export const ORGANIC_UNITS_5: readonly ChemChapterSpec[] = [
   {
@@ -47,6 +48,8 @@ export const ORGANIC_UNITS_5: readonly ChemChapterSpec[] = [
         id: 'chem_organic_ch18_p1',
         title: 'エステル化平衡（K ＝ 4.0）の量的制御とラクトン（環状エステル）の構造決定',
         format: 'calculation',
+        imageUrl: FIG_ORGANIC_STRUCTURE_PUZZLE,
+        imageCaption: '不飽和度 U・オゾン分解・環状エステル（ラクトン）加水分解の構造決定3大ロジック',
         stem: `酢酸 $\\text{CH}_3\\text{COOH}$ とエタノール $\\text{C}_2\\text{H}_5\\text{OH}$ に触媒としてごく少量の濃硫酸を加えて一定温度に保つと、次のエステル化平衡に達し、この温度における平衡定数は $K = 4.0$ である（濃硫酸の体積や反応は無視できるものとする）。\n$$\\text{CH}_3\\text{COOH} + \\text{C}_2\\text{H}_5\\text{OH} \\rightleftarrows \\text{CH}_3\\text{COOC}_2\\text{H}_5 + \\text{H}_2\\text{O}$$`,
         subItems: [
           {

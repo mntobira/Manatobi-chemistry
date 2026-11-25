@@ -1,5 +1,5 @@
 import type { ChemChapterSpec } from '../../types';
-import { FIG_DANIELL_CELL, FIG_TITRATION_CURVE } from '../../figures';
+import { FIG_CORROSION_GALVANIC, FIG_WARDER_DOUBLE_TITRATION } from '../../figures';
 
 export const BASIC_CHANGE_UNITS_6: readonly ChemChapterSpec[] = [
   {
@@ -47,8 +47,8 @@ export const BASIC_CHANGE_UNITS_6: readonly ChemChapterSpec[] = [
         id: 'chem_basic_change_ch19_p1',
         title: '空気中の CO₂ を一部吸収した水酸化ナトリウム水溶液の二段階中和滴定',
         format: 'calculation',
-        imageUrl: FIG_TITRATION_CURVE,
-        imageCaption: '中和滴定におけるフェノールフタレイン変色域とメチルオレンジ変色域の比較',
+        imageUrl: FIG_WARDER_DOUBLE_TITRATION,
+        imageCaption: 'NaOH＋Na₂CO₃ 混合水溶液のワルダー二段階中和滴定曲線（第1終点 V₁・第2終点 V₂）',
         stem: `空気中に放置して一部の水酸化ナトリウム $\\text{NaOH}$ が二酸化炭素 $\\text{CO}_2$ を吸収し、炭酸ナトリウム $\\text{Na}_2\\text{CO}_3$ との混合水溶液になった試料がある。この試料水溶液 $10.0\\text{ mL}$ をコニカルビーカーにとり、フェノールフタレインを加えて $0.100\\text{ mol/L}$ の塩酸で滴定したところ、滴下量が $16.0\\text{ mL}$ に達したところで赤色が消えた（第 1 中和点）。ただちにメチルオレンジを加えて同じ塩酸で滴定を続けたところ、【さらに $3.0\\text{ mL}$】滴下したところで黄色から赤色（赤橙色）に変化した（第 2 中和点）。`,
         subItems: [
           {
@@ -207,8 +207,8 @@ export const BASIC_CHANGE_UNITS_6: readonly ChemChapterSpec[] = [
         id: 'chem_basic_change_ch20_p1',
         title: '実用一次電池の電極構成とトタン・ブリキの局部電池腐食メカニズム',
         format: 'dialogue_inquiry',
-        imageUrl: FIG_DANIELL_CELL,
-        imageCaption: '異種金属接触時の電子移動（イオン化傾向の大きい金属が負極となって溶け出す）',
+        imageUrl: FIG_CORROSION_GALVANIC,
+        imageCaption: '傷がついたトタン（Zn めっき）とブリキ（Sn めっき）における局部電池と電子移動の向き',
         stem: `授業で化学電池と金属のさび止め（めっき）について調べた生徒 A と先生の会話と実験記録を読み、次の問い（問1〜4）に答えよ。\n\n**生徒 A**：鉄板の表面に亜鉛 $\\text{Zn}$ をめっきしたものを「トタン」、スズ $\\text{Sn}$ をめっきしたものを「ブリキ」とよびますね。どちらも表面のめっきに傷がないうちは鉄が空気や水に触れないのでさびませんが、めっきに深い傷がついて鉄が露出し、そこに空気（酸素 $\\text{O}_2$）が溶けた水滴がついたとき、さび方に違いは出るのでしょうか？\n**先生**：とても良い着眼点です。水滴の中で異種金属が接触するとミクロな「局部電池」ができます。イオン化傾向の大小関係 $\\text{Zn} > \\text{Fe} > \\text{Sn}$ を使って、どちらの金属からどちらへ電子が流れるか考えてみましょう。`,
         subItems: [
           {

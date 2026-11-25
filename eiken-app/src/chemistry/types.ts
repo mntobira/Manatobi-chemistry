@@ -102,6 +102,11 @@ export interface ChemMockItem extends ChemSubItem {
   targetMinutes?: number;
 }
 
+export interface ChemMockDialogueLine {
+  speaker: string;
+  text: string;
+}
+
 export interface ChemMockSection {
   id: string;
   daimonLabel: string;
@@ -109,6 +114,10 @@ export interface ChemMockSection {
   /** 大問ごとの目安解答時間（分） */
   recommendedMinutes?: number;
   leadText?: string;
+  /** 共通テスト本番形式の実験測定データ表・比較条件表 */
+  dataTable?: ChemSummaryTable;
+  /** 共通テスト本番形式の生徒・先生の探究会話ボックス */
+  dialogue?: readonly ChemMockDialogueLine[];
   imageUrl?: string;
   imageCaption?: string;
   items: readonly ChemMockItem[];

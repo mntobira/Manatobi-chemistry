@@ -10,17 +10,19 @@ import {
   FileSpreadsheet,
   FlaskConical,
   LayoutGrid,
+  NotebookPen,
   Pause,
   Play,
   RotateCcw,
   Send,
   Slash,
   Sparkles,
+  Target,
   XCircle,
 } from 'lucide-react';
 import { DoorMascot } from './DoorMascot';
 import { subjectTheme } from '../data/subjectTheme';
-import type { EikenGrade } from '../eiken/config';
+import { CHEM_COURSES, type ChemCourseId, type EikenGrade } from '../eiken/config';
 import { CHEM_MOCK_EXAMS } from '../chemistry/materials/mockExams';
 import type { ChemMockExamSpec, ChemMockItem, ChemMockSection } from '../chemistry/types';
 import {
@@ -48,6 +50,32 @@ const KATAKANA_SLOTS = [
 ] as const;
 
 const CIRCLED_NUMS = ['①', '②', '③', '④'] as const;
+
+const DIFFICULTY_META: Record<
+  'basic' | 'kyotsu' | 'nijii',
+  { label: string; className: string }
+> = {
+  basic: { label: '★基礎', className: 'bg-sky-100 text-sky-900 border-sky-300' },
+  kyotsu: { label: '★★共テ標準', className: 'bg-amber-100 text-amber-950 border-amber-300' },
+  nijii: { label: '★★★2次余裕', className: 'bg-purple-100 text-purple-950 border-purple-300' },
+};
+
+function recommendCourseForSection(exam: ChemMockExamSpec, sec: ChemMockSection, sectionIndex: number): ChemCourseId {
+  if (exam.examCategory === 'basic') {
+    return sectionIndex === 0 ? 'chem_basic_matter' : 'chem_basic_change';
+  }
+  const t = `${sec.title} ${sec.leadText ?? ''}`;
+  if (/(高分子|酵素|ペプチド|ナイロン|ポリ|イオン交換|糖|核酸|ゴム)/.test(t) || sectionIndex === 4) {
+    return 'chem_polymer';
+  }
+  if (/(芳香族|有機|エステル|アルケン|サリチル|フェノール|オゾン|ラクトン|アミン)/.test(t) || sectionIndex === 3) {
+    return 'chem_organic';
+  }
+  if (/(無機|錯|沈殿|気体|工業|鉄鉱石|脱硫|ケイ素|ヨウ素|ハーバー|接触法)/.test(t) && sectionIndex === 2) {
+    return 'chem_inorganic';
+  }
+  return 'chem_theory';
+}
 
 interface FlatMockEntry {
   section: ChemMockSection;
@@ -167,6 +195,9 @@ export function EikenMockExam({
   const [elapsedSec, setElapsedSec] = useState(0);
   const [paused, setPaused] = useState(false);
   const [paletteOpen, setPaletteOpen] = useState(false);
+  const [scratchOpen, setScratchOpen] = useState(false);
+  const [scratchNotes, setScratchNotes] = useState<Record<string, string>>({});
+  const [focusedItemId, setFocusedItemId] = useState<string | null>(null);
   const [constantsOpen, setConstantsOpen] = useState(true);
   const [confirmSubmit, setConfirmSubmit] = useState(false);
   const [resultFilter, setResultFilter] = useState<'all' | 'wrong' | 'flagged'>('all');
@@ -234,6 +265,8 @@ export function EikenMockExam({
     setSectionIdx(savedSession ? Math.min(savedSession.currentIndex, exam.sections.length - 1) : 0);
     setPaused(false);
     setPaletteOpen(false);
+    setScratchOpen(false);
+    setFocusedItemId(exam.sections[0]?.items[0]?.id ?? null);
     setConstantsOpen(true);
     setConfirmSubmit(false);
     setPhase('running');
@@ -318,6 +351,7 @@ export function EikenMockExam({
 
   const jumpToQuestion = (secIndex: number, itemId: string) => {
     setSectionIdx(secIndex);
+    setFocusedItemId(itemId);
     setPaletteOpen(false);
     window.requestAnimationFrame(() => {
       const el = document.querySelector(`[data-mock-question="${itemId}"]`);
@@ -326,6 +360,41 @@ export function EikenMockExam({
       }
     });
   };
+
+  useEffect(() => {
+    if (phase !== 'running' || !activeExam) return;
+    const onKeyDown = (ev: KeyboardEvent) => {
+      const target = ev.target as HTMLElement | null;
+      if (target && (target.tagName === 'TEXTAREA' || target.tagName === 'INPUT' || target.isContentEditable)) {
+        return;
+      }
+      if (confirmSubmit) return;
+      const sec = activeExam.sections[sectionIdx];
+      if (!sec) return;
+      if (ev.key >= '1' && ev.key <= '4') {
+        const choiceIdx = Number(ev.key) - 1;
+        const targetItem =
+          sec.items.find(it => it.id === focusedItemId) ??
+          sec.items.find(it => !Number.isInteger(answers[it.id])) ??
+          sec.items[0];
+        if (targetItem && choiceIdx < targetItem.choices.length) {
+          ev.preventDefault();
+          setAnswers(prev => ({ ...prev, [targetItem.id]: choiceIdx }));
+          setFocusedItemId(targetItem.id);
+        }
+      } else if (ev.key === 'ArrowRight' && ev.altKey && sectionIdx < activeExam.sections.length - 1) {
+        ev.preventDefault();
+        setSectionIdx(i => Math.min(activeExam.sections.length - 1, i + 1));
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (ev.key === 'ArrowLeft' && ev.altKey && sectionIdx > 0) {
+        ev.preventDefault();
+        setSectionIdx(i => Math.max(0, i - 1));
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [phase, activeExam, sectionIdx, focusedItemId, answers, confirmSubmit]);
 
   if (phase === 'select' || !activeExam) {
     return (
@@ -558,6 +627,20 @@ export function EikenMockExam({
 
               <button
                 type="button"
+                onClick={() => setScratchOpen(o => !o)}
+                className={`inline-flex items-center gap-1 rounded-lg border px-2.5 py-1.5 text-xs font-extrabold cursor-pointer ${
+                  scratchOpen
+                    ? 'border-amber-500 bg-amber-50 text-amber-950'
+                    : 'border-slate-300 bg-white text-slate-700 hover:bg-slate-50'
+                }`}
+                data-mock-scratch-toggle
+              >
+                <NotebookPen size={13} aria-hidden="true" />
+                <span>計算メモ</span>
+              </button>
+
+              <button
+                type="button"
                 onClick={() => setPaletteOpen(o => !o)}
                 className="xl:hidden inline-flex items-center gap-1 rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs font-extrabold text-slate-800 cursor-pointer"
               >
@@ -610,6 +693,53 @@ export function EikenMockExam({
             })}
           </nav>
         </header>
+
+        {/* 計算・構造決定メモ帳ドロワー（冊子余白の代わりにmol表・半反応式・異性体メモを残せる） */}
+        {scratchOpen && (
+          <section className="em-scratchpad-drawer" aria-label="計算・構造決定メモ帳">
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+              <div className="flex items-center gap-2">
+                <NotebookPen size={14} className="text-amber-800" aria-hidden="true" />
+                <strong className="text-xs font-black text-slate-900">
+                  問題冊子 余白計算メモ（{currentSec.daimonLabel}：mol収支・半反応式・構造決定の下書き用）
+                </strong>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <button
+                  type="button"
+                  onClick={() =>
+                    setScratchNotes(prev => ({
+                      ...prev,
+                      [`${activeExam.id}:${currentSec.id}`]: '',
+                    }))
+                  }
+                  className="rounded border border-slate-300 bg-white px-2 py-0.5 text-[11px] font-bold text-slate-600 hover:bg-slate-50 cursor-pointer"
+                >
+                  クリア
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setScratchOpen(false)}
+                  className="rounded border border-slate-300 bg-white px-2 py-0.5 text-[11px] font-bold text-slate-700 hover:bg-slate-50 cursor-pointer"
+                >
+                  閉じる
+                </button>
+              </div>
+            </div>
+            <textarea
+              rows={4}
+              value={scratchNotes[`${activeExam.id}:${currentSec.id}`] ?? ''}
+              onChange={e =>
+                setScratchNotes(prev => ({
+                  ...prev,
+                  [`${activeExam.id}:${currentSec.id}`]: e.target.value,
+                }))
+              }
+              placeholder="例）反応前 n(HCl) = 0.100 × 0.050 = 5.0 mmol ／ 不飽和度 U = (2C+2-H)/2 = ... （大問ごとに自動保持されます）"
+              className="em-scratchpad-textarea"
+            />
+          </section>
+        )}
 
         {/* モバイル・タブレット用マークシートドロワー */}
         {paletteOpen && (
@@ -770,6 +900,56 @@ export function EikenMockExam({
                   )}
                 </figure>
               )}
+
+              {currentSec.dataTable && (
+                <div className="em-booklet-table-wrap mt-3">
+                  {currentSec.dataTable.caption && (
+                    <div className="em-booklet-table-caption">{currentSec.dataTable.caption}</div>
+                  )}
+                  <div className="overflow-x-auto">
+                    <table className="em-booklet-table">
+                      <thead>
+                        <tr>
+                          {currentSec.dataTable.headers.map((hd, hIdx) => (
+                            <th key={hIdx}>{formatText(hd)}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {currentSec.dataTable.rows.map((row, rIdx) => (
+                          <tr key={rIdx}>
+                            {row.map((cell, cIdx) => (
+                              <td key={cIdx}>{formatText(cell)}</td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
+
+              {currentSec.dialogue && currentSec.dialogue.length > 0 && (
+                <div className="em-booklet-dialogue mt-3" aria-label="探究会話文">
+                  <div className="em-booklet-dialogue-title">【実験・考察に関する会話】</div>
+                  <div className="space-y-1.5">
+                    {currentSec.dialogue.map((line, lIdx) => (
+                      <div key={lIdx} className="em-booklet-dialogue-row">
+                        <span
+                          className={`em-booklet-speaker ${
+                            line.speaker.includes('先生') ? 'is-teacher' : 'is-student'
+                          }`}
+                        >
+                          {line.speaker}
+                        </span>
+                        <div className="min-w-0 flex-1 text-xs sm:text-[13.5px] leading-relaxed text-slate-800">
+                          {formatText(line.text)}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* 設問リスト */}
@@ -783,7 +963,10 @@ export function EikenMockExam({
                 return (
                   <article
                     key={item.id}
-                    className={`em-booklet-question ${Number.isInteger(picked) ? 'is-answered' : ''}`}
+                    onClick={() => setFocusedItemId(item.id)}
+                    className={`em-booklet-question ${Number.isInteger(picked) ? 'is-answered' : ''} ${
+                      focusedItemId === item.id ? 'is-focused' : ''
+                    }`}
                     data-mock-question={item.id}
                   >
                     <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
@@ -795,6 +978,15 @@ export function EikenMockExam({
                         <span className="rounded bg-slate-100 px-2 py-0.5 text-[11px] font-bold text-slate-600">
                           配点 {item.points}点
                         </span>
+                        {item.difficulty && (
+                          <span
+                            className={`rounded-full border px-2 py-0.5 text-[10px] font-extrabold ${
+                              DIFFICULTY_META[item.difficulty].className
+                            }`}
+                          >
+                            {DIFFICULTY_META[item.difficulty].label}
+                          </span>
+                        )}
                       </div>
 
                       <div className="flex items-center gap-1.5">
@@ -1161,6 +1353,71 @@ export function EikenMockExam({
             );
           })}
         </div>
+
+        {/* 弱点スキル＆最優先復習処方箋（ワンタップで該当単元コースへ直行） */}
+        {(() => {
+          const missedEntries = flatEntries
+            .filter(({ item }) => answers[item.id] !== item.answer)
+            .sort((a, b) => b.item.points - a.item.points)
+            .slice(0, 3);
+          if (missedEntries.length === 0) {
+            return (
+              <div className="rounded-xl border border-emerald-300 bg-emerald-50/70 p-3.5 text-xs text-emerald-950">
+                <strong className="font-black">パーフェクト達成！全設問正解です。</strong>
+                <span className="ml-2 font-semibold">
+                  次の回の実戦模試、または単元演習の「★★★共テ満点・2次」フィルターで記述力をさらに磨きましょう。
+                </span>
+              </div>
+            );
+          }
+          return (
+            <div className="rounded-xl border border-amber-300/90 bg-amber-50/60 p-3.5 space-y-2.5">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <strong className="inline-flex items-center gap-1.5 text-xs font-black text-amber-950">
+                  <Target size={14} className="text-amber-700" aria-hidden="true" />
+                  得点直結！最優先で潰すべき弱点テーマ Top {missedEntries.length}（単元演習へ直結）
+                </strong>
+                <span className="text-[11px] font-bold text-amber-900">
+                  ここを復習すると +{missedEntries.reduce((s, e) => s + e.item.points, 0)} 点アップ！
+                </span>
+              </div>
+              <div className="grid grid-cols-1 gap-2 md:grid-cols-3">
+                {missedEntries.map(entry => {
+                  const recCourseId = recommendCourseForSection(activeExam, entry.section, entry.sectionIndex);
+                  const courseMeta = CHEM_COURSES.find(c => c.id === recCourseId);
+                  return (
+                    <div
+                      key={entry.item.id}
+                      className="flex flex-col justify-between gap-2 rounded-lg border border-amber-200 bg-white p-2.5 text-xs"
+                    >
+                      <div>
+                        <div className="flex items-center justify-between gap-1">
+                          <span className="font-black text-slate-800">
+                            [{entry.markSlot}] {entry.section.daimonLabel} {entry.item.label}
+                          </span>
+                          <span className="rounded bg-rose-100 px-1.5 py-0.5 text-[10px] font-extrabold text-rose-800">
+                            −{entry.item.points}点
+                          </span>
+                        </div>
+                        <p className="mt-1 font-bold text-slate-700 leading-snug">{entry.item.skill}</p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          onGrade(recCourseId);
+                          onBack();
+                        }}
+                        className="inline-flex items-center justify-center gap-1 rounded-lg border border-teal-700/30 bg-teal-50 px-2.5 py-1.5 text-[11px] font-extrabold text-teal-950 hover:bg-teal-100 cursor-pointer"
+                      >
+                        <span>{courseMeta?.shortLabel ?? '単元演習'}で復習する →</span>
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })()}
       </section>
 
       <div className="flex flex-wrap gap-1.5" role="tablist" aria-label="解説フィルター">
@@ -1205,6 +1462,15 @@ export function EikenMockExam({
                   <strong className="text-sm font-extrabold text-slate-800">
                     {section.daimonLabel} {item.label}
                   </strong>
+                  {item.difficulty && (
+                    <span
+                      className={`rounded-full border px-2 py-0.5 text-[10px] font-extrabold ${
+                        DIFFICULTY_META[item.difficulty].className
+                      }`}
+                    >
+                      {DIFFICULTY_META[item.difficulty].label}
+                    </span>
+                  )}
                   <span className="text-xs font-bold text-slate-500">配点 {item.points}点 ・ {item.skill}</span>
                 </div>
                 <span

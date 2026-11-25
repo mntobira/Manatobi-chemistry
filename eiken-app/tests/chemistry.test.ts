@@ -48,8 +48,8 @@ describe('Manatobi Chemistry Common Test Curriculum & Isolation', () => {
             expect(sq.optionTexts).toHaveLength(4);
             expect(sq.distractors).toHaveLength(4);
             expect(['1', '2', '3', '4']).toContain(sq.correctAnswer);
-            expect((sq.explainJa ?? '').length).toBeGreaterThan(20);
-            expect((sq.detailedExplanation?.steps ?? []).length).toBeGreaterThanOrEqual(1);
+            expect((sq.explainJa ?? '').length, `${sq.id} explainJa length`).toBeGreaterThanOrEqual(110);
+            expect((sq.detailedExplanation?.steps ?? []).length, `${sq.id} steps count`).toBeGreaterThanOrEqual(1);
           }
         }
       }
@@ -58,6 +58,8 @@ describe('Manatobi Chemistry Common Test Curriculum & Isolation', () => {
 
   it('validates all 8 Common Test full mock exams (50pt Basic x4, 100pt Chemistry x4) with exact point totals and authentic structure', () => {
     expect(CHEM_MOCK_EXAMS).toHaveLength(8);
+    let dataTableCount = 0;
+    let dialogueCount = 0;
     for (const exam of CHEM_MOCK_EXAMS) {
       expect(exam.levelBadge).toBeTruthy();
       expect(exam.constantsNote).toBeTruthy();
@@ -76,14 +78,30 @@ describe('Manatobi Chemistry Common Test Curriculum & Isolation', () => {
       expect(sumPoints, `${exam.id} totalPoints`).toBe(exam.totalPoints);
       for (const sec of exam.sections) {
         expect(sec.recommendedMinutes).toBeGreaterThan(0);
+        expect((sec.leadText ?? '').length, `${sec.id} leadText`).toBeGreaterThanOrEqual(60);
+        expect(sec.imageUrl, `${sec.id} imageUrl`).toBeTruthy();
+        expect(sec.imageUrl?.startsWith('data:image/svg+xml')).toBe(true);
+        if (sec.dataTable) {
+          dataTableCount++;
+          expect(sec.dataTable.headers.length).toBeGreaterThanOrEqual(2);
+          expect(sec.dataTable.rows.length).toBeGreaterThanOrEqual(2);
+        }
+        if (sec.dialogue && sec.dialogue.length > 0) {
+          dialogueCount++;
+          expect(sec.dialogue.length).toBeGreaterThanOrEqual(2);
+        }
         for (const item of sec.items) {
           expect(item.choices).toHaveLength(4);
           expect(item.answer).toBeGreaterThanOrEqual(0);
           expect(item.answer).toBeLessThan(4);
           expect(item.reasons).toHaveLength(4);
+          expect((item.steps ?? []).length, `${item.id} steps`).toBeGreaterThanOrEqual(1);
+          expect(['foundation', 'kyotsu_standard', 'kyotsu_2ji']).toContain(item.difficulty);
         }
       }
     }
+    expect(dataTableCount).toBeGreaterThanOrEqual(5);
+    expect(dialogueCount).toBeGreaterThanOrEqual(4);
   });
 
   it('validates generated chemistry wordbook JSON and study catalog wiring', () => {

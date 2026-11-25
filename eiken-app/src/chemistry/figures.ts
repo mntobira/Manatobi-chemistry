@@ -748,5 +748,177 @@ export const FIG_CHROMATOGRAPHY_ION_EXCHANGE = svgDataUri(`
 </svg>
 `);
 
+/** ワルダー法二段階滴定曲線（炭酸ナトリウム・NaOH＋Na₂CO₃混合塩基のフェノールフタレイン第1終点とメチルオレンジ第2終点） */
+export const FIG_WARDER_DOUBLE_TITRATION = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 245" font-family="sans-serif">
+  <rect width="470" height="245" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="235" y="21" text-anchor="middle" font-size="12" font-weight="bold" fill="#1E293B">二段階中和滴定（ワルダー法：NaOH ＋ Na₂CO₃ 混合塩基への HCl 滴下曲線）</text>
+  <line x1="56" y1="204" x2="436" y2="204" stroke="#334155" stroke-width="2"/>
+  <line x1="56" y1="204" x2="56" y2="38" stroke="#334155" stroke-width="2"/>
+  <text x="246" y="232" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#334155">滴下した塩酸 HCl の体積 V [mL]（V₁：第1終点 ／ V₂：第2終点）</text>
+  <text x="22" y="122" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#334155" transform="rotate(-90 22 122)">水溶液の pH</text>
+  <!-- 指示薬の変色域バンド -->
+  <rect x="57" y="76" width="376" height="22" fill="#FCE7F3" opacity="0.72"/>
+  <text x="428" y="90" text-anchor="end" font-size="9.5" font-weight="bold" fill="#BE185D">フェノールフタレイン変色域 (pH 8.0〜9.8)</text>
+  <rect x="57" y="148" width="376" height="22" fill="#FEF3C7" opacity="0.8"/>
+  <text x="428" y="162" text-anchor="end" font-size="9.5" font-weight="bold" fill="#B45309">メチルオレンジ変色域 (pH 3.1〜4.4)</text>
+  <!-- 2段階滴定曲線 -->
+  <path d="M 56 48 C 120 50, 185 58, 210 72 C 218 78, 222 95, 232 102 C 260 112, 300 116, 326 126 C 336 135, 338 168, 348 182 C 372 192, 405 194, 430 195" fill="none" stroke="#0F766E" stroke-width="3"/>
+  <!-- 第1終点 V1 -->
+  <line x1="220" y1="88" x2="220" y2="204" stroke="#BE185D" stroke-width="1.7" stroke-dasharray="4 3"/>
+  <circle cx="220" cy="88" r="4.5" fill="#BE185D"/>
+  <text x="220" y="217" text-anchor="middle" font-size="10" font-weight="bold" fill="#BE185D">V₁</text>
+  <!-- 第2終点 V2 -->
+  <line x1="340" y1="159" x2="340" y2="204" stroke="#D97706" stroke-width="1.7" stroke-dasharray="4 3"/>
+  <circle cx="340" cy="159" r="4.5" fill="#D97706"/>
+  <text x="340" y="217" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">V₂</text>
+  <!-- 区間注釈 -->
+  <rect x="74" y="106" width="134" height="36" rx="5" fill="#FFFFFF" stroke="#94A3B8"/>
+  <text x="141" y="120" text-anchor="middle" font-size="9.2" font-weight="bold" fill="#0F172A">0〜V₁：NaOH 全中和</text>
+  <text x="141" y="134" text-anchor="middle" font-size="9.2" fill="#334155">＋ Na₂CO₃ → NaHCO₃</text>
+  <rect x="228" y="44" width="136" height="28" rx="5" fill="#FFFBEB" stroke="#D97706"/>
+  <text x="296" y="62" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#92400E">V₂ − V₁ ＝ NaHCO₃ → CO₂ 量！</text>
+</svg>
+`);
+
+/** トタン（Znめっき）とブリキ（Snめっき）の傷口における局部電池と電子移動の比較図 */
+export const FIG_CORROSION_GALVANIC = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 245" font-family="sans-serif">
+  <rect width="470" height="245" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="235" y="21" text-anchor="middle" font-size="12" font-weight="bold" fill="#1E293B">めっき鋼板の傷口における局部電池比較（イオン化傾向：Zn ＞ Fe ＞ Sn）</text>
+  <!-- 左：トタン -->
+  <rect x="22" y="38" width="204" height="190" rx="10" fill="#F0FDF4" stroke="#86EFAC"/>
+  <text x="124" y="57" text-anchor="middle" font-size="11" font-weight="bold" fill="#166534">① トタン（鉄 Fe に 亜鉛 Zn めっき）</text>
+  <path d="M 46 122 Q 124 72 202 122 Z" fill="#BAE6FD" opacity="0.75"/>
+  <text x="124" y="102" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#0369A1">水滴（O₂ ＋ H₂O）</text>
+  <rect x="38" y="122" width="64" height="24" fill="#94A3B8" stroke="#475569"/>
+  <text x="70" y="138" text-anchor="middle" font-size="10" font-weight="bold" fill="#0F172A">Zn 層</text>
+  <rect x="146" y="122" width="64" height="24" fill="#94A3B8" stroke="#475569"/>
+  <text x="178" y="138" text-anchor="middle" font-size="10" font-weight="bold" fill="#0F172A">Zn 層</text>
+  <rect x="38" y="146" width="172" height="34" fill="#CBD5E1" stroke="#334155"/>
+  <text x="124" y="167" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1E293B">内部の鉄板 Fe（保護され錆びない！）</text>
+  <path d="M 82 142 Q 104 160 122 148" fill="none" stroke="#DC2626" stroke-width="2.2"/>
+  <text x="124" y="198" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#15803D">Zn → Zn²⁺ ＋ 2e⁻（犠牲防食）</text>
+  <text x="124" y="214" text-anchor="middle" font-size="9" fill="#334155">e⁻ が Fe へ流れ込み Fe の溶出を阻止</text>
+  <!-- 右：ブリキ -->
+  <rect x="244" y="38" width="204" height="190" rx="10" fill="#FEF2F2" stroke="#FCA5A5"/>
+  <text x="346" y="57" text-anchor="middle" font-size="11" font-weight="bold" fill="#991B1B">② ブリキ（鉄 Fe に スズ Sn めっき）</text>
+  <path d="M 268 122 Q 346 72 424 122 Z" fill="#BAE6FD" opacity="0.75"/>
+  <text x="346" y="102" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#0369A1">水滴（O₂ ＋ H₂O）</text>
+  <rect x="260" y="122" width="64" height="24" fill="#E2E8F0" stroke="#475569"/>
+  <text x="292" y="138" text-anchor="middle" font-size="10" font-weight="bold" fill="#0F172A">Sn 層</text>
+  <rect x="368" y="122" width="64" height="24" fill="#E2E8F0" stroke="#475569"/>
+  <text x="400" y="138" text-anchor="middle" font-size="10" font-weight="bold" fill="#0F172A">Sn 層</text>
+  <rect x="260" y="146" width="172" height="34" fill="#FECACA" stroke="#991B1B"/>
+  <text x="346" y="167" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#7F1D1D">鉄板 Fe が負極となり急速腐食！</text>
+  <text x="346" y="198" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#B91C1C">Fe → Fe²⁺ ＋ 2e⁻（e⁻ が Sn 側へ流出）</text>
+  <text x="346" y="214" text-anchor="middle" font-size="9" fill="#334155">傷がつくと裸の鉄より速く赤錆が進行！</text>
+</svg>
+`);
+
+/** 無機4大工業製法（アンモニアソーダ法・オストワルト法・接触法・ホール・エルー法）の要所比較チャート */
+export const FIG_INDUSTRIAL_INORGANIC_FLOW = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 245" font-family="sans-serif">
+  <rect width="470" height="245" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="235" y="21" text-anchor="middle" font-size="12" font-weight="bold" fill="#1E293B">無機4大工業製法の触媒・中間体・回収ループ総整理</text>
+  <!-- 1 ソルベー法 -->
+  <rect x="18" y="34" width="212" height="94" rx="8" fill="#EFF6FF" stroke="#60A5FA"/>
+  <text x="124" y="51" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1E40AF">① アンモニアソーダ法（Na₂CO₃）</text>
+  <text x="28" y="69" font-size="9.3" font-weight="bold" fill="#1E293B">飽和NaCl水 → ★先にNH₃吸収 → CO₂吹込</text>
+  <text x="28" y="85" font-size="9.3" fill="#B91C1C" font-weight="bold">→ 溶解度小の NaHCO₃↓ が先に沈殿！</text>
+  <text x="28" y="101" font-size="9" fill="#334155">熱分解：2NaHCO₃ → Na₂CO₃＋H₂O＋CO₂↑</text>
+  <text x="28" y="117" font-size="9" fill="#0F766E">副生物：CaCl₂（NH₃ と CO₂ は全循環再利用）</text>
+  <!-- 2 接触法 -->
+  <rect x="240" y="34" width="212" height="94" rx="8" fill="#FEFCE8" stroke="#FACC15"/>
+  <text x="346" y="51" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#854D0E">② 接触法（濃硫酸 H₂SO₄）</text>
+  <text x="250" y="69" font-size="9.3" font-weight="bold" fill="#1E293B">S / FeS₂ → SO₂ →［触媒 V₂O₅］→ SO₃</text>
+  <text x="250" y="85" font-size="9.3" fill="#B91C1C" font-weight="bold">→ ★濃硫酸に吸収させて発煙硫酸へ！</text>
+  <text x="250" y="101" font-size="9" fill="#334155">（水への直接吸収は発熱ミスト化するため不可）</text>
+  <text x="250" y="117" font-size="9" fill="#0F766E">最後に希硫酸で薄めて濃硫酸を得る</text>
+  <!-- 3 オストワルト法 -->
+  <rect x="18" y="138" width="212" height="94" rx="8" fill="#F0FDF4" stroke="#4ADE80"/>
+  <text x="124" y="155" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#166534">③ オストワルト法（硝酸 HNO₃）</text>
+  <text x="28" y="173" font-size="9.3" font-weight="bold" fill="#1E293B">4NH₃＋5O₂ →［触媒 Pt］→ 4NO＋6H₂O</text>
+  <text x="28" y="189" font-size="9.3" fill="#334155">2NO＋O₂ → 2NO₂ ／ 3NO₂＋H₂O → 2HNO₃＋NO</text>
+  <text x="28" y="206" font-size="9.3" fill="#B91C1C" font-weight="bold">★副生 NO 再利用時：NH₃ 1mol → HNO₃ 1mol</text>
+  <text x="28" y="221" font-size="9" fill="#0F766E">合算式：NH₃ ＋ 2O₂ → HNO₃ ＋ H₂O</text>
+  <!-- 4 ホール・エルー法 -->
+  <rect x="240" y="138" width="212" height="94" rx="8" fill="#FDF2F8" stroke="#F472B6"/>
+  <text x="346" y="155" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#9D174D">④ ホール・エルー法（Al 融解塩電解）</text>
+  <text x="250" y="173" font-size="9.3" font-weight="bold" fill="#1E293B">融解氷晶石 Na₃AlF₆ に Al₂O₃ を溶解</text>
+  <text x="250" y="189" font-size="9.3" fill="#334155">陰極：Al³⁺ ＋ 3e⁻ → Al(液) 析出</text>
+  <text x="250" y="206" font-size="9.3" fill="#B91C1C" font-weight="bold">陽極：炭素 C 自身が酸化消耗（CO / CO₂↑）</text>
+  <text x="250" y="221" font-size="9" fill="#0F766E">（水溶液電解では H₂ が出るため Al は不可）</text>
+</svg>
+`);
+
+/** サリチル酸誘導体の反応マップ（アセチルサリチル酸＝熱NaOH 3mol消費 vs サリチル酸メチル） */
+export const FIG_SALICYLIC_REACTION_MAP = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 245" font-family="sans-serif">
+  <rect width="470" height="245" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="235" y="21" text-anchor="middle" font-size="12" font-weight="bold" fill="#1E293B">サリチル酸誘導体の官能基・FeCl₃呈色・熱NaOH消費モル比較</text>
+  <!-- 中央：サリチル酸 -->
+  <rect x="166" y="84" width="138" height="72" rx="10" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+  <text x="235" y="105" text-anchor="middle" font-size="11" font-weight="bold" fill="#1E40AF">サリチル酸 (M=138)</text>
+  <text x="235" y="122" text-anchor="middle" font-size="9.5" fill="#1E293B">o-HO − C₆H₄ − COOH</text>
+  <text x="235" y="138" text-anchor="middle" font-size="9.2" font-weight="bold" fill="#7C3AED">FeCl₃：赤紫色（陽性）</text>
+  <text x="235" y="151" text-anchor="middle" font-size="9" fill="#334155">NaHCO₃：発泡(○) ／ NaOH 2mol</text>
+  <!-- 左：アセチルサリチル酸 -->
+  <rect x="14" y="54" width="128" height="136" rx="10" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.8"/>
+  <text x="78" y="75" text-anchor="middle" font-size="10.2" font-weight="bold" fill="#991B1B">アセチルサリチル酸</text>
+  <text x="78" y="91" text-anchor="middle" font-size="9" fill="#334155">(アスピリン M=180)</text>
+  <text x="78" y="108" text-anchor="middle" font-size="8.8" font-weight="bold" fill="#1E293B">CH₃COO−C₆H₄−COOH</text>
+  <text x="78" y="126" text-anchor="middle" font-size="9" fill="#475569">FeCl₃：呈色せず(−)</text>
+  <text x="78" y="142" text-anchor="middle" font-size="9" fill="#0F766E" font-weight="bold">NaHCO₃：発泡する(○)</text>
+  <rect x="22" y="152" width="112" height="30" rx="5" fill="#FEE2E2"/>
+  <text x="78" y="166" text-anchor="middle" font-size="9" font-weight="bold" fill="#B91C1C">★熱NaOH：3 mol 消費！</text>
+  <text x="78" y="178" text-anchor="middle" font-size="8.2" fill="#7F1D1D">(−COOH＋酢酸＋露出ArOH)</text>
+  <line x1="166" y1="115" x2="142" y2="115" stroke="#DC2626" stroke-width="2"/>
+  <text x="154" y="76" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#B91C1C">無水酢酸</text>
+  <!-- 右：サリチル酸メチル -->
+  <rect x="328" y="54" width="128" height="136" rx="10" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.8"/>
+  <text x="392" y="75" text-anchor="middle" font-size="10.2" font-weight="bold" fill="#166534">サリチル酸メチル</text>
+  <text x="392" y="91" text-anchor="middle" font-size="9" fill="#334155">(消炎塗布薬 M=152)</text>
+  <text x="392" y="108" text-anchor="middle" font-size="8.8" font-weight="bold" fill="#1E293B">HO−C₆H₄−COOCH₃</text>
+  <text x="392" y="126" text-anchor="middle" font-size="9" font-weight="bold" fill="#7C3AED">FeCl₃：赤紫色（陽性！）</text>
+  <text x="392" y="142" text-anchor="middle" font-size="9" fill="#64748B">NaHCO₃：反応せず(−)</text>
+  <rect x="336" y="152" width="112" height="30" rx="5" fill="#DCFCE7"/>
+  <text x="392" y="166" text-anchor="middle" font-size="9" font-weight="bold" fill="#15803D">熱NaOH：2 mol 消費</text>
+  <text x="392" y="178" text-anchor="middle" font-size="8.2" fill="#14532D">(ArOH＋加水分解−COOH)</text>
+  <line x1="304" y1="115" x2="328" y2="115" stroke="#16A34A" stroke-width="2"/>
+  <text x="316" y="76" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#15803D">CH₃OH＋濃H₂SO₄</text>
+  <text x="235" y="222" text-anchor="middle" font-size="9.8" font-weight="bold" fill="#334155">急所：フェノールエステル（左）は加水分解で新たにフェノール性 −OH が生じるため NaOH を余分に 1 mol 喰う！</text>
+</svg>
+`);
+
+/** 有機構造決定の総合ロードマップ（オゾン分解・ラクトン閉環・ヨードホルム反応・C₈H₁₀コルナー法） */
+export const FIG_ORGANIC_STRUCTURE_PUZZLE = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 245" font-family="sans-serif">
+  <rect width="470" height="245" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="235" y="21" text-anchor="middle" font-size="12" font-weight="bold" fill="#1E293B">有機構造決定の4大決め手（不飽和度・オゾン分解・ラクトン・環一置換体数）</text>
+  <rect x="18" y="36" width="212" height="92" rx="8" fill="#EFF6FF" stroke="#60A5FA"/>
+  <text x="124" y="54" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1E40AF">① 不飽和度 U の即算式</text>
+  <text x="124" y="74" text-anchor="middle" font-size="10" font-weight="bold" fill="#0F172A">U ＝ (2C ＋ 2 ＋ N − H − X) ÷ 2</text>
+  <text x="28" y="94" font-size="9.2" fill="#334155">・U＝1：二重結合1個 または 環1個</text>
+  <text x="28" y="110" font-size="9.2" fill="#B91C1C" font-weight="bold">・U＝4 以上：まずベンゼン環（U＝4）を疑う！</text>
+  <rect x="240" y="36" width="212" height="92" rx="8" fill="#FEFCE8" stroke="#FACC15"/>
+  <text x="346" y="54" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#854D0E">② アルケンのオゾン分解パズル</text>
+  <text x="346" y="74" text-anchor="middle" font-size="9.8" font-weight="bold" fill="#0F172A">R₁R₂C＝CHR₃ → R₁R₂C＝O ＋ O＝CHR₃</text>
+  <text x="250" y="94" font-size="9.2" fill="#334155">・生成カルボニル2個の「＝O」同士を消して直結！</text>
+  <text x="250" y="110" font-size="9.2" fill="#B45309" font-weight="bold">・幾何異性体なし ⇔ 片方の C に同じ基が2個</text>
+  <rect x="18" y="138" width="212" height="92" rx="8" fill="#F0FDF4" stroke="#4ADE80"/>
+  <text x="124" y="156" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#166534">③ 加水分解しても炭素数が減らないエステル</text>
+  <text x="124" y="175" text-anchor="middle" font-size="9.6" font-weight="bold" fill="#0F172A">CₙH₂ₙ₋₂O₂ ＋ H₂O → CₙH₂ₙO₃（単一生成物！）</text>
+  <text x="28" y="194" font-size="9.2" fill="#15803D" font-weight="bold">⇒ 分子内環状エステル（ラクトン）で確定！</text>
+  <text x="28" y="211" font-size="9" fill="#334155">ヨードホルム陽性なら −CH(OH)CH₃ 末端をもつ</text>
+  <rect x="240" y="138" width="212" height="92" rx="8" fill="#FDF2F8" stroke="#F472B6"/>
+  <text x="346" y="156" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#9D174D">④ C₈H₁₀ 芳香族の環一置換体（コルナー法）</text>
+  <text x="250" y="176" font-size="9.3" font-weight="bold" fill="#B91C1C">・p-キシレン：対称性最高 → 1種類のみ！</text>
+  <text x="250" y="193" font-size="9.3" font-weight="bold" fill="#1E293B">・o-キシレン：2種類 ／ m-キシレン：3種類</text>
+  <text x="250" y="210" font-size="9.2" fill="#334155">・エチルベンゼン：o, m, p の 3種類（酸化で安息香酸）</text>
+</svg>
+`);
+
+
 
 
