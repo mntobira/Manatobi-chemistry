@@ -2,6 +2,7 @@ import type { Chapter, Part, Problem, SubQuestion } from '../types/curriculum';
 import { SQ_BODY_MARK, SQ_MARK } from '../utils/explanationFormat';
 import { CHEM_COURSES, type ChemCourseId } from '../eiken/config';
 import type { ChemChapterSpec, ChemDifficultyLevel, ChemProblemSpec, ChemSubItem } from './types';
+import { derivePrintRule } from './printMethod';
 import { BASIC_MATTER_CHAPTERS } from './materials/basicMatter';
 import { BASIC_CHANGE_CHAPTERS } from './materials/basicChange';
 import { THEORY_CHAPTERS } from './materials/theory';
@@ -96,9 +97,19 @@ export function inferChapterTargetLevel(spec: ChemChapterSpec): ChemDifficultyLe
   }
 }
 
-function toSubQuestion(sub: ChemSubItem, fallbackLevel: ChemDifficultyLevel): SubQuestion {
+function toSubQuestion(
+  sub: ChemSubItem,
+  fallbackLevel: ChemDifficultyLevel,
+  problemStem?: string,
+): SubQuestion {
   const fullLabel = sub.prompt ? `${sub.label}　${sub.prompt}` : sub.label;
   const level = sub.difficulty ?? fallbackLevel;
+  const printRule = derivePrintRule({
+    printRule: sub.printRule,
+    skill: sub.skill,
+    stem: `${problemStem ?? ''} ${sub.prompt ?? ''}`,
+    explanation: sub.explanation,
+  });
   return {
     id: sub.id,
     label: fullLabel,
@@ -111,6 +122,7 @@ function toSubQuestion(sub: ChemSubItem, fallbackLevel: ChemDifficultyLevel): Su
     explainJa: sub.explanation,
     detailedExplanation: {
       theme: sub.skill,
+      printRule,
       steps: deriveStructuredSteps(sub),
       difficulty: difficultyLevelToScore(level),
     },
@@ -122,18 +134,26 @@ export function chemProblemToCurriculum(
   spec: ChemProblemSpec,
   fallbackLevel: ChemDifficultyLevel = 'kyotsu_standard',
 ): Problem {
-  const subs = spec.subItems.map(s => toSubQuestion(s, fallbackLevel));
+  const subs = spec.subItems.map(s => toSubQuestion(s, fallbackLevel, spec.stem));
   const explanationBlocks = spec.subItems.map((sub, idx) => {
     const sqId = subs[idx]!.id;
     return `${SQ_MARK(sqId)}${SQ_BODY_MARK}${sub.explanation}`;
   });
+
+  const chemFigures =
+    spec.figures && spec.figures.length > 0
+      ? spec.figures.map(f => ({ url: f.url, label: f.label, caption: f.caption }))
+      : undefined;
 
   return {
     id: spec.id,
     title: spec.title,
     category: FORMAT_LABELS[spec.format],
     text: `【${spec.title}】\n${spec.stem}`,
+    isChemistryProblem: true,
     ...(spec.imageUrl ? { imageUrl: spec.imageUrl, imageCaption: spec.imageCaption } : {}),
+    ...(chemFigures ? { chemFigures } : {}),
+    ...(spec.dataTable ? { chemDataTable: spec.dataTable } : {}),
     subQuestions: subs,
     explanation: explanationBlocks.join('\n\n'),
     surroundingKnowledge: [...spec.surroundingKnowledge],

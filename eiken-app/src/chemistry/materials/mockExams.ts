@@ -1,3 +1,4 @@
+import { CHEM_MOCK_EXAMS_EXTRA } from './mockExamsExtra';
 import type { ChemMockExamSpec } from '../types';
 import {
   FIG_TITRATION_CURVE,
@@ -3067,4 +3068,5 @@ export const CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
       },
     ],
   },
+  ...CHEM_MOCK_EXAMS_EXTRA,
 ];

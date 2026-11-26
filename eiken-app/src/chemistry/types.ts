@@ -12,6 +12,12 @@ export type ChemQuestionFormat =
   | 'dialogue_inquiry'     // 生徒と先生の探究会話・仮説検証
   | 'structure_synthesis'; // 構造決定・系統分離・反応経路
 
+export interface ChemFigureSlide {
+  url: string;
+  label: string;
+  caption?: string;
+}
+
 export interface ChemSubItem {
   id: string;
   /** 例: "問1", "問2(a)", "問2(b)" */
@@ -26,6 +32,8 @@ export interface ChemSubItem {
   answer: 0 | 1 | 2 | 3;
   /** 分野・スキルタグ（弱点分析に表示） */
   skill: string;
+  /** 対策プリント流の鉄則・解法フレーム（例: "酸チーム H⁺ mol ＝ 塩基チーム OH⁻ mol"） */
+  printRule?: string;
   /** 解法の根拠・計算過程 */
   explanation: string;
   /** ①〜④ それぞれの正誤理由 */
@@ -47,6 +55,10 @@ export interface ChemProblemSpec {
   /** SVG Data URI などの図版（滴定曲線・電池・結晶格子・分離フロー等） */
   imageUrl?: string;
   imageCaption?: string;
+  /** 複数図版・グラフ切り替え用（マナトビリスニング第6問B式のカルーセル表示） */
+  figures?: readonly ChemFigureSlide[];
+  /** 実験条件・測定結果の構造化テーブル（セルタップで ○ / × 書き込み可能） */
+  dataTable?: ChemSummaryTable;
   subItems: readonly ChemSubItem[];
   /** 周辺知識・語呂合わせ・共通テストの引っかかりポイント */
   surroundingKnowledge: readonly string[];
@@ -120,6 +132,8 @@ export interface ChemMockSection {
   dialogue?: readonly ChemMockDialogueLine[];
   imageUrl?: string;
   imageCaption?: string;
+  /** 複数図版・グラフ切り替え用（マナトビリスニング第6問B式のカルーセル表示） */
+  figures?: readonly ChemFigureSlide[];
   items: readonly ChemMockItem[];
 }
 
