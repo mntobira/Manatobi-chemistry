@@ -210,6 +210,7 @@ export function ProblemPane({
             figures={currentQuestion.chemFigures}
             dataTable={currentQuestion.chemDataTable}
             highlights={combinedHighlights}
+            activeSubPrompt={selectedAnswerSub?.blankHint || selectedAnswerSub?.label}
           />
         </div>
       </section>

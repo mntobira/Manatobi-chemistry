@@ -912,6 +912,7 @@ export function EikenMockExam({
                   figures={itemPlusSecFigs}
                   dataTable={currentSec.dataTable}
                   dialogue={currentSec.dialogue}
+                  activeSubPrompt={mobItem.stem}
                 />
               </div>
 
@@ -1701,14 +1702,26 @@ export function EikenMockExam({
                   stem: item.stem,
                   explanation: item.explanation,
                 });
+                const rawSteps =
+                  item.steps && item.steps.length >= 2
+                    ? [...item.steps]
+                    : item.steps && item.steps.length === 1
+                      ? [
+                          item.steps[0]!,
+                          `検算と選択肢の確定：${CIRCLED_NUMS[item.answer]}（${item.reasons[item.answer]}）が条件を満たすことを確認し、他選択肢の誤りを消去する。`,
+                        ]
+                      : item.explanation
+                          .split('\n')
+                          .map(l => l.replace(/^[・●▪■]\s*/, '').trim())
+                          .filter(l => l.length > 0)
+                          .slice(0, 4);
                 const resolvedSteps =
-                  item.steps && item.steps.length > 0
-                    ? item.steps
-                    : item.explanation
-                        .split('\n')
-                        .map(l => l.replace(/^[・●▪■]\s*/, '').trim())
-                        .filter(l => l.length > 0)
-                        .slice(0, 4);
+                  rawSteps.length >= 2
+                    ? rawSteps
+                    : [
+                        `型の適用：${printRule.replace(/^【[^】]+】/, '').trim()}`,
+                        `結論と誤答消去：${CIRCLED_NUMS[item.answer]}（${item.reasons[item.answer]}）を選び、他選択肢の数値・条件の誤りを除外する。`,
+                      ];
                 return (
                   <>
                     {printRule && (

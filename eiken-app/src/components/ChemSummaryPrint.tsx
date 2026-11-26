@@ -17,7 +17,8 @@
  *   3. 下部固定の主ボタン「問題へ進む（全N問）→」を押すと、このプリントに対応した
  *      複数問の演習がそのまま始まる。問題中・解説中もヘッダーからモーダルで再確認可能。
  */
-import { ArrowLeft, AlertTriangle, BookOpenCheck, ChevronRight, FlaskConical, Table2, X } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowLeft, AlertTriangle, BookOpenCheck, ChevronRight, Eye, EyeOff, FlaskConical, Table2, X } from 'lucide-react';
 import { formatText } from '../utils/textFormatter';
 import type { Chapter } from '../types/curriculum';
 
@@ -45,6 +46,12 @@ export function ChemSummaryPrint({
 }: ChemSummaryPrintProps) {
   const sheet = chapter.summarySheet;
   const cleanUnitTitle = chapter.abstractTitle.replace(/（大問\d+題・計\d+問）$/, '');
+  const [redSheetMode, setRedSheetMode] = useState(false);
+  const [revealedKeys, setRevealedKeys] = useState<Record<string, boolean>>({});
+
+  const toggleReveal = (key: string) => {
+    setRevealedKeys(prev => ({ ...prev, [key]: !prev[key] }));
+  };
 
   if (!sheet) return null;
 
@@ -103,24 +110,44 @@ export function ChemSummaryPrint({
             </div>
           </div>
 
-          {isOverlay ? (
+          <div className="flex shrink-0 items-center gap-1.5">
             <button
               type="button"
-              onClick={onStart}
-              aria-label="まとめプリントを閉じる"
-              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 hover:bg-slate-100"
+              data-chem-redsheet-toggle
+              aria-pressed={redSheetMode}
+              onClick={() => {
+                setRedSheetMode(m => !m);
+                setRevealedKeys({});
+              }}
+              className={`inline-flex min-h-9 cursor-pointer items-center gap-1 rounded-full border px-2.5 py-1 text-xs font-extrabold transition ${
+                redSheetMode
+                  ? 'border-rose-600 bg-rose-600 text-white shadow-xs'
+                  : 'border-rose-300 bg-rose-50/80 text-rose-800 hover:bg-rose-100/80'
+              }`}
             >
-              <X size={18} aria-hidden="true" />
+              {redSheetMode ? <Eye size={13} aria-hidden="true" /> : <EyeOff size={13} aria-hidden="true" />}
+              <span>{redSheetMode ? '赤シート中' : '赤シート暗記'}</span>
             </button>
-          ) : (
-            <div className="shrink-0 rounded-xl border border-[#E6DEC8] bg-white px-2.5 py-1 text-right">
-              <div className="text-[10px] font-bold text-slate-400">このあと演習</div>
-              <div className="text-xs font-extrabold text-[#2C3E50]">
-                全{subQuestionCount}問
-                {questionCount !== subQuestionCount ? `（大問${questionCount}）` : ''}
+
+            {isOverlay ? (
+              <button
+                type="button"
+                onClick={onStart}
+                aria-label="まとめプリントを閉じる"
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 hover:bg-slate-100"
+              >
+                <X size={18} aria-hidden="true" />
+              </button>
+            ) : (
+              <div className="hidden shrink-0 rounded-xl border border-[#E6DEC8] bg-white px-2.5 py-1 text-right sm:block">
+                <div className="text-[10px] font-bold text-slate-400">このあと演習</div>
+                <div className="text-xs font-extrabold text-[#2C3E50]">
+                  全{subQuestionCount}問
+                  {questionCount !== subQuestionCount ? `（大問${questionCount}）` : ''}
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </header>
 
@@ -147,26 +174,40 @@ export function ChemSummaryPrint({
                   <span>要点・公式・反応式</span>
                 </h3>
                 <ul className="space-y-1.5 md:space-y-2">
-                  {sheet.formulas.map((f, idx) => (
-                    <li
-                      key={idx}
-                      className="rounded-xl border border-teal-200/80 border-l-4 border-l-teal-600 bg-teal-50/40 px-2.5 py-1.5 md:px-3 md:py-2"
-                    >
-                      <div className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-0.5">
-                        <span className="text-[11px] font-extrabold text-teal-800 md:text-xs">
-                          {formatText(f.label)}
-                        </span>
-                        {f.note && (
-                          <span className="text-[11px] font-semibold text-slate-500">
-                            {formatText(f.note)}
+                  {sheet.formulas.map((f, idx) => {
+                    const fKey = `f:${idx}`;
+                    const masked = redSheetMode && !revealedKeys[fKey];
+                    return (
+                      <li
+                        key={idx}
+                        onClick={redSheetMode ? () => toggleReveal(fKey) : undefined}
+                        className={`rounded-xl border border-teal-200/80 border-l-4 border-l-teal-600 bg-teal-50/40 px-2.5 py-1.5 md:px-3 md:py-2 ${
+                          redSheetMode ? 'cursor-pointer select-none active:bg-teal-100/50' : ''
+                        }`}
+                      >
+                        <div className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-0.5">
+                          <span className="text-[11px] font-extrabold text-teal-800 md:text-xs">
+                            {formatText(f.label)}
                           </span>
-                        )}
-                      </div>
-                      <div className="mt-0.5 text-[13px] font-bold leading-snug text-slate-900 md:text-sm">
-                        {formatText(f.expr)}
-                      </div>
-                    </li>
-                  ))}
+                          {f.note && (
+                            <span className="text-[11px] font-semibold text-slate-500">
+                              {formatText(f.note)}
+                            </span>
+                          )}
+                        </div>
+                        <div
+                          className={`mt-0.5 rounded px-1 py-0.5 text-[13px] font-bold leading-snug transition md:text-sm ${
+                            masked
+                              ? 'bg-rose-500/90 text-transparent selection:bg-transparent'
+                              : 'text-slate-900'
+                          }`}
+                          title={masked ? 'タップで開く' : undefined}
+                        >
+                          {formatText(f.expr)}
+                        </div>
+                      </li>
+                    );
+                  })}
                 </ul>
               </section>
 
@@ -222,18 +263,31 @@ export function ChemSummaryPrint({
                   <tbody className="divide-y divide-slate-100 bg-white">
                     {sheet.table.rows.map((row, ri) => (
                       <tr key={ri} className={ri % 2 === 1 ? 'bg-slate-50/55' : 'bg-white'}>
-                        {row.map((cell, ci) => (
-                          <td
-                            key={ci}
-                            className={`px-2 py-1.5 leading-snug align-top md:px-3 md:py-2 ${
-                              ci === 0
-                                ? 'font-extrabold text-[#1E293B] sm:whitespace-nowrap'
-                                : 'font-medium text-slate-700'
-                            }`}
-                          >
-                            {formatText(cell)}
-                          </td>
-                        ))}
+                        {row.map((cell, ci) => {
+                          const cKey = `c:${ri}:${ci}`;
+                          const cellMasked = redSheetMode && ci > 0 && !revealedKeys[cKey];
+                          return (
+                            <td
+                              key={ci}
+                              onClick={redSheetMode && ci > 0 ? () => toggleReveal(cKey) : undefined}
+                              className={`px-2 py-1.5 leading-snug align-top md:px-3 md:py-2 ${
+                                ci === 0
+                                  ? 'font-extrabold text-[#1E293B] sm:whitespace-nowrap'
+                                  : 'font-medium text-slate-700'
+                              } ${redSheetMode && ci > 0 ? 'cursor-pointer select-none' : ''}`}
+                            >
+                              <span
+                                className={
+                                  cellMasked
+                                    ? 'inline-block rounded bg-rose-500/85 px-1 text-transparent selection:bg-transparent'
+                                    : undefined
+                                }
+                              >
+                                {formatText(cell)}
+                              </span>
+                            </td>
+                          );
+                        })}
                       </tr>
                     ))}
                   </tbody>

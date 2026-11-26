@@ -54,6 +54,8 @@ export interface ChemMaterialDeckProps {
   dialogue?: readonly { speaker: string; text: string }[];
   /** ハイライト語句 */
   highlights?: string[];
+  /** 現在解答中の小問文（図・表への言及を検出して参照バッジを表示する） */
+  activeSubPrompt?: string;
   /** コンパクト高さ制限（模試スマホ画面など親が flex-1 でないとき用） */
   compactMaxHeightClass?: string;
 }
@@ -329,6 +331,7 @@ export function ChemMaterialDeck({
   dataTable,
   dialogue,
   highlights = [],
+  activeSubPrompt,
   compactMaxHeightClass,
 }: ChemMaterialDeckProps) {
   // 1) 図版リストの統合（figures 指定があれば優先、無ければ単一 imageUrl）
@@ -379,7 +382,17 @@ export function ChemMaterialDeck({
   type DeckTab = 'text' | 'table' | 'figs' | 'dialogue';
   const [activeTab, setActiveTab] = useState<DeckTab>('text');
 
-  // 問題が切り替わったら先頭タブ（「問題・条件」）へ戻す（ただしリード文が極短で図が主役なら図もすぐ押せる）
+  // 現在選択中の小問が「表」「図・グラフ」「会話」を参照しているか判定（タブ上に控えめなドットで誘導）
+  const promptHints = useMemo(() => {
+    const q = activeSubPrompt || '';
+    return {
+      table: hasTable && /表|実験\s*[1-9ⅠⅡⅢA-D]|測定値|結果/.test(q),
+      figs: hasFigs && /図|グラフ|曲線|スペクトル|装置|経路/.test(q),
+      dialogue: hasDialogue && /会話|生徒|先生|下線部/.test(q),
+    };
+  }, [activeSubPrompt, hasTable, hasFigs, hasDialogue]);
+
+  // 問題が切り替わったら先頭タブ（「問題・条件」）へ戻す
   useEffect(() => {
     setActiveTab('text');
   }, [leadText, imageUrl, figures, dataTable]);
@@ -435,11 +448,16 @@ export function ChemMaterialDeck({
             className={`inline-flex min-h-[34px] shrink-0 items-center gap-1 rounded-full border px-2.5 py-1 text-xs font-extrabold transition ${
               activeTab === 'table'
                 ? 'border-[#1f5c53] bg-[#1f5c53] text-white shadow-2xs'
-                : 'border-slate-300 bg-white text-slate-700 active:bg-slate-100'
+                : promptHints.table
+                  ? 'border-amber-400 bg-amber-50/90 text-amber-950 active:bg-amber-100'
+                  : 'border-slate-300 bg-white text-slate-700 active:bg-slate-100'
             }`}
           >
             <Table2 size={13} aria-hidden="true" />
             <span>データ表{allTables.length > 1 ? `(${allTables.length})` : ''}</span>
+            {promptHints.table && activeTab !== 'table' && (
+              <span className="ml-0.5 inline-block h-1.5 w-1.5 rounded-full bg-amber-500" aria-hidden="true" />
+            )}
           </button>
         )}
 
@@ -453,13 +471,18 @@ export function ChemMaterialDeck({
             className={`inline-flex min-h-[34px] shrink-0 items-center gap-1 rounded-full border px-2.5 py-1 text-xs font-extrabold transition ${
               activeTab === 'figs'
                 ? 'border-[#1f5c53] bg-[#1f5c53] text-white shadow-2xs'
-                : 'border-slate-300 bg-white text-slate-700 active:bg-slate-100'
+                : promptHints.figs
+                  ? 'border-amber-400 bg-amber-50/90 text-amber-950 active:bg-amber-100'
+                  : 'border-slate-300 bg-white text-slate-700 active:bg-slate-100'
             }`}
           >
             <FlaskConical size={13} aria-hidden="true" />
             <span>
               {slideFigures.length > 1 ? `図・グラフ(${slideFigures.length}枚)` : '図・グラフ'}
             </span>
+            {promptHints.figs && activeTab !== 'figs' && (
+              <span className="ml-0.5 inline-block h-1.5 w-1.5 rounded-full bg-amber-500" aria-hidden="true" />
+            )}
           </button>
         )}
 
@@ -473,10 +496,15 @@ export function ChemMaterialDeck({
             className={`inline-flex min-h-[34px] shrink-0 items-center gap-1 rounded-full border px-2.5 py-1 text-xs font-extrabold transition ${
               activeTab === 'dialogue'
                 ? 'border-[#1f5c53] bg-[#1f5c53] text-white shadow-2xs'
-                : 'border-slate-300 bg-white text-slate-700 active:bg-slate-100'
+                : promptHints.dialogue
+                  ? 'border-amber-400 bg-amber-50/90 text-amber-950 active:bg-amber-100'
+                  : 'border-slate-300 bg-white text-slate-700 active:bg-slate-100'
             }`}
           >
             <span>会話文</span>
+            {promptHints.dialogue && activeTab !== 'dialogue' && (
+              <span className="ml-0.5 inline-block h-1.5 w-1.5 rounded-full bg-amber-500" aria-hidden="true" />
+            )}
           </button>
         )}
       </div>

@@ -160,6 +160,13 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "abstractTitle": "多資料クロス判定（未知物質4種の物性表・イオン化エネルギー・結晶格子）",
         "realTitle": "第4章 物質の探究と総合考察",
         "problemCount": 1
+      },
+      {
+        "id": "chem_basic_matter_ch23",
+        "title": "第4章 物質の探究と総合考察｜分留・再結晶・クロマトグラフィーの多資料統合と純度評価",
+        "abstractTitle": "分留・再結晶・クロマトグラフィーの多資料統合と純度評価",
+        "realTitle": "第4章 物質の探究と総合考察",
+        "problemCount": 1
       }
     ]
   },
@@ -312,6 +319,13 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "title": "第4章 化学変化の総合探究｜中和の電気伝導率グラフ×pH滴定曲線の2図横断考察と逆滴定",
         "abstractTitle": "中和の電気伝導率グラフ×pH滴定曲線の2図横断考察と逆滴定",
         "realTitle": "第4章 化学変化の総合探究",
+        "problemCount": 1
+      },
+      {
+        "id": "chem_basic_change_ch26",
+        "title": "第4章 化学反応の総合定量｜吸光光度法（ランベルト・ベール検量線）と段階希釈×滴定の融合",
+        "abstractTitle": "吸光光度法（ランベルト・ベール検量線）と段階希釈×滴定の融合",
+        "realTitle": "第4章 化学反応の総合定量",
         "problemCount": 1
       },
       {
@@ -514,6 +528,13 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "title": "第6章 理論化学の総合探究｜実在気体の圧縮因子 Z グラフ×過飽和冷却曲線の多資料解析",
         "abstractTitle": "実在気体の圧縮因子 Z グラフ×過飽和冷却曲線の多資料解析",
         "realTitle": "第6章 理論化学の総合探究",
+        "problemCount": 1
+      },
+      {
+        "id": "chem_theory_ch30",
+        "title": "第6章 理論化学の総合演習｜気液平衡・蒸気圧曲線×沸点上昇と弱酸存在分率グラフの融合解析",
+        "abstractTitle": "気液平衡・蒸気圧曲線×沸点上昇と弱酸存在分率グラフの融合解析",
+        "realTitle": "第6章 理論化学の総合演習",
         "problemCount": 1
       },
       {
@@ -731,6 +752,13 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "abstractTitle": "金属イオン沈殿曲線×試薬マトリックス×電気分解の多資料統合",
         "realTitle": "第5章 無機化学の総合探究",
         "problemCount": 1
+      },
+      {
+        "id": "chem_inorganic_ch26",
+        "title": "第5章 無機化学の総合探究｜クロム・マンガンの液性平衡×酸化還元と分光定量（多資料探究）",
+        "abstractTitle": "クロム・マンガンの液性平衡×酸化還元と分光定量（多資料探究）",
+        "realTitle": "第5章 無機化学の総合探究",
+        "problemCount": 1
       }
     ]
   },
@@ -898,6 +926,13 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "abstractTitle": "芳香族異性体・フェノールエステルの多条件マトリックス＆分液系統分離",
         "realTitle": "第5章 有機化合物の総合探究",
         "problemCount": 1
+      },
+      {
+        "id": "chem_organic_ch24",
+        "title": "第5章 有機化学の総合演習｜医薬品合成の多段階収率計算×分液分離フロー（サリチル酸・アセトアニリド）",
+        "abstractTitle": "医薬品合成の多段階収率計算×分液分離フロー（サリチル酸・アセトアニリド）",
+        "realTitle": "第5章 有機化学の総合演習",
+        "problemCount": 1
       }
     ]
   },
@@ -1037,46 +1072,53 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "abstractTitle": "アミノ酸段階pH溶出クロマトグラフィー×pKa滴定曲線×ペプチド計算",
         "realTitle": "第4章 高分子化合物の総合探究",
         "problemCount": 1
+      },
+      {
+        "id": "chem_polymer_ch20",
+        "title": "第4章 高分子の総合探究｜酵素反応速度（Vmax・Km・競争的/非競争的阻害）と生分解性高分子の定量",
+        "abstractTitle": "酵素反応速度（Vmax・Km・競争的/非競争的阻害）と生分解性高分子の定量",
+        "realTitle": "第4章 高分子の総合探究",
+        "problemCount": 1
       }
     ]
   }
 ];
 export const SUBJECT_STATS: Readonly<Record<string, SubjectStatsEntry>> = {
   "chem_basic_matter": {
-    "chapters": 22,
-    "units": 22,
-    "questions": 49,
-    "marks": 98
-  },
-  "chem_basic_change": {
-    "chapters": 25,
-    "units": 25,
-    "questions": 54,
-    "marks": 108
-  },
-  "chem_theory": {
-    "chapters": 29,
-    "units": 29,
-    "questions": 63,
-    "marks": 121
-  },
-  "chem_inorganic": {
-    "chapters": 25,
-    "units": 25,
-    "questions": 53,
-    "marks": 104
-  },
-  "chem_organic": {
     "chapters": 23,
     "units": 23,
-    "questions": 48,
-    "marks": 96
+    "questions": 50,
+    "marks": 101
+  },
+  "chem_basic_change": {
+    "chapters": 26,
+    "units": 26,
+    "questions": 55,
+    "marks": 111
+  },
+  "chem_theory": {
+    "chapters": 30,
+    "units": 30,
+    "questions": 64,
+    "marks": 124
+  },
+  "chem_inorganic": {
+    "chapters": 26,
+    "units": 26,
+    "questions": 54,
+    "marks": 107
+  },
+  "chem_organic": {
+    "chapters": 24,
+    "units": 24,
+    "questions": 49,
+    "marks": 99
   },
   "chem_polymer": {
-    "chapters": 19,
-    "units": 19,
-    "questions": 41,
-    "marks": 80
+    "chapters": 20,
+    "units": 20,
+    "questions": 42,
+    "marks": 83
   }
 };
 export function getChapterIndexOfSubject(subjectId: string | null | undefined): readonly ChapterIndexEntry[] {

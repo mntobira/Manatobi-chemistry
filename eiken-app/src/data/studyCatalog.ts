@@ -55,12 +55,12 @@ export interface StudySubject {
 }
 
 const DESC_BY_COURSE: Record<string, string> = {
-  chem_basic_matter: '純物質とクロマトRf/多段抽出・白色粉末定性・質量分析MS・吸光度・周期律・分子極性・C₆₀結晶・多資料統合（全22単元）',
-  chem_basic_change: 'mol計算・過不足濃度・ワルダー二段滴定・逆滴定チーム分け・電導度×pH滴定・COD・電池・電気化学統合（全25単元）',
-  chem_theory: '状態方程式と圧縮因子Z・逆浸透・ヘンリー・弱酸希釈pH・ΔS自発変化・一次反応半減期・直列並列電気分解・水和物再結晶（全29単元）',
-  chem_inorganic: 'ヨウ素製法・水ガラス・鉄シアノ錯塩・実用合金・バイヤー計算・H₂S×Ksp選択沈殿・過剰試薬再溶解グラフ・系統分離（全25単元）',
-  chem_organic: 'オゾン分解・エステル化平衡・ラクトン・5大裏切り者(フェノールエステル)・芳香族異性体・元素分析×滴定多資料構造決定（全23単元）',
-  chem_polymer: '糖類・グルタチオン・ペプチド配列＆クロマト溶出・ビニロン＋12の鉄則・PVB・ポリイミド・共重合ゴム・イオン交換電荷保存（全19単元）',
+  chem_basic_matter: '純物質とクロマトRf/多段抽出・分留と再結晶・白色粉末定性・質量分析MS・周期律・分子極性・C₆₀結晶・多資料統合（全23単元）',
+  chem_basic_change: 'mol計算・過不足濃度・ワルダー二段滴定・逆滴定チーム分け・電導度×pH滴定・吸光度検量線・COD・電池統合（全26単元）',
+  chem_theory: '状態方程式と圧縮因子Z・気液平衡×沸点上昇・逆浸透・ヘンリー・弱酸存在分率・ΔS自発変化・一次反応・電気分解・水和物（全30単元）',
+  chem_inorganic: 'ヨウ素製法・水ガラス・鉄シアノ錯塩・クロム液性平衡×モール法Ksp・バイヤー計算・過剰試薬再溶解グラフ・系統分離（全26単元）',
+  chem_organic: 'オゾン分解・エステル化平衡・ラクトン・5大裏切り者(フェノールエステル)・医薬品多段収率・芳香族異性体・系統分離（全24単元）',
+  chem_polymer: '糖類・グルタチオン・ペプチド配列＆溶出・酵素阻害速度論(Vmax/Km)・ビニロン＋12の鉄則・ポリ乳酸・共重合ゴム・イオン交換（全20単元）',
 };
 
 const ICON_BY_COURSE: Record<string, StudyIcon> = {
@@ -97,7 +97,7 @@ export const STUDY_CATALOG: readonly StudySubject[] = [{
       icon: 'briefcase',
       badge: '冊子＋第6問B式スマホ対応',
       section: 'memorize',
-      description: '『化学基礎』30分/50点（全7回）＋『化学』60分/100点・5大問15設問（全7回）。スマホ1画面資料切替＆PC問題冊子＋マーク解答用紙・プリント解法鉄則つき',
+      description: '『化学基礎』30分/50点（全8回）＋『化学』60分/100点・5大問15設問（全8回）。スマホ1画面資料切替＆PC問題冊子＋マーク解答用紙・プリント解法鉄則つき',
       meta: `全${CHEM_MOCK_EXAMS.length}回（基礎${CHEM_MOCK_EXAMS.filter(e => e.examCategory === 'basic').length}回・化学${CHEM_MOCK_EXAMS.filter(e => e.examCategory === 'advanced').length}回）`,
       action: { kind: 'mock' },
     },

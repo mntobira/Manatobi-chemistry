@@ -1132,3 +1132,138 @@ export const FIG_PRECIPITATE_EXCESS_CURVE = svgDataUri(`
 </svg>
 `);
 
+/** ランベルト・ベールの法則：標準溶液の検量線（吸光度 A vs モル濃度 c）と光路長 l モデル */
+export const FIG_BEER_LAMBERT_CALIBRATION = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 250" font-family="sans-serif">
+  <rect width="480" height="250" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="240" y="22" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#2A3B4C">吸光光度法の原理（A ＝ εcl）と標準検量線（l ＝ 1.0 cm）</text>
+  <g transform="translate(18,38)">
+    <rect width="176" height="192" rx="8" fill="#F8FAFC" stroke="#CBD5E1"/>
+    <text x="88" y="20" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F766E">セル光路長 l と透過率</text>
+    <rect x="66" y="42" width="44" height="84" rx="4" fill="#DDD6FE" stroke="#6D28D9" stroke-width="2"/>
+    <line x1="16" y1="84" x2="64" y2="84" stroke="#EA580C" stroke-width="3"/>
+    <polygon points="64,84 56,79 56,89" fill="#EA580C"/>
+    <text x="38" y="74" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#C2410C">入射光 I₀</text>
+    <line x1="112" y1="84" x2="160" y2="84" stroke="#EA580C" stroke-width="1.6" stroke-dasharray="4 2"/>
+    <polygon points="160,84 152,80 152,88" fill="#EA580C"/>
+    <text x="138" y="74" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#C2410C">透過光 I</text>
+    <text x="88" y="142" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#4C1D95">← 光路長 l →</text>
+    <text x="88" y="162" text-anchor="middle" font-size="10" font-weight="bold" fill="#1E293B">A ＝ −log₁₀(I / I₀) ＝ ε c l</text>
+    <text x="88" y="180" text-anchor="middle" font-size="9.2" fill="#B91C1C" font-weight="bold">I/I₀ ＝ 0.01 ⇒ A ＝ 2.0！</text>
+  </g>
+  <g transform="translate(206,38)">
+    <rect width="256" height="192" rx="8" fill="#FFFFFF" stroke="#CBD5E1"/>
+    <line x1="44" y1="158" x2="238" y2="158" stroke="#475569" stroke-width="1.8"/>
+    <line x1="44" y1="158" x2="44" y2="24" stroke="#475569" stroke-width="1.8"/>
+    <text x="142" y="182" text-anchor="middle" font-size="10.5" fill="#475569">濃度 c [×10⁻⁴ mol/L]</text>
+    <text x="15" y="92" text-anchor="middle" font-size="10.5" fill="#475569" transform="rotate(-90 15 92)">吸光度 A</text>
+    <line x1="44" y1="126" x2="232" y2="126" stroke="#E2E8F0" stroke-dasharray="3 3"/>
+    <text x="38" y="130" text-anchor="end" font-size="9.5" fill="#475569">0.20</text>
+    <line x1="44" y1="94" x2="232" y2="94" stroke="#E2E8F0" stroke-dasharray="3 3"/>
+    <text x="38" y="98" text-anchor="end" font-size="9.5" fill="#475569">0.40</text>
+    <line x1="44" y1="62" x2="232" y2="62" stroke="#E2E8F0" stroke-dasharray="3 3"/>
+    <text x="38" y="66" text-anchor="end" font-size="9.5" fill="#475569">0.60</text>
+    <line x1="88" y1="158" x2="88" y2="126" stroke="#94A3B8" stroke-dasharray="3 3"/>
+    <text x="88" y="170" text-anchor="middle" font-size="9.5" fill="#475569">1.0</text>
+    <line x1="132" y1="158" x2="132" y2="94" stroke="#94A3B8" stroke-dasharray="3 3"/>
+    <text x="132" y="170" text-anchor="middle" font-size="9.5" fill="#475569">2.0</text>
+    <line x1="176" y1="158" x2="176" y2="62" stroke="#94A3B8" stroke-dasharray="3 3"/>
+    <text x="176" y="170" text-anchor="middle" font-size="9.5" fill="#475569">3.0</text>
+    <line x1="44" y1="158" x2="220" y2="30" stroke="#7C3AED" stroke-width="2.6"/>
+    <circle cx="88" cy="126" r="4" fill="#6D28D9"/>
+    <circle cx="132" cy="94" r="4" fill="#6D28D9"/>
+    <circle cx="176" cy="62" r="4" fill="#6D28D9"/>
+    <text x="150" y="42" font-size="10" font-weight="bold" fill="#6D28D9">傾き εl ＝ 2.0×10³</text>
+  </g>
+</svg>
+`);
+
+/** 純物質および濃厚水溶液の蒸気圧曲線と大気圧・沸点上昇の対応図 */
+export const FIG_VAPOR_BOILING_ELEVATION = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 250" font-family="sans-serif">
+  <rect width="470" height="250" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="235" y="22" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#2A3B4C">純水・エタノール・水溶液の蒸気圧曲線と沸点上昇 ΔTb</text>
+  <line x1="62" y1="212" x2="438" y2="212" stroke="#475569" stroke-width="2"/>
+  <line x1="62" y1="212" x2="62" y2="36" stroke="#475569" stroke-width="2"/>
+  <text x="250" y="240" text-anchor="middle" font-size="11.5" fill="#475569">温度 [℃]</text>
+  <text x="22" y="125" text-anchor="middle" font-size="11" fill="#475569" transform="rotate(-90 22 125)">飽和蒸気圧 [×10⁵ Pa]</text>
+  <line x1="62" y1="84" x2="432" y2="84" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="5 3"/>
+  <text x="56" y="88" text-anchor="end" font-size="10.5" font-weight="bold" fill="#DC2626">1.013</text>
+  <text x="118" y="76" font-size="10" font-weight="bold" fill="#DC2626">大気圧 1.013×10⁵ Pa</text>
+  <!-- エタノール -->
+  <path d="M 80 198 Q 165 178 232 84 Q 252 56 266 42" fill="none" stroke="#0EA5E9" stroke-width="2.6"/>
+  <text x="176" y="114" font-size="10.5" font-weight="bold" fill="#0369A1">エタノール (78℃)</text>
+  <line x1="232" y1="84" x2="232" y2="212" stroke="#94A3B8" stroke-dasharray="3 3"/>
+  <text x="232" y="224" text-anchor="middle" font-size="10" fill="#475569">78</text>
+  <!-- 純水 -->
+  <path d="M 95 204 Q 235 190 336 84 Q 358 60 374 44" fill="none" stroke="#16A34A" stroke-width="2.8"/>
+  <text x="292" y="132" font-size="10.5" font-weight="bold" fill="#15803D">純水 (100℃)</text>
+  <line x1="336" y1="84" x2="336" y2="212" stroke="#94A3B8" stroke-dasharray="3 3"/>
+  <text x="336" y="224" text-anchor="middle" font-size="10" fill="#475569">100</text>
+  <!-- 不揮発性溶質の水溶液 -->
+  <path d="M 110 207 Q 260 196 376 84 Q 396 64 410 48" fill="none" stroke="#D97706" stroke-width="2.6" stroke-dasharray="6 3"/>
+  <text x="392" y="128" font-size="10.5" font-weight="bold" fill="#B45309">水溶液</text>
+  <line x1="376" y1="84" x2="376" y2="212" stroke="#D97706" stroke-dasharray="3 3"/>
+  <text x="356" y="204" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">←ΔTb→</text>
+</svg>
+`);
+
+/** 弱酸（HA ⇄ H⁺ + A⁻）の pH に対する存在モル分率曲線（α₀, α₁ と pH = pKa 交点） */
+export const FIG_BUFFER_SPECIES_FRACTION = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 250" font-family="sans-serif">
+  <rect width="470" height="250" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="235" y="22" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#2A3B4C">一価弱酸 HA 水溶液における pH と化学種存在割合（pKa ＝ 4.76）</text>
+  <line x1="62" y1="210" x2="436" y2="210" stroke="#475569" stroke-width="2"/>
+  <line x1="62" y1="210" x2="62" y2="42" stroke="#475569" stroke-width="2"/>
+  <text x="250" y="238" text-anchor="middle" font-size="11.5" fill="#475569">水溶液の pH</text>
+  <text x="22" y="126" text-anchor="middle" font-size="11" fill="#475569" transform="rotate(-90 22 126)">存在割合 [%]</text>
+  <line x1="62" y1="52" x2="430" y2="52" stroke="#CBD5E1" stroke-dasharray="3 3"/>
+  <text x="54" y="56" text-anchor="end" font-size="10" fill="#475569">100</text>
+  <line x1="62" y1="131" x2="430" y2="131" stroke="#94A3B8" stroke-dasharray="4 3"/>
+  <text x="54" y="135" text-anchor="end" font-size="10" font-weight="bold" fill="#B91C1C">50</text>
+  <text x="54" y="212" text-anchor="end" font-size="10" fill="#475569">0</text>
+  <!-- HA 曲線 -->
+  <path d="M 70 53 L 160 56 Q 210 64 238 131 Q 266 198 316 206 L 424 209" fill="none" stroke="#2563EB" stroke-width="2.8"/>
+  <text x="132" y="76" font-size="11" font-weight="bold" fill="#1D4ED8">分子形 [HA]</text>
+  <!-- A- 曲線 -->
+  <path d="M 70 209 L 160 206 Q 210 198 238 131 Q 266 64 316 56 L 424 53" fill="none" stroke="#16A34A" stroke-width="2.8"/>
+  <text x="356" y="76" font-size="11" font-weight="bold" fill="#15803D">イオン形 [A⁻]</text>
+  <!-- 交点 pH = pKa -->
+  <circle cx="238" cy="131" r="5" fill="#DC2626"/>
+  <line x1="238" y1="131" x2="238" y2="210" stroke="#DC2626" stroke-width="1.6" stroke-dasharray="4 3"/>
+  <text x="238" y="224" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#DC2626">4.76 (＝pKa)</text>
+  <rect x="252" y="114" width="166" height="32" rx="6" fill="#FEF2F2" stroke="#FCA5A5"/>
+  <text x="335" y="128" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#991B1B">交点：[HA] ＝ [A⁻]（50%ずつ）</text>
+  <text x="335" y="141" text-anchor="middle" font-size="9.2" fill="#7F1D1D">緩衝作用が最大（半中和点）！</text>
+</svg>
+`);
+
+/** 酵素反応速度の基質濃度依存性（Vmax・Km と競争的阻害 vs 非競争的阻害） */
+export const FIG_MICHAELIS_INHIBITION = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 250" font-family="sans-serif">
+  <rect width="470" height="250" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="235" y="22" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#2A3B4C">酵素反応の基質濃度曲線（Vmax・Km）と2種類の阻害様式</text>
+  <line x1="64" y1="210" x2="438" y2="210" stroke="#475569" stroke-width="2"/>
+  <line x1="64" y1="210" x2="64" y2="40" stroke="#475569" stroke-width="2"/>
+  <text x="252" y="238" text-anchor="middle" font-size="11.5" fill="#475569">基質濃度 [S]</text>
+  <text x="22" y="126" text-anchor="middle" font-size="11" fill="#475569" transform="rotate(-90 22 126)">反応速度 v</text>
+  <!-- Vmax and Vmax/2 -->
+  <line x1="64" y1="56" x2="434" y2="56" stroke="#64748B" stroke-dasharray="4 3"/>
+  <text x="58" y="60" text-anchor="end" font-size="10" font-weight="bold" fill="#0F172A">Vmax</text>
+  <line x1="64" y1="133" x2="434" y2="133" stroke="#CBD5E1" stroke-dasharray="3 3"/>
+  <text x="58" y="137" text-anchor="end" font-size="9.5" fill="#475569">Vmax/2</text>
+  <!-- 阻害剤なし -->
+  <path d="M 64 210 Q 108 92 210 70 Q 310 59 428 58" fill="none" stroke="#0F766E" stroke-width="2.8"/>
+  <text x="258" y="50" font-size="10.5" font-weight="bold" fill="#0F766E">曲線ア：阻害剤なし</text>
+  <line x1="120" y1="133" x2="120" y2="210" stroke="#0F766E" stroke-dasharray="3 3"/>
+  <text x="120" y="223" text-anchor="middle" font-size="10" font-weight="bold" fill="#0F766E">Km</text>
+  <!-- 競争的阻害：高[S]でVmaxに漸近 -->
+  <path d="M 64 210 Q 160 132 285 84 Q 368 65 428 61" fill="none" stroke="#2563EB" stroke-width="2.5" stroke-dasharray="6 3"/>
+  <text x="330" y="96" font-size="10" font-weight="bold" fill="#1D4ED8">曲線イ：競争的阻害（Vmax不変）</text>
+  <!-- 非競争的阻害：Vmax自体が低下 -->
+  <path d="M 64 210 Q 112 146 215 135 Q 315 129 428 128" fill="none" stroke="#DC2626" stroke-width="2.5" stroke-dasharray="3 3"/>
+  <text x="322" y="150" font-size="10" font-weight="bold" fill="#B91C1C">曲線ウ：非競争的阻害（Vmax低下）</text>
+</svg>
+`);
+
+
