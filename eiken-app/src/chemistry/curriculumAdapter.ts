@@ -29,9 +29,18 @@ export const ALL_CHEM_CHAPTER_SPECS: readonly ChemChapterSpec[] = [
 
 const CIRCLED_NUMS = ['①', '②', '③', '④'] as const;
 
-function deriveStructuredSteps(sub: ChemSubItem): string[] {
-  if (sub.steps && sub.steps.length > 0) {
+function deriveStructuredSteps(sub: ChemSubItem, printRule: string): string[] {
+  const correctCircle = CIRCLED_NUMS[sub.answer];
+  const correctReason = sub.reasons[sub.answer];
+
+  if (sub.steps && sub.steps.length >= 2) {
     return [...sub.steps];
+  }
+  if (sub.steps && sub.steps.length === 1) {
+    return [
+      sub.steps[0]!,
+      `検算と選択肢の確定：${correctCircle}（${correctReason}）が条件をすべて満たすことを確認し、他選択肢のひっかけを消去する。`,
+    ];
   }
   const lines = sub.explanation
     .split('\n')
@@ -40,11 +49,9 @@ function deriveStructuredSteps(sub: ChemSubItem): string[] {
   if (lines.length >= 2) {
     return lines.slice(0, 4);
   }
-  const correctCircle = CIRCLED_NUMS[sub.answer];
-  const correctReason = sub.reasons[sub.answer];
   return [
-    `着眼テーマ：「${sub.skill}」の定義・公式・例外条件を確認する。`,
-    `選択肢の吟味：${correctCircle}（${correctReason}）が条件に合致することを確認し、他選択肢の引っかけ箇所を除外する。`,
+    `型の適用：${printRule.replace(/^【[^】]+】/, '').trim()}`,
+    `結論と誤答消去：${correctCircle}（${correctReason}）を選び、他選択肢の数値・条件の誤りを除外する。`,
   ];
 }
 
@@ -123,7 +130,7 @@ function toSubQuestion(
     detailedExplanation: {
       theme: sub.skill,
       printRule,
-      steps: deriveStructuredSteps(sub),
+      steps: deriveStructuredSteps(sub, printRule),
       difficulty: difficultyLevelToScore(level),
     },
     distractors: sub.reasons.map((why, index) => ({ no: index + 1, why })),
