@@ -3,15 +3,14 @@ import {
   FIG_AMINO_ELUTION_PROFILE,
   FIG_COMPRESSIBILITY_FACTOR,
   FIG_CONDUCTIVITY_TITRATION,
-  FIG_COOLING_SUPERSAT,
-  FIG_CRYSTAL_LATTICE,
-  FIG_ELECTROLYSIS_FLOW,
+  FIG_CRYSTAL_LATTICES,
+  FIG_ION_EXCHANGE_ELECTROLYSIS,
+  FIG_SOLUBILITY_CURVE,
   FIG_GLYCINE_TITRATION,
   FIG_IONIZATION_ENERGY,
   FIG_ORGANIC_EXTRACTION,
   FIG_ORGANIC_STRUCTURE_PUZZLE,
   FIG_PRECIPITATE_EXCESS_CURVE,
-  FIG_SPECTROPHOTOMETRY_MS,
   FIG_TITRATION_CURVE,
 } from '../../figures';
 
@@ -80,7 +79,7 @@ export const WAVE3_BASIC_MATTER_UNITS: readonly ChemChapterSpec[] = [
         },
         figures: [
           {
-            url: FIG_CRYSTAL_LATTICE,
+            url: FIG_CRYSTAL_LATTICES,
             label: '図1 結晶格子',
             caption: '図1：金属結晶およびイオン結晶の単位格子モデル',
           },
@@ -450,7 +449,7 @@ export const WAVE3_THEORY_UNITS: readonly ChemChapterSpec[] = [
             caption: '図1：水素 H₂（300 K）およびメタン CH₄（250 K, 500 K）の圧縮因子 Z',
           },
           {
-            url: FIG_COOLING_SUPERSAT,
+            url: FIG_SOLUBILITY_CURVE,
             label: '図2 冷却曲線',
             caption: '図2：純溶媒と溶液の冷却曲線および過冷却状態',
           },
@@ -633,7 +632,7 @@ export const WAVE3_INORGANIC_UNITS: readonly ChemChapterSpec[] = [
             caption: '図1：金属イオン n₀ mol にアンモニア水を滴下したときの沈殿物質量変化',
           },
           {
-            url: FIG_ELECTROLYSIS_FLOW,
+            url: FIG_ION_EXCHANGE_ELECTROLYSIS,
             label: '図2 電解精錬・電解槽',
             caption: '図2：電気分解・電解精錬におけるイオンと電子の移動モデル',
           },

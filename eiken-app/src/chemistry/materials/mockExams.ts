@@ -1,4 +1,4 @@
-import { CHEM_MOCK_EXAMS_EXTRA } from './mockExamsExtra';
+import { EXTRA_CHEM_MOCK_EXAMS as CHEM_MOCK_EXAMS_EXTRA } from './mockExamsExtra';
 import { CHEM_MOCK_EXAMS_WAVE3 } from './mockExamsWave3';
 import type { ChemMockExamSpec } from '../types';
 import {

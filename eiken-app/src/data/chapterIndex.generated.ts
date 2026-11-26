@@ -12,7 +12,7 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "title": "第1章 物質の構成と分離｜純物質と混合物・加熱曲線・単体と元素の識別",
         "abstractTitle": "純物質と混合物・加熱曲線・単体と元素の識別",
         "realTitle": "第1章 物質の構成と分離",
-        "problemCount": 2
+        "problemCount": 3
       },
       {
         "id": "chem_basic_matter_ch02",
@@ -61,21 +61,21 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "title": "第2章 原子の構造と周期律｜原子の構造・イオンの電子数・同位体と放射線（半減期）",
         "abstractTitle": "原子の構造・イオンの電子数・同位体と放射線（半減期）",
         "realTitle": "第2章 原子の構造と周期律",
-        "problemCount": 2
+        "problemCount": 3
       },
       {
         "id": "chem_basic_matter_ch06",
         "title": "第2章 原子の構造と周期律｜電子配置（K〜N殻・価電子）と元素の周期表（族・典型/遷移）",
         "abstractTitle": "電子配置（K〜N殻・価電子）と元素の周期表（族・典型/遷移）",
         "realTitle": "第2章 原子の構造と周期律",
-        "problemCount": 2
+        "problemCount": 3
       },
       {
         "id": "chem_basic_matter_ch07",
         "title": "第2章 原子の構造と周期律｜イオン化エネルギー・電子親和力・原子半径とイオン半径",
         "abstractTitle": "イオン化エネルギー・電子親和力・原子半径とイオン半径",
         "realTitle": "第2章 原子の構造と周期律",
-        "problemCount": 2
+        "problemCount": 3
       },
       {
         "id": "chem_basic_matter_ch14",
@@ -96,7 +96,7 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "title": "第3章 化学結合と結晶｜共有結合（電子式・構造式・多重結合）・配位結合と分子の形",
         "abstractTitle": "共有結合（電子式・構造式・多重結合）・配位結合と分子の形",
         "realTitle": "第3章 化学結合と結晶",
-        "problemCount": 2
+        "problemCount": 3
       },
       {
         "id": "chem_basic_matter_ch10",
@@ -125,6 +125,41 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "abstractTitle": "分子結晶・イオン結晶・共有結合結晶の沸点／融点比較と配位結合・極性の完全攻略",
         "realTitle": "第3章 化学結合と結晶",
         "problemCount": 1
+      },
+      {
+        "id": "chem_basic_matter_ch18",
+        "title": "第4章 共通テスト実戦・探究総合演習｜複数条件の共通部分による物質の絞り込み（溶解性・電気伝導性・結合と構造）",
+        "abstractTitle": "複数条件の共通部分による物質の絞り込み（溶解性・電気伝導性・結合と構造）",
+        "realTitle": "第4章 共通テスト実戦・探究総合演習",
+        "problemCount": 3
+      },
+      {
+        "id": "chem_basic_matter_ch19",
+        "title": "第4章 共通テスト実戦・探究総合演習｜同位体組成の逆算・イオン電子配置と周期表の総合推理",
+        "abstractTitle": "同位体組成の逆算・イオン電子配置と周期表の総合推理",
+        "realTitle": "第4章 共通テスト実戦・探究総合演習",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_basic_matter_ch20",
+        "title": "第4章 共通テスト実戦・探究総合演習｜ペーパークロマトグラフィー Rf値・蒸留装置の正誤と日常・環境中の化学基礎",
+        "abstractTitle": "ペーパークロマトグラフィー Rf値・蒸留装置の正誤と日常・環境中の化学基礎",
+        "realTitle": "第4章 共通テスト実戦・探究総合演習",
+        "problemCount": 3
+      },
+      {
+        "id": "chem_basic_matter_ch21",
+        "title": "第4章 共通テスト実戦・探究総合演習｜炎色反応・沈殿検出の複合実験と結晶の融点・沸点序列の完全マスター",
+        "abstractTitle": "炎色反応・沈殿検出の複合実験と結晶の融点・沸点序列の完全マスター",
+        "realTitle": "第4章 共通テスト実戦・探究総合演習",
+        "problemCount": 3
+      },
+      {
+        "id": "chem_basic_matter_ch22",
+        "title": "第4章 物質の探究と総合考察｜多資料クロス判定（未知物質4種の物性表・イオン化エネルギー・結晶格子）",
+        "abstractTitle": "多資料クロス判定（未知物質4種の物性表・イオン化エネルギー・結晶格子）",
+        "realTitle": "第4章 物質の探究と総合考察",
+        "problemCount": 1
       }
     ]
   },
@@ -151,7 +186,7 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "title": "第1章 物質量と溶液の濃度｜化学反応式・未定係数法と過不足計算・混合物連立計算",
         "abstractTitle": "化学反応式・未定係数法と過不足計算・混合物連立計算",
         "realTitle": "第1章 物質量と溶液の濃度",
-        "problemCount": 2
+        "problemCount": 3
       },
       {
         "id": "chem_basic_change_ch04",
@@ -200,21 +235,21 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "title": "第3章 中和滴定と二段階滴定｜中和滴定の実験器具・共洗いと誤差考察",
         "abstractTitle": "中和滴定の実験器具・共洗いと誤差考察",
         "realTitle": "第3章 中和滴定と二段階滴定",
-        "problemCount": 2
+        "problemCount": 3
       },
       {
         "id": "chem_basic_change_ch09",
         "title": "第3章 中和滴定と二段階滴定｜中和の量的計算（食酢・固体塩基・混合酸）と逆滴定（NH₃・CO₂）",
         "abstractTitle": "中和の量的計算（食酢・固体塩基・混合酸）と逆滴定（NH₃・CO₂）",
         "realTitle": "第3章 中和滴定と二段階滴定",
-        "problemCount": 2
+        "problemCount": 3
       },
       {
         "id": "chem_basic_change_ch10",
         "title": "第3章 中和滴定と二段階滴定｜滴定曲線と指示薬の選択・二段階中和滴定（Na₂CO₃ / 混合塩基）",
         "abstractTitle": "滴定曲線と指示薬の選択・二段階中和滴定（Na₂CO₃ / 混合塩基）",
         "realTitle": "第3章 中和滴定と二段階滴定",
-        "problemCount": 2
+        "problemCount": 3
       },
       {
         "id": "chem_basic_change_ch18",
@@ -256,7 +291,7 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "title": "第4章 酸化還元と金属・電池｜化学電池（ボルタ・ダニエル・実用電池・水素燃料電池の酸性/塩基性型）",
         "abstractTitle": "化学電池（ボルタ・ダニエル・実用電池・水素燃料電池の酸性/塩基性型）",
         "realTitle": "第4章 酸化還元と金属・電池",
-        "problemCount": 2
+        "problemCount": 3
       },
       {
         "id": "chem_basic_change_ch15",
@@ -271,6 +306,41 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "abstractTitle": "実用一次電池・金属腐食と電気防食（トタン vs ブリキ・犠牲陽極）の完全比較",
         "realTitle": "第4章 酸化還元と金属・電池",
         "problemCount": 1
+      },
+      {
+        "id": "chem_basic_change_ch25",
+        "title": "第4章 化学変化の総合探究｜中和の電気伝導率グラフ×pH滴定曲線の2図横断考察と逆滴定",
+        "abstractTitle": "中和の電気伝導率グラフ×pH滴定曲線の2図横断考察と逆滴定",
+        "realTitle": "第4章 化学変化の総合探究",
+        "problemCount": 1
+      },
+      {
+        "id": "chem_basic_change_ch21",
+        "title": "第5章 共通テスト実戦・探究総合演習｜実験結果表からの未知濃度範囲の特定と検量線による成分定量（石灰窒素・肥料分析）",
+        "abstractTitle": "実験結果表からの未知濃度範囲の特定と検量線による成分定量（石灰窒素・肥料分析）",
+        "realTitle": "第5章 共通テスト実戦・探究総合演習",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_basic_change_ch22",
+        "title": "第5章 共通テスト実戦・探究総合演習｜強酸・弱酸の希釈pH変化と「塩の水溶液・炭酸水素塩」の総合識別実験",
+        "abstractTitle": "強酸・弱酸の希釈pH変化と「塩の水溶液・炭酸水素塩」の総合識別実験",
+        "realTitle": "第5章 共通テスト実戦・探究総合演習",
+        "problemCount": 3
+      },
+      {
+        "id": "chem_basic_change_ch23",
+        "title": "第5章 共通テスト実戦・探究総合演習｜複合酸化還元反応・過酸化水素の二面性と金属・電池の量的関係総合",
+        "abstractTitle": "複合酸化還元反応・過酸化水素の二面性と金属・電池の量的関係総合",
+        "realTitle": "第5章 共通テスト実戦・探究総合演習",
+        "problemCount": 3
+      },
+      {
+        "id": "chem_basic_change_ch24",
+        "title": "第5章 共通テスト実戦・探究総合演習｜市販試薬・医薬品の定量分析（胃腸薬の制酸力逆滴定・オキシドール・鉄錠剤定量）",
+        "abstractTitle": "市販試薬・医薬品の定量分析（胃腸薬の制酸力逆滴定・オキシドール・鉄錠剤定量）",
+        "realTitle": "第5章 共通テスト実戦・探究総合演習",
+        "problemCount": 2
       }
     ]
   },
@@ -290,7 +360,7 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "title": "第1章 気体の性質と状態図｜ドルトンの分圧の法則・モル分率・水上置換と気体燃焼",
         "abstractTitle": "ドルトンの分圧の法則・モル分率・水上置換と気体燃焼",
         "realTitle": "第1章 気体の性質と状態図",
-        "problemCount": 2
+        "problemCount": 3
       },
       {
         "id": "chem_theory_ch03",
@@ -325,7 +395,7 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "title": "第3章 溶液の性質とコロイド｜固体の溶解度（水和物の析出計算）と気体の溶解度（ヘンリーの法則）",
         "abstractTitle": "固体の溶解度（水和物の析出計算）と気体の溶解度（ヘンリーの法則）",
         "realTitle": "第3章 溶液の性質とコロイド",
-        "problemCount": 2
+        "problemCount": 3
       },
       {
         "id": "chem_theory_ch08",
@@ -339,7 +409,7 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "title": "第3章 溶液の性質とコロイド｜コロイド溶液の分類と性質（透析・チンダル・電気泳動・凝析と塩析）",
         "abstractTitle": "コロイド溶液の分類と性質（透析・チンダル・電気泳動・凝析と塩析）",
         "realTitle": "第3章 溶液の性質とコロイド",
-        "problemCount": 2
+        "problemCount": 3
       },
       {
         "id": "chem_theory_ch17",
@@ -374,7 +444,7 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "title": "第4章 熱化学と反応速度｜【新課程必出】エントロピー変化 ΔS と反応の自発性・ボルン・ハーバーサイクル",
         "abstractTitle": "【新課程必出】エントロピー変化 ΔS と反応の自発性・ボルン・ハーバーサイクル",
         "realTitle": "第4章 熱化学と反応速度",
-        "problemCount": 2
+        "problemCount": 3
       },
       {
         "id": "chem_theory_ch22",
@@ -395,7 +465,7 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "title": "第5章 化学平衡と電解質平衡｜電離平衡（弱酸・弱塩基の電離定数 Ka, Kb・加水分解・緩衝液のpH）",
         "abstractTitle": "電離平衡（弱酸・弱塩基の電離定数 Ka, Kb・加水分解・緩衝液のpH）",
         "realTitle": "第5章 化学平衡と電解質平衡",
-        "problemCount": 2
+        "problemCount": 3
       },
       {
         "id": "chem_theory_ch14",
@@ -438,6 +508,48 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "abstractTitle": "直列・並列電解槽のファラデー計算と混合電解液（Ag⁺・Cu²⁺・H⁺）の析出順序・過電圧",
         "realTitle": "第6章 電気化学（実用電池と電気分解）",
         "problemCount": 1
+      },
+      {
+        "id": "chem_theory_ch29",
+        "title": "第6章 理論化学の総合探究｜実在気体の圧縮因子 Z グラフ×過飽和冷却曲線の多資料解析",
+        "abstractTitle": "実在気体の圧縮因子 Z グラフ×過飽和冷却曲線の多資料解析",
+        "realTitle": "第6章 理論化学の総合探究",
+        "problemCount": 1
+      },
+      {
+        "id": "chem_theory_ch24",
+        "title": "第7章 共通テスト実戦・探究総合演習｜結晶格子の切断面幾何学（HCP・FCC・BCC）と密閉容器内の燃焼前後圧力比",
+        "abstractTitle": "結晶格子の切断面幾何学（HCP・FCC・BCC）と密閉容器内の燃焼前後圧力比",
+        "realTitle": "第7章 共通テスト実戦・探究総合演習",
+        "problemCount": 3
+      },
+      {
+        "id": "chem_theory_ch25",
+        "title": "第7章 共通テスト実戦・探究総合演習｜逆浸透法（海水淡水化）の定量計算と蒸気圧曲線からの沸点上昇読解",
+        "abstractTitle": "逆浸透法（海水淡水化）の定量計算と蒸気圧曲線からの沸点上昇読解",
+        "realTitle": "第7章 共通テスト実戦・探究総合演習",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_theory_ch26",
+        "title": "第7章 共通テスト実戦・探究総合演習｜実験データ表からの反応速度定数 k の算出と「温度・触媒×速度・平衡収率」複合グラフ",
+        "abstractTitle": "実験データ表からの反応速度定数 k の算出と「温度・触媒×速度・平衡収率」複合グラフ",
+        "realTitle": "第7章 共通テスト実戦・探究総合演習",
+        "problemCount": 3
+      },
+      {
+        "id": "chem_theory_ch27",
+        "title": "第7章 共通テスト実戦・探究総合演習｜二次電池の電解液質量変化（鉛蓄電池 vs ニッケル・カドミウム電池）と化学発光・光化学",
+        "abstractTitle": "二次電池の電解液質量変化（鉛蓄電池 vs ニッケル・カドミウム電池）と化学発光・光化学",
+        "realTitle": "第7章 共通テスト実戦・探究総合演習",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_theory_ch28",
+        "title": "第7章 共通テスト実戦・探究総合演習｜実在気体の状態方程式・蒸気圧とピストン連結容器・冷却曲線の過冷却定量",
+        "abstractTitle": "実在気体の状態方程式・蒸気圧とピストン連結容器・冷却曲線の過冷却定量",
+        "realTitle": "第7章 共通テスト実戦・探究総合演習",
+        "problemCount": 3
       }
     ]
   },
@@ -471,7 +583,7 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "title": "第1章 非金属元素と気体の製法｜炭素・ケイ素とその化合物（CO/CO₂・水ガラス・シリカゲル・セラミックス）",
         "abstractTitle": "炭素・ケイ素とその化合物（CO/CO₂・水ガラス・シリカゲル・セラミックス）",
         "realTitle": "第1章 非金属元素と気体の製法",
-        "problemCount": 2
+        "problemCount": 3
       },
       {
         "id": "chem_inorganic_ch05",
@@ -506,14 +618,14 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "title": "第2章 典型金属元素｜2族元素（Mg vs アルカリ土類金属・石灰サイクル・セッコウ・硬水と軟水）",
         "abstractTitle": "2族元素（Mg vs アルカリ土類金属・石灰サイクル・セッコウ・硬水と軟水）",
         "realTitle": "第2章 典型金属元素",
-        "problemCount": 2
+        "problemCount": 3
       },
       {
         "id": "chem_inorganic_ch08",
         "title": "第2章 典型金属元素｜両性元素（Al・Zn・Sn・Pb）の反応・錯イオン・テルミット・トタンとブリキ",
         "abstractTitle": "両性元素（Al・Zn・Sn・Pb）の反応・錯イオン・テルミット・トタンとブリキ",
         "realTitle": "第2章 典型金属元素",
-        "problemCount": 2
+        "problemCount": 3
       },
       {
         "id": "chem_inorganic_ch09",
@@ -534,7 +646,7 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "title": "第3章 遷移元素（Fe・Cu・Ag・Cr・Mn）｜クロム・マンガンとその化合物（CrO₄²⁻⇄Cr₂O₇²⁻ 平衡・クロム酸塩沈殿・KMnO₄）",
         "abstractTitle": "クロム・マンガンとその化合物（CrO₄²⁻⇄Cr₂O₇²⁻ 平衡・クロム酸塩沈殿・KMnO₄）",
         "realTitle": "第3章 遷移元素（Fe・Cu・Ag・Cr・Mn）",
-        "problemCount": 2
+        "problemCount": 3
       },
       {
         "id": "chem_inorganic_ch18",
@@ -584,6 +696,41 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "abstractTitle": "金属硫化物（CuS vs ZnS）の溶解度積 Ksp と pH 制御による選択沈殿の定量計算",
         "realTitle": "第4章 金属イオンの系統分離と定性分析",
         "problemCount": 1
+      },
+      {
+        "id": "chem_inorganic_ch21",
+        "title": "第5章 共通テスト実戦・探究総合演習｜日本の資源化学・かん水からのヨウ素工業製法（NaIO₃ 酸化還元定量）とハロゲン総合",
+        "abstractTitle": "日本の資源化学・かん水からのヨウ素工業製法（NaIO₃ 酸化還元定量）とハロゲン総合",
+        "realTitle": "第5章 共通テスト実戦・探究総合演習",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_inorganic_ch22",
+        "title": "第5章 共通テスト実戦・探究総合演習｜硫化水素の二段階電離×溶解度積 Ksp（CuS と ZnS・FeS の pH 分離境界計算）",
+        "abstractTitle": "硫化水素の二段階電離×溶解度積 Ksp（CuS と ZnS・FeS の pH 分離境界計算）",
+        "realTitle": "第5章 共通テスト実戦・探究総合演習",
+        "problemCount": 3
+      },
+      {
+        "id": "chem_inorganic_ch23",
+        "title": "第5章 共通テスト実戦・探究総合演習｜バナジウムの化学（V₂O₅ 触媒・VO²⁺ の酸化数・キレート滴定）とトーナメント式陽イオン識別",
+        "abstractTitle": "バナジウムの化学（V₂O₅ 触媒・VO²⁺ の酸化数・キレート滴定）とトーナメント式陽イオン識別",
+        "realTitle": "第5章 共通テスト実戦・探究総合演習",
+        "problemCount": 3
+      },
+      {
+        "id": "chem_inorganic_ch24",
+        "title": "第5章 共通テスト実戦・探究総合演習｜工業化学の全反応式・量的収支横断（ハーバー・オストワルト・接触・ソルベー・電解精錬）",
+        "abstractTitle": "工業化学の全反応式・量的収支横断（ハーバー・オストワルト・接触・ソルベー・電解精錬）",
+        "realTitle": "第5章 共通テスト実戦・探究総合演習",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_inorganic_ch25",
+        "title": "第5章 無機化学の総合探究｜金属イオン沈殿曲線×試薬マトリックス×電気分解の多資料統合",
+        "abstractTitle": "金属イオン沈殿曲線×試薬マトリックス×電気分解の多資料統合",
+        "realTitle": "第5章 無機化学の総合探究",
+        "problemCount": 1
       }
     ]
   },
@@ -617,7 +764,7 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "title": "第1章 脂肪族炭化水素｜σ結合とπ結合・末端アルキンの金属アセチリド沈殿（Ag₂C₂・Cu₂C₂）とオゾン分解",
         "abstractTitle": "σ結合とπ結合・末端アルキンの金属アセチリド沈殿（Ag₂C₂・Cu₂C₂）とオゾン分解",
         "realTitle": "第1章 脂肪族炭化水素",
-        "problemCount": 2
+        "problemCount": 3
       },
       {
         "id": "chem_organic_ch16",
@@ -631,7 +778,7 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "title": "第2章 酸素を含む脂肪族化合物｜アルコールとエーテル（1〜3級の酸化・Na反応・C₄H₁₀O/C₅H₁₂O 異性体完全攻略）",
         "abstractTitle": "アルコールとエーテル（1〜3級の酸化・Na反応・C₄H₁₀O/C₅H₁₂O 異性体完全攻略）",
         "realTitle": "第2章 酸素を含む脂肪族化合物",
-        "problemCount": 2
+        "problemCount": 3
       },
       {
         "id": "chem_organic_ch05",
@@ -673,7 +820,7 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "title": "第3章 芳香族化合物｜芳香族炭化水素（ベンゼンの構造と置換反応・光付加・トルエンとキシレンの酸化）",
         "abstractTitle": "芳香族炭化水素（ベンゼンの構造と置換反応・光付加・トルエンとキシレンの酸化）",
         "realTitle": "第3章 芳香族化合物",
-        "problemCount": 2
+        "problemCount": 3
       },
       {
         "id": "chem_organic_ch09",
@@ -687,7 +834,7 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "title": "第3章 芳香族化合物｜芳香族カルボン酸とサリチル酸誘導体（コルベ・シュミット法・アスピリンとサリチル酸メチル）",
         "abstractTitle": "芳香族カルボン酸とサリチル酸誘導体（コルベ・シュミット法・アスピリンとサリチル酸メチル）",
         "realTitle": "第3章 芳香族化合物",
-        "problemCount": 2
+        "problemCount": 3
       },
       {
         "id": "chem_organic_ch11",
@@ -723,6 +870,34 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "abstractTitle": "既知反応からの未知反応類推（イミド環形成）と条件交差による芳香族構造決定",
         "realTitle": "第4章 抽出分離と総合構造決定",
         "problemCount": 2
+      },
+      {
+        "id": "chem_organic_ch20",
+        "title": "第5章 共通テスト実戦・探究総合演習｜エステル化・加水分解の化学平衡定数 K 計算と複数条件による CₙH₂ₙO / CₙH₂ₙO₂ 構造絞り込み",
+        "abstractTitle": "エステル化・加水分解の化学平衡定数 K 計算と複数条件による CₙH₂ₙO / CₙH₂ₙO₂ 構造絞り込み",
+        "realTitle": "第5章 共通テスト実戦・探究総合演習",
+        "problemCount": 3
+      },
+      {
+        "id": "chem_organic_ch21",
+        "title": "第5章 共通テスト実戦・探究総合演習｜原油の常圧分留・ナフサ石油化学コンビナートと芳香族酸化・求核付加反応（アクリル酸エステル）",
+        "abstractTitle": "原油の常圧分留・ナフサ石油化学コンビナートと芳香族酸化・求核付加反応（アクリル酸エステル）",
+        "realTitle": "第5章 共通テスト実戦・探究総合演習",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_organic_ch22",
+        "title": "第5章 共通テスト実戦・探究総合演習｜油脂のけん化・水素付加（硬化油）の定量計算と芳香族4成分抽出・元素分析総合",
+        "abstractTitle": "油脂のけん化・水素付加（硬化油）の定量計算と芳香族4成分抽出・元素分析総合",
+        "realTitle": "第5章 共通テスト実戦・探究総合演習",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_organic_ch23",
+        "title": "第5章 有機化合物の総合探究｜芳香族異性体・フェノールエステルの多条件マトリックス＆分液系統分離",
+        "abstractTitle": "芳香族異性体・フェノールエステルの多条件マトリックス＆分液系統分離",
+        "realTitle": "第5章 有機化合物の総合探究",
+        "problemCount": 1
       }
     ]
   },
@@ -742,7 +917,7 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "title": "第1章 天然高分子化合物（糖・タンパク質・核酸）｜多糖類（デンプン・グリコーゲン・セルロース）と再生繊維・半合成繊維",
         "abstractTitle": "多糖類（デンプン・グリコーゲン・セルロース）と再生繊維・半合成繊維",
         "realTitle": "第1章 天然高分子化合物（糖・タンパク質・核酸）",
-        "problemCount": 2
+        "problemCount": 3
       },
       {
         "id": "chem_polymer_ch03",
@@ -763,7 +938,7 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "title": "第1章 天然高分子化合物（糖・タンパク質・核酸）｜核酸（DNAとRNAの構成成分・ヌクレオチド・二重らせんの水素結合本数計算）",
         "abstractTitle": "核酸（DNAとRNAの構成成分・ヌクレオチド・二重らせんの水素結合本数計算）",
         "realTitle": "第1章 天然高分子化合物（糖・タンパク質・核酸）",
-        "problemCount": 2
+        "problemCount": 3
       },
       {
         "id": "chem_polymer_ch09",
@@ -805,14 +980,14 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "title": "第2章 合成高分子化合物（繊維・樹脂・ゴム・機能性）｜合成樹脂（熱可塑性樹脂 vs 熱硬化性樹脂）とイオン交換樹脂の定量滴定計算",
         "abstractTitle": "合成樹脂（熱可塑性樹脂 vs 熱硬化性樹脂）とイオン交換樹脂の定量滴定計算",
         "realTitle": "第2章 合成高分子化合物（繊維・樹脂・ゴム・機能性）",
-        "problemCount": 2
+        "problemCount": 3
       },
       {
         "id": "chem_polymer_ch08",
         "title": "第2章 合成高分子化合物（繊維・樹脂・ゴム・機能性）｜天然ゴム・合成ゴム（加硫・共重合比計算）と機能性高分子（高吸水性・導電性・生分解性）",
         "abstractTitle": "天然ゴム・合成ゴム（加硫・共重合比計算）と機能性高分子（高吸水性・導電性・生分解性）",
         "realTitle": "第2章 合成高分子化合物（繊維・樹脂・ゴム・機能性）",
-        "problemCount": 2
+        "problemCount": 3
       },
       {
         "id": "chem_polymer_ch10",
@@ -834,46 +1009,74 @@ export const SUBJECT_INDEX: readonly SubjectIndexEntry[] = [
         "abstractTitle": "SBR・NBR 共重合ゴムの組成比計算とイオン交換樹脂カラム（混合塩・アミノ酸分離）の完全攻略",
         "realTitle": "第2章 合成高分子化合物（繊維・樹脂・ゴム・機能性）",
         "problemCount": 1
+      },
+      {
+        "id": "chem_polymer_ch16",
+        "title": "第3章 共通テスト実戦・探究総合演習｜グルタチオン（γ-ペプチド結合・S-S酸化）・アミノ酸の二段階滴定曲線と pKa・等電点",
+        "abstractTitle": "グルタチオン（γ-ペプチド結合・S-S酸化）・アミノ酸の二段階滴定曲線と pKa・等電点",
+        "realTitle": "第3章 共通テスト実戦・探究総合演習",
+        "problemCount": 3
+      },
+      {
+        "id": "chem_polymer_ch17",
+        "title": "第3章 共通テスト実戦・探究総合演習｜ポリイミド（アミック酸経由二段階合成）・PVA ブチラール化計算とカプロラクタム開環重合",
+        "abstractTitle": "ポリイミド（アミック酸経由二段階合成）・PVA ブチラール化計算とカプロラクタム開環重合",
+        "realTitle": "第3章 共通テスト実戦・探究総合演習",
+        "problemCount": 3
+      },
+      {
+        "id": "chem_polymer_ch18",
+        "title": "第3章 共通テスト実戦・探究総合演習｜デンプン・セルロースの加水分解収量と機能性高分子（高吸水性樹脂・生分解性脂肪族ポリエステル）総合",
+        "abstractTitle": "デンプン・セルロースの加水分解収量と機能性高分子（高吸水性樹脂・生分解性脂肪族ポリエステル）総合",
+        "realTitle": "第3章 共通テスト実戦・探究総合演習",
+        "problemCount": 2
+      },
+      {
+        "id": "chem_polymer_ch19",
+        "title": "第4章 高分子化合物の総合探究｜アミノ酸段階pH溶出クロマトグラフィー×pKa滴定曲線×ペプチド計算",
+        "abstractTitle": "アミノ酸段階pH溶出クロマトグラフィー×pKa滴定曲線×ペプチド計算",
+        "realTitle": "第4章 高分子化合物の総合探究",
+        "problemCount": 1
       }
     ]
   }
 ];
 export const SUBJECT_STATS: Readonly<Record<string, SubjectStatsEntry>> = {
   "chem_basic_matter": {
-    "chapters": 17,
-    "units": 17,
-    "questions": 32,
-    "marks": 69
+    "chapters": 22,
+    "units": 22,
+    "questions": 49,
+    "marks": 98
   },
   "chem_basic_change": {
-    "chapters": 20,
-    "units": 20,
-    "questions": 38,
-    "marks": 80
+    "chapters": 25,
+    "units": 25,
+    "questions": 54,
+    "marks": 108
   },
   "chem_theory": {
-    "chapters": 23,
-    "units": 23,
-    "questions": 44,
-    "marks": 92
+    "chapters": 29,
+    "units": 29,
+    "questions": 63,
+    "marks": 121
   },
   "chem_inorganic": {
-    "chapters": 20,
-    "units": 20,
-    "questions": 38,
-    "marks": 80
+    "chapters": 25,
+    "units": 25,
+    "questions": 53,
+    "marks": 104
   },
   "chem_organic": {
-    "chapters": 19,
-    "units": 19,
-    "questions": 36,
-    "marks": 76
+    "chapters": 23,
+    "units": 23,
+    "questions": 48,
+    "marks": 96
   },
   "chem_polymer": {
-    "chapters": 15,
-    "units": 15,
-    "questions": 28,
-    "marks": 60
+    "chapters": 19,
+    "units": 19,
+    "questions": 41,
+    "marks": 80
   }
 };
 export function getChapterIndexOfSubject(subjectId: string | null | undefined): readonly ChapterIndexEntry[] {

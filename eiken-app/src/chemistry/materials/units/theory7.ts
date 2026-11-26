@@ -1,7 +1,7 @@
 import type { ChemChapterSpec } from '../../types';
 import {
   FIG_HCP_CROSS_SECTION,
-  FIG_REVERSE_OSMOSIS,
+  FIG_REVERSE_OSMOSIS_VAPOR,
   FIG_RATE_YIELD_SHIFT,
   FIG_LEAD_ACID_BATTERY,
 } from '../../figures';
@@ -175,7 +175,7 @@ export const THEORY_UNITS_7: readonly ChemChapterSpec[] = [
         title: '逆浸透法による食塩水からの純水回収量の定量計算（2026共通テスト型）',
         format: 'calculation',
         stem: `図のように、半透膜で仕切られた容器の左室に純水、右室に 27 ℃（300 K）で浸透圧 π₀ ＝ 2.4×10⁶ Pa を示す塩化ナトリウム水溶液（海水モデル）1.00 L を入れた。温度を 27 ℃ に保ったまま、右室のピストンに大気圧より P ＝ 6.0×10⁶ Pa だけ大きい一定の圧力を加え続けたところ、右室から半透膜を通って左室へ純水が移動し、やがて移動が止まって平衡に達した（半透膜は水分子のみを通し、Na⁺ と Cl⁻ は一切通さないものとし、浸透圧は溶質イオンのモル濃度に比例するものとする）。`,
-        imageUrl: FIG_REVERSE_OSMOSIS,
+        imageUrl: FIG_REVERSE_OSMOSIS_VAPOR,
         imageCaption: '浸透と逆浸透（溶液側に P ＞ π の圧力を加えて純水を取り出す海水淡水化原理）',
         subItems: [
           {

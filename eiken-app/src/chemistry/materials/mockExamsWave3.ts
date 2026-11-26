@@ -3,9 +3,9 @@ import {
   FIG_AMINO_ELUTION_PROFILE,
   FIG_COMPRESSIBILITY_FACTOR,
   FIG_CONDUCTIVITY_TITRATION,
-  FIG_COOLING_SUPERSAT,
-  FIG_CRYSTAL_LATTICE,
-  FIG_ELECTROLYSIS_FLOW,
+  FIG_CRYSTAL_LATTICES,
+  FIG_ION_EXCHANGE_ELECTROLYSIS,
+  FIG_SOLUBILITY_CURVE,
   FIG_ORGANIC_EXTRACTION,
   FIG_ORGANIC_STRUCTURE_PUZZLE,
   FIG_PRECIPITATE_EXCESS_CURVE,
@@ -51,12 +51,12 @@ export const CHEM_MOCK_EXAMS_WAVE3: readonly ChemMockExamSpec[] = [
         },
         figures: [
           {
-            url: FIG_CRYSTAL_LATTICE,
+            url: FIG_CRYSTAL_LATTICES,
             label: '図1 結晶格子',
             caption: '図1：結晶の単位格子モデル（金属結晶・イオン結晶）',
           },
           {
-            url: FIG_COOLING_SUPERSAT,
+            url: FIG_SOLUBILITY_CURVE,
             label: '図2 状態変化曲線',
             caption: '図2：冷却・状態変化に伴う温度推移の模式図',
           },
@@ -410,7 +410,7 @@ export const CHEM_MOCK_EXAMS_WAVE3: readonly ChemMockExamSpec[] = [
             caption: '図1：H₂（300 K）および CH₄（250 K, 500 K）の Z ＝ PV/(nRT)',
           },
           {
-            url: FIG_COOLING_SUPERSAT,
+            url: FIG_SOLUBILITY_CURVE,
             label: '図2 冷却曲線',
             caption: '図2：純溶媒と希薄溶液の冷却曲線',
           },
@@ -627,7 +627,7 @@ export const CHEM_MOCK_EXAMS_WAVE3: readonly ChemMockExamSpec[] = [
             caption: '図1：金属イオン n₀ mol にアンモニア水を滴下したときの沈殿物質量',
           },
           {
-            url: FIG_ELECTROLYSIS_FLOW,
+            url: FIG_ION_EXCHANGE_ELECTROLYSIS,
             label: '図2 電気分解モデル',
             caption: '図2：電気分解における電極反応と電子移動',
           },

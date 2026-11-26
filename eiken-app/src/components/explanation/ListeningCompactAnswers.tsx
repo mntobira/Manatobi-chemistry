@@ -133,30 +133,87 @@ export function ListeningCompactAnswers({
                                         <ListeningEvidenceScript track={track} collapsiblePhrases showHint={false} />
                                       </section>
                                     ))}
-                                    {objectiveSqs.map((sq) => {
+      {/* ★化学などの単問・複数問では「先に全問の正誤＋プリントの鉄則＋選択肢トラップ」が見え、
+           間違えた問（または1問しかないとき）はタップ不要で最初から詳細解説も開く★ */}
+                                    {objectiveSqs.map((sq, idxInList) => {
                                       const slice = stripScriptBox(sliceForSq(sq));
-                                      // PC は最初から開いておく（閉じたら閉じたまま）
-                                      const open = openExplanationBySq[sq.id] ?? pcListening;
+                                      const ok = isAnswerCorrect(sq, answers[sq.id]);
+                                      const attempted = isAttempted(answers[sq.id]);
+                                      const firstWrongIdx = objectiveSqs.findIndex(
+                                        s => isAttempted(answers[s.id]) && !isAnswerCorrect(s, answers[s.id]),
+                                      );
+                                      // PC は最初から全展開。スマホも「1問のみ」または「最初の誤答（未解答含む先頭）」は初期展開し、無駄なタップを無くす
+                                      const autoOpenMobile =
+                                        question.isChemistryProblem &&
+                                        (objectiveSqs.length === 1 ||
+                                          (firstWrongIdx >= 0 ? idxInList === firstWrongIdx : idxInList === 0));
+                                      const open = openExplanationBySq[sq.id] ?? (pcListening || Boolean(autoOpenMobile));
                                       const sqIdx = (question?.subQuestions || []).indexOf(sq);
                                       const marker = answerCardMarker(sq, sqIdx < 0 ? 0 : sqIdx, question);
+                                      const printRule = sq.detailedExplanation?.printRule;
                                       const theme = sq.detailedExplanation?.theme;
                                       const steps: string[] = sq.detailedExplanation?.steps || [];
                                       return (
                                         <div key={`lx-ex-${sq.id}`} className="lx-fold">
                                           <button type="button" onClick={() => setOpenExplanationBySq(prev => ({ ...prev, [sq.id]: !open }))} aria-expanded={open}>
                                             <BookOpen size={16} aria-hidden="true" />
-                                            <span>{objectiveSqs.length > 1 ? <>{formatText(marker)} の</> : null}詳しい解説</span>
+                                            <span>{objectiveSqs.length > 1 ? <>{formatText(marker)} の</> : null}プリント解法・詳しい解説{!attempted ? '' : ok ? '（○）' : '（×要確認）'}</span>
                                             <ChevronDown size={18} aria-hidden="true" className={open ? 'rotate-180' : ''} />
                                           </button>
                                           {open && (
-                                            <div className={`lx-fold-body ${explBodyBaseClass}`}>
-                                              {theme && <p className="lx-core"><KeyRound size={14} aria-hidden="true" />{formatText(theme, [], { prose: isEnglishChapter })}</p>}
-                                              {slice.trim()
-                                                ? <ExplanationBody text={slice} tone="light" prose={isEnglishChapter} className={`${explBodyFontClass} text-gray-700`} />
-                                                : !theme && <p className="text-xs text-gray-500">この問の解説は下の「共通ポイント」にまとめています。</p>}
-                                              {steps.length > 0 && isPracticeMode && (
-                                                <ol className="lx-steps">{steps.map((step, i) => <li key={i}><b>{i + 1}</b><span>{formatText(step, [], { prose: isEnglishChapter })}</span></li>)}</ol>
+                                            <div className={`lx-fold-body space-y-2.5 ${explBodyBaseClass}`}>
+                                              {printRule && (
+                                                <div
+                                                  data-print-rule
+                                                  className="rounded-xl border-2 border-amber-300 bg-amber-50/85 px-3 py-2 text-xs leading-relaxed shadow-2xs"
+                                                >
+                                                  <div className="mb-0.5 flex items-center gap-1.5 font-black text-amber-950">
+                                                    <KeyRound size={14} className="shrink-0 text-amber-700" aria-hidden="true" />
+                                                    <span>プリントの解法鉄則（1行の型）</span>
+                                                  </div>
+                                                  <p className="font-bold text-slate-900">
+                                                    {formatText(printRule, [], { prose: isEnglishChapter })}
+                                                  </p>
+                                                </div>
                                               )}
+                                              {theme && !printRule && (
+                                                <p className="lx-core">
+                                                  <KeyRound size={14} aria-hidden="true" />
+                                                  {formatText(theme, [], { prose: isEnglishChapter })}
+                                                </p>
+                                              )}
+                                              {steps.length > 0 && isPracticeMode && (
+                                                <div className="rounded-xl border border-teal-200/90 bg-teal-50/45 px-3 py-2">
+                                                  <div className="mb-1 text-xs font-extrabold text-teal-900">
+                                                    【正解までのステップ手順】
+                                                  </div>
+                                                  <ol className="lx-steps !mt-0">
+                                                    {steps.map((step, i) => (
+                                                      <li key={i}>
+                                                        <b>{i + 1}</b>
+                                                        <span>{formatText(step, [], { prose: isEnglishChapter })}</span>
+                                                      </li>
+                                                    ))}
+                                                  </ol>
+                                                </div>
+                                              )}
+                                              {slice.trim()
+                                                ? (
+                                                  <div className="rounded-xl border border-slate-200/90 bg-white px-3 py-2">
+                                                    <div className="mb-1 text-xs font-extrabold text-slate-700">
+                                                      【計算・根拠の丁寧な確認】
+                                                    </div>
+                                                    <ExplanationBody
+                                                      text={slice}
+                                                      tone="light"
+                                                      prose={isEnglishChapter}
+                                                      className={`${explBodyFontClass} text-gray-800`}
+                                                    />
+                                                  </div>
+                                                )
+                                                : !theme && !printRule && (
+                                                  <p className="text-xs text-gray-500">この問の解説は下の「共通ポイント」にまとめています。</p>
+                                                )}
                                             </div>
                                           )}
                                         </div>

@@ -1,12 +1,19 @@
 import type { ChemMockExamSpec } from '../types';
 import {
+  FIG_AMINO_ELECTROPHORESIS,
+  FIG_CRYSTAL_LATTICES,
   FIG_EXCESS_LIMITING_GRAPH,
-  FIG_TWO_STEP_TITRATION,
-  FIG_REVERSE_OSMOSIS,
-  FIG_RATE_YIELD_SHIFT,
-  FIG_INORGANIC_COLOR_MAP,
-  FIG_PETROLEUM_FRACTIONATION,
   FIG_GLYCINE_TITRATION,
+  FIG_INDUSTRIAL_INORGANIC_FLOW,
+  FIG_INORGANIC_COLOR_MAP,
+  FIG_IONIZATION_ENERGY,
+  FIG_ION_EXCHANGE_ELECTROLYSIS,
+  FIG_ORGANIC_EXTRACTION,
+  FIG_PETROLEUM_FRACTIONATION,
+  FIG_RATE_YIELD_SHIFT,
+  FIG_REVERSE_OSMOSIS_VAPOR,
+  FIG_SOLUBILITY_CURVE,
+  FIG_TWO_STEP_TITRATION,
 } from '../figures';
 
 export const EXTRA_CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
@@ -17,6 +24,8 @@ export const EXTRA_CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
     round: 5,
     title: '共通テスト実戦模試『化学基礎』第5回（2025・2026新課程本試準拠）',
     subtitle: '第1問（複数条件ベン図・同位体確率・結晶と非晶質・環境化学）＋ 第2問（過不足テーブル濃度範囲・検量線純度・酸化還元複合）',
+    levelBadge: '★★☆ 共テ本番・新課程準拠',
+    constantsNote: '必要があれば次の原子量・定数を用いよ：H = 1.0, C = 12, N = 14, O = 16, Mg = 24, Cl = 35.5, Ca = 40 ／ 標準状態の気体モル体積 22.4 L/mol',
     timeLimitMinutes: 30,
     totalPoints: 50,
     sections: [
@@ -24,7 +33,10 @@ export const EXTRA_CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
         id: 'sec_basic4_d1',
         daimonLabel: '第1問',
         title: '物質の構成・結合・周期律・新課程状態変化と人間生活（小問集合）',
-        leadText: '必要があれば原子量 H = 1.0, C = 12, N = 14, O = 16, Cl = 35.5, Ca = 40 を用いよ。',
+        recommendedMinutes: 13,
+        leadText: '物質の構成粒子・結晶質と非晶質・分子の極性・同位体の存在比・塩の液性に関する次の各問い（問1〜問5）に答えよ。必要があれば原子量 H = 1.0, C = 12, N = 14, O = 16, Cl = 35.5, Ca = 40 を用いよ。',
+        imageUrl: FIG_CRYSTAL_LATTICES,
+        imageCaption: '図1　代表的な結晶構造の模式図（イオン結晶・共有結合結晶・金属結晶）',
         items: [
           {
             id: 'chem_mock_basic_05_q1',
@@ -156,7 +168,18 @@ export const EXTRA_CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
         id: 'sec_basic4_d2',
         daimonLabel: '第2問',
         title: '気体発生の過不足実験・二段階中和と酸化還元の総合探究',
+        recommendedMinutes: 17,
         leadText: '炭酸塩と塩酸の反応および酸化還元滴定に関する次の各問いに答えよ（C = 12, O = 16, Mg = 24, Ca = 40、標準状態の気体モル体積 22.4 L/mol）。',
+        dialogue: [
+          {
+            speaker: '生徒',
+            text: '塩酸 20.0 mL に Mg リボンを 0.12 g、0.24 g、0.36 g と増やして加えたら、3回目の 0.36 g では水素の増加が頭打ちになりました！',
+          },
+          {
+            speaker: '先生',
+            text: 'その通り！1回目(0.12 g → 112 mL)と2回目(0.24 g → 224 mL)は比例しているから Mg が完全反応、3回目(268.8 mL)は塩酸がすべて使い切られた『過不足の境界超え』だね。3回目の H₂ の mol から塩酸濃度が一発で求まるよ！',
+          },
+        ],
         imageUrl: FIG_EXCESS_LIMITING_GRAPH,
         imageCaption: '図1　一定体積の塩酸に金属や炭酸塩を加えたときの気体発生量と過不足の境界',
         items: [
@@ -295,6 +318,8 @@ export const EXTRA_CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
     round: 5,
     title: '共通テスト実戦模試『化学』第5回（2025・2026新課程本試準拠フルセット）',
     subtitle: '第1問（HCP結晶・逆浸透・気体燃焼）〜 第2問（速度定数・二次電池・平衡移動）〜 第3問（ヨウ素製法・Ksp分離・バナジウム）〜 第4問（エステル平衡・分留・付加反応）〜 第5問（グルタチオン・ポリイミド・グリシン滴定）',
+    levelBadge: '★★★ 共テ本番〜国公立2次橋渡し',
+    constantsNote: '必要があれば次の値を用いよ：気体定数 R = 8.3×10³ Pa·L/(K·mol)、ファラデー定数 F = 9.65×10⁴ C/mol、原子量 H = 1.0, C = 12, N = 14, O = 16, Na = 23, S = 32, Cl = 35.5, Cu = 64, Br = 80, Ag = 108, Pb = 207',
     timeLimitMinutes: 60,
     totalPoints: 100,
     sections: [
@@ -302,8 +327,9 @@ export const EXTRA_CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
         id: 'sec_adv4_d1',
         daimonLabel: '第1問',
         title: '物質の状態（結晶格子の幾何・逆浸透法・定容気体燃焼）［20点］',
-        leadText: '必要があれば気体定数 R = 8.3×10³ Pa·L/(K·mol)、原子量 H = 1.0, C = 12, N = 14, O = 16, Na = 23, Cl = 35.5 を用いよ。',
-        imageUrl: FIG_REVERSE_OSMOSIS,
+        recommendedMinutes: 12,
+        leadText: '物質の結晶構造・半透膜による逆浸透・密閉容器内での気体燃焼後の全圧に関する次の各問いに答えよ。必要があれば気体定数 R = 8.3×10³ Pa·L/(K·mol)、原子量 H = 1.0, C = 12, N = 14, O = 16, Na = 23, Cl = 35.5 を用いよ。',
+        imageUrl: FIG_REVERSE_OSMOSIS_VAPOR,
         imageCaption: '図1　半透膜を用いた浸透と逆浸透（加圧 P ＞ π による純水の取り出し）',
         items: [
           {
@@ -387,6 +413,7 @@ export const EXTRA_CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
         id: 'sec_adv4_d2',
         daimonLabel: '第2問',
         title: '物質の変化と平衡（反応速度・熱と自発性・二次電池・緩衝液）［20点］',
+        recommendedMinutes: 13,
         leadText: '反応速度・化学平衡・電気化学に関する次の各問いに答えよ（ファラデー定数 F = 9.65×10⁴ C/mol、原子量 H = 1, O = 16, S = 32, Cu = 64, Pb = 207）。',
         imageUrl: FIG_RATE_YIELD_SHIFT,
         imageCaption: '図2　可逆反応における温度・触媒条件と生成物量の時間変化',
@@ -472,7 +499,8 @@ export const EXTRA_CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
         id: 'sec_adv4_d3',
         daimonLabel: '第3問',
         title: '無機物質（工業製法・気体捕集・遷移元素と定性分析）［20点］',
-        leadText: '非金属・典型金属・遷移金属の反応と定性分析に関する次の各問いに答えよ。',
+        recommendedMinutes: 11,
+        leadText: '非金属・典型金属・遷移金属の工業的製法、実験室での気体捕集、および金属イオンの定性分析に関する次の各問い（問1〜問3）に答えよ。',
         imageUrl: FIG_INORGANIC_COLOR_MAP,
         imageCaption: '図3　金属イオンの塩基沈殿と過剰 NaOH 水溶液・過剰 NH₃ 水による再溶解の整理',
         items: [
@@ -555,7 +583,8 @@ export const EXTRA_CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
         id: 'sec_adv4_d4',
         daimonLabel: '第4問',
         title: '有機化合物（異性体・エステル平衡・芳香族分離と構造決定）［20点］',
-        leadText: '必要があれば原子量 H = 1.0, C = 12, N = 14, O = 16, Br = 80 を用いよ。',
+        recommendedMinutes: 12,
+        leadText: '鎖式・環式炭化水素の異性体、芳香族エステルの加水分解による構造決定、および芳香族化合物の抽出分離に関する次の各問いに答えよ（原子量 H = 1.0, C = 12, N = 14, O = 16, Br = 80）。',
         imageUrl: FIG_PETROLEUM_FRACTIONATION,
         imageCaption: '図4　原油の分留とナフサを起点とする有機化学工業',
         items: [
@@ -640,6 +669,7 @@ export const EXTRA_CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
         id: 'sec_adv4_d5',
         daimonLabel: '第5問',
         title: '高分子化合物（天然高分子の定量・ポリイミド・合成高分子総合）［20点］',
+        recommendedMinutes: 12,
         leadText: '糖類・アミノ酸・ペプチドおよび合成高分子化合物に関する次の各問いに答えよ（H = 1.0, C = 12, N = 14, O = 16, S = 32, Ag = 108）。',
         imageUrl: FIG_GLYCINE_TITRATION,
         imageCaption: '図5　陽イオン型アミノ酸の NaOH 二段階滴定曲線と等電点・緩衝領域',
@@ -730,6 +760,8 @@ export const EXTRA_CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
     round: 6,
     title: '共通テスト実戦模試『化学基礎』第6回（総合完成・思考探究セット）',
     subtitle: '第1問（水素化合物沸点・等電子イオン半径・同位体半減期・結合複合）＋ 第2問（ワルダー二段階滴定・制酸剤逆滴定・塩基性燃料電池・金属置換Δw）',
+    levelBadge: '★★★ 共テ高得点・思考完成',
+    constantsNote: '必要があれば次の原子量を用いよ：H = 1.0, C = 12, N = 14, O = 16, F = 19, Na = 23, Mg = 24, Cl = 35.5, Cu = 64, Zn = 65, Ag = 108',
     timeLimitMinutes: 30,
     totalPoints: 50,
     sections: [
@@ -737,7 +769,10 @@ export const EXTRA_CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
         id: 'sec_basic5_d1',
         daimonLabel: '第1問',
         title: '物質の構成粒子・周期律・化学結合と分子間力（小問集合）',
-        leadText: '必要があれば原子量 H = 1.0, C = 12, N = 14, O = 16, F = 19, Na = 23, Mg = 24, Cl = 35.5 を用いよ。',
+        recommendedMinutes: 13,
+        leadText: '等電子配置イオンの半径、水素化合物の沸点と水素結合、同位体の半減期計算、および白色粉末塩の識別実験に関する次の各問いに答えよ（H = 1.0, C = 12, N = 14, O = 16, F = 19, Na = 23, Mg = 24, Cl = 35.5）。',
+        imageUrl: FIG_IONIZATION_ENERGY,
+        imageCaption: '図1　原子番号と第1イオン化エネルギー・周期的性質の推移',
         items: [
           {
             id: 'chem_mock_basic_06_q1',
@@ -867,7 +902,8 @@ export const EXTRA_CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
         id: 'sec_basic5_d2',
         daimonLabel: '第2問',
         title: '化学変化と量的関係・二段階＆逆滴定・電池と金属置換（テーマ総合）',
-        leadText: '必要があれば原子量 H = 1.0, C = 12, O = 16, Na = 23, Mg = 24, Cu = 64, Zn = 65, Ag = 108 を用いよ。',
+        recommendedMinutes: 17,
+        leadText: '二段階中和滴定・制酸剤の逆滴定・金属イオンの置換反応と燃料電池に関する次の各問いに答えよ（H = 1.0, C = 12, O = 16, Na = 23, Mg = 24, Cu = 64, Zn = 65, Ag = 108）。',
         imageUrl: FIG_TWO_STEP_TITRATION,
         imageCaption: '図1　混合塩基水溶液の二段階中和滴定の概念図',
         items: [
@@ -1007,6 +1043,8 @@ export const EXTRA_CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
     round: 6,
     title: '共通テスト実戦模試『化学』第6回（全5大問・新課程完全網羅100点）',
     subtitle: '第1問（2温度連結球・冷却曲線氷析出・Fe(OH)₃コロイド） 第2問（エントロピーΔS・直列電解・平衡） 第3問（工業原子保存・Al溶融塩電解・Cr平衡） 第4問（油脂硬化・キシレン対称性・オゾン分解） 第5問（デンプン発酵・DNA水素結合・高吸水性樹脂）',
+    levelBadge: '★★★ 共テ満点・2次余裕圏',
+    constantsNote: '必要があれば次の値を用いよ：気体定数 R = 8.3×10³ Pa·L/(K·mol)、水のモル凝固点降下 Kf = 1.85 K·kg/mol、ファラデー定数 F = 9.65×10⁴ C/mol、原子量 H = 1.0, C = 12, N = 14, O = 16, Al = 27, S = 32, Fe = 56',
     timeLimitMinutes: 60,
     totalPoints: 100,
     sections: [
@@ -1014,7 +1052,10 @@ export const EXTRA_CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
         id: 'sec_adv5_d1',
         daimonLabel: '第1問',
         title: '物質の状態（2温度連結容器・凝固点降下の氷析出・コロイド凝析）［20点］',
-        leadText: '必要があれば気体定数 R = 8.3×10³ Pa·L/(K·mol)、水のモル凝固点降下 Kf = 1.85 K·kg/mol を用いよ。',
+        recommendedMinutes: 12,
+        leadText: '2温度に保たれた連結球内の気体圧力、水溶液の冷却に伴う氷の析出量、および疎水コロイドの凝析に関する次の各問いに答えよ（気体定数 R = 8.3×10³ Pa·L/(K·mol)、水の Kf = 1.85 K·kg/mol）。',
+        imageUrl: FIG_SOLUBILITY_CURVE,
+        imageCaption: '図1　温度変化に伴う溶液の状態変化と析出平衡の模式図',
         items: [
           {
             id: 'chem_mock_adv_06_q1',
@@ -1097,7 +1138,10 @@ export const EXTRA_CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
         id: 'sec_adv5_d2',
         daimonLabel: '第2問',
         title: '化学反応とエネルギー・エントロピー・直列電気分解・電離平衡［20点］',
-        leadText: '必要があればファラデー定数 F = 9.65×10⁴ C/mol、原子量 H = 1.0, O = 16, Cu = 64, Ag = 108 を用いよ。',
+        recommendedMinutes: 13,
+        leadText: '反応の自発性とエントロピー変化 ΔS、直列電解槽におけるファラデー計算、および酢酸緩衝液に関する次の各問いに答えよ（ファラデー定数 F = 9.65×10⁴ C/mol、原子量 H = 1.0, O = 16, Cu = 64, Ag = 108）。',
+        imageUrl: FIG_ION_EXCHANGE_ELECTROLYSIS,
+        imageCaption: '図2　電気分解における電子の流れと電極反応の量的関係',
         items: [
           {
             id: 'chem_mock_adv_06_q4',
@@ -1179,7 +1223,10 @@ export const EXTRA_CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
         id: 'sec_adv5_d3',
         daimonLabel: '第3問',
         title: '無機物質（工業製法の原子保存・Al溶融塩電解・遷移元素クロム）［20点］',
-        leadText: '必要があれば原子量 H = 1.0, C = 12, N = 14, O = 16, Al = 27, S = 32, Fe = 56 を用いよ。',
+        recommendedMinutes: 11,
+        leadText: '接触法における硫黄原子保存計算、オストワルト法・アンモニアソーダ法・ホール・エルー法、およびクロム酸イオン平衡に関する次の各問いに答えよ（H = 1.0, C = 12, N = 14, O = 16, Al = 27, S = 32, Fe = 56）。',
+        imageUrl: FIG_INDUSTRIAL_INORGANIC_FLOW,
+        imageCaption: '図3　主な無機化学工業プロセス（接触法・オストワルト法・ソルベー法）の物質収支',
         items: [
           {
             id: 'chem_mock_adv_06_q7',
@@ -1260,7 +1307,10 @@ export const EXTRA_CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
         id: 'sec_adv5_d4',
         daimonLabel: '第4問',
         title: '有機化合物（混合油脂の硬化・元素分析・C₈H₁₀ 対称性とオゾン分解）［20点］',
-        leadText: '必要があれば原子量 H = 1.0, C = 12, O = 16、標準状態の気体モル体積 22.4 L/mol を用いよ。',
+        recommendedMinutes: 12,
+        leadText: '不飽和油脂への水素付加（硬化油）、芳香族炭化水素の対称性と置換体数、およびアルケンのオゾン分解による構造決定に関する次の各問いに答えよ（原子量 H = 1.0, C = 12, O = 16、標準状態の気体モル体積 22.4 L/mol）。',
+        imageUrl: FIG_ORGANIC_EXTRACTION,
+        imageCaption: '図4　有機化合物の官能基別反応・分離と構造決定のフロー',
         items: [
           {
             id: 'chem_mock_adv_06_q10',
@@ -1342,7 +1392,10 @@ export const EXTRA_CHEM_MOCK_EXAMS: readonly ChemMockExamSpec[] = [
         id: 'sec_adv5_d5',
         daimonLabel: '第5問',
         title: '高分子化合物（デンプン発酵・DNA二重らせん水素結合・機能性高分子）［20点］',
-        leadText: '必要があれば原子量 H = 1.0, C = 12, N = 14, O = 16 を用いよ。',
+        recommendedMinutes: 12,
+        leadText: 'デンプンの加水分解とアルコール発酵の量的計算、二本鎖 DNA のシャルガフ則と水素結合数、および機能性高分子に関する次の各問いに答えよ（原子量 H = 1.0, C = 12, N = 14, O = 16）。',
+        imageUrl: FIG_AMINO_ELECTROPHORESIS,
+        imageCaption: '図5　生体高分子（糖・アミノ酸・核酸）の構造と機能性高分子の架橋網目',
         items: [
           {
             id: 'chem_mock_adv_06_q13',
