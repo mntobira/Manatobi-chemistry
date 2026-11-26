@@ -55,12 +55,12 @@ export interface StudySubject {
 }
 
 const DESC_BY_COURSE: Record<string, string> = {
-  chem_basic_matter: '純物質とクロマトRf/多段抽出・白色粉末定性・質量分析MS・吸光度・周期律・分子極性(CH₂Cl₂/SO₂)・C₆₀結晶（全17単元）',
-  chem_basic_change: 'mol計算・過不足濃度範囲・気体逸散と元素%・ワルダー二段滴定・硫安逆滴定・COD・一次電池・トタンとブリキ（全20単元）',
-  chem_theory: '密閉燃焼・逆浸透・ヘンリー・弱酸希釈pH・ΔS自発変化・一次反応半減期・アレニウス式・直列並列電気分解（全23単元）',
-  chem_inorganic: 'ヨウ素製法・水ガラスとシリカゲル・鉄シアノ錯塩・実用合金・銑鉄/バイヤー計算・H₂S×Ksp選択沈殿・EDTA（全20単元）',
-  chem_organic: '原油分留・オゾン分解・エステル化平衡K=4.0・環状ラクトン・芳香族異性体完全制覇(コルナー法)・多段階構造決定（全19単元）',
-  chem_polymer: '糖類・グルタチオンGSSG・ペンタペプチド配列決定・微量S分子量・PVB・ポリイミド・共重合ゴムSBR/NBR・イオン交換連立（全15単元）',
+  chem_basic_matter: '純物質とクロマトRf/多段抽出・白色粉末定性・質量分析MS・吸光度・周期律・分子極性・C₆₀結晶・多資料統合（全22単元）',
+  chem_basic_change: 'mol計算・過不足濃度・ワルダー二段滴定・逆滴定チーム分け・電導度×pH滴定・COD・電池・電気化学統合（全25単元）',
+  chem_theory: '状態方程式と圧縮因子Z・逆浸透・ヘンリー・弱酸希釈pH・ΔS自発変化・一次反応半減期・直列並列電気分解・水和物再結晶（全29単元）',
+  chem_inorganic: 'ヨウ素製法・水ガラス・鉄シアノ錯塩・実用合金・バイヤー計算・H₂S×Ksp選択沈殿・過剰試薬再溶解グラフ・系統分離（全25単元）',
+  chem_organic: 'オゾン分解・エステル化平衡・ラクトン・5大裏切り者(フェノールエステル)・芳香族異性体・元素分析×滴定多資料構造決定（全23単元）',
+  chem_polymer: '糖類・グルタチオン・ペプチド配列＆クロマト溶出・ビニロン＋12の鉄則・PVB・ポリイミド・共重合ゴム・イオン交換電荷保存（全19単元）',
 };
 
 const ICON_BY_COURSE: Record<string, StudyIcon> = {
@@ -95,10 +95,10 @@ export const STUDY_CATALOG: readonly StudySubject[] = [{
       id: 'chem_mock',
       title: '共通テスト実戦 通し模試',
       icon: 'briefcase',
-      badge: '冊子＋マークシート',
+      badge: '冊子＋第6問B式スマホ対応',
       section: 'memorize',
-      description: '『化学基礎』30分/50点（全4回）＋『化学』60分/100点・5大問15設問（全4回）。本番準拠「問題冊子＋マーク解答用紙」・消去スラッシュ・2次余裕合格診断つき',
-      meta: `全${CHEM_MOCK_EXAMS.length}回（基礎4回・化学4回）`,
+      description: '『化学基礎』30分/50点（全7回）＋『化学』60分/100点・5大問15設問（全7回）。スマホ1画面資料切替＆PC問題冊子＋マーク解答用紙・プリント解法鉄則つき',
+      meta: `全${CHEM_MOCK_EXAMS.length}回（基礎${CHEM_MOCK_EXAMS.filter(e => e.examCategory === 'basic').length}回・化学${CHEM_MOCK_EXAMS.filter(e => e.examCategory === 'advanced').length}回）`,
       action: { kind: 'mock' },
     },
     {

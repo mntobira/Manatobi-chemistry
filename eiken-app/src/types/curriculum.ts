@@ -21,6 +21,8 @@
 /** 小問ごとの解き方の解説 */
 export interface DetailedExplanation {
   theme?: string;
+  /** 対策プリントの鉄則・型（例：'【中和の鉄則】酸チーム H⁺ mol ＝ 塩基チーム OH⁻ mol'） */
+  printRule?: string;
   /** 解き方の型（例：'言い換え型'） */
   type?: string;
   /** 難しさ（1〜5） */
@@ -143,6 +145,12 @@ export interface Problem {
   // ---- 汎用処理が読む任意項目（現行データには無い） ----
   imageUrl?: string;
   imageCaption?: string;
+  /** 化学・多資料問題用：複数グラフ・実験図（第6問B式カルーセル） */
+  chemFigures?: { url: string; label: string; caption?: string }[];
+  /** 化学・多資料問題用：セルに ○/× メモが打てる実験表・条件表 */
+  chemDataTable?: { caption?: string; headers: readonly string[]; rows: readonly (readonly string[])[] };
+  /** 化学の問題オブジェクト識別フラグ（スマホ第6問B式UIの切り替えに使用） */
+  isChemistryProblem?: boolean;
   requiresMathPalette?: boolean;
   requiresChemicalPalette?: boolean;
   /**

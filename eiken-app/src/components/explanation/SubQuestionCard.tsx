@@ -58,13 +58,28 @@ export function renderSubQuestionCard(ctx: SubQuestionCardContext, sq: SubQuesti
                         const sqIndex = (question?.subQuestions || []).indexOf(sq);
                         const displayLabel = answerCardMarker(sq, sqIndex < 0 ? 0 : sqIndex, question);
                         const hasThinking = Boolean(
+                          sq.detailedExplanation?.printRule ||
                           sq.detailedExplanation?.theme ||
                           sq.detailedExplanation?.steps?.length,
                         );
 
                         const thinkingBody = hasThinking ? (
                           <div className={`border-t p-4 md:p-5 space-y-4 ${'border-amber-200 bg-amber-50/40'}`}>
-                            {sq.detailedExplanation?.theme && (
+                            {sq.detailedExplanation?.printRule && (
+                              <div
+                                data-print-rule
+                                className="rounded-xl border-2 border-amber-300 bg-amber-50/90 p-3 shadow-2xs"
+                              >
+                                <h5 className="font-black mb-1 flex items-center gap-1.5 text-amber-950 text-xs md:text-sm">
+                                  <KeyRound size={15} className="text-amber-700 shrink-0" />
+                                  <span>プリントの解法鉄則（1行の型）</span>
+                                </h5>
+                                <p className="font-bold leading-relaxed text-slate-900 text-xs md:text-sm">
+                                  {formatText(sq.detailedExplanation.printRule)}
+                                </p>
+                              </div>
+                            )}
+                            {sq.detailedExplanation?.theme && !sq.detailedExplanation?.printRule && (
                               <div>
                                 <h5 className={`font-bold mb-1.5 flex items-center gap-1.5 ${'text-amber-700'}`}>
                                   <KeyRound size={15} />

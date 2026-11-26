@@ -919,6 +919,216 @@ export const FIG_ORGANIC_STRUCTURE_PUZZLE = svgDataUri(`
 </svg>
 `);
 
+// --- Wave-2 Additional Common Test SVG Figures ---
+export const FIG_HCP_CROSS_SECTION = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 250" font-family="sans-serif">
+  <rect width="480" height="250" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="240" y="22" text-anchor="middle" font-size="13" font-weight="bold" fill="#2A3B4C">最密充填構造の積層パターン（ABAB… vs ABCABC…）と断面原子配置</text>
+  <g transform="translate(26,40)">
+    <rect width="204" height="190" rx="8" fill="#F8FAFC" stroke="#CBD5E1"/>
+    <text x="102" y="20" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#0F766E">六方最密構造 (HCP)：ABAB積層</text>
+    <polygon points="102,42 154,68 154,126 102,152 50,126 50,68" fill="none" stroke="#64748B" stroke-width="1.6"/>
+    <line x1="50" y1="68" x2="154" y2="68" stroke="#94A3B8" stroke-dasharray="3 3"/>
+    <line x1="50" y1="126" x2="154" y2="126" stroke="#94A3B8" stroke-dasharray="3 3"/>
+    <circle cx="102" cy="42" r="7" fill="#0D9488"/><circle cx="154" cy="68" r="7" fill="#0D9488"/>
+    <circle cx="50" cy="68" r="7" fill="#0D9488"/><circle cx="102" cy="68" r="7" fill="#14B8A6"/>
+    <circle cx="78" cy="97" r="8.5" fill="#F59E0B" stroke="#B45309" stroke-width="1.4"/>
+    <circle cx="126" cy="97" r="8.5" fill="#F59E0B" stroke="#B45309" stroke-width="1.4"/>
+    <circle cx="102" cy="106" r="8.5" fill="#FBBF24" stroke="#B45309" stroke-width="1.4"/>
+    <circle cx="50" cy="126" r="7" fill="#0D9488"/><circle cx="154" cy="126" r="7" fill="#0D9488"/>
+    <circle cx="102" cy="152" r="7" fill="#0D9488"/><circle cx="102" cy="126" r="7" fill="#14B8A6"/>
+    <text x="102" y="172" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#334155">配位数 12・充填率 74%（六角柱内 6個）</text>
+    <text x="102" y="185" text-anchor="middle" font-size="9.5" fill="#64748B">高さ c = 2√(2/3) a ≒ 1.63a（a = 2r）</text>
+  </g>
+  <g transform="translate(250,40)">
+    <rect width="204" height="190" rx="8" fill="#F8FAFC" stroke="#CBD5E1"/>
+    <text x="102" y="20" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#1E3A8A">FCC の面対角線断面（(110)面）</text>
+    <rect x="38" y="42" width="128" height="92" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.8"/>
+    <circle cx="38" cy="42" r="11" fill="#3B82F6" opacity="0.85"/>
+    <circle cx="166" cy="42" r="11" fill="#3B82F6" opacity="0.85"/>
+    <circle cx="38" cy="134" r="11" fill="#3B82F6" opacity="0.85"/>
+    <circle cx="166" cy="134" r="11" fill="#3B82F6" opacity="0.85"/>
+    <circle cx="102" cy="42" r="14" fill="#0EA5E9" stroke="#0369A1" stroke-width="1.5"/>
+    <circle cx="102" cy="134" r="14" fill="#0EA5E9" stroke="#0369A1" stroke-width="1.5"/>
+    <circle cx="38" cy="88" r="9" fill="#93C5FD" stroke="#2563EB" stroke-dasharray="2 2"/>
+    <circle cx="166" cy="88" r="9" fill="#93C5FD" stroke="#2563EB" stroke-dasharray="2 2"/>
+    <text x="102" y="92" text-anchor="middle" font-size="10" font-weight="bold" fill="#B91C1C">体心には原子なし！</text>
+    <text x="102" y="162" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#334155">横 √2 a × 縦 a の長方形断面</text>
+    <text x="102" y="180" text-anchor="middle" font-size="9.5" fill="#64748B">上下面の中央（面心）で原子が接する</text>
+  </g>
+</svg>
+`);
 
+/** 過不足のある反応（一定量の固体・溶液に試薬を加えたときの気体発生量・折れ曲がり点） */
 
+export const FIG_EXCESS_LIMITING_GRAPH = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 250" font-family="sans-serif">
+  <rect width="470" height="250" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="235" y="23" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#2A3B4C">一定体積の塩酸に金属や炭酸塩を加えたときの気体発生量（過不足グラフ）</text>
+  <line x1="64" y1="212" x2="438" y2="212" stroke="#475569" stroke-width="2"/>
+  <line x1="64" y1="212" x2="64" y2="38" stroke="#475569" stroke-width="2"/>
+  <text x="250" y="239" text-anchor="middle" font-size="12" fill="#475569">加えた固体の質量 w [g]</text>
+  <text x="22" y="125" text-anchor="middle" font-size="12" fill="#475569" transform="rotate(-90 22 125)">発生した気体体積 V [mL]</text>
+  <line x1="224" y1="92" x2="224" y2="212" stroke="#94A3B8" stroke-dasharray="4 3"/>
+  <line x1="304" y1="62" x2="304" y2="212" stroke="#94A3B8" stroke-dasharray="4 3"/>
+  <text x="224" y="226" text-anchor="middle" font-size="11" font-weight="bold" fill="#2563EB">w₁</text>
+  <text x="304" y="226" text-anchor="middle" font-size="11" font-weight="bold" fill="#C2593F">w₂</text>
+  <polyline points="64,212 224,92 420,92" fill="none" stroke="#2563EB" stroke-width="2.8"/>
+  <circle cx="224" cy="92" r="4.5" fill="#1D4ED8"/>
+  <text x="348" y="84" font-size="11" font-weight="bold" fill="#1D4ED8">条件A（塩酸 1.0 mol/L）</text>
+  <polyline points="64,212 304,62 420,62" fill="none" stroke="#C2593F" stroke-width="2.6" stroke-dasharray="6 3"/>
+  <circle cx="304" cy="62" r="4.5" fill="#B91C1C"/>
+  <text x="352" y="54" font-size="11" font-weight="bold" fill="#B91C1C">条件B（塩酸 1.5 mol/L）</text>
+  <text x="128" y="138" font-size="10.5" font-weight="bold" fill="#0F766E">固体がすべて反応</text>
+  <text x="128" y="152" font-size="10" fill="#0F766E">（傾き＝固体1gあたり気体量）</text>
+  <text x="330" y="128" font-size="10.5" font-weight="bold" fill="#64748B">塩酸が不足・固体が余る</text>
+  <text x="330" y="142" font-size="10" fill="#64748B">（水平値＝H⁺総物質量で決まる）</text>
+</svg>
+`);
+
+/** 浸透圧と逆浸透法（海水淡水化：半透膜と加圧 P > π）の模式図 */
+
+export const FIG_RATE_YIELD_SHIFT = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 250" font-family="sans-serif">
+  <rect width="470" height="250" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="235" y="23" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#2A3B4C">発熱可逆反応 A + B ⇄ C (ΔH ＜ 0) における生成物 C の物質量の時間変化</text>
+  <line x1="62" y1="212" x2="438" y2="212" stroke="#475569" stroke-width="2"/>
+  <line x1="62" y1="212" x2="62" y2="38" stroke="#475569" stroke-width="2"/>
+  <text x="250" y="239" text-anchor="middle" font-size="12" fill="#475569">反応時間 t</text>
+  <text x="22" y="125" text-anchor="middle" font-size="12" fill="#475569" transform="rotate(-90 22 125)">生成物 C の物質量 [mol]</text>
+  <!-- 基準（低温・触媒なし） -->
+  <path d="M 62 212 Q 165 72 285 72 L 425 72" fill="none" stroke="#2563EB" stroke-width="2.8"/>
+  <text x="348" y="64" font-size="11" font-weight="bold" fill="#1D4ED8">曲線①：基準（温度 T₁・触媒なし）</text>
+  <!-- 低温・触媒あり -->
+  <path d="M 62 212 Q 102 72 175 72 L 425 72" fill="none" stroke="#059669" stroke-width="2.6" stroke-dasharray="6 3"/>
+  <text x="155" y="92" font-size="11" font-weight="bold" fill="#047857">曲線②：T₁＋触媒あり（到達短縮・平衡量同じ）</text>
+  <!-- 高温・触媒なし -->
+  <path d="M 62 212 Q 95 128 158 128 L 425 128" fill="none" stroke="#DC2626" stroke-width="2.8"/>
+  <text x="315" y="146" font-size="11" font-weight="bold" fill="#B91C1C">曲線③：高温 T₂ ＞ T₁（初期傾き急・平衡量減少）</text>
+</svg>
+`);
+
+/** グリシン（中性アミノ酸）の塩酸塩に NaOH を滴下した二段階滴定曲線とイオン種変化 */
+
+export const FIG_GLYCINE_TITRATION = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 260" font-family="sans-serif">
+  <rect width="480" height="260" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="240" y="23" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#2A3B4C">陽イオン型グリシン H₃N⁺-CH₂-COOH に NaOH 水溶液を滴下したpH曲線</text>
+  <line x1="62" y1="220" x2="448" y2="220" stroke="#475569" stroke-width="2"/>
+  <line x1="62" y1="220" x2="62" y2="38" stroke="#475569" stroke-width="2"/>
+  <text x="255" y="248" text-anchor="middle" font-size="12" fill="#475569">加えた NaOH の物質量（グリシン 1 mol あたり [mol]）</text>
+  <text x="22" y="130" text-anchor="middle" font-size="12" fill="#475569" transform="rotate(-90 22 130)">pH</text>
+  <text x="62" y="234" text-anchor="middle" font-size="10.5" fill="#475569">0</text>
+  <text x="148" y="234" text-anchor="middle" font-size="10.5" fill="#475569">0.5</text>
+  <text x="234" y="234" text-anchor="middle" font-size="11" font-weight="bold" fill="#0F766E">1.0（等電点）</text>
+  <text x="320" y="234" text-anchor="middle" font-size="10.5" fill="#475569">1.5</text>
+  <text x="406" y="234" text-anchor="middle" font-size="10.5" fill="#475569">2.0</text>
+  <line x1="234" y1="220" x2="234" y2="44" stroke="#94A3B8" stroke-dasharray="4 3"/>
+  <line x1="62" y1="132" x2="234" y2="132" stroke="#14B8A6" stroke-dasharray="4 3"/>
+  <text x="54" y="136" text-anchor="end" font-size="10.5" font-weight="bold" fill="#0F766E">6.0</text>
+  <text x="54" y="186" text-anchor="end" font-size="10.5" fill="#475569">2.3</text>
+  <text x="54" y="80" text-anchor="end" font-size="10.5" fill="#475569">9.7</text>
+  <path d="M 62 204 Q 130 186 218 172 L 234 132 L 250 92 Q 320 80 392 68 L 406 52 L 438 46" fill="none" stroke="#7C3AED" stroke-width="3"/>
+  <circle cx="148" cy="184" r="4" fill="#2563EB"/>
+  <circle cx="234" cy="132" r="5" fill="#0D9488"/>
+  <circle cx="320" cy="80" r="4" fill="#DC2626"/>
+  <text x="135" y="168" text-anchor="middle" font-size="10" font-weight="bold" fill="#1D4ED8">pK₁ = 2.3 緩衝域</text>
+  <text x="234" y="122" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#0F766E">双性イオン最大 (pI = 6.0)</text>
+  <text x="322" y="66" text-anchor="middle" font-size="10" font-weight="bold" fill="#B91C1C">pK₂ = 9.7 緩衝域</text>
+</svg>
+`);
+
+// --- Wave-3 Multi-Material (Part 6B Style) Common Test SVG Figures ---
+
+/** 酸塩基の中和混合に伴う電気伝導率変化（強酸＋強塩基 vs 弱酸＋弱塩基 vs BaSO₄沈殿生成） */
+export const FIG_CONDUCTIVITY_TITRATION = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 250" font-family="sans-serif">
+  <rect width="470" height="250" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="235" y="22" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#2A3B4C">酸水溶液 10 mL に同濃度の塩基水溶液を滴下したときの電気伝導率変化</text>
+  <line x1="60" y1="210" x2="438" y2="210" stroke="#475569" stroke-width="2"/>
+  <line x1="60" y1="210" x2="60" y2="38" stroke="#475569" stroke-width="2"/>
+  <text x="250" y="238" text-anchor="middle" font-size="11.5" fill="#475569">塩基水溶液の滴下量 V [mL]</text>
+  <text x="20" y="124" text-anchor="middle" font-size="11.5" fill="#475569" transform="rotate(-90 20 124)">電気伝導率 σ</text>
+  <line x1="230" y1="210" x2="230" y2="44" stroke="#94A3B8" stroke-dasharray="4 3"/>
+  <text x="230" y="224" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#334155">10（中和点）</text>
+  <!-- 曲線①: H2SO4 + Ba(OH)2 -> BaSO4沈殿 + 2H2O でほぼ0 -->
+  <polyline points="60,54 230,208 420,70" fill="none" stroke="#DC2626" stroke-width="2.8"/>
+  <circle cx="230" cy="208" r="4.5" fill="#DC2626"/>
+  <text x="122" y="114" font-size="10.5" font-weight="bold" fill="#B91C1C">曲線① (H₂SO₄+Ba(OH)₂)</text>
+  <!-- 曲線②: HCl + NaOH -> NaCl残存でV字(極小>0) -->
+  <polyline points="60,64 230,142 420,82" fill="none" stroke="#2563EB" stroke-width="2.6"/>
+  <text x="335" y="128" font-size="10.5" font-weight="bold" fill="#1D4ED8">曲線② (HCl+NaOH)</text>
+  <!-- 曲線③: CH3COOH + NH3 -> 弱電解質→強電解質塩で上昇→横ばい -->
+  <polyline points="60,194 230,136 420,134" fill="none" stroke="#059669" stroke-width="2.6" stroke-dasharray="6 3"/>
+  <text x="136" y="188" font-size="10.5" font-weight="bold" fill="#047857">曲線③ (CH₃COOH+NH₃)</text>
+</svg>
+`);
+
+/** 気体状態方程式・圧縮因子 Z = PV/(nRT) の実在気体グラフ（CH₄・CO₂・H₂ と温度比較） */
+export const FIG_COMPRESSIBILITY_FACTOR = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 250" font-family="sans-serif">
+  <rect width="470" height="250" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="235" y="22" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#2A3B4C">実在気体の圧縮因子 Z ＝ PV / (nRT) と圧力 P の関係</text>
+  <line x1="60" y1="210" x2="440" y2="210" stroke="#475569" stroke-width="2"/>
+  <line x1="60" y1="210" x2="60" y2="38" stroke="#475569" stroke-width="2"/>
+  <line x1="60" y1="126" x2="438" y2="126" stroke="#334155" stroke-width="1.8" stroke-dasharray="5 3"/>
+  <text x="52" y="130" text-anchor="end" font-size="11" font-weight="bold" fill="#334155">1.0</text>
+  <text x="388" y="120" font-size="10.5" font-weight="bold" fill="#334155">理想気体 (Z=1)</text>
+  <text x="250" y="238" text-anchor="middle" font-size="11.5" fill="#475569">圧力 P [×10⁷ Pa]</text>
+  <text x="20" y="124" text-anchor="middle" font-size="11.5" fill="#475569" transform="rotate(-90 20 124)">Z = PV / (nRT)</text>
+  <!-- H2: 分子間力極小 → 常に Z > 1 -->
+  <path d="M 60 126 L 426 84" fill="none" stroke="#059669" stroke-width="2.6"/>
+  <text x="330" y="84" font-size="10.5" font-weight="bold" fill="#047857">曲線ア：H₂ (300 K)</text>
+  <!-- CH4 高温: へこみ小 -->
+  <path d="M 60 126 Q 150 146 250 126 T 426 68" fill="none" stroke="#2563EB" stroke-width="2.5" stroke-dasharray="6 3"/>
+  <text x="328" y="58" font-size="10.5" font-weight="bold" fill="#1D4ED8">曲線イ：CH₄ (500 K)</text>
+  <!-- CH4 低温: 分子間力で大きく下に凸 → 高圧で排除体積により Z>1 -->
+  <path d="M 60 126 Q 145 194 240 156 Q 325 118 426 56" fill="none" stroke="#DC2626" stroke-width="2.8"/>
+  <text x="165" y="192" font-size="10.5" font-weight="bold" fill="#B91C1C">曲線ウ：CH₄ (250 K)</text>
+</svg>
+`);
+
+/** カラムクロマトグラフィー／イオン交換樹脂の溶出曲線（アミノ酸混合液の段階 pH 溶出） */
+export const FIG_AMINO_ELUTION_PROFILE = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 250" font-family="sans-serif">
+  <rect width="470" height="250" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="235" y="22" text-anchor="middle" font-size="12" font-weight="bold" fill="#2A3B4C">陽イオン交換樹脂カラム（Na⁺型）によるアミノ酸3種混合物の段階 pH 溶出曲線</text>
+  <line x1="58" y1="208" x2="442" y2="208" stroke="#475569" stroke-width="2"/>
+  <line x1="58" y1="208" x2="58" y2="42" stroke="#475569" stroke-width="2"/>
+  <text x="250" y="238" text-anchor="middle" font-size="11.5" fill="#475569">溶出液の体積 V（pH 3.2 → pH 4.5 → pH 9.5 へ段階上昇）</text>
+  <text x="20" y="125" text-anchor="middle" font-size="11" fill="#475569" transform="rotate(-90 20 125)">ニンヒドリン吸光度</text>
+  <!-- 区切り線 -->
+  <line x1="185" y1="208" x2="185" y2="48" stroke="#94A3B8" stroke-dasharray="4 3"/>
+  <line x1="315" y1="208" x2="315" y2="48" stroke="#94A3B8" stroke-dasharray="4 3"/>
+  <text x="122" y="56" text-anchor="middle" font-size="10" font-weight="bold" fill="#475569">緩衝液Ⅰ (pH 3.2)</text>
+  <text x="250" y="56" text-anchor="middle" font-size="10" font-weight="bold" fill="#475569">緩衝液Ⅱ (pH 4.5)</text>
+  <text x="380" y="56" text-anchor="middle" font-size="10" font-weight="bold" fill="#475569">緩衝液Ⅲ (pH 9.5)</text>
+  <!-- ピーク X, Y, Z -->
+  <path d="M 65 208 L 95 208 Q 120 70 145 208 L 215 208 Q 248 64 280 208 L 340 208 Q 375 76 410 208 L 436 208" fill="none" stroke="#7C3AED" stroke-width="2.8"/>
+  <text x="120" y="112" text-anchor="middle" font-size="11" font-weight="bold" fill="#B91C1C">ピークX</text>
+  <text x="248" y="106" text-anchor="middle" font-size="11" font-weight="bold" fill="#1D4ED8">ピークY</text>
+  <text x="375" y="114" text-anchor="middle" font-size="11" font-weight="bold" fill="#047857">ピークZ</text>
+</svg>
+`);
+
+/** 金属イオンのアンモニア水／NaOH水滴下時の沈殿量グラフ（Al³⁺・Zn²⁺・Cu²⁺・Fe³⁺） */
+export const FIG_PRECIPITATE_EXCESS_CURVE = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 250" font-family="sans-serif">
+  <rect width="470" height="250" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="235" y="22" text-anchor="middle" font-size="12" font-weight="bold" fill="#2A3B4C">同物質量の金属イオン水溶液にアンモニア水を過剰まで滴下したときの沈殿物質量</text>
+  <line x1="60" y1="210" x2="440" y2="210" stroke="#475569" stroke-width="2"/>
+  <line x1="60" y1="210" x2="60" y2="40" stroke="#475569" stroke-width="2"/>
+  <text x="250" y="238" text-anchor="middle" font-size="11.5" fill="#475569">加えた NH₃ の物質量 [mol]</text>
+  <text x="22" y="125" text-anchor="middle" font-size="11.5" fill="#475569" transform="rotate(-90 22 125)">沈殿の物質量 [mol]</text>
+  <!-- Al3+: 3当量で最大→過剰NH3でも溶けない -->
+  <polyline points="60,210 195,82 428,82" fill="none" stroke="#2563EB" stroke-width="2.8"/>
+  <text x="332" y="73" font-size="10.5" font-weight="bold" fill="#1D4ED8">曲線①（過剰NH₃で不溶）</text>
+  <!-- Zn2+ / Cu2+: 2当量で最大→さらに4当量NH3で錯イオン溶解 -->
+  <polyline points="60,210 150,82 330,210 428,210" fill="none" stroke="#DC2626" stroke-width="2.8" stroke-dasharray="6 3"/>
+  <text x="242" y="136" font-size="10.5" font-weight="bold" fill="#B91C1C">曲線②（錯イオン形成で再溶解）</text>
+  <text x="150" y="224" text-anchor="middle" font-size="10" fill="#475569">2n₀</text>
+  <text x="195" y="224" text-anchor="middle" font-size="10" fill="#475569">3n₀</text>
+  <text x="330" y="224" text-anchor="middle" font-size="10" fill="#475569">6n₀</text>
+</svg>
+`);
 

@@ -9,6 +9,7 @@ import {
   Clock,
   FileSpreadsheet,
   FlaskConical,
+  KeyRound,
   LayoutGrid,
   NotebookPen,
   Pause,
@@ -21,6 +22,9 @@ import {
   XCircle,
 } from 'lucide-react';
 import { DoorMascot } from './DoorMascot';
+import { FigureCarousel } from './ListeningMaterials';
+import { ChemMaterialDeck, MarkableChemTable } from './ChemMaterialDeck';
+import { derivePrintRule } from '../chemistry/printMethod';
 import { subjectTheme } from '../data/subjectTheme';
 import { CHEM_COURSES, type ChemCourseId, type EikenGrade } from '../eiken/config';
 import { CHEM_MOCK_EXAMS } from '../chemistry/materials/mockExams';
@@ -52,9 +56,12 @@ const KATAKANA_SLOTS = [
 const CIRCLED_NUMS = ['①', '②', '③', '④'] as const;
 
 const DIFFICULTY_META: Record<
-  'basic' | 'kyotsu' | 'nijii',
+  'foundation' | 'kyotsu_standard' | 'kyotsu_2ji' | 'basic' | 'kyotsu' | 'nijii',
   { label: string; className: string }
 > = {
+  foundation: { label: '★基礎', className: 'bg-sky-100 text-sky-900 border-sky-300' },
+  kyotsu_standard: { label: '★★共テ標準', className: 'bg-amber-100 text-amber-950 border-amber-300' },
+  kyotsu_2ji: { label: '★★★2次余裕', className: 'bg-purple-100 text-purple-950 border-purple-300' },
   basic: { label: '★基礎', className: 'bg-sky-100 text-sky-900 border-sky-300' },
   kyotsu: { label: '★★共テ標準', className: 'bg-amber-100 text-amber-950 border-amber-300' },
   nijii: { label: '★★★2次余裕', className: 'bg-purple-100 text-purple-950 border-purple-300' },
@@ -198,7 +205,8 @@ export function EikenMockExam({
   const [scratchOpen, setScratchOpen] = useState(false);
   const [scratchNotes, setScratchNotes] = useState<Record<string, string>>({});
   const [focusedItemId, setFocusedItemId] = useState<string | null>(null);
-  const [constantsOpen, setConstantsOpen] = useState(true);
+  const [mobileItemIdx, setMobileItemIdx] = useState(0);
+  const [constantsOpen, setConstantsOpen] = useState(false);
   const [confirmSubmit, setConfirmSubmit] = useState(false);
   const [resultFilter, setResultFilter] = useState<'all' | 'wrong' | 'flagged'>('all');
 
@@ -267,7 +275,8 @@ export function EikenMockExam({
     setPaletteOpen(false);
     setScratchOpen(false);
     setFocusedItemId(exam.sections[0]?.items[0]?.id ?? null);
-    setConstantsOpen(true);
+    setMobileItemIdx(0);
+    setConstantsOpen(false);
     setConfirmSubmit(false);
     setPhase('running');
     window.scrollTo(0, 0);
@@ -352,6 +361,9 @@ export function EikenMockExam({
   const jumpToQuestion = (secIndex: number, itemId: string) => {
     setSectionIdx(secIndex);
     setFocusedItemId(itemId);
+    const sec = activeExam?.sections[secIndex];
+    const idxInSec = sec ? sec.items.findIndex(it => it.id === itemId) : -1;
+    if (idxInSec >= 0) setMobileItemIdx(idxInSec);
     setPaletteOpen(false);
     window.requestAnimationFrame(() => {
       const el = document.querySelector(`[data-mock-question="${itemId}"]`);
@@ -415,7 +427,11 @@ export function EikenMockExam({
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div className="em-grade-pills !grid-cols-3 sm:!w-auto" role="tablist" aria-label="科目区分">
               {([
-                ['all', '全8回（基礎4＋化学4）', CHEM_MOCK_EXAMS.length],
+                [
+                  'all',
+                  `全${CHEM_MOCK_EXAMS.length}回（基礎${CHEM_MOCK_EXAMS.filter(e => e.examCategory === 'basic').length}＋化学${CHEM_MOCK_EXAMS.filter(e => e.examCategory === 'advanced').length}）`,
+                  CHEM_MOCK_EXAMS.length,
+                ],
                 ['basic', '化学基礎（30分・50点）', CHEM_MOCK_EXAMS.filter(e => e.examCategory === 'basic').length],
                 ['advanced', '化学（60分・100点）', CHEM_MOCK_EXAMS.filter(e => e.examCategory === 'advanced').length],
               ] as const).map(([key, label, cnt]) => (
@@ -676,6 +692,8 @@ export function EikenMockExam({
                   aria-selected={idx === sectionIdx}
                   onClick={() => {
                     setSectionIdx(idx);
+                    setMobileItemIdx(0);
+                    setFocusedItemId(sec.items[0]?.id ?? null);
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                   className={`em-kyotsu-daimon-tab ${idx === sectionIdx ? 'is-active' : ''} ${secAllDone ? 'is-complete' : ''}`}
@@ -835,8 +853,181 @@ export function EikenMockExam({
           </div>
         )}
 
-        {/* 2ペイン本体：左＝共通テスト問題冊子（オフホワイト試験紙） ／ 右＝固定マーク解答用紙 */}
-        <div className="em-booklet-split">
+        {/* ★スマホ専用（md未満）：リスニング第6問B式の1画面完結 模試ランナー★
+            ・上半分（flex-[1_1_0%] min-h-0）：ChemMaterialDeck（問題・条件 ／ データ表（○×メモ） ／ 図・グラフ（◀▶切替・拡大） ／ 会話文）
+            ・下半分（flex-[0_1_auto] max-h-[58%]）：sticky [マーク番号・問N・前問/次問] ＋ 設問文 ＋ 全幅①〜④選択肢 */}
+        {(() => {
+          const safeMobIdx = Math.min(Math.max(0, mobileItemIdx), Math.max(0, currentSec.items.length - 1));
+          const mobItem = currentSec.items[safeMobIdx] ?? currentSec.items[0]!;
+          const mobPicked = answers[mobItem.id];
+          const mobElims = eliminated[mobItem.id] ?? [];
+          const mobFlagged = flags.includes(mobItem.id);
+          const mobSlot = slotByItemId.get(mobItem.id) ?? '?';
+          const combinedFigs =
+            currentSec.figures && currentSec.figures.length > 0
+              ? currentSec.figures
+              : currentSec.imageUrl
+              ? [{ url: currentSec.imageUrl, label: '大問の図', caption: currentSec.imageCaption }]
+              : [];
+          const itemPlusSecFigs = mobItem.imageUrl
+            ? [
+                ...combinedFigs,
+                { url: mobItem.imageUrl, label: `${mobItem.label}の図`, caption: mobItem.imageCaption },
+              ]
+            : combinedFigs;
+
+          return (
+            <div
+              data-mock-mobile-split
+              className="flex md:hidden flex-1 min-h-0 flex-col overflow-hidden bg-white"
+            >
+              {/* 上ペイン：大問タイトル1行＋第6問B式 資料切替デッキ */}
+              <div className="flex flex-[1_1_0%] min-h-0 flex-col border-b border-slate-200">
+                <div className="flex shrink-0 items-center justify-between gap-1.5 border-b border-slate-100 bg-[#FFFDF8] px-2.5 py-1">
+                  <div className="flex min-w-0 items-center gap-1.5">
+                    <span className="shrink-0 rounded bg-slate-900 px-1.5 py-0.5 text-[11px] font-black text-white">
+                      {currentSec.daimonLabel}
+                    </span>
+                    <span className="truncate text-xs font-extrabold text-slate-800">
+                      {currentSec.title}
+                    </span>
+                  </div>
+                  {activeExam.constantsNote && (
+                    <button
+                      type="button"
+                      onClick={() => setConstantsOpen(o => !o)}
+                      className="shrink-0 rounded border border-slate-300 bg-white px-2 py-0.5 text-[10px] font-extrabold text-slate-700"
+                    >
+                      {constantsOpen ? '定数▲' : '原子量▼'}
+                    </button>
+                  )}
+                </div>
+                {constantsOpen && activeExam.constantsNote && (
+                  <div className="shrink-0 border-b border-amber-200 bg-amber-50/70 px-2.5 py-1 text-[11px] font-bold text-slate-700">
+                    {activeExam.constantsNote}
+                  </div>
+                )}
+                <ChemMaterialDeck
+                  leadText={currentSec.leadText || currentSec.title}
+                  figures={itemPlusSecFigs}
+                  dataTable={currentSec.dataTable}
+                  dialogue={currentSec.dialogue}
+                />
+              </div>
+
+              {/* 下ペイン：1問ページャー＋設問文＋全幅4択 */}
+              <div className="flex flex-[0_1_auto] max-h-[58%] min-h-0 flex-col overflow-y-auto overscroll-contain bg-slate-50/70 px-2.5 pb-[calc(0.6rem+env(safe-area-inset-bottom))]">
+                <nav
+                  aria-label="模試小問ナビ"
+                  className="sticky top-0 z-20 flex items-center justify-between gap-1.5 border-b border-slate-200 bg-slate-50/95 py-1"
+                >
+                  <div className="flex min-w-0 items-center gap-1.5">
+                    <span className="shrink-0 rounded bg-[#2C3E50] px-2 py-0.5 text-xs font-black text-white">
+                      {mobItem.label}
+                    </span>
+                    <span className="em-inline-slot-box text-xs">{mobSlot}</span>
+                    <span className="text-[11px] font-extrabold text-slate-500 tabular-nums">
+                      {safeMobIdx + 1}/{currentSec.items.length}（{mobItem.points}点）
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => toggleFlag(mobItem.id)}
+                      aria-label="見直し付箋"
+                      className={`inline-flex items-center gap-0.5 rounded-full border px-2 py-0.5 text-[11px] font-extrabold ${
+                        mobFlagged
+                          ? 'border-amber-500 bg-amber-50 text-amber-900'
+                          : 'border-slate-300 bg-white text-slate-600'
+                      }`}
+                    >
+                      {mobFlagged ? <BookmarkCheck size={12} /> : <Bookmark size={12} />}
+                      <span>{mobFlagged ? '★' : '付箋'}</span>
+                    </button>
+                  </div>
+                  <div className="flex shrink-0 items-center gap-1">
+                    <button
+                      type="button"
+                      disabled={safeMobIdx === 0 && sectionIdx === 0}
+                      onClick={() => {
+                        if (safeMobIdx > 0) {
+                          setMobileItemIdx(safeMobIdx - 1);
+                        } else if (sectionIdx > 0) {
+                          const prevSec = activeExam.sections[sectionIdx - 1]!;
+                          setSectionIdx(sectionIdx - 1);
+                          setMobileItemIdx(Math.max(0, prevSec.items.length - 1));
+                        }
+                      }}
+                      className="min-h-9 rounded border border-slate-300 bg-white px-2 text-xs font-extrabold text-slate-800 disabled:opacity-35"
+                    >
+                      前問
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (safeMobIdx < currentSec.items.length - 1) {
+                          setMobileItemIdx(safeMobIdx + 1);
+                        } else if (sectionIdx < activeExam.sections.length - 1) {
+                          setSectionIdx(sectionIdx + 1);
+                          setMobileItemIdx(0);
+                        } else {
+                          setConfirmSubmit(true);
+                        }
+                      }}
+                      className="min-h-9 rounded border border-slate-900 bg-slate-900 px-2.5 text-xs font-extrabold text-white"
+                    >
+                      {safeMobIdx < currentSec.items.length - 1
+                        ? '次問'
+                        : sectionIdx < activeExam.sections.length - 1
+                        ? '次の大問'
+                        : '採点へ'}
+                    </button>
+                  </div>
+                </nav>
+
+                <p className="mt-1.5 mb-1.5 text-[13.5px] font-bold leading-snug text-slate-900 whitespace-pre-line">
+                  {formatText(mobItem.stem)}
+                </p>
+
+                <div className="space-y-1.5">
+                  {mobItem.choices.map((choice, cIdx) => {
+                    const selected = mobPicked === cIdx;
+                    const isElim = mobElims.includes(cIdx) && !selected;
+                    return (
+                      <div key={cIdx} className="flex items-stretch gap-1">
+                        <button
+                          type="button"
+                          aria-pressed={selected}
+                          onClick={() => setAnswers(prev => ({ ...prev, [mobItem.id]: cIdx }))}
+                          className={`em-booklet-choice flex-1 !py-2 !px-2.5 !min-h-[44px] ${
+                            selected ? 'is-selected' : ''
+                          } ${isElim ? 'is-eliminated' : ''}`}
+                        >
+                          <span className={`em-booklet-choice-num ${selected ? 'is-selected' : ''}`}>
+                            {CIRCLED_NUMS[cIdx] ?? cIdx + 1}
+                          </span>
+                          <span className="min-w-0 flex-1 break-words text-left text-[14px] leading-snug">
+                            {formatText(choice)}
+                          </span>
+                        </button>
+                        <button
+                          type="button"
+                          aria-label={`選択肢${cIdx + 1}を消去`}
+                          aria-pressed={mobElims.includes(cIdx)}
+                          onClick={e => toggleEliminateChoice(mobItem.id, cIdx, e)}
+                          className={`em-slash-btn ${mobElims.includes(cIdx) ? 'is-active' : ''}`}
+                        >
+                          <Slash size={13} aria-hidden="true" />
+                        </button>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          );
+        })()}
+
+        {/* 2ペイン本体（タブレット・PC用）：左＝共通テスト問題冊子（オフホワイト試験紙） ／ 右＝固定マーク解答用紙 */}
+        <div className="em-booklet-split hidden md:grid">
           <section className="em-booklet-paper" aria-label="共通テスト問題冊子">
             {/* 試験紙ヘッダー枠（本番冊子の黒枠見出しを再現） */}
             <div className="em-booklet-banner">
@@ -886,46 +1077,53 @@ export function EikenMockExam({
                 </div>
               )}
 
-              {currentSec.imageUrl && (
+              {currentSec.figures && currentSec.figures.length > 1 ? (
+                <div className="em-booklet-figure mt-3 p-3">
+                  <FigureCarousel
+                    count={currentSec.figures.length}
+                    labels={currentSec.figures.map((f, idx) => f.label || `図${idx + 1}`)}
+                  >
+                    {idx => {
+                      const fig = currentSec.figures![idx]!;
+                      return (
+                        <figure>
+                          <img
+                            src={fig.url}
+                            alt={fig.caption || fig.label}
+                            className="mx-auto max-h-80 w-auto max-w-full object-contain"
+                          />
+                          {fig.caption && (
+                            <figcaption className="mt-1.5 text-center text-xs font-bold text-slate-700">
+                              {fig.caption}
+                            </figcaption>
+                          )}
+                        </figure>
+                      );
+                    }}
+                  </FigureCarousel>
+                </div>
+              ) : (currentSec.figures?.[0]?.url || currentSec.imageUrl) ? (
                 <figure className="em-booklet-figure mt-3">
                   <img
-                    src={currentSec.imageUrl}
-                    alt={currentSec.imageCaption || currentSec.title}
+                    src={currentSec.figures?.[0]?.url || currentSec.imageUrl}
+                    alt={currentSec.figures?.[0]?.caption || currentSec.imageCaption || currentSec.title}
                     className="mx-auto max-h-80 w-auto max-w-full object-contain"
                   />
-                  {currentSec.imageCaption && (
+                  {(currentSec.figures?.[0]?.caption || currentSec.imageCaption) && (
                     <figcaption className="mt-1.5 text-center text-xs font-bold text-slate-700">
-                      {currentSec.imageCaption}
+                      {currentSec.figures?.[0]?.caption || currentSec.imageCaption}
                     </figcaption>
                   )}
                 </figure>
-              )}
+              ) : null}
 
               {currentSec.dataTable && (
-                <div className="em-booklet-table-wrap mt-3">
-                  {currentSec.dataTable.caption && (
-                    <div className="em-booklet-table-caption">{currentSec.dataTable.caption}</div>
-                  )}
-                  <div className="overflow-x-auto">
-                    <table className="em-booklet-table">
-                      <thead>
-                        <tr>
-                          {currentSec.dataTable.headers.map((hd, hIdx) => (
-                            <th key={hIdx}>{formatText(hd)}</th>
-                          ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {currentSec.dataTable.rows.map((row, rIdx) => (
-                          <tr key={rIdx}>
-                            {row.map((cell, cIdx) => (
-                              <td key={cIdx}>{formatText(cell)}</td>
-                            ))}
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
+                <div className="mt-3">
+                  <MarkableChemTable
+                    caption={currentSec.dataTable.caption}
+                    headers={currentSec.dataTable.headers}
+                    rows={currentSec.dataTable.rows}
+                  />
                 </div>
               )}
 
@@ -1497,6 +1695,12 @@ export function EikenMockExam({
               )}
 
               {(() => {
+                const printRule = derivePrintRule({
+                  printRule: item.printRule,
+                  skill: item.skill,
+                  stem: item.stem,
+                  explanation: item.explanation,
+                });
                 const resolvedSteps =
                   item.steps && item.steps.length > 0
                     ? item.steps
@@ -1505,21 +1709,36 @@ export function EikenMockExam({
                         .map(l => l.replace(/^[・●▪■]\s*/, '').trim())
                         .filter(l => l.length > 0)
                         .slice(0, 4);
-                if (resolvedSteps.length === 0) return null;
                 return (
-                  <div className="rounded-xl border border-teal-200/90 bg-teal-50/40 p-3 text-xs leading-relaxed">
-                    <strong className="block font-extrabold text-teal-900 mb-1.5">【正解までの道すじ】</strong>
-                    <ol className="space-y-1">
-                      {resolvedSteps.map((st, sIdx) => (
-                        <li key={sIdx} className="flex items-start gap-2 text-slate-800">
-                          <span className="mt-0.5 inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-teal-700 text-[10px] font-extrabold text-white">
-                            {sIdx + 1}
-                          </span>
-                          <span className="min-w-0">{formatText(st)}</span>
-                        </li>
-                      ))}
-                    </ol>
-                  </div>
+                  <>
+                    {printRule && (
+                      <div
+                        data-print-rule
+                        className="rounded-xl border-2 border-amber-300 bg-amber-50/80 p-3 text-xs leading-relaxed shadow-2xs"
+                      >
+                        <strong className="flex items-center gap-1.5 font-black text-amber-950 mb-1">
+                          <KeyRound size={14} className="text-amber-700 shrink-0" aria-hidden="true" />
+                          <span>プリントの解法鉄則（1行の型）</span>
+                        </strong>
+                        <p className="font-bold text-slate-900">{formatText(printRule)}</p>
+                      </div>
+                    )}
+                    {resolvedSteps.length > 0 && (
+                      <div className="rounded-xl border border-teal-200/90 bg-teal-50/40 p-3 text-xs leading-relaxed">
+                        <strong className="block font-extrabold text-teal-900 mb-1.5">【正解までの道すじ（ステップ解法）】</strong>
+                        <ol className="space-y-1">
+                          {resolvedSteps.map((st, sIdx) => (
+                            <li key={sIdx} className="flex items-start gap-2 text-slate-800">
+                              <span className="mt-0.5 inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-teal-700 text-[10px] font-extrabold text-white">
+                                {sIdx + 1}
+                              </span>
+                              <span className="min-w-0">{formatText(st)}</span>
+                            </li>
+                          ))}
+                        </ol>
+                      </div>
+                    )}
+                  </>
                 );
               })()}
 

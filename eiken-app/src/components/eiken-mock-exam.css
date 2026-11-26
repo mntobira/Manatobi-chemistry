@@ -1826,6 +1826,30 @@
   padding-bottom: calc(var(--app-nav-h, 76px) + 28px);
   color: #111827;
   font-family: var(--mt-font-body);
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 767px) {
+  .em-kyotsu-runner {
+    height: 100dvh;
+    max-height: 100dvh;
+    overflow: hidden;
+    padding-bottom: 0;
+  }
+  .em-kyotsu-topbar-inner {
+    padding: 5px 10px;
+    gap: 6px;
+  }
+  .em-kyotsu-daimon-bar {
+    padding: 4px 10px 5px;
+    gap: 4px;
+  }
+  .em-kyotsu-daimon-tab {
+    min-height: 28px;
+    padding: 0 8px;
+    font-size: 11px;
+  }
 }
 
 .em-kyotsu-topbar {
