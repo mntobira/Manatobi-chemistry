@@ -50,7 +50,8 @@ eiken-app/dist/
 public/eiken/
 
 # uploaded reference PDFs / temp
-*.pdf
+/*.pdf
+eiken-app/*.pdf
 shot.mjs
 check.mjs
 
@@ -67,6 +68,7 @@ qa-home.png
 eiken-app/deliverables/*.png
 eiken-app/deliverables/reference_*
 eiken-app/deliverables/listening-booklets.json
+eiken-app/deliverables/chemistry-pdf-source.json
 eiken-app/deliverables/eiken-elevenlabs-audio-prompts.json
 eiken-app/deliverables/eiken-chatgpt-image-prompts.json
 eiken-app/deliverables/eiken-listening-segments.tsv

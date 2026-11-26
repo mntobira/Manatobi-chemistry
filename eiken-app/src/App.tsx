@@ -35,6 +35,7 @@ import { ModeSelection } from './components/ModeSelection';
 const StudyCatalog = React.lazy(() => import('./components/StudyCatalog').then(m => ({ default: m.StudyCatalog })));
 const EikenWriting = React.lazy(() => import('./components/EikenWriting').then(module => ({ default: module.EikenWriting })));
 const EikenMockExam = React.lazy(() => import('./components/EikenMockExam').then(module => ({ default: module.EikenMockExam })));
+const ChemPastAnalysisStudio = React.lazy(() => import('./components/ChemPastAnalysisStudio').then(module => ({ default: module.ChemPastAnalysisStudio })));
 const FoundationPage = React.lazy(() =>
   import('./components/FoundationPage').then((m) => ({ default: m.FoundationPage })),
 );
@@ -210,6 +211,8 @@ export default function App() {
   const [mockBackTo, setMockBackTo] = useState<'study' | 'chapters'>('study');
   const [writingInitialTaskKey, setWritingInitialTaskKey] = useState<string | null>(null);
   const [writingBackTo, setWritingBackTo] = useState<'study' | 'chapters'>('study');
+  const [pastAnalysisTab, setPastAnalysisTab] = useState<'pdfs' | 'traps' | 'timeline' | 'tactics'>('pdfs');
+  const [pastAnalysisBackTo, setPastAnalysisBackTo] = useState<'study' | 'chapters' | 'mock'>('study');
   const [growthPage, setGrowthPage] = useState<GrowthPage>('overview');
   // 対戦 → 演習 → 対戦に戻る導線とスクロール位置は hooks/useBattleReturn.ts
   const { battleReturnActive, setBattleReturnActive, battleScrollRef, returnToBattle, rememberBattleScroll } = useBattleReturn(appState, setAppState);
@@ -328,6 +331,12 @@ export default function App() {
       setMockInitialKind('written');
       setMockBackTo('study');
       setAppState('mock');
+      return;
+    }
+    if (content.action.kind === 'pastAnalysis') {
+      setPastAnalysisTab(content.action.initialTab ?? 'pdfs');
+      setPastAnalysisBackTo('study');
+      setAppState('past_analysis');
       return;
     }
     if (content.action.kind === 'units') {
@@ -696,6 +705,7 @@ export default function App() {
                     setAppState('mock');
                   }}
                   onOpenWriting={(taskKey) => { setWritingInitialTaskKey(taskKey); setWritingBackTo('chapters'); setAppState('writing'); }}
+                  onOpenPastAnalysis={(tab) => { setPastAnalysisTab(tab ?? 'traps'); setPastAnalysisBackTo('chapters'); setAppState('past_analysis'); }}
                   onBack={() => setAppState(chaptersBackTo === 'study' ? 'study' : chaptersBackTo === 'foundation' ? 'foundation' : studyEntry(selectedSubject) === 'chapters' ? 'home' : 'mode_selection')}
                   backLabel={chaptersBackTo === 'study' ? '演習' : chaptersBackTo === 'foundation' ? '固める' : studyEntry(selectedSubject) === 'chapters' ? 'ホーム' : '学習モード'}
                   rememberedGroup={chapterGroups[selectedSubject]}
@@ -771,7 +781,28 @@ export default function App() {
               />
             </React.Suspense>}
             {appState === 'writing' && <React.Suspense fallback={<ScreenLoading />}><EikenWriting key={auth.currentUser?.uid || 'guest'} uid={auth.currentUser?.uid || 'guest'} grade={selectedSubject as import('./eiken/config').EikenGrade} onGrade={setSelectedSubject} initialTaskKey={writingInitialTaskKey} onBack={() => setAppState(writingBackTo)} /></React.Suspense>}
-            {appState === 'mock' && <React.Suspense fallback={<ScreenLoading />}><EikenMockExam key={auth.currentUser?.uid || 'guest'} uid={auth.currentUser?.uid || 'guest'} grade={selectedSubject as import('./eiken/config').EikenGrade} onGrade={setSelectedSubject} initialExamKind={mockInitialKind} backLabel={mockBackTo === 'chapters' ? '単元一覧へ' : '学習へ'} onBack={() => setAppState(mockBackTo)} onRunningChange={setMockRunning} /></React.Suspense>}
+            {appState === 'mock' && <React.Suspense fallback={<ScreenLoading />}><EikenMockExam key={auth.currentUser?.uid || 'guest'} uid={auth.currentUser?.uid || 'guest'} grade={selectedSubject as import('./eiken/config').EikenGrade} onGrade={setSelectedSubject} initialExamKind={mockInitialKind} backLabel={mockBackTo === 'chapters' ? '単元一覧へ' : '学習へ'} onBack={() => setAppState(mockBackTo)} onRunningChange={setMockRunning} onOpenPastAnalysis={(tab) => { setPastAnalysisTab(tab ?? 'pdfs'); setPastAnalysisBackTo('mock'); setAppState('past_analysis'); }} /></React.Suspense>}
+            {appState === 'past_analysis' && (
+              <React.Suspense fallback={<ScreenLoading />}>
+                <ChemPastAnalysisStudio
+                  initialTab={pastAnalysisTab}
+                  backLabel={pastAnalysisBackTo === 'chapters' ? '単元一覧へ' : pastAnalysisBackTo === 'mock' ? '実戦模試へ' : '学習へ'}
+                  onBack={() => setAppState(pastAnalysisBackTo)}
+                  onOpenMock={() => {
+                    setMockInitialKind('written');
+                    setMockBackTo('study');
+                    setAppState('mock');
+                  }}
+                  onStartUnit={(course, chapterId) => {
+                    if (!isSubjectEnabled(course)) return;
+                    setSelectedSubject(course);
+                    setAppMode('practice');
+                    setChaptersBackTo('study');
+                    handleSelectChapter(chapterId, 0, false, null, 'practice');
+                  }}
+                />
+              </React.Suspense>
+            )}
             {appState === 'foundation' && <React.Suspense fallback={<ScreenLoading />}>
               <FoundationPage key={auth.currentUser?.uid || 'guest'}
                 tab={foundationTab}

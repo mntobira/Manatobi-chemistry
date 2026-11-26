@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { type SubjectKey } from '../data/allChapters';
-import { ArrowLeft, FlaskConical, PenLine } from 'lucide-react';
+import { ArrowLeft, FlaskConical, History, PenLine, Printer } from 'lucide-react';
+import { CHEM_PDF_CATALOG } from '../chemistry/chemistryPdfCatalog.generated';
+import { openPdf } from '../utils/pdfViewer';
 import { DoorMascot } from './DoorMascot';
 import { subjectTheme } from '../data/subjectTheme';
 import type { Chapter } from '../types/curriculum';
@@ -38,6 +40,8 @@ interface ChapterSelectionProps {
   onOpenMock?: (examKind?: 'written' | 'listening') => void;
   /** 分野画面から「実験考察・構造決定ラボ」を直接開く */
   onOpenWriting?: (taskKey: string) => void;
+  /** 分野画面から「37年過去問分析＆PDF冊子スタジオ」を直接開く */
+  onOpenPastAnalysis?: (tab?: 'pdfs' | 'traps' | 'timeline' | 'tactics') => void;
 }
 
 export function ChapterSelection({
@@ -50,8 +54,13 @@ export function ChapterSelection({
   backLabel = '戻る',
   onOpenMock,
   onOpenWriting,
+  onOpenPastAnalysis,
 }: ChapterSelectionProps) {
   const theme = subjectTheme(subject);
+  const courseSummaryPdf = useMemo(
+    () => CHEM_PDF_CATALOG.find(e => e.kind === 'summary' && e.course === subject),
+    [subject],
+  );
   const groups = useMemo(() => getChapterGroups(subject), [subject]);
 
   const [expandedChapterId, setExpandedChapterId] = useState<string | null>(null);
@@ -140,7 +149,37 @@ export function ChapterSelection({
               : '共通テスト対策（正誤・計算・実験グラフ・探究考察・構造決定）'}
           </p>
         </div>
-        <div className="flex shrink-0 items-center gap-1.5">
+        <div className="flex shrink-0 flex-wrap items-center gap-1.5">
+          {courseSummaryPdf && (
+            <button
+              type="button"
+              onClick={() =>
+                openPdf(courseSummaryPdf.file, courseSummaryPdf.title, {
+                  fileName: courseSummaryPdf.file.split('/').pop(),
+                  subtitle: courseSummaryPdf.subtitle,
+                  badge: courseSummaryPdf.badge,
+                })
+              }
+              className="inline-flex items-center gap-1 rounded-full border border-sky-400/55 bg-[#fffdf8] px-2.5 sm:px-3 py-1.5 text-xs font-extrabold text-sky-900 shadow-[0_2px_0_#d6eaf8] transition hover:bg-sky-50 cursor-pointer"
+              title="この分野の全単元A4まとめプリント集PDFを開く"
+              data-chapter-open-summary-pdf
+            >
+              <Printer size={13} aria-hidden="true" />
+              <span>全単元まとめPDF</span>
+            </button>
+          )}
+          {onOpenPastAnalysis && (
+            <button
+              type="button"
+              onClick={() => onOpenPastAnalysis('traps')}
+              className="inline-flex items-center gap-1 rounded-full border border-indigo-400/50 bg-[#fffdf8] px-2.5 sm:px-3 py-1.5 text-xs font-extrabold text-indigo-900 shadow-[0_2px_0_#dde2f8] transition hover:bg-indigo-50 cursor-pointer"
+              data-chapter-open-past-analysis
+            >
+              <History size={13} aria-hidden="true" />
+              <span className="hidden sm:inline">37年過去問分析</span>
+              <span className="sm:hidden">過去問分析</span>
+            </button>
+          )}
           {onOpenMock && (
             <button
               type="button"

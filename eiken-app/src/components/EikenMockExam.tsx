@@ -8,11 +8,15 @@ import {
   ChevronRight,
   Clock,
   FileSpreadsheet,
+  FileText,
   FlaskConical,
+  Gauge,
+  History,
   LayoutGrid,
   NotebookPen,
   Pause,
   Play,
+  Printer,
   RotateCcw,
   Send,
   Slash,
@@ -24,7 +28,9 @@ import { DoorMascot } from './DoorMascot';
 import { subjectTheme } from '../data/subjectTheme';
 import { CHEM_COURSES, type ChemCourseId, type EikenGrade } from '../eiken/config';
 import { CHEM_MOCK_EXAMS } from '../chemistry/materials/mockExams';
-import type { ChemMockExamSpec, ChemMockItem, ChemMockSection } from '../chemistry/types';
+import { CHEM_PDF_CATALOG } from '../chemistry/chemistryPdfCatalog.generated';
+import { openChemPdfEntry } from './ChemPastAnalysisStudio';
+import type { ChemDifficultyLevel, ChemMockExamSpec, ChemMockItem, ChemMockSection } from '../chemistry/types';
 import {
   emptyMockState,
   formatDuration,
@@ -52,12 +58,12 @@ const KATAKANA_SLOTS = [
 const CIRCLED_NUMS = ['①', '②', '③', '④'] as const;
 
 const DIFFICULTY_META: Record<
-  'basic' | 'kyotsu' | 'nijii',
+  ChemDifficultyLevel,
   { label: string; className: string }
 > = {
-  basic: { label: '★基礎', className: 'bg-sky-100 text-sky-900 border-sky-300' },
-  kyotsu: { label: '★★共テ標準', className: 'bg-amber-100 text-amber-950 border-amber-300' },
-  nijii: { label: '★★★2次余裕', className: 'bg-purple-100 text-purple-950 border-purple-300' },
+  foundation: { label: '★基礎（A問題・必答）', className: 'bg-sky-100 text-sky-900 border-sky-300' },
+  kyotsu_standard: { label: '★★共テ標準（B問題）', className: 'bg-amber-100 text-amber-950 border-amber-300' },
+  kyotsu_2ji: { label: '★★★満点・2次（C問題）', className: 'bg-purple-100 text-purple-950 border-purple-300' },
 };
 
 function recommendCourseForSection(exam: ChemMockExamSpec, sec: ChemMockSection, sectionIndex: number): ChemCourseId {
@@ -170,6 +176,7 @@ export function EikenMockExam({
   onGrade,
   onBack,
   onRunningChange,
+  onOpenPastAnalysis,
   backLabel = '学習へ',
 }: {
   uid: string;
@@ -177,6 +184,7 @@ export function EikenMockExam({
   onGrade: (grade: EikenGrade) => void;
   onBack: () => void;
   onRunningChange?: (running: boolean) => void;
+  onOpenPastAnalysis?: (tab?: 'pdfs' | 'traps' | 'timeline' | 'tactics') => void;
   initialExamKind?: MockExamKind;
   backLabel?: string;
 }) {
@@ -406,8 +414,19 @@ export function EikenMockExam({
           </button>
           <div className="unit-head-title">
             <h2 style={{ color: theme.accent }}>大学入学共通テスト 実戦通し模試</h2>
-            <p>本番準拠「問題冊子＋マーク解答用紙」2ペイン設計・原子量定数欄・消去スラッシュ・2次余裕合格診断つき</p>
+            <p>本番準拠「問題冊子＋マーク解答用紙」2ペイン設計・印刷用3分冊PDF・満点ペースメーカー・2次診断つき</p>
           </div>
+          {onOpenPastAnalysis && (
+            <button
+              type="button"
+              onClick={() => onOpenPastAnalysis('traps')}
+              className="inline-flex shrink-0 items-center gap-1 rounded-full border border-indigo-300 bg-indigo-50 px-3 py-1.5 text-xs font-extrabold text-indigo-950 shadow-2xs transition hover:bg-indigo-100 cursor-pointer"
+              data-mock-open-past-bible
+            >
+              <History size={13} aria-hidden="true" />
+              <span>37年過去問分析・PDF一覧</span>
+            </button>
+          )}
           <DoorMascot subject={initialGrade} showSpeech={false} size="mini" className="unit-head-mascot w-auto" />
         </header>
 
@@ -467,6 +486,7 @@ export function EikenMockExam({
                 );
                 const itemCount = exam.sections.reduce((n, s) => n + s.items.length, 0);
                 const answeredInSession = session ? Object.keys(session.answers).length : 0;
+                const pdfEntry = CHEM_PDF_CATALOG.find(p => p.examId === exam.id);
 
                 return (
                   <article
@@ -533,7 +553,31 @@ export function EikenMockExam({
                         )}
                       </div>
 
-                      <div className="flex items-center gap-2">
+                      <div className="flex flex-wrap items-center gap-1.5">
+                        {pdfEntry && (
+                          <>
+                            <button
+                              type="button"
+                              onClick={() => openChemPdfEntry(pdfEntry, 'questions')}
+                              className="inline-flex items-center gap-1 rounded-xl border border-slate-300 bg-white px-2.5 py-2 text-xs font-extrabold text-slate-800 hover:bg-slate-50 cursor-pointer"
+                              title="本番形式の問題冊子PDFを開く（見開き・印刷対応）"
+                              data-mock-pdf-questions={exam.id}
+                            >
+                              <Printer size={13} aria-hidden="true" />
+                              <span>問題冊子PDF</span>
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => openChemPdfEntry(pdfEntry, 'answers')}
+                              className="inline-flex items-center gap-1 rounded-xl border border-rose-300 bg-rose-50 px-2.5 py-2 text-xs font-extrabold text-rose-900 hover:bg-rose-100 cursor-pointer"
+                              title="実寸A4横マークシート解答用紙PDFを開く"
+                              data-mock-pdf-answers={exam.id}
+                            >
+                              <FileSpreadsheet size={13} aria-hidden="true" />
+                              <span>マークシートPDF</span>
+                            </button>
+                          </>
+                        )}
                         {session && (
                           <button
                             type="button"
@@ -551,7 +595,7 @@ export function EikenMockExam({
                           data-mock-start={exam.id}
                         >
                           {latest && !session ? <RotateCcw size={13} aria-hidden="true" /> : <Play size={13} aria-hidden="true" />}
-                          <span>{latest && !session ? '再受験する' : '問題冊子を開く'}</span>
+                          <span>{latest && !session ? '再受験する' : 'Web受験を開始'}</span>
                         </button>
                       </div>
                     </div>
@@ -573,6 +617,11 @@ export function EikenMockExam({
   const remainingSec = Math.max(0, limitSec - elapsedSec);
   const isTimeOver = timedMode && elapsedSec >= limitSec;
   const answeredTotal = flatEntries.filter(e => Number.isInteger(answers[e.item.id])).length;
+  const activePdfEntry = CHEM_PDF_CATALOG.find(p => p.examId === activeExam.id);
+  const cumulativeTargetSec = activeExam.sections
+    .slice(0, sectionIdx + 1)
+    .reduce((acc, s) => acc + (s.recommendedMinutes ?? Math.floor(activeExam.timeLimitMinutes / activeExam.sections.length)) * 60, 0);
+  const paceDeltaSec = cumulativeTargetSec - elapsedSec;
 
   if (phase === 'running') {
     return (
@@ -624,6 +673,38 @@ export function EikenMockExam({
                 {paused ? <Play size={13} /> : <Pause size={13} />}
                 <span className="hidden sm:inline">{paused ? '再開' : '停止'}</span>
               </button>
+
+              {timedMode && (
+                <span
+                  className={`hidden lg:inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-[11px] font-extrabold ${
+                    paceDeltaSec >= 120
+                      ? 'border-emerald-300 bg-emerald-50 text-emerald-900'
+                      : paceDeltaSec >= -90
+                        ? 'border-sky-300 bg-sky-50 text-sky-900'
+                        : 'border-amber-400 bg-amber-50 text-amber-950'
+                  }`}
+                  title="満点2周ペースメーカー（現在の大問完了目安との差）"
+                >
+                  <Gauge size={13} aria-hidden="true" />
+                  <span>
+                    {paceDeltaSec >= 0
+                      ? `${currentSec.daimonLabel}目安まで残り ${formatDuration(paceDeltaSec)}`
+                      : `目安超過 +${formatDuration(-paceDeltaSec)}（難問は★付箋で2周目へ！）`}
+                  </span>
+                </span>
+              )}
+
+              {activePdfEntry && (
+                <button
+                  type="button"
+                  onClick={() => openChemPdfEntry(activePdfEntry, 'questions')}
+                  className="hidden sm:inline-flex items-center gap-1 rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs font-extrabold text-slate-700 hover:bg-slate-50 cursor-pointer"
+                  title="印刷用PDF冊子・A4横マークシートを表示"
+                >
+                  <FileText size={13} aria-hidden="true" />
+                  <span>冊子PDF</span>
+                </button>
+              )}
 
               <button
                 type="button"
@@ -814,6 +895,15 @@ export function EikenMockExam({
                   未マークの解答欄が {flatEntries.length - answeredTotal} 箇所あります。本番同様、すべてマークしてからの提出を推奨します。
                 </p>
               )}
+              {flags.length > 0 && (
+                <p className="mt-2 rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-xs font-bold text-amber-950">
+                  見直し付箋★が {flags.length} 問残っています。マークずれ・主語の読み違い（電流vs電子、強塩基vs難溶、水H₂Oの算入）がないか最終確認しましょう。
+                </p>
+              )}
+              <div className="mt-2.5 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-[11.5px] leading-relaxed text-slate-700">
+                <strong className="block font-extrabold text-slate-900">【共通テスト満点 提出前5秒チェック】</strong>
+                ① マーク番号の段ずれはないか ／ ②「誤っているもの」と「正しいもの」を取り違えていないか ／ ③ 有効数字・単位（mL vs L, g vs kg）は合っているか
+              </div>
               <div className="em-modal-actions">
                 <button
                   type="button"
@@ -1243,7 +1333,27 @@ export function EikenMockExam({
           </span>
           <h1 className="mt-0.5 text-lg font-extrabold text-[#1c2a39]">{activeExam.title}</h1>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
+          {activePdfEntry && (
+            <>
+              <button
+                type="button"
+                onClick={() => openChemPdfEntry(activePdfEntry, 'explanations')}
+                className="inline-flex items-center gap-1 rounded-xl border border-sky-300 bg-sky-50 px-3 py-2 text-xs font-extrabold text-sky-950 hover:bg-sky-100 cursor-pointer"
+              >
+                <Printer size={14} aria-hidden="true" />
+                <span>ステップ詳解PDF</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => openChemPdfEntry(activePdfEntry, 'questions')}
+                className="inline-flex items-center gap-1 rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50 cursor-pointer"
+              >
+                <FileText size={14} aria-hidden="true" />
+                <span>問題・マークシートPDF</span>
+              </button>
+            </>
+          )}
           <button
             type="button"
             onClick={() => startExam(activeExam, false)}

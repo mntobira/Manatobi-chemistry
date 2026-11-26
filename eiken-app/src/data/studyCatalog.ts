@@ -17,7 +17,8 @@ export type StudyAction =
   | { kind: 'vocabQuiz' }                         // 用語・化学式の4択演習
   | { kind: 'reading' }
   | { kind: 'writing' }                           // 実験考察・構造決定ラボ
-  | { kind: 'mock' };                             // 共通テスト実戦 通し模試モード
+  | { kind: 'mock' }                              // 共通テスト実戦 通し模試モード
+  | { kind: 'pastAnalysis'; initialTab?: 'pdfs' | 'traps' | 'timeline' | 'tactics' }; // 37年過去問分析＆PDF冊子スタジオ
 
 export type StudyIcon = 'headphones' | 'pen' | 'letters' | 'book' | 'flask' | 'sigma' | 'globe' | 'briefcase';
 
@@ -91,6 +92,26 @@ export const STUDY_CATALOG: readonly StudySubject[] = [{
         action: { kind: 'units', subject: course.id },
       };
     }),
+    {
+      id: 'chem_past_spotlight',
+      title: '37年過去問分析＆PDF冊子',
+      icon: 'book',
+      badge: '1990-2026',
+      section: 'spotlight',
+      description: 'センター〜共テ急所18選＆全39冊PDF印刷',
+      meta: '全39冊PDF',
+      action: { kind: 'pastAnalysis', initialTab: 'pdfs' },
+    },
+    {
+      id: 'chem_past_bible',
+      title: 'センター〜共テ37年 過去問徹底分析＆本番形式PDF冊子スタジオ',
+      icon: 'book',
+      badge: '満点バイブル＋39冊PDF',
+      section: 'memorize',
+      description: 'センター(1990-2020)〜共通テスト(2021-2026)の平均点・正答率30%台の壁・歴代ひっかけ誤文18選（赤シート＆単元直結）と、模試3分冊・A4横マークシート・全114単元まとめPDFを完備',
+      meta: '37年分析・全39冊PDF収録',
+      action: { kind: 'pastAnalysis', initialTab: 'pdfs' },
+    },
     {
       id: 'chem_mock',
       title: '共通テスト実戦 通し模試',

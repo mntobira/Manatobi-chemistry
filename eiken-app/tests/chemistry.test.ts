@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync, statSync } from 'node:fs';
 import {
   CHEM_COURSES,
   CHEM_STORAGE_PREFIX,
@@ -9,6 +9,12 @@ import {
 import { ALL_CHEM_CHAPTER_SPECS, FLAT_CHEM_QUESTIONS, partsForCourse } from '../src/chemistry/curriculumAdapter';
 import { CHEM_MOCK_EXAMS } from '../src/chemistry/materials/mockExams';
 import { CHEM_LAB_TASKS } from '../src/chemistry/materials/labTasks';
+import { CHEM_PDF_CATALOG } from '../src/chemistry/chemistryPdfCatalog.generated';
+import {
+  CENTER_KYOTSU_TRAPS,
+  EXAM_TIMELINE_RECORDS,
+  FULL_SCORE_TACTICS,
+} from '../src/chemistry/pastExamAnalysis';
 import { getChaptersOfSubject } from '../src/data/allChapters';
 import { getSubjectStats } from '../src/data/chapterIndex.generated';
 import { STUDY_CATALOG } from '../src/data/studyCatalog';
@@ -117,7 +123,54 @@ describe('Manatobi Chemistry Common Test Curriculum & Isolation', () => {
 
     expect(STUDY_CATALOG).toHaveLength(1);
     expect(STUDY_CATALOG[0].id).toBe('chemistry');
-    expect(STUDY_CATALOG[0].contents.length).toBe(10);
+    expect(STUDY_CATALOG[0].contents.length).toBe(12);
+  });
+
+  it('validates 37-year Center & Common Test analysis records, 18 trap chapter links, and all 39 generated PDF booklets', () => {
+    expect(EXAM_TIMELINE_RECORDS.length).toBeGreaterThanOrEqual(8);
+    expect(EXAM_TIMELINE_RECORDS.some(r => r.era === 'center')).toBe(true);
+    expect(EXAM_TIMELINE_RECORDS.some(r => r.era === 'kyotsu' && r.year === 2026)).toBe(true);
+    expect(FULL_SCORE_TACTICS).toHaveLength(3);
+
+    const allChapterIds = new Set(ALL_CHEM_CHAPTER_SPECS.map(c => c.id));
+    expect(CENTER_KYOTSU_TRAPS).toHaveLength(18);
+    for (const trap of CENTER_KYOTSU_TRAPS) {
+      expect(allChapterIds.has(trap.chapterId), `${trap.id} -> ${trap.chapterId}`).toBe(true);
+      expect(trap.chapterId.startsWith(`${trap.course}_`)).toBe(true);
+      expect(trap.instantKillRule.length).toBeGreaterThan(20);
+    }
+
+    expect(CHEM_PDF_CATALOG).toHaveLength(15);
+    const bible = CHEM_PDF_CATALOG.find(e => e.kind === 'bible');
+    expect(bible).toBeDefined();
+    expect(CHEM_PDF_CATALOG.filter(e => e.kind === 'mock')).toHaveLength(8);
+    expect(CHEM_PDF_CATALOG.filter(e => e.kind === 'summary')).toHaveLength(6);
+
+    let mappedUnitCount = 0;
+    for (const entry of CHEM_PDF_CATALOG) {
+      const mainPath = `public${entry.file}`;
+      const thumbPath = `public${entry.thumb}`;
+      expect(existsSync(mainPath), `missing ${mainPath}`).toBe(true);
+      expect(statSync(mainPath).size).toBeGreaterThan(10_000);
+      expect(existsSync(thumbPath), `missing ${thumbPath}`).toBe(true);
+
+      if (entry.kind === 'mock') {
+        expect(entry.variants).toHaveLength(3);
+        for (const v of entry.variants ?? []) {
+          const vp = `public${v.file}`;
+          expect(existsSync(vp), `missing ${vp}`).toBe(true);
+          expect(statSync(vp).size).toBeGreaterThan(5_000);
+        }
+      }
+      if (entry.kind === 'summary') {
+        const keys = Object.keys(entry.unitPageMap ?? {});
+        mappedUnitCount += keys.length;
+        for (const uid of keys) {
+          expect(allChapterIds.has(uid)).toBe(true);
+        }
+      }
+    }
+    expect(mappedUnitCount).toBe(114);
   });
 
   it('loads 4-choice battle pools for all 6 chemistry courses and renders KaTeX mhchem formulas', async () => {
