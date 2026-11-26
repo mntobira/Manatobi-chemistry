@@ -491,7 +491,7 @@ function QuizBody({ mode, chapter, onFinish, onBack, onReturnToBattle, isGuest, 
         4列×1行にして、浮いた約60pxを図の高さに回す。
         listeningMobileNoFigure の裏返しなので、両方が同時に真になることはない。
       */
-      listeningMaterialsMobile={listeningMaterialsMobile}
+      listeningMaterialsMobile={listeningMaterialsMobile || chemMaterialsMobile}
       listeningMobileWithFigure={listeningMobileSplit && !listeningMobileNoFigure}
     />
   );
@@ -585,6 +585,7 @@ function QuizBody({ mode, chapter, onFinish, onBack, onReturnToBattle, isGuest, 
     listeningMobileSplit,
     listeningMobileNoFigure,
     listeningMaterialsMobile,
+    chemMaterialsMobile,
   } = useQuestionDerived({
     currentQuestion,
     perStep,
@@ -897,7 +898,7 @@ function QuizBody({ mode, chapter, onFinish, onBack, onReturnToBattle, isGuest, 
           「問題と選択肢を同時に見る」は、リスニング時の問題ペインの
           高さ上限（下記 max-h-[40vh]）と再生ボタンのスリム化で満たす。
           PC は従来どおり「問題＝左 / 解答＝右」。 */}
-      <div className={`flex-1 min-h-0 flex flex-col lg:flex-row overflow-hidden relative ${listeningMaterialsMobile ? 'pb-[calc(4.75rem+env(safe-area-inset-bottom))]' : ''}`}>
+      <div className={`flex-1 min-h-0 flex flex-col lg:flex-row overflow-hidden relative ${(listeningMaterialsMobile || chemMaterialsMobile) ? 'pb-[calc(4.75rem+env(safe-area-inset-bottom))]' : ''}`}>
 
         {/*
           Section 1: 問題文ペイン（左 58% ／スマホでは上）
@@ -918,6 +919,7 @@ function QuizBody({ mode, chapter, onFinish, onBack, onReturnToBattle, isGuest, 
           listeningMobileSplit={listeningMobileSplit}
           listeningMobileNoFigure={listeningMobileNoFigure}
           listeningMaterialsMobile={listeningMaterialsMobile}
+          chemMaterialsMobile={chemMaterialsMobile}
           listeningSteps={listeningSteps}
           safeStepIndex={safeStepIndex}
           activeStepSub={activeStepSub}
@@ -949,6 +951,8 @@ function QuizBody({ mode, chapter, onFinish, onBack, onReturnToBattle, isGuest, 
           listeningMobileSplit={listeningMobileSplit}
           listeningMobileNoFigure={listeningMobileNoFigure}
           listeningMaterialsMobile={listeningMaterialsMobile}
+          chemMaterialsMobile={chemMaterialsMobile}
+          isEnglishProse={isEnglishProse}
           focusedSubId={focusedSubId}
           setFocusedSubId={setFocusedSubId}
           mobileAnswerSubs={mobileAnswerSubs}

@@ -29,6 +29,8 @@ import { QuestionFigure } from './QuestionFigure';
 import { ListeningAudioPlayer } from './ListeningAudioPlayer';
 import { ExplanationBody } from './ExplanationBody';
 import { renderListeningMaterialPane } from './quiz/ListeningMaterialPane';
+import { FigureCarousel } from './ListeningMaterials';
+import { ChemMaterialDeck, MarkableChemTable } from './ChemMaterialDeck';
 
 export interface ProblemPaneProps {
   /** いま表示している大問。 */
@@ -51,6 +53,8 @@ export interface ProblemPaneProps {
   /** リスニングのスマホ表示で図が無い場合のレイアウト分岐。 */
   listeningMobileNoFigure: boolean;
   listeningMaterialsMobile?: boolean;
+  /** 化学のスマホ表示（第6問B式 1画面資料切替モード）か。 */
+  chemMaterialsMobile?: boolean;
   selectedAnswerSub?: SubQuestion | null;
   listeningSteps: ListeningStep[];
   safeStepIndex: number;
@@ -90,6 +94,7 @@ export function ProblemPane({
   listeningMobileSplit,
   listeningMobileNoFigure,
   listeningMaterialsMobile = false,
+  chemMaterialsMobile = false,
   selectedAnswerSub,
   listeningSteps,
   safeStepIndex,
@@ -137,6 +142,78 @@ export function ProblemPane({
       listeningMaterialsMobile, selectedAnswerSub, materialTrack: { ...materialTrack, material: materialTrack.material },
       activeStepSub: activeStepSub!, listeningTracks, problemScrollRef,
     });
+  }
+
+  // ★化学（スマホ・全画面モード含む）：リスニング第6問B式の 1画面切替資料デッキ★
+  //   ・リード文／データ表（セル○×メモ可）／複数図グラフ（◀▶切替＋タップ○×＋拡大）を1行ピルで即切替
+  //   ・下ペイン（AnswerPane）の sticky 問N＋設問文全文＋全幅4択と組み合わせてスクロール疲れを根絶する
+  if (!isDesktop && currentQuestion.isChemistryProblem && !isProblemCollapsed && !keyboardVisible) {
+    return (
+      <section
+        data-chem-material-pane
+        aria-label="問題文と資料"
+        className={`lg:w-[58%] flex min-h-0 flex-col border-b border-gray-200 bg-white ${
+          isProblemExpanded ? 'absolute inset-0 z-30 h-full shadow-lg' : chemMaterialsMobile ? 'flex-[1_1_0%] shadow-xs relative z-20' : 'max-h-[50%] flex-none'
+        }`}
+      >
+        <div className="flex shrink-0 items-center justify-between gap-1.5 border-b border-gray-100 bg-blue-50/30 px-2.5 py-0.5">
+          <div className="flex items-center gap-1.5 min-w-0">
+            <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#A9CCE3] bg-[#A9CCE3]/20 text-[11px] font-extrabold text-[#477998]">
+              Q{currentQuestionIndex + 1}
+            </span>
+            <span className="truncate text-xs font-extrabold text-[#2C3E50]">
+              {currentQuestion.category || '問題・資料'}
+            </span>
+            {highlights.length > 0 && (
+              <button
+                type="button"
+                onClick={() => setHighlights([])}
+                className="min-h-8 rounded border border-amber-200 bg-amber-50 px-1.5 text-[11px] font-bold text-amber-800 whitespace-nowrap"
+              >
+                強調消去
+              </button>
+            )}
+          </div>
+          <div className="flex shrink-0 items-center gap-1">
+            {!isProblemExpanded && (
+              <button
+                type="button"
+                onClick={() => setIsProblemCollapsed(true)}
+                className="flex min-h-9 items-center gap-0.5 rounded-md px-1.5 text-xs font-bold text-gray-600 active:bg-gray-100 whitespace-nowrap"
+              >
+                たたむ<ChevronUp size={12} />
+              </button>
+            )}
+            <button
+              type="button"
+              onClick={() => {
+                setIsProblemExpanded(!isProblemExpanded);
+                setIsProblemCollapsed(false);
+              }}
+              aria-label={isProblemExpanded ? '選択肢に戻る' : '全画面で読む'}
+              className="flex min-h-9 items-center rounded-md border border-gray-200 bg-white px-2 text-xs font-bold text-gray-700 active:bg-gray-50 whitespace-nowrap"
+            >
+              {isProblemExpanded ? '選択肢へ' : '全画面'}
+            </button>
+          </div>
+        </div>
+        <div
+          ref={problemScrollRef}
+          onMouseUp={handleTextSelection}
+          onTouchEnd={handleTextSelection}
+          className="flex flex-1 min-h-0 flex-col overflow-hidden"
+        >
+          <ChemMaterialDeck
+            leadText={currentQuestion.text}
+            imageUrl={currentQuestion.imageUrl}
+            imageCaption={currentQuestion.imageCaption}
+            figures={currentQuestion.chemFigures}
+            dataTable={currentQuestion.chemDataTable}
+            highlights={combinedHighlights}
+          />
+        </div>
+      </section>
+    );
   }
 
   return (
@@ -662,8 +739,37 @@ export function ProblemPane({
               />
             )
           )}
-          {/* 問題に付随する図・イラスト（PDF由来の図版など） */}
-          {currentQuestion.imageUrl && (
+          {/* 化学の実験条件・測定データ表（PCでもセル○×メモ対応） */}
+          {currentQuestion.chemDataTable && (
+            <div className="mt-4">
+              <MarkableChemTable
+                caption={currentQuestion.chemDataTable.caption}
+                headers={currentQuestion.chemDataTable.headers}
+                rows={currentQuestion.chemDataTable.rows}
+              />
+            </div>
+          )}
+          {/* 問題に付随する図・イラスト（複数図版がある場合は第6問B式カルーセルで切替表示） */}
+          {currentQuestion.chemFigures && currentQuestion.chemFigures.length > 1 ? (
+            <div className="mt-5 rounded-xl border border-slate-200 bg-[#FCFBF8] p-3">
+              <FigureCarousel
+                count={currentQuestion.chemFigures.length}
+                labels={currentQuestion.chemFigures.map((f, idx) => f.label || `図${idx + 1}`)}
+              >
+                {idx => {
+                  const fig = currentQuestion.chemFigures![idx]!;
+                  return (
+                    <QuestionFigure
+                      src={fig.url}
+                      caption={fig.caption}
+                      tone="light"
+                      className="mt-1"
+                    />
+                  );
+                }}
+              </FigureCarousel>
+            </div>
+          ) : currentQuestion.imageUrl ? (
             <QuestionFigure
               src={currentQuestion.imageUrl}
               caption={currentQuestion.imageCaption}
@@ -671,7 +777,7 @@ export function ProblemPane({
               tone="light"
               className="mt-5"
             />
-          )}
+          ) : null}
           {/* 表示ルール1・2：左側の「問題文」欄には共通リード文に加えて、
               続く全小問の設問文（問1、問2、…）を順番に表示する。
               左側だけ読めば全設問が理解できるようにする。

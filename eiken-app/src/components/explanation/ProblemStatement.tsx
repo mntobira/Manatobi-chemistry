@@ -4,6 +4,8 @@ import { formatText } from '../../utils/textFormatter';
 import { ExplanationBody } from '../ExplanationBody';
 import { QuestionFigure } from '../QuestionFigure';
 import { ListeningAudioPlayer } from '../ListeningAudioPlayer';
+import { FigureCarousel } from '../ListeningMaterials';
+import { ChemMaterialDeck, MarkableChemTable } from '../ChemMaterialDeck';
 import { getFigureNumber } from '../../utils/figureNumbering';
 import { buildSubQuestionList, isSubQuestionListRedundant, extractInlineQuestionRows, extractListeningQuestionRows, cleanQuestionText, findSubQuestionSentence } from '../../utils/questionDisplay';
 import type { Problem } from '../../types/curriculum';
@@ -37,6 +39,22 @@ export interface ProblemStatementProps {
 }
 
 export function ProblemStatement({ question, qIndex, scorePercentage, singleQuestionIndex, rangeOffset, pagerOn, resultPages, safeResultPage, savingNote, handleSaveNote, reorderMobile, isEnglishChapter, figureNumberMap }: ProblemStatementProps) {
+  // ★化学のスマホ1問解説（reorderMobile）：演習時と同じ「第6問B式 1画面資料切替デッキ」で
+  //   問題文・データ表・複数図版を sticky 上ペイン内でスムーズに見返せるようにする
+  if (reorderMobile && question.isChemistryProblem && (question.chemDataTable || question.imageUrl || (question.chemFigures && question.chemFigures.length > 0))) {
+    return (
+      <div className="space-y-2">
+        <ChemMaterialDeck
+          leadText={question.text}
+          imageUrl={question.imageUrl}
+          imageCaption={question.imageCaption}
+          figures={question.chemFigures}
+          dataTable={question.chemDataTable}
+          compactMaxHeightClass="max-h-[30dvh]"
+        />
+      </div>
+    );
+  }
   return (
                   <div className="space-y-4 md:space-y-6">
                     {singleQuestionIndex === undefined && (
@@ -239,8 +257,37 @@ export function ProblemStatement({ question, qIndex, scorePercentage, singleQues
                           </div>
                         );
                       })()}
-                      {/* 問題に付随する図・イラスト（PDF由来の図版など） */}
-                      {question.imageUrl && (
+                      {/* 化学の構造化データ表（解説画面でも確認・○×メモ可） */}
+                      {question.chemDataTable && (
+                        <div className="mt-4">
+                          <MarkableChemTable
+                            caption={question.chemDataTable.caption}
+                            headers={question.chemDataTable.headers}
+                            rows={question.chemDataTable.rows}
+                          />
+                        </div>
+                      )}
+                      {/* 問題に付随する図・イラスト（複数図版はカルーセル切替） */}
+                      {question.chemFigures && question.chemFigures.length > 1 ? (
+                        <div className="mt-4 rounded-xl border border-slate-200 bg-[#FCFBF8] p-2.5">
+                          <FigureCarousel
+                            count={question.chemFigures.length}
+                            labels={question.chemFigures.map((f, idx) => f.label || `図${idx + 1}`)}
+                          >
+                            {idx => {
+                              const fig = question.chemFigures![idx]!;
+                              return (
+                                <QuestionFigure
+                                  src={fig.url}
+                                  caption={fig.caption}
+                                  tone={'light'}
+                                  className="mt-1"
+                                />
+                              );
+                            }}
+                          </FigureCarousel>
+                        </div>
+                      ) : question.imageUrl ? (
                         <QuestionFigure
                           src={question.imageUrl}
                           caption={question.imageCaption}
@@ -248,7 +295,7 @@ export function ProblemStatement({ question, qIndex, scorePercentage, singleQues
                           tone={'light'}
                           className="mt-4"
                         />
-                      )}
+                      ) : null}
 
                       {/*
                         全小問の設問文一覧。

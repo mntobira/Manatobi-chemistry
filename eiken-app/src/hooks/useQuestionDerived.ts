@@ -391,8 +391,20 @@ export function useQuestionDerived({
   const listeningMaterial = listeningTracks.find(t => t.subId === activeStepSub?.id)?.material;
   const listeningMaterialsMobile = listeningMobileSplit && !!listeningMaterial;
   const listeningMobileNoFigure = listeningMobileSplit && !listeningMaterial && !activeStepHasFigure;
+  /**
+   * 化学（スマホ）：マナトビリスニング第6問B式の1画面分割モード。
+   *   ・上ペイン（ProblemPane）… flex-[1_1_0%] min-h-0 で ChemMaterialDeck（問題・条件／データ表／図・グラフ）を表示
+   *   ・下ペイン（AnswerPane）… flex-[0_1_auto] max-h-[58%] で sticky 問N バー＋設問文全文＋全幅4択を表示
+   * PC・キーボード表示中・全画面表示中・折りたたみ表示中は無効にする。
+   */
+  const chemMaterialsMobile =
+    !isDesktop &&
+    Boolean(currentQuestion?.isChemistryProblem) &&
+    !isProblemExpanded &&
+    !isProblemCollapsed &&
+    !keyboardVisible;
   // ★戻り値★
-  // 実測（grep）で「区間の外から参照されている」ことを確認した 14 個だけを返す。
+  // 実測（grep）で「区間の外から参照されている」ことを確認した項目を返す。
   // 名前は Quiz.tsx にあったときと同一にして、呼び出し側の JSX や
   // 他のロジックを一行も書き換えずに済むようにしている。
   return {
@@ -412,5 +424,6 @@ export function useQuestionDerived({
     listeningMobileSplit,
     listeningMobileNoFigure,
     listeningMaterialsMobile,
+    chemMaterialsMobile,
   };
 }

@@ -26,7 +26,7 @@ import { ChevronLeft, ChevronRight, Edit3 } from 'lucide-react';
 import type { AnswerGroup } from '../hooks/useQuestionDerived';
 import type { Problem, SubQuestion } from '../types/curriculum';
 import { formatText } from '../utils/textFormatter';
-import { answerCardMarker } from '../utils/questionDisplay';
+import { answerCardMarker, splitQuestionLabel } from '../utils/questionDisplay';
 import { handleInputFocusScroll } from '../utils/quizInputScroll';
 
 /** バーの1行（約14文字）に収まらない設問文か。見出し（Monday / 1st step 等）は短いのでバーに残す。 */
@@ -56,6 +56,10 @@ export interface AnswerPaneProps {
   /** リスニングのスマホ2分割で、かつ図が無い状態か（余りを解答側がもらう）。 */
   listeningMobileNoFigure: boolean;
   listeningMaterialsMobile?: boolean;
+  /** 化学のスマホ第6問B式 1画面モードか。 */
+  chemMaterialsMobile?: boolean;
+  /** 英語散文として組むか（false のときは化学式・数式フォーマッタを有効化）。 */
+  isEnglishProse?: boolean;
   /** いまフォーカスしている設問ID（スマホの入力バーと連動）。 */
   focusedSubId: string | null;
   setFocusedSubId: (v: string | null) => void;
@@ -96,6 +100,8 @@ export function AnswerPane({
   listeningMobileSplit,
   listeningMobileNoFigure,
   listeningMaterialsMobile = false,
+  chemMaterialsMobile = false,
+  isEnglishProse = false,
   focusedSubId,
   setFocusedSubId,
   mobileAnswerSubs,
@@ -112,10 +118,11 @@ export function AnswerPane({
   handlePrevious,
   handleNext,
 }: AnswerPaneProps) {
+  const compactMaterialsMobile = listeningMaterialsMobile || chemMaterialsMobile;
   const answerScrollRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    if (listeningMaterialsMobile && answerScrollRef.current) answerScrollRef.current.scrollTop = 0;
-  }, [listeningMaterialsMobile, safeMobileAnsIdx, currentQuestion.id]);
+    if (compactMaterialsMobile && answerScrollRef.current) answerScrollRef.current.scrollTop = 0;
+  }, [compactMaterialsMobile, safeMobileAnsIdx, currentQuestion.id]);
   return (
     <>
     {/* Section 2: Answers Area
@@ -169,12 +176,12 @@ export function AnswerPane({
         対象を listeningMobileSplit に限るのは、化学など従来の問題では
         解答欄が小さなチップの集まりで、余白を詰めると窮屈になるため。
         md 以上（PC）は md:p-8 が後ろで上書きするので影響しない。 */}
-    <div ref={answerScrollRef} data-listening-answer-pane={listeningMaterialsMobile || undefined}
+    <div ref={answerScrollRef} data-listening-answer-pane={listeningMaterialsMobile || undefined} data-chem-answer-pane={chemMaterialsMobile || undefined}
       className={`lg:w-[42%] min-h-0 overflow-y-auto bg-gray-50/50 ${
-        listeningMobileSplit ? 'px-2' : 'px-4'
+        listeningMobileSplit || chemMaterialsMobile ? 'px-2' : 'px-4'
       } md:p-8 ${
         /*
-          ★資料つきリスニング（スマホ）の高さ配分★
+          ★資料つきリスニング・化学（スマホ）の高さ配分★
           ご指摘：「リスニングがまだ一画面に映ってない（後半パート）。見にくい」
           以前は資料ペインも解答ペインも flex-[1_1_0%]（きっちり半々）だった。
           実測（375x740）：
@@ -188,10 +195,10 @@ export function AnswerPane({
               ほぼ全部見える（残りは従来どおりこのペイン内でスクロール）
           資料ペイン側は flex-[1_1_0%] のままなので、常に「解答が取らなかった分」を受け取る。
         */
-        listeningMaterialsMobile ? 'flex-[0_1_auto] max-h-[58%] pt-0 overscroll-contain' : listeningMobileNoFigure
+        compactMaterialsMobile ? 'flex-[0_1_auto] max-h-[58%] pt-0 overscroll-contain' : listeningMobileNoFigure
           ? 'flex-1 flex flex-col justify-end pt-2'
           : listeningMobileSplit ? 'flex-none pt-2' : 'flex-1 pt-4'
-      } ${listeningMaterialsMobile ? 'pb-2' : isDesktop
+      } ${compactMaterialsMobile ? 'pb-2' : isDesktop
         ? 'pb-8'
         : listeningMobileSplit
           // 下部ナビ（前へ/解答と解説を見る）の高さぶんだけ空ける。
@@ -203,7 +210,7 @@ export function AnswerPane({
           : listeningMobileNoFigure ? 'z-10' : 'block z-10'}`}>
       {/* 図が無い大問では、この内側ラッパにも flex/min-h-0 を通しておく。
           ここで連鎖が切れると下の auto-rows-fr が伸びる先を失う。 */}
-      <div className={`max-w-2xl mx-auto md:space-y-6 ${listeningMobileSplit ? 'space-y-2' : 'space-y-4'} ${
+      <div className={`max-w-2xl mx-auto md:space-y-6 ${listeningMobileSplit || chemMaterialsMobile ? 'space-y-2' : 'space-y-4'} ${
         listeningMobileNoFigure ? 'flex min-h-0 flex-1 flex-col' : ''
       }`}>
         {/* 「解答入力」見出しはスマホでは出さない（ご指摘：「左上にある
@@ -215,7 +222,7 @@ export function AnswerPane({
         {/* スマホ：解答欄ページャー（要望：スクロールをやめ、1設問ずつ固定表示。
             左右の黒い小さな矢印で表示する解答欄を切り替える）。
             位置表示（n / 全体）で「あといくつ解答欄があるか」も分かるようにする。 */}
-        {!isDesktop && !listeningMaterialsMobile && mobileAnswerSubs.length > 1 && (
+        {!isDesktop && !compactMaterialsMobile && mobileAnswerSubs.length > 1 && (
           <div className="text-center text-xs font-bold text-gray-400 tracking-widest select-none -mb-1">
             {safeMobileAnsIdx + 1} / {mobileAnswerSubs.length}
           </div>
@@ -254,13 +261,11 @@ export function AnswerPane({
             今回の幅不足の直接原因だったため。
           PC（isDesktop）は contents のままで、見た目は一切変わらない。
         */}
-        {listeningMaterialsMobile && (
+        {compactMaterialsMobile && (
           /*
-            ★問N を固定バーに出す★
+            ★問N を固定バーに出す（リスニング第6問B＋化学スマホ共通）★
             ご指摘：「選択肢が1画面に入らないところはスクロールできるが、その時に
             問〜のところがスクロールで上に隠れていかないように左上に固定できない？」
-            以前はカードの中に 問34 の札があり、選択肢を下へスクロールすると
-            この sticky なバーの下に潜って見えなくなっていた。
             いま見ている小問の 問N（＋空所の見出し）をこのバーの左に置き、
             カード側の札はスマホでは出さない（重複を避ける）。
           */
@@ -270,6 +275,7 @@ export function AnswerPane({
                 const cur = mobileAnswerSubs[safeMobileAnsIdx]?.sq;
                 const idx = cur ? (currentQuestion?.subQuestions || []).indexOf(cur) : -1;
                 const marker = cur ? answerCardMarker(cur, idx < 0 ? safeMobileAnsIdx : idx, currentQuestion) : '';
+                const rawHint = cur?.blankHint || (cur ? splitQuestionLabel(cur.label || '', marker).body : '');
                 return (
                   <>
                     {marker && (
@@ -277,9 +283,9 @@ export function AnswerPane({
                         {formatText(marker)}
                       </span>
                     )}
-                    {cur?.blankHint && !isLongBlankHint(cur.blankHint) && (
+                    {rawHint && !isLongBlankHint(rawHint) && (
                       <span className="min-w-0 truncate text-[12px] text-[#2C3E50] font-modern">
-                        {formatText(String(cur.blankHint), [], { prose: true })}
+                        {formatText(String(rawHint), [], { prose: listeningMaterialsMobile ? true : isEnglishProse })}
                       </span>
                     )}
                     <span className="shrink-0 tabular-nums text-gray-500">{safeMobileAnsIdx + 1}/{mobileAnswerSubs.length}</span>
@@ -287,31 +293,33 @@ export function AnswerPane({
                 );
               })()}
             </span>
-            <div className="flex shrink-0 gap-1">
-              <button type="button" aria-label="前の解答欄へ" disabled={safeMobileAnsIdx === 0}
-                onClick={() => goMobileAns(-1)} className="min-h-11 min-w-11 rounded border bg-white px-2 text-xs font-bold disabled:opacity-30">前の小問</button>
-              <button type="button" aria-label="次の解答欄へ" disabled={safeMobileAnsIdx >= mobileAnswerSubs.length - 1}
-                onClick={() => goMobileAns(1)} className="min-h-11 min-w-11 rounded border bg-white px-2 text-xs font-bold disabled:opacity-30">次の小問</button>
-            </div>
+            {mobileAnswerSubs.length > 1 && (
+              <div className="flex shrink-0 gap-1">
+                <button type="button" aria-label="前の解答欄へ" disabled={safeMobileAnsIdx === 0}
+                  onClick={() => goMobileAns(-1)} className="min-h-10 min-w-11 rounded border bg-white px-2 text-xs font-bold disabled:opacity-30">前の小問</button>
+                <button type="button" aria-label="次の解答欄へ" disabled={safeMobileAnsIdx >= mobileAnswerSubs.length - 1}
+                  onClick={() => goMobileAns(1)} className="min-h-10 min-w-11 rounded border bg-white px-2 text-xs font-bold disabled:opacity-30">次の小問</button>
+              </div>
+            )}
           </nav>
         )}
         {/*
-          ★長い設問文はバーの下に全文を出す（ご指摘「第6問B 問36 … 問題が切れててみずらい」）★
-          バーの左は 前の小問／次の小問 に幅を取られ、
-          「会話が終わった時点で、以前よりも…3人のうち何人ですか。」（55文字）が
-          「会話が終わった時点で、以…」で切れていた。設問の肝（何を数えるか）が
-          後半にあるので、見出し程度の短いもの（Monday・1st step など）だけバーに残し、
-          長いものはバーの直下に折り返して全文を出す。
+          ★長い設問文はバーの下に全文を出す（第6問B＋化学の小問設問文）★
+          上の資料ペインをどのタブ（データ表／図・グラフ）に切り替えていても、
+          いま解いている小問の設問文が常に手元で全文読めるようにする。
         */}
-        {listeningMaterialsMobile && (() => {
-          const hint = mobileAnswerSubs[safeMobileAnsIdx]?.sq?.blankHint;
+        {compactMaterialsMobile && (() => {
+          const cur = mobileAnswerSubs[safeMobileAnsIdx]?.sq;
+          const idx = cur ? (currentQuestion?.subQuestions || []).indexOf(cur) : -1;
+          const marker = cur ? answerCardMarker(cur, idx < 0 ? safeMobileAnsIdx : idx, currentQuestion) : '';
+          const hint = cur?.blankHint || (cur ? splitQuestionLabel(cur.label || '', marker).body : '');
           if (!hint || !isLongBlankHint(hint)) return null;
-          return <p data-answer-prompt className="mb-1 mt-1 px-0.5 text-sm font-bold leading-snug text-[#2C3E50] font-modern">
-            {formatText(String(hint), [], { prose: true })}
+          return <p data-answer-prompt className="mb-1 mt-0.5 px-0.5 text-[13.5px] font-bold leading-snug text-[#2C3E50] font-modern">
+            {formatText(String(hint), [], { prose: listeningMaterialsMobile ? true : isEnglishProse })}
           </p>;
         })()}
         <div className={isDesktop ? 'contents' : 'flex items-stretch gap-1'}>
-          {!isDesktop && !listeningMaterialsMobile && mobileAnswerSubs.length > 1 && (
+          {!isDesktop && !compactMaterialsMobile && mobileAnswerSubs.length > 1 && (
             <button
               type="button"
               onClick={() => goMobileAns(-1)}
@@ -417,7 +425,7 @@ export function AnswerPane({
                  p-3.5（14px×2）→ px-2 py-3 で左右 12px を英文に回す。
                  縦（py-3）は詰めない。縦を削ると1行あたりの余裕が減って
                  かえって読みにくくなり、④ が見えない問題も解決しないため。 */
-              listeningMaterialsMobile ? 'px-2 py-2' : listeningMobileNoFigure
+              compactMaterialsMobile ? 'px-2 py-2' : listeningMobileNoFigure
                 ? 'min-h-0 flex-1 max-h-full px-2 py-3'
                 : listeningMobileSplit
                   /*
@@ -469,19 +477,13 @@ export function AnswerPane({
                 化学など従来の問題は listeningUnified=false なので、
                 これまでどおり設問マーカー＋入力UIの形のまま。
               */}
-              <div className={`flex flex-col ${listeningMaterialsMobile ? 'gap-2' : 'gap-3.5'} w-full min-w-0 ${
+              <div className={`flex flex-col ${compactMaterialsMobile ? 'gap-2' : 'gap-3.5'} w-full min-w-0 ${
                 // 図が無い大問：ここも連鎖に加える（切ると選択肢が伸びない）。
                 listeningMobileNoFigure ? 'min-h-0 flex-1' : ''
               }`}>
                 {/* 設問マーカー（(ア)/(1)/問2 など）。
-                    ★リスニングでは出さない（ご指摘：「解答のところの問4とかって
-                      書いてあるのは問題のところに書いてあるのでいらない。
-                      もっと選択肢と問題を一画面に出すイメージで」）。
-                    左の問題ペインの見出しに 問N（全4問中N問目）が常にあるので、
-                    解答カード側の 問N は重複。浮いた縦幅は選択肢・図に回す。
-                    化学など（listeningUnified=false）は (ア)/(1) の目印が
-                    入力に必須なので従来どおり表示する。 */}
-                {!listeningUnified && (
+                    ★リスニングおよび化学のスマホ第6問Bモードでは sticky バーに出しているので重複表示しない。 */}
+                {!listeningUnified && !chemMaterialsMobile && (
                   <span className={`font-bold text-[#2C3E50] text-sm text-left bg-blue-50/45 border border-[#A9CCE3]/25 py-2 px-4 rounded-xl leading-relaxed shadow-xs w-fit block ${questionNeedsMathPalette ? 'font-math math-content' : ''}`}>
                     {formatText(sqMarker)}
                   </span>
@@ -610,7 +612,7 @@ export function AnswerPane({
           </div>
           {/* 右矢印も左と同じ条件でガードする（B-1）。
               片側だけ残すと解答欄が中央からずれるので必ず対で揃える。 */}
-          {!isDesktop && !listeningMaterialsMobile && mobileAnswerSubs.length > 1 && (
+          {!isDesktop && !compactMaterialsMobile && mobileAnswerSubs.length > 1 && (
             <button
               type="button"
               onClick={() => goMobileAns(1)}
