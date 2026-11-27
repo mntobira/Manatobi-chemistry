@@ -140,8 +140,13 @@ function FigureGrid({ count, children }: { count: number; children: React.ReactN
  *   ・端まで行ったら反対の端へ回る（4枚しかないので迷わない）
  *   ・図ごとの ○× の書き込みは図の src ごとに持っているので、切り替えても消えない
  */
-export function FigureCarousel({ count, labels, children }: { count: number; labels: string[]; children: (index: number) => React.ReactNode }) {
-  const [index, setIndex] = useState(0);
+export function FigureCarousel({ count, labels, initialIndex, children }: { count: number; labels: string[]; initialIndex?: number; children: (index: number) => React.ReactNode }) {
+  const [index, setIndex] = useState(() => (initialIndex != null && initialIndex >= 0 && initialIndex < count ? initialIndex : 0));
+  useEffect(() => {
+    if (initialIndex != null && initialIndex >= 0 && initialIndex < count) {
+      setIndex(initialIndex);
+    }
+  }, [initialIndex, count]);
   const touch = useRef<{ x: number; y: number } | null>(null);
   const go = (d: number) => setIndex(i => (i + d + count) % count);
   return <div data-material-carousel className="flex min-h-0 flex-1 flex-col" style={{ minHeight: 120 }}

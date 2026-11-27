@@ -104,6 +104,21 @@ export function inferChapterTargetLevel(spec: ChemChapterSpec): ChemDifficultyLe
   }
 }
 
+function enrichDistractorWhy(
+  rawWhy: string,
+  choiceText: string,
+  isCorrect: boolean,
+  printRule: string,
+): string {
+  const trimmed = rawWhy.trim();
+  if (trimmed.length >= 22) return trimmed;
+  const cleanRule = printRule.replace(/^【[^】]+】/, '').trim();
+  if (isCorrect) {
+    return `${trimmed}（鉄則：${cleanRule}）`;
+  }
+  return `${trimmed}（「${choiceText}」は条件・数値または反応則と不整合。鉄則：${cleanRule}）`;
+}
+
 function toSubQuestion(
   sub: ChemSubItem,
   fallbackLevel: ChemDifficultyLevel,
@@ -133,7 +148,10 @@ function toSubQuestion(
       steps: deriveStructuredSteps(sub, printRule),
       difficulty: difficultyLevelToScore(level),
     },
-    distractors: sub.reasons.map((why, index) => ({ no: index + 1, why })),
+    distractors: sub.reasons.map((why, index) => ({
+      no: index + 1,
+      why: enrichDistractorWhy(why, sub.choices[index] ?? '', index === sub.answer, printRule),
+    })),
   };
 }
 

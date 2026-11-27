@@ -1266,4 +1266,167 @@ export const FIG_MICHAELIS_INHIBITION = svgDataUri(`
 </svg>
 `);
 
+/** カロリメトリー（温度-時間外挿グラフ ΔT と エンタルピー図 ΔH＝−Q/n） */
+export const FIG_CALORIMETRY_ENTHALPY = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 250" font-family="sans-serif">
+  <rect width="480" height="250" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="240" y="22" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#2A3B4C">反応熱測定の温度−時間グラフ（混合時刻への外挿 ΔT）とエンタルピー変化 ΔH</text>
+  <g transform="translate(18,38)">
+    <rect width="246" height="194" rx="8" fill="#FFFFFF" stroke="#CBD5E1"/>
+    <line x1="42" y1="162" x2="232" y2="162" stroke="#475569" stroke-width="1.8"/>
+    <line x1="42" y1="162" x2="42" y2="20" stroke="#475569" stroke-width="1.8"/>
+    <text x="138" y="184" text-anchor="middle" font-size="10.5" fill="#475569">時間 t [分]（t₀ で混合）</text>
+    <text x="15" y="92" text-anchor="middle" font-size="10.5" fill="#475569" transform="rotate(-90 15 92)">液温 [℃]</text>
+    <!-- 混合時刻 t0 の鉛直線 -->
+    <line x1="96" y1="162" x2="96" y2="24" stroke="#DC2626" stroke-width="1.6" stroke-dasharray="4 3"/>
+    <text x="96" y="173" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#DC2626">t₀</text>
+    <!-- 初期温度 T1 -->
+    <line x1="48" y1="138" x2="96" y2="138" stroke="#2563EB" stroke-width="2.4"/>
+    <circle cx="62" cy="138" r="3" fill="#2563EB"/><circle cx="80" cy="138" r="3" fill="#2563EB"/>
+    <text x="37" y="142" text-anchor="end" font-size="9.5" font-weight="bold" fill="#1D4ED8">T₁</text>
+    <!-- 冷却直線外挿 -->
+    <line x1="96" y1="44" x2="226" y2="74" stroke="#94A3B8" stroke-width="1.6" stroke-dasharray="4 3"/>
+    <circle cx="96" cy="44" r="4.5" fill="#DC2626"/>
+    <text x="37" y="48" text-anchor="end" font-size="9.5" font-weight="bold" fill="#DC2626">T₂*</text>
+    <!-- 実測曲線（放熱で丸まる） -->
+    <path d="M 96 138 Q 108 62 126 51 L 158 58 L 190 66 L 222 73" fill="none" stroke="#0F766E" stroke-width="2.6"/>
+    <circle cx="126" cy="51" r="3.5" fill="#0F766E"/>
+    <text x="166" y="42" font-size="9.2" font-weight="bold" fill="#B91C1C">放熱前へ直線外挿！</text>
+    <text x="116" y="100" font-size="10" font-weight="bold" fill="#DC2626">↑ ΔT＝T₂*−T₁</text>
+  </g>
+  <g transform="translate(274,38)">
+    <rect width="188" height="194" rx="8" fill="#F8FAFC" stroke="#CBD5E1"/>
+    <text x="94" y="20" text-anchor="middle" font-size="10.8" font-weight="bold" fill="#1E293B">発熱反応のエンタルピー図</text>
+    <line x1="30" y1="54" x2="112" y2="54" stroke="#2563EB" stroke-width="3"/>
+    <text x="71" y="46" text-anchor="middle" font-size="9.8" font-weight="bold" fill="#1D4ED8">反応物 H₁（高）</text>
+    <line x1="76" y1="142" x2="164" y2="142" stroke="#16A34A" stroke-width="3"/>
+    <text x="120" y="158" text-anchor="middle" font-size="9.8" font-weight="bold" fill="#15803D">生成物 H₂（低）</text>
+    <line x1="94" y1="56" x2="94" y2="136" stroke="#DC2626" stroke-width="2.5"/>
+    <polygon points="94,140 89,131 99,131" fill="#DC2626"/>
+    <text x="138" y="100" text-anchor="middle" font-size="10" font-weight="bold" fill="#B91C1C">ΔH ＜ 0</text>
+    <text x="94" y="180" text-anchor="middle" font-size="9.2" font-weight="bold" fill="#334155">Q＝mcΔT ⇒ ΔH＝−Q/n</text>
+  </g>
+</svg>
+`);
+
+/** リチウムイオン二次電池（LiCoO₂ 正極・黒鉛 C₆ 負極・非水有機電解液）の充放電モデル */
+export const FIG_LI_ION_BATTERY = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 250" font-family="sans-serif">
+  <rect width="470" height="250" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="235" y="22" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#2A3B4C">リチウムイオン二次電池の放電モデル（(−) LiₓC₆ | 有機溶媒＋LiPF₆ | Li₁₋ₓCoO₂ (＋)）</text>
+  <!-- 外部回路 -->
+  <line x1="125" y1="76" x2="125" y2="44" stroke="#334155" stroke-width="2.4"/>
+  <line x1="345" y1="76" x2="345" y2="44" stroke="#334155" stroke-width="2.4"/>
+  <line x1="125" y1="44" x2="198" y2="44" stroke="#334155" stroke-width="2.4"/>
+  <line x1="272" y1="44" x2="345" y2="44" stroke="#334155" stroke-width="2.4"/>
+  <rect x="198" y="32" width="74" height="24" rx="12" fill="#FEF3C7" stroke="#D97706" stroke-width="1.8"/>
+  <text x="235" y="48" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#92400E">放電 e⁻ →</text>
+  <!-- 電解槽（有機電解液） -->
+  <rect x="64" y="76" width="342" height="134" rx="8" fill="#F0FDF4" stroke="#16A34A" stroke-width="2"/>
+  <line x1="235" y1="76" x2="235" y2="210" stroke="#64748B" stroke-width="2.5" stroke-dasharray="5 4"/>
+  <text x="235" y="92" text-anchor="middle" font-size="9.2" font-weight="bold" fill="#475569">セパレーター</text>
+  <!-- 負極：黒鉛層間 -->
+  <rect x="88" y="92" width="74" height="96" rx="5" fill="#334155"/>
+  <text x="125" y="114" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#F8FAFC">負極 (−)</text>
+  <text x="125" y="132" text-anchor="middle" font-size="10" fill="#FDE68A" font-weight="bold">黒鉛 LiₓC₆</text>
+  <text x="125" y="150" text-anchor="middle" font-size="8.8" fill="#E2E8F0">xLi⁺ ＋ xe⁻</text>
+  <text x="125" y="164" text-anchor="middle" font-size="8.8" fill="#E2E8F0">＋ C₆ へ放出</text>
+  <!-- 正極：LiCoO2 -->
+  <rect x="308" y="92" width="74" height="96" rx="5" fill="#1E40AF"/>
+  <text x="345" y="114" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#FFFFFF">正極 (＋)</text>
+  <text x="345" y="132" text-anchor="middle" font-size="9.5" fill="#BFDBFE" font-weight="bold">Li₁₋ₓCoO₂</text>
+  <text x="345" y="150" text-anchor="middle" font-size="8.8" fill="#EFF6FF">Co(IV) → Co(III)</text>
+  <text x="345" y="164" text-anchor="middle" font-size="8.8" fill="#EFF6FF">LiCoO₂ へ挿入</text>
+  <!-- Li+ 移動 -->
+  <line x1="172" y1="142" x2="296" y2="142" stroke="#DC2626" stroke-width="2.8"/>
+  <polygon points="298,142 288,137 288,147" fill="#DC2626"/>
+  <rect x="200" y="122" width="70" height="17" rx="4" fill="#FEE2E2"/>
+  <text x="235" y="134" text-anchor="middle" font-size="10" font-weight="bold" fill="#B91C1C">Li⁺ 移動 →</text>
+  <text x="235" y="202" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#166534">電解液：炭酸エステル等の有機溶媒＋LiPF₆（※水とLiが反応するため水溶液は絶対不可！）</text>
+  <text x="235" y="232" text-anchor="middle" font-size="10" font-weight="bold" fill="#1E293B">急所：e⁻ 1 mol 放電ごとに Li⁺（M＝7.0）1 mol が負極から抜け（−7.0g）正極へ入る（＋7.0g）！</text>
+</svg>
+`);
+
+/** 実験室での気体発生・洗気（不純物除去）・乾燥剤の適合マトリックス図 */
+export const FIG_GAS_COLLECTION_DRYING = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 250" font-family="sans-serif">
+  <rect width="480" height="250" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="240" y="22" text-anchor="middle" font-size="12.2" font-weight="bold" fill="#2A3B4C">塩素 Cl₂ 精製装置（水→濃硫酸の順！）と乾燥剤の絶対NG組合せ</text>
+  <!-- 左：Cl2 洗気順序 -->
+  <g transform="translate(16,36)">
+    <rect width="234" height="196" rx="8" fill="#F8FAFC" stroke="#CBD5E1"/>
+    <text x="117" y="19" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#0F766E">MnO₂＋濃塩酸（加熱）からの精製順</text>
+    <rect x="14" y="54" width="60" height="78" rx="6" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.8"/>
+    <text x="44" y="76" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#0369A1">① 洗気びんA</text>
+    <text x="44" y="94" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#0C4A6E">水 H₂O</text>
+    <text x="44" y="112" text-anchor="middle" font-size="8.5" fill="#0369A1">HCl を除去</text>
+    <line x1="74" y1="88" x2="92" y2="88" stroke="#334155" stroke-width="2"/>
+    <rect x="92" y="54" width="60" height="78" rx="6" fill="#FEF3C7" stroke="#D97706" stroke-width="1.8"/>
+    <text x="122" y="76" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#92400E">② 洗気びんB</text>
+    <text x="122" y="94" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#78350F">濃 H₂SO₄</text>
+    <text x="122" y="112" text-anchor="middle" font-size="8.5" fill="#92400E">H₂O を除去</text>
+    <line x1="152" y1="88" x2="170" y2="88" stroke="#334155" stroke-width="2"/>
+    <rect x="170" y="54" width="52" height="78" rx="6" fill="#DCFCE7" stroke="#16A34A" stroke-width="1.8"/>
+    <text x="196" y="78" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#166534">③ 捕集</text>
+    <text x="196" y="96" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#14532D">下方置換</text>
+    <text x="196" y="112" text-anchor="middle" font-size="8.5" fill="#166534">(M＝71＞29)</text>
+    <text x="117" y="156" text-anchor="middle" font-size="9.2" font-weight="bold" fill="#B91C1C">★逆順（濃硫酸→水）だと再び湿る！</text>
+    <text x="117" y="176" text-anchor="middle" font-size="8.8" fill="#334155">導入管は「長い方を液中」「短い方から出口」</text>
+  </g>
+  <!-- 右：乾燥剤 NG ルール -->
+  <g transform="translate(258,36)">
+    <rect width="206" height="196" rx="8" fill="#FFFBEB" stroke="#FCD34D"/>
+    <text x="103" y="19" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#92400E">乾燥剤の選択＆例外NG</text>
+    <text x="14" y="44" font-size="9.4" font-weight="bold" fill="#1E293B">・酸性乾燥剤（濃H₂SO₄, P₄O₁₀）</text>
+    <text x="20" y="60" font-size="9" fill="#B91C1C" font-weight="bold">× NH₃（中和） ／ × H₂S（濃硫酸と酸化還元！）</text>
+    <text x="14" y="84" font-size="9.4" font-weight="bold" fill="#1E293B">・塩基性乾燥剤（ソーダ石灰, CaO）</text>
+    <text x="20" y="100" font-size="9" fill="#15803D" font-weight="bold">◎ NH₃ の乾燥はソーダ石灰一択！</text>
+    <text x="20" y="116" font-size="9" fill="#B91C1C">× Cl₂, HCl, SO₂, CO₂, H₂S, NO₂（酸性気体）</text>
+    <text x="14" y="142" font-size="9.4" font-weight="bold" fill="#1E293B">・中性乾燥剤（CaCl₂）の有名な例外！</text>
+    <rect x="14" y="150" width="178" height="32" rx="5" fill="#FEE2E2"/>
+    <text x="103" y="168" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#991B1B">× CaCl₂ で NH₃ は乾燥不可！</text>
+    <text x="103" y="179" text-anchor="middle" font-size="8.2" fill="#7F1D1D">(CaCl₂·8NH₃ 付加化合物を形成して吸収される)</text>
+  </g>
+</svg>
+`);
+
+/** アニリンのジアゾ化（0〜5℃冷却！）と熱水分解 vs ジアゾカップリング反応マップ */
+export const FIG_DIAZO_COUPLING_MAP = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 250" font-family="sans-serif">
+  <rect width="480" height="250" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="240" y="22" text-anchor="middle" font-size="12.2" font-weight="bold" fill="#2A3B4C">芳香族アミンのジアゾ化（0〜5 ℃ 氷冷必須！）とアゾ染料合成マップ</text>
+  <!-- 左：アニリン -->
+  <rect x="16" y="88" width="102" height="72" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.8"/>
+  <text x="67" y="110" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1E40AF">アニリン</text>
+  <text x="67" y="128" text-anchor="middle" font-size="9.8" font-weight="bold" fill="#0F172A">C₆H₅−NH₂</text>
+  <text x="67" y="146" text-anchor="middle" font-size="8.8" fill="#475569">(M ＝ 93)</text>
+  <!-- 矢印：ジアゾ化 -->
+  <line x1="118" y1="124" x2="174" y2="124" stroke="#0284C7" stroke-width="2.4"/>
+  <polygon points="176,124 168,119 168,129" fill="#0284C7"/>
+  <text x="147" y="98" text-anchor="middle" font-size="8.8" font-weight="bold" fill="#0369A1">NaNO₂＋HCl</text>
+  <text x="147" y="112" text-anchor="middle" font-size="9" font-weight="bold" fill="#DC2626">0〜5 ℃ 氷冷！</text>
+  <!-- 中央：塩化ベンゼンジアゾニウム -->
+  <rect x="176" y="78" width="128" height="92" rx="8" fill="#FEFCE8" stroke="#CA8A04" stroke-width="2"/>
+  <text x="240" y="100" text-anchor="middle" font-size="9.8" font-weight="bold" fill="#854D0E">塩化ベンゼンジアゾニウム</text>
+  <text x="240" y="120" text-anchor="middle" font-size="10.2" font-weight="bold" fill="#0F172A">[C₆H₅−N≡N]⁺ Cl⁻</text>
+  <text x="240" y="138" text-anchor="middle" font-size="8.8" fill="#475569">(M ＝ 140.5・水に可溶)</text>
+  <text x="240" y="156" text-anchor="middle" font-size="8.6" font-weight="bold" fill="#B91C1C">室温では分解しやすい</text>
+  <!-- 右上：加熱分解 -->
+  <line x1="304" y1="104" x2="342" y2="68" stroke="#DC2626" stroke-width="2.2"/>
+  <rect x="342" y="38" width="124" height="74" rx="8" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.6"/>
+  <text x="404" y="56" text-anchor="middle" font-size="9.6" font-weight="bold" fill="#991B1B">① 水溶液を加熱</text>
+  <text x="404" y="74" text-anchor="middle" font-size="9.8" font-weight="bold" fill="#0F172A">フェノール C₆H₅OH</text>
+  <text x="404" y="92" text-anchor="middle" font-size="9.2" font-weight="bold" fill="#B91C1C">＋ 気体 N₂↑ ＋ HCl</text>
+  <!-- 右下：カップリング -->
+  <line x1="304" y1="144" x2="342" y2="174" stroke="#EA580C" stroke-width="2.2"/>
+  <rect x="342" y="136" width="124" height="86" rx="8" fill="#FFF7ED" stroke="#F97316" stroke-width="1.8"/>
+  <text x="404" y="154" text-anchor="middle" font-size="9.4" font-weight="bold" fill="#9A3412">② カップリング(氷冷)</text>
+  <text x="404" y="170" text-anchor="middle" font-size="8.6" fill="#475569">＋ナトリウムフェノキシド aq</text>
+  <text x="404" y="187" text-anchor="middle" font-size="9.3" font-weight="bold" fill="#C2410C">p-ヒドロキシアゾベンゼン</text>
+  <text x="404" y="204" text-anchor="middle" font-size="9" font-weight="bold" fill="#EA580C">（橙赤色の沈殿・M＝198）</text>
+  <text x="240" y="238" text-anchor="middle" font-size="9.4" font-weight="bold" fill="#334155">急所：分解は「N₂ が抜ける置換」、カップリングは「N＝N でつながる（N₂ は抜けない！）」</text>
+</svg>
+`);
+
+
 

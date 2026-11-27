@@ -382,15 +382,29 @@ export function ChemMaterialDeck({
   type DeckTab = 'text' | 'table' | 'figs' | 'dialogue';
   const [activeTab, setActiveTab] = useState<DeckTab>('text');
 
-  // 現在選択中の小問が「表」「図・グラフ」「会話」を参照しているか判定（タブ上に控えめなドットで誘導）
+  // 現在選択中の小問が「表」「図・グラフ（図番号含む）」「会話」を参照しているか判定（タブ上に控えめなドットで誘導＋該当スライド番号も自動選択）
   const promptHints = useMemo(() => {
     const q = activeSubPrompt || '';
+    let figSlideIndex = 0;
+    const figNumMatch = q.match(/図\s*([1-9１-９])/);
+    if (figNumMatch && slideFigures.length > 1) {
+      const nRaw = figNumMatch[1]!;
+      const n = '１２３４５６７８９'.includes(nRaw)
+        ? '１２３４５６７８９'.indexOf(nRaw) + 1
+        : Number(nRaw);
+      const matched = slideFigures.findIndex(
+        f => f.label.includes(`図${n}`) || (f.caption ?? '').includes(`図${n}`),
+      );
+      if (matched >= 0) figSlideIndex = matched;
+      else if (n - 1 >= 0 && n - 1 < slideFigures.length) figSlideIndex = n - 1;
+    }
     return {
       table: hasTable && /表|実験\s*[1-9ⅠⅡⅢA-D]|測定値|結果/.test(q),
       figs: hasFigs && /図|グラフ|曲線|スペクトル|装置|経路/.test(q),
       dialogue: hasDialogue && /会話|生徒|先生|下線部/.test(q),
+      figSlideIndex,
     };
-  }, [activeSubPrompt, hasTable, hasFigs, hasDialogue]);
+  }, [activeSubPrompt, hasTable, hasFigs, hasDialogue, slideFigures]);
 
   // 問題が切り替わったら先頭タブ（「問題・条件」）へ戻す
   useEffect(() => {
@@ -568,6 +582,7 @@ export function ChemMaterialDeck({
               <FigureCarousel
                 count={slideFigures.length}
                 labels={slideFigures.map(f => f.label)}
+                initialIndex={promptHints.figSlideIndex}
               >
                 {idx => (
                   <ChemFitFigure
