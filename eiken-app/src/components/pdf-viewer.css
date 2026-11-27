@@ -1,35 +1,510 @@
-/* アプリ内の PDF ビュー（PdfViewer.tsx）。下のナビ・広告より上に全画面で重ねる */
-.pdfv { position: fixed; inset: 0; z-index: 9000; display: flex; flex-direction: column; background: #3a3f47; color: #fff; }
-.pdfv-bar { flex-shrink: 0; display: flex; align-items: center; gap: 8px; padding: calc(env(safe-area-inset-top, 0px) + 6px) 10px 6px; background: var(--mt-ink); box-shadow: 0 2px 8px rgba(0, 0, 0, .25); }
-.pdfv-back { flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px; min-height: 44px; padding: 0 14px 0 10px; border-radius: 999px; border: 0; background: #fff; color: var(--mt-ink); font: 800 14px/1 var(--mt-font-display, sans-serif); }
-.pdfv-back:focus-visible, .pdfv-tools > *:focus-visible { outline: 3px solid #f2b84b; outline-offset: 2px; }
-.pdfv-title { flex: 1; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 2px; }
-.pdfv-title strong { font-size: 14px; line-height: 1.25; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.pdfv-title small { font-size: 12px; color: #c9d4e6; }
-.pdfv-tools { flex-shrink: 0; display: flex; gap: 4px; }
-.pdfv-tools > button, .pdfv-tools > a { display: inline-flex; align-items: center; justify-content: center; gap: 4px; min-width: 44px; min-height: 44px; padding: 0 8px; border-radius: 12px; border: 1px solid #ffffff33; background: transparent; color: #fff; font: 700 13px/1 var(--mt-font-body, sans-serif); text-decoration: none; }
-.pdfv-tools > button:disabled { opacity: .4; }
-.pdfv-scroll { flex: 1; min-height: 0; overflow: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; padding: 12px 8px calc(env(safe-area-inset-bottom, 0px) + 16px); }
-.pdfv-pages { display: flex; flex-direction: column; align-items: center; gap: 12px; }
-.pdfv-native { display: block; width: 100%; height: calc(100vh - 92px); min-height: 420px; border: 0; background: #fff; }
-.pdfv-scroll[data-zoom] .pdfv-pages { align-items: flex-start; width: max-content; min-width: 100%; }
-.pdfv-pages canvas { display: block; max-width: none; height: auto; background: #fff; box-shadow: 0 2px 10px rgba(0, 0, 0, .35); }
-.pdfv-scroll:not([data-zoom]) .pdfv-pages canvas { max-width: 100%; }
-.pdfv-status { margin: 24px auto; max-width: 420px; text-align: center; font-size: 14px; color: #e6ecf5; }
-.pdfv-status button { margin-top: 12px; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 0; background: #fff; color: var(--mt-ink); font-weight: 800; }
-@media (max-width: 360px) { .pdfv-tools > a span { display: none; } }
-/* 2026-10-21 印刷ボタン・もう一度・お知らせ */
-.pdfv-status small { display: inline-block; margin-top: 6px; font-size: 12px; color: #c9d4e6; }
+/* アプリ内の PDF ブックレットリーダー（PdfViewer.tsx）— 共通テスト本番冊子＆A4まとめシート特化UI */
+.pdfv {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  display: flex;
+  flex-direction: column;
+  background: radial-gradient(circle at 50% 0%, #243044 0%, #161d29 100%);
+  color: #f8fafc;
+}
+
+/* 上部メインバー */
+.pdfv-bar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: calc(env(safe-area-inset-top, 0px) + 8px) 12px 8px;
+  background: linear-gradient(180deg, #0f172a 0%, #17233b 100%);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.22);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.32);
+}
+
+.pdfv-back {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 40px;
+  padding: 0 14px 0 10px;
+  border-radius: 999px;
+  border: 0;
+  background: #ffffff;
+  color: #0f172a;
+  font: 800 13.5px/1 var(--mt-font-display, sans-serif);
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.15s ease;
+}
+.pdfv-back:hover { background: #f1f5f9; transform: translateY(-1px); }
+
+.pdfv-icon-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 38px;
+  padding: 0 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+  color: #e2e8f0;
+  font: 700 12.5px/1 var(--mt-font-body, sans-serif);
+  cursor: pointer;
+}
+.pdfv-icon-btn.is-active {
+  background: rgba(56, 189, 248, 0.2);
+  border-color: #38bdf8;
+  color: #bae6fd;
+}
+
+.pdfv-back:focus-visible,
+.pdfv-icon-btn:focus-visible,
+.pdfv-tools > *:focus-visible,
+.pdfv-pager > button:focus-visible,
+.pdfv-variant-tab:focus-visible {
+  outline: 3px solid #f59e0b;
+  outline-offset: 2px;
+}
+
+.pdfv-title {
+  flex: 1;
+  min-width: 0;
+  margin: 0 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.pdfv-title-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+.pdfv-badge {
+  flex-shrink: 0;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #0284c7, #2563eb);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+.pdfv-title strong {
+  font-size: 14px;
+  line-height: 1.25;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #f8fafc;
+}
+.pdfv-subtitle {
+  font-size: 11.5px;
+  color: #94a3b8;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ページャー */
+.pdfv-pager {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 6px;
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.28);
+}
+.pdfv-pager > button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  border: 0;
+  background: rgba(255, 255, 255, 0.08);
+  color: #f8fafc;
+  cursor: pointer;
+}
+.pdfv-pager > button:disabled { opacity: 0.32; cursor: default; }
+.pdfv-page-indicator {
+  padding: 0 6px;
+  font-size: 12.5px;
+  color: #cbd5e1;
+  font-variant-numeric: tabular-nums;
+}
+.pdfv-page-indicator strong { color: #fff; font-weight: 800; }
+
+/* 右側ツール群 */
+.pdfv-tools {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.pdfv-tools > button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-width: 38px;
+  min-height: 38px;
+  padding: 0 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+  color: #f8fafc;
+  font: 700 12.5px/1 var(--mt-font-body, sans-serif);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.pdfv-tools > button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.14);
+}
+.pdfv-tools > button:disabled { opacity: 0.35; cursor: default; }
+.pdfv-spread-btn.is-active {
+  background: rgba(245, 158, 11, 0.22) !important;
+  border-color: #f59e0b !important;
+  color: #fde68a !important;
+}
+.pdfv-action-primary {
+  background: linear-gradient(135deg, #0284c7 0%, #1d4ed8 100%) !important;
+  border-color: rgba(125, 211, 252, 0.45) !important;
+}
+.pdfv-action-save {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
+  border-color: rgba(110, 231, 183, 0.4) !important;
+}
+.pdfv-zoom-pct {
+  min-width: 42px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #cbd5e1;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 3分冊バリアント切替バー */
+.pdfv-variant-bar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 14px;
+  background: #1e293b;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.22);
+  overflow-x: auto;
+}
+.pdfv-variant-lead {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #94a3b8;
+}
+.pdfv-variant-tabs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+.pdfv-variant-tab {
+  flex-shrink: 0;
+  padding: 6px 13px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: rgba(15, 23, 42, 0.55);
+  color: #cbd5e1;
+  font: 700 12.5px/1.2 var(--mt-font-body, sans-serif);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.pdfv-variant-tab:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+.pdfv-variant-tab.is-active {
+  background: #f8fafc;
+  border-color: #f8fafc;
+  color: #0f172a;
+  font-weight: 800;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+.pdfv-ext-link {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #93c5fd;
+  text-decoration: none;
+}
+.pdfv-ext-link:hover { text-decoration: underline; }
+
+/* 本体2ペイン（サイドバー＋ステージ） */
+.pdfv-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  overflow: hidden;
+}
+
+.pdfv-sidebar {
+  flex-shrink: 0;
+  width: 176px;
+  background: rgba(15, 23, 42, 0.86);
+  border-right: 1px solid rgba(148, 163, 184, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.pdfv-sidebar.is-closed { display: none; }
+.pdfv-sidebar-head {
+  padding: 9px 12px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #e2e8f0;
+}
+.pdfv-sidebar-head small { color: #94a3b8; font-weight: 600; font-size: 10.5px; }
+
+.pdfv-thumbs {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pdfv-thumb-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 6px;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background: rgba(30, 41, 59, 0.7);
+  color: #cbd5e1;
+  font: 700 11.5px/1 var(--mt-font-body, sans-serif);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.pdfv-thumb-btn:hover {
+  background: rgba(51, 65, 85, 0.85);
+  border-color: rgba(148, 163, 184, 0.45);
+}
+.pdfv-thumb-btn canvas {
+  max-width: 100%;
+  height: auto;
+  border-radius: 3px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+/* スクロールステージ */
+.pdfv-scroll {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: 18px 14px calc(env(safe-area-inset-bottom, 0px) + 28px);
+}
+
+.pdfv-pages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* 見開き2ページモード */
+.pdfv-scroll[data-spread] .pdfv-pages {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 18px;
+  max-width: 1220px;
+  margin: 0 auto;
+}
+
+.pdfv-scroll[data-zoom] .pdfv-pages {
+  width: max-content;
+  min-width: 100%;
+}
+
+/* 試験用紙シート外観 */
+.pdfv-sheet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.pdfv-sheet-head {
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  color: #cbd5e1;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+.pdfv-sheet canvas {
+  display: block;
+  max-width: none;
+  height: auto;
+  background: #ffffff;
+  border-radius: 3px;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.25),
+    0 12px 32px rgba(0, 0, 0, 0.48);
+}
+.pdfv-scroll:not([data-zoom]) .pdfv-sheet canvas {
+  max-width: 100%;
+}
+
+.pdfv-native {
+  display: block;
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  height: calc(100vh - 120px);
+  min-height: 440px;
+  border: 0;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+}
+
+/* ロードカード・エラー通知 */
+.pdfv-loading-card {
+  margin: 28px auto;
+  max-width: 440px;
+  padding: 18px 20px;
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.pdfv-loading-card p { margin: 0; display: flex; flex-direction: column; gap: 4px; }
+.pdfv-loading-card strong { font-size: 13.5px; color: #f8fafc; }
+.pdfv-loading-card small { font-size: 12px; color: #94a3b8; }
+.pdfv-spinner {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 3px solid rgba(56, 189, 248, 0.25);
+  border-top-color: #38bdf8;
+  animation: pdfvSpin 0.8s linear infinite;
+}
+@keyframes pdfvSpin { to { transform: rotate(360deg); } }
+
+.pdfv-status {
+  margin: 24px auto;
+  max-width: 420px;
+  text-align: center;
+  font-size: 14px;
+  color: #e6ecf5;
+}
+.pdfv-status button {
+  margin-top: 12px;
+  min-height: 42px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 0;
+  background: #fff;
+  color: #0f172a;
+  font-weight: 800;
+  cursor: pointer;
+}
 .pdfv-status-actions { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
 .pdfv-status-actions button { display: inline-flex; align-items: center; gap: 6px; }
-.pdfv-note { margin: 0 auto 10px; max-width: 420px; padding: 8px 12px; border-radius: 10px; background: var(--mt-ink); text-align: center; font-size: 13px; color: #fff; }
-@media (max-width: 400px) { .pdfv-tools > button span { display: none; } .pdfv-tools { gap: 2px; } }
+
+.pdfv-note {
+  margin: 0 auto 12px;
+  max-width: 560px;
+  padding: 9px 14px;
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  text-align: center;
+  font-size: 12.5px;
+  color: #e2e8f0;
+}
+.pdfv-note a { color: #7dd3fc; font-weight: 700; }
+
+/* モバイル最適化 */
+@media (max-width: 768px) {
+  .pdfv-subtitle,
+  .pdfv-zoom-pct,
+  .pdfv-hide-sm,
+  .pdfv-spread-btn {
+    display: none !important;
+  }
+  .pdfv-sidebar {
+    position: absolute;
+    top: 56px;
+    bottom: 0;
+    left: 0;
+    z-index: 20;
+    box-shadow: 8px 0 24px rgba(0, 0, 0, 0.5);
+  }
+  .pdfv-tools > button span { display: none; }
+  .pdfv-tools > button { padding: 0 8px; min-width: 36px; min-height: 36px; }
+  .pdfv-pager { padding: 2px 4px; }
+}
+
 @media print {
   body * { visibility: hidden !important; }
   .pdfv, .pdfv * { visibility: visible !important; }
-  .pdfv { position: absolute !important; inset: 0 !important; display: block !important; overflow: visible !important; background: #fff !important; color: #000 !important; }
-  .pdfv-bar, .pdfv-note, .pdfv-status { display: none !important; }
-  .pdfv-scroll { position: static !important; height: auto !important; overflow: visible !important; padding: 0 !important; }
-  .pdfv-native { width: 100% !important; height: 100vh !important; min-height: 0 !important; }
-  .pdfv-pages canvas { max-width: 100% !important; box-shadow: none !important; break-after: page; page-break-after: always; }
+  .pdfv {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    overflow: visible !important;
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .pdfv-bar,
+  .pdfv-variant-bar,
+  .pdfv-sidebar,
+  .pdfv-sheet-head,
+  .pdfv-note,
+  .pdfv-loading-card,
+  .pdfv-status {
+    display: none !important;
+  }
+  .pdfv-body,
+  .pdfv-scroll {
+    position: static !important;
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+  .pdfv-pages { display: block !important; }
+  .pdfv-sheet { margin: 0 !important; break-after: page; page-break-after: always; }
+  .pdfv-sheet canvas {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
 }

@@ -18,8 +18,10 @@
  *      複数問の演習がそのまま始まる。問題中・解説中もヘッダーからモーダルで再確認可能。
  */
 import { useState } from 'react';
-import { ArrowLeft, AlertTriangle, BookOpenCheck, ChevronRight, Eye, EyeOff, FlaskConical, Table2, X } from 'lucide-react';
+import { ArrowLeft, AlertTriangle, BookOpenCheck, ChevronRight, Eye, EyeOff, FlaskConical, Printer, Table2, X } from 'lucide-react';
 import { formatText } from '../utils/textFormatter';
+import { CHEM_PDF_CATALOG } from '../chemistry/chemistryPdfCatalog.generated';
+import { openPdf } from '../utils/pdfViewer';
 import type { Chapter } from '../types/curriculum';
 
 export interface ChemSummaryPrintProps {
@@ -48,6 +50,10 @@ export function ChemSummaryPrint({
   const cleanUnitTitle = chapter.abstractTitle.replace(/（大問\d+題・計\d+問）$/, '');
   const [redSheetMode, setRedSheetMode] = useState(false);
   const [revealedKeys, setRevealedKeys] = useState<Record<string, boolean>>({});
+  const summaryPdfEntry = CHEM_PDF_CATALOG.find(
+    e => e.kind === 'summary' && e.unitPageMap && chapter.id in e.unitPageMap,
+  );
+  const unitPdfPage = summaryPdfEntry?.unitPageMap?.[chapter.id];
 
   const toggleReveal = (key: string) => {
     setRevealedKeys(prev => ({ ...prev, [key]: !prev[key] }));
@@ -128,6 +134,27 @@ export function ChemSummaryPrint({
               {redSheetMode ? <Eye size={13} aria-hidden="true" /> : <EyeOff size={13} aria-hidden="true" />}
               <span>{redSheetMode ? '赤シート中' : '赤シート暗記'}</span>
             </button>
+
+            {summaryPdfEntry && unitPdfPage && (
+              <button
+                type="button"
+                onClick={() =>
+                  openPdf(summaryPdfEntry.file, summaryPdfEntry.title, {
+                    fileName: summaryPdfEntry.file.split('/').pop(),
+                    initialPage: unitPdfPage,
+                    subtitle: `${cleanUnitTitle}（第${unitPdfPage}ページ）`,
+                    badge: summaryPdfEntry.badge,
+                  })
+                }
+                className="inline-flex min-h-9 items-center gap-1 rounded-xl border border-[#2C3E50]/25 bg-white px-2.5 py-1 text-xs font-extrabold text-[#1E3A5F] shadow-2xs transition hover:bg-sky-50 cursor-pointer"
+                title="この単元のA4まとめプリントPDFを開く（印刷・保存対応）"
+                data-chem-summary-pdf-btn
+              >
+                <Printer size={14} aria-hidden="true" />
+                <span className="hidden sm:inline">A4まとめPDF</span>
+                <span className="sm:hidden">PDF</span>
+              </button>
+            )}
 
             {isOverlay ? (
               <button
