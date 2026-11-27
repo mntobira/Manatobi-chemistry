@@ -9,6 +9,7 @@ import { BASIC_CHANGE_UNITS_7 } from './units/basicChange7';
 import { WAVE2_BASIC_CHANGE_UNITS } from './units/commonTestWave2';
 import { WAVE3_BASIC_CHANGE_UNITS } from './units/commonTestWave3';
 import { WAVE4_BASIC_CHANGE_UNITS } from './units/commonTestWave4';
+import { WAVE5_BASIC_CHANGE_UNITS } from './units/commonTestWave5';
 import { BASIC_SUPPLEMENT_PROBLEMS } from './units/basicSupplements';
 import { MASTERY_UNIT_SUPPLEMENT_PROBLEMS } from './units/masteryUnitSupplements';
 
@@ -23,6 +24,7 @@ const RAW_UNITS: readonly ChemChapterSpec[] = [
   ...WAVE2_BASIC_CHANGE_UNITS,
   ...WAVE3_BASIC_CHANGE_UNITS,
   ...WAVE4_BASIC_CHANGE_UNITS,
+  ...WAVE5_BASIC_CHANGE_UNITS,
 ];
 
 export const BASIC_CHANGE_CHAPTERS: readonly ChemChapterSpec[] = RAW_UNITS.map(unit => {

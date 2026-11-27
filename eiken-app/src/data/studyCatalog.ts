@@ -56,12 +56,12 @@ export interface StudySubject {
 }
 
 const DESC_BY_COURSE: Record<string, string> = {
-  chem_basic_matter: '純物質とクロマトRf/多段抽出・分留と再結晶・白色粉末定性・質量分析MS・周期律・分子極性・C₆₀結晶・多資料統合（全23単元）',
-  chem_basic_change: 'mol計算・過不足濃度・ワルダー二段滴定・逆滴定チーム分け・電導度×pH滴定・吸光度検量線・COD・電池統合（全26単元）',
-  chem_theory: '状態方程式と圧縮因子Z・気液平衡×沸点上昇・逆浸透・ヘンリー・弱酸存在分率・ΔS自発変化・一次反応・電気分解・水和物（全30単元）',
-  chem_inorganic: 'ヨウ素製法・水ガラス・鉄シアノ錯塩・クロム液性平衡×モール法Ksp・バイヤー計算・過剰試薬再溶解グラフ・系統分離（全26単元）',
-  chem_organic: 'オゾン分解・エステル化平衡・ラクトン・5大裏切り者(フェノールエステル)・医薬品多段収率・芳香族異性体・系統分離（全24単元）',
-  chem_polymer: '糖類・グルタチオン・ペプチド配列＆溶出・酵素阻害速度論(Vmax/Km)・ビニロン＋12の鉄則・ポリ乳酸・共重合ゴム・イオン交換（全20単元）',
+  chem_basic_matter: '純物質とクロマトRf/多段抽出・分留と再結晶・同素体SCOPとC₆₀(90辺)・等電子イオン半径・質量分析MS・結晶・多資料統合（全24単元）',
+  chem_basic_change: 'mol計算・過不足濃度・ワルダー二段滴定・逆滴定・Ba(OH)₂電気伝導度V字曲線・吸光度検量線・COD・Liイオン＆燃料電池統合（全27単元）',
+  chem_theory: '状態方程式と圧縮因子Z・気液平衡×沸点上昇・熱量計の冷却直線外挿(ΔT)・結合エネルギー・弱酸存在分率・ΔS・一次反応・電気分解（全31単元）',
+  chem_inorganic: '気体発生＆洗気びん順序・乾燥剤2大例外・3Cu+8HNO₃役割比・ヨウ素/水ガラス・鉄シアノ錯塩・モール法Ksp・再溶解グラフ・系統分離（全27単元）',
+  chem_organic: 'オゾン分解・エステル化平衡・ラクトン・5大裏切り者・氷冷ジアゾ化＆カップリング・ニトロ化+45即算・医薬品収率・芳香族系統分離（全25単元）',
+  chem_polymer: '糖類・グルタチオン・ペプチド配列・酵素阻害(Vmax/Km)・ビニロン＋12の鉄則・PET/PLA・イオン交換2価混合塩連立・DNA水素結合数（全21単元）',
 };
 
 const ICON_BY_COURSE: Record<string, StudyIcon> = {
@@ -118,7 +118,7 @@ export const STUDY_CATALOG: readonly StudySubject[] = [{
       icon: 'briefcase',
       badge: '冊子＋第6問B式スマホ対応',
       section: 'memorize',
-      description: '『化学基礎』30分/50点（全8回）＋『化学』60分/100点・5大問15設問（全8回）。スマホ1画面資料切替＆PC問題冊子＋マーク解答用紙・プリント解法鉄則つき',
+      description: '『化学基礎』30分/50点（全9回）＋『化学』60分/100点・5大問15設問（全9回）。スマホ1画面資料切替＆PC問題冊子＋マーク解答用紙・プリント解法鉄則つき',
       meta: `全${CHEM_MOCK_EXAMS.length}回（基礎${CHEM_MOCK_EXAMS.filter(e => e.examCategory === 'basic').length}回・化学${CHEM_MOCK_EXAMS.filter(e => e.examCategory === 'advanced').length}回）`,
       action: { kind: 'mock' },
     },
@@ -127,7 +127,7 @@ export const STUDY_CATALOG: readonly StudySubject[] = [{
       title: '実験考察・構造決定ラボ',
       icon: 'pen',
       section: 'memorize',
-      description: '過不足濃度範囲・逆浸透淡水化・弱酸希釈曲線・鉄シアノ錯塩・イミド環化・グルタチオン酸化まで記述で整理＆自己採点',
+      description: '熱量計の冷却直線外挿・Li電池vs鉛蓄電池・塩素精製と硝酸酸化比・氷冷ジアゾ化・イオン交換連立・ポリイミドまで記述で整理＆自己採点',
       meta: `全${CHEM_LAB_TASKS.length}テーマ`,
       action: { kind: 'writing' },
     },

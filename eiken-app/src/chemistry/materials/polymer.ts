@@ -8,6 +8,7 @@ import { POLYMER_UNITS_6 } from './units/polymer6';
 import { WAVE2_POLYMER_UNITS } from './units/commonTestWave2';
 import { WAVE3_POLYMER_UNITS } from './units/commonTestWave3';
 import { WAVE4_POLYMER_UNITS } from './units/commonTestWave4';
+import { WAVE5_POLYMER_UNITS } from './units/commonTestWave5';
 import { ORGANIC_POLYMER_SUPPLEMENT_PROBLEMS } from './units/organicPolymerSupplements';
 import { MASTERY_UNIT_SUPPLEMENT_PROBLEMS } from './units/masteryUnitSupplements';
 
@@ -21,6 +22,7 @@ const RAW_UNITS: readonly ChemChapterSpec[] = [
   ...WAVE2_POLYMER_UNITS,
   ...WAVE3_POLYMER_UNITS,
   ...WAVE4_POLYMER_UNITS,
+  ...WAVE5_POLYMER_UNITS,
 ];
 
 export const POLYMER_CHAPTERS: readonly ChemChapterSpec[] = RAW_UNITS.map(unit => {

@@ -15,8 +15,8 @@ const task = 'chem_lab_titration_error';
 afterEach(() => vi.unstubAllGlobals());
 
 describe('Chemistry integration contracts', () => {
-  it('connects all 30 independently authored chemistry lab & structure tasks with rubrics and model answers', () => {
-    expect(CHEM_LAB_TASKS).toHaveLength(30);
+  it('connects all 34 independently authored chemistry lab & structure tasks with rubrics and model answers', () => {
+    expect(CHEM_LAB_TASKS).toHaveLength(34);
     for (const item of CHEM_LAB_TASKS) {
       expect(item.instruction.length).toBeGreaterThan(20);
       expect(wordCount(item.model)).toBeGreaterThan(30);
