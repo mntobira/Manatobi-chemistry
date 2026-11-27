@@ -56,12 +56,12 @@ export interface StudySubject {
 }
 
 const DESC_BY_COURSE: Record<string, string> = {
-  chem_basic_matter: '純物質とクロマトRf/多段抽出・分留と再結晶・同素体SCOPとC₆₀(90辺)・等電子イオン半径・質量分析MS・結晶・多資料統合（全24単元）',
-  chem_basic_change: 'mol計算・過不足濃度・ワルダー二段滴定・逆滴定・Ba(OH)₂電気伝導度V字曲線・吸光度検量線・COD・Liイオン＆燃料電池統合（全27単元）',
-  chem_theory: '状態方程式と圧縮因子Z・気液平衡×沸点上昇・熱量計の冷却直線外挿(ΔT)・結合エネルギー・弱酸存在分率・ΔS・一次反応・電気分解（全31単元）',
-  chem_inorganic: '気体発生＆洗気びん順序・乾燥剤2大例外・3Cu+8HNO₃役割比・ヨウ素/水ガラス・鉄シアノ錯塩・モール法Ksp・再溶解グラフ・系統分離（全27単元）',
-  chem_organic: 'オゾン分解・エステル化平衡・ラクトン・5大裏切り者・氷冷ジアゾ化＆カップリング・ニトロ化+45即算・医薬品収率・芳香族系統分離（全25単元）',
-  chem_polymer: '糖類・グルタチオン・ペプチド配列・酵素阻害(Vmax/Km)・ビニロン＋12の鉄則・PET/PLA・イオン交換2価混合塩連立・DNA水素結合数（全21単元）',
+  chem_basic_matter: '純物質とクロマトRf・分留と再結晶・同素体SCOPとC₆₀(90辺)・配位結合イオン・結晶4種マトリックス・最密充填・多資料統合（全25単元）',
+  chem_basic_change: 'mol計算・混合気体燃焼連立・ワルダー二段滴定・逆滴定・Ba(OH)₂電導度V字・KMnO₄滴定・吸光度検量線・Liイオン＆燃料電池（全28単元）',
+  chem_theory: '気液平衡ピストンP–V曲線・五水和物再結晶・熱量計t₀外挿・結合エネルギー・弱酸存在分率・緩衝液・ΔS・一次反応・直列電気分解（全32単元）',
+  chem_inorganic: '気体精製(水→濃硫酸)・乾燥剤2大例外・硝酸役割比・オストワルトNO循環・接触法・ソルベー法収支・錯塩・モール法Ksp・系統分離（全28単元）',
+  chem_organic: 'オゾン分解・エステル化平衡・5大裏切り者・氷冷ジアゾ化・油脂のけん化価＆ヨウ素価・セッケンvs合成洗剤・医薬品収率・芳香族分離（全26単元）',
+  chem_polymer: '糖類・グルタチオン・ペプチド配列・酵素阻害(Vmax/Km)・ビニロン＋12の鉄則・ポリイミド・機能性分離膜・イオン交換連立・DNA（全22単元）',
 };
 
 const ICON_BY_COURSE: Record<string, StudyIcon> = {
@@ -98,7 +98,7 @@ export const STUDY_CATALOG: readonly StudySubject[] = [{
       icon: 'book',
       badge: '1990-2026',
       section: 'spotlight',
-      description: 'センター〜共テ急所18選＆全39冊PDF印刷',
+      description: 'センター〜共テ急所24選＆全39冊PDF印刷',
       meta: '全39冊PDF',
       action: { kind: 'pastAnalysis', initialTab: 'pdfs' },
     },
@@ -108,7 +108,7 @@ export const STUDY_CATALOG: readonly StudySubject[] = [{
       icon: 'book',
       badge: '満点バイブル＋39冊PDF',
       section: 'memorize',
-      description: 'センター(1990-2020)〜共通テスト(2021-2026)の平均点・正答率30%台の壁・歴代ひっかけ誤文18選（赤シート＆単元直結）と、模試3分冊・A4横マークシート・全114単元まとめPDFを完備',
+      description: 'センター(1990-2020)〜共通テスト(2021-2026)の平均点・正答率30%台の壁・歴代ひっかけ誤文24選（赤シート＆単元直結）と、模試3分冊・A4横マークシート・全114単元まとめPDFを完備',
       meta: '37年分析・全39冊PDF収録',
       action: { kind: 'pastAnalysis', initialTab: 'pdfs' },
     },
@@ -118,7 +118,7 @@ export const STUDY_CATALOG: readonly StudySubject[] = [{
       icon: 'briefcase',
       badge: '冊子＋第6問B式スマホ対応',
       section: 'memorize',
-      description: '『化学基礎』30分/50点（全9回）＋『化学』60分/100点・5大問15設問（全9回）。スマホ1画面資料切替＆PC問題冊子＋マーク解答用紙・プリント解法鉄則つき',
+      description: '『化学基礎』30分/50点（全10回）＋『化学』60分/100点・5大問15設問（全10回）。スマホ1画面資料切替＆PC問題冊子＋マーク解答用紙・プリント解法鉄則つき',
       meta: `全${CHEM_MOCK_EXAMS.length}回（基礎${CHEM_MOCK_EXAMS.filter(e => e.examCategory === 'basic').length}回・化学${CHEM_MOCK_EXAMS.filter(e => e.examCategory === 'advanced').length}回）`,
       action: { kind: 'mock' },
     },
@@ -127,7 +127,7 @@ export const STUDY_CATALOG: readonly StudySubject[] = [{
       title: '実験考察・構造決定ラボ',
       icon: 'pen',
       section: 'memorize',
-      description: '熱量計の冷却直線外挿・Li電池vs鉛蓄電池・塩素精製と硝酸酸化比・氷冷ジアゾ化・イオン交換連立・ポリイミドまで記述で整理＆自己採点',
+      description: '気液平衡P–V境界・五水和物再結晶・熱量計t₀外挿・オストワルトNO循環・油脂けん化価/ヨウ素価・ビニロン＋12則まで全40題を記述整理＆自己採点',
       meta: `全${CHEM_LAB_TASKS.length}テーマ`,
       action: { kind: 'writing' },
     },

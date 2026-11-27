@@ -10,6 +10,7 @@ import { WAVE2_THEORY_UNITS } from './units/commonTestWave2';
 import { WAVE3_THEORY_UNITS } from './units/commonTestWave3';
 import { WAVE4_THEORY_UNITS } from './units/commonTestWave4';
 import { WAVE5_THEORY_UNITS } from './units/commonTestWave5';
+import { WAVE6_THEORY_UNITS } from './units/commonTestWave6';
 import { THEORY_INORGANIC_SUPPLEMENT_PROBLEMS } from './units/theoryInorganicSupplements';
 import { MASTERY_UNIT_SUPPLEMENT_PROBLEMS } from './units/masteryUnitSupplements';
 
@@ -25,6 +26,7 @@ const RAW_UNITS: readonly ChemChapterSpec[] = [
   ...WAVE3_THEORY_UNITS,
   ...WAVE4_THEORY_UNITS,
   ...WAVE5_THEORY_UNITS,
+  ...WAVE6_THEORY_UNITS,
 ];
 
 export const THEORY_CHAPTERS: readonly ChemChapterSpec[] = RAW_UNITS.map(unit => {

@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { Eye, FileText, FlaskConical, Table2, X } from 'lucide-react';
+import { Calculator, Eye, FileText, FlaskConical, Table2, X } from 'lucide-react';
 import { FigureCarousel } from './ListeningMaterials';
 import { parseExplanationBlocks } from './explanationBlocks';
 import type { TableBlock } from './explanationBlocks';
@@ -379,8 +379,15 @@ export function ChemMaterialDeck({
   const hasDialogue = Boolean(dialogue && dialogue.length > 0);
   const tabCount = 1 + (hasTable ? 1 : 0) + (hasFigs ? 1 : 0) + (hasDialogue ? 1 : 0);
 
-  type DeckTab = 'text' | 'table' | 'figs' | 'dialogue';
+  type DeckTab = 'text' | 'table' | 'figs' | 'dialogue' | 'memo';
   const [activeTab, setActiveTab] = useState<DeckTab>('text');
+  const [scratchMemo, setScratchMemo] = useState('');
+  const memoRef = useRef<HTMLTextAreaElement>(null);
+
+  const insertMemoToken = (tok: string) => {
+    setScratchMemo(prev => `${prev}${prev && !prev.endsWith(' ') && !prev.endsWith('\n') ? ' ' : ''}${tok}`);
+    memoRef.current?.focus();
+  };
 
   // 現在選択中の小問が「表」「図・グラフ（図番号含む）」「会話」を参照しているか判定（タブ上に控えめなドットで誘導＋該当スライド番号も自動選択）
   const promptHints = useMemo(() => {
@@ -411,16 +418,81 @@ export function ChemMaterialDeck({
     setActiveTab('text');
   }, [leadText, imageUrl, figures, dataTable]);
 
-  // 資料が「問題文のみ（図も表も会話も無し）」のときはタブバーを出さずシンプルに描画
+  // 資料が「問題文のみ（図も表も会話も無し）」のときも、スマホで選択肢を見ながら手元計算できるようスリムな「計算メモ・式量」切替を用意
   if (tabCount <= 1) {
     return (
       <div
         data-chem-material-deck="single"
-        className={`flex-1 min-h-0 overflow-y-auto overscroll-contain px-3 py-2 text-[14.5px] leading-[1.75] text-[#2C3E50] ${
-          compactMaxHeightClass ?? ''
-        }`}
+        className={`flex flex-1 min-h-0 flex-col overflow-hidden ${compactMaxHeightClass ?? ''}`}
       >
-        <div className="whitespace-pre-wrap">{formatText(parsedLead.proseText, highlights)}</div>
+        <div className="flex flex-none items-center justify-between gap-1 border-b border-slate-200 bg-slate-50/90 px-2.5 py-1">
+          <div className="flex items-center gap-1">
+            <button
+              type="button"
+              onClick={() => setActiveTab('text')}
+              className={`inline-flex min-h-[32px] items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-extrabold transition ${
+                activeTab !== 'memo'
+                  ? 'border-[#1f5c53] bg-[#1f5c53] text-white shadow-2xs'
+                  : 'border-slate-300 bg-white text-slate-700 active:bg-slate-100'
+              }`}
+            >
+              <FileText size={13} aria-hidden="true" />
+              <span>問題・条件</span>
+            </button>
+            <button
+              type="button"
+              data-chem-tab="memo"
+              onClick={() => setActiveTab(activeTab === 'memo' ? 'text' : 'memo')}
+              className={`inline-flex min-h-[32px] items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-extrabold transition ${
+                activeTab === 'memo'
+                  ? 'border-[#1f5c53] bg-[#1f5c53] text-white shadow-2xs'
+                  : 'border-slate-300 bg-white text-slate-700 active:bg-slate-100'
+              }`}
+            >
+              <Calculator size={13} aria-hidden="true" />
+              <span>計算メモ・式量{scratchMemo.trim() ? '●' : ''}</span>
+            </button>
+          </div>
+        </div>
+        {activeTab === 'memo' ? (
+          <div className="flex flex-1 min-h-0 flex-col gap-1.5 overflow-y-auto px-3 py-2 bg-[#FCFBF8]">
+            <div className="flex flex-wrap items-center justify-between gap-1 text-[10.5px] font-bold text-slate-600">
+              <span>頻出式量：H₂O=18 / CO₂=44 / NaOH=40 / H₂SO₄=98 / CaCO₃=100 / AgCl=143.5 / BaSO₄=233 / CuSO₄·5H₂O=250</span>
+              {scratchMemo && (
+                <button
+                  type="button"
+                  onClick={() => setScratchMemo('')}
+                  className="rounded border border-slate-300 bg-white px-1.5 py-0.5 text-[10px] font-extrabold text-slate-700"
+                >
+                  メモ消去
+                </button>
+              )}
+            </div>
+            <div className="flex flex-wrap gap-1">
+              {['×', '÷', '＝', 'mol', 'mmol', '×10⁻³', '⇄'].map(tok => (
+                <button
+                  key={tok}
+                  type="button"
+                  onClick={() => insertMemoToken(tok)}
+                  className="rounded border border-slate-300 bg-white px-2 py-0.5 text-[11px] font-extrabold text-slate-700 active:bg-slate-100"
+                >
+                  {tok}
+                </button>
+              ))}
+            </div>
+            <textarea
+              ref={memoRef}
+              value={scratchMemo}
+              onChange={e => setScratchMemo(e.target.value)}
+              placeholder="ここにモル比・連立式・構造候補をメモできます（下の4択を見たまま計算可能）"
+              className="min-h-[84px] flex-1 resize-none rounded-lg border border-slate-300 bg-white p-2 text-xs leading-relaxed text-slate-800 focus:border-teal-600 focus:outline-none"
+            />
+          </div>
+        ) : (
+          <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain px-3 py-2 text-[14.5px] leading-[1.75] text-[#2C3E50]">
+            <div className="whitespace-pre-wrap">{formatText(parsedLead.proseText, highlights)}</div>
+          </div>
+        )}
       </div>
     );
   }
@@ -521,6 +593,22 @@ export function ChemMaterialDeck({
             )}
           </button>
         )}
+
+        <button
+          type="button"
+          role="tab"
+          aria-selected={activeTab === 'memo'}
+          data-chem-tab="memo"
+          onClick={() => setActiveTab('memo')}
+          className={`inline-flex min-h-[34px] shrink-0 items-center gap-1 rounded-full border px-2.5 py-1 text-xs font-extrabold transition ${
+            activeTab === 'memo'
+              ? 'border-[#1f5c53] bg-[#1f5c53] text-white shadow-2xs'
+              : 'border-slate-300 bg-white text-slate-700 active:bg-slate-100'
+          }`}
+        >
+          <Calculator size={13} aria-hidden="true" />
+          <span>メモ・式量{scratchMemo.trim() ? '●' : ''}</span>
+        </button>
       </div>
 
       {/* タブの中身：選択中の資料に残り高さを 100% 渡す */}
@@ -614,6 +702,42 @@ export function ChemMaterialDeck({
                 <div className="min-w-0 flex-1 text-slate-800">{formatText(line.text)}</div>
               </div>
             ))}
+          </div>
+        )}
+
+        {activeTab === 'memo' && (
+          <div className="flex flex-1 min-h-0 flex-col gap-1.5 overflow-y-auto px-3 py-2 bg-[#FCFBF8]">
+            <div className="flex flex-wrap items-center justify-between gap-1 text-[10.5px] font-bold text-slate-600">
+              <span>頻出式量：H₂O=18 / CO₂=44 / NH₃=17 / NaOH=40 / H₂SO₄=98 / CaCO₃=100 / AgCl=143.5 / BaSO₄=233 / CuSO₄·5H₂O=250</span>
+              {scratchMemo && (
+                <button
+                  type="button"
+                  onClick={() => setScratchMemo('')}
+                  className="rounded border border-slate-300 bg-white px-1.5 py-0.5 text-[10px] font-extrabold text-slate-700"
+                >
+                  メモ消去
+                </button>
+              )}
+            </div>
+            <div className="flex flex-wrap gap-1">
+              {['×', '÷', '＝', 'mol', 'mmol', '×10⁻³', '⇄'].map(tok => (
+                <button
+                  key={tok}
+                  type="button"
+                  onClick={() => insertMemoToken(tok)}
+                  className="rounded border border-slate-300 bg-white px-2 py-0.5 text-[11px] font-extrabold text-slate-700 active:bg-slate-100"
+                >
+                  {tok}
+                </button>
+              ))}
+            </div>
+            <textarea
+              ref={memoRef}
+              value={scratchMemo}
+              onChange={e => setScratchMemo(e.target.value)}
+              placeholder="ここにモル収支・連立方程式・異性体メモを書き込めます（下の選択肢を隠さずに計算可能）"
+              className="min-h-[84px] flex-1 resize-none rounded-lg border border-slate-300 bg-white p-2 text-xs leading-relaxed text-slate-800 focus:border-teal-600 focus:outline-none"
+            />
           </div>
         )}
       </div>

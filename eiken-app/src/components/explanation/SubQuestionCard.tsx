@@ -49,8 +49,8 @@ export function renderSubQuestionCard(ctx: SubQuestionCardContext, sq: SubQuesti
                         const isUnanswered = !attempted;
                         // ★PC（画面に余裕がある）では最初から開いておく（2026-10-04 ご要望）★
                         //   閉じたら閉じたまま（利用者の操作を優先）。スマホは従来どおり閉じて始める。
-                        const explanationOpen = openExplanationBySq[sq.id] ?? !isMobile;
-                        const thinkingOpen = openThinkingBySq[sq.id] ?? !isMobile;
+                        const explanationOpen = openExplanationBySq[sq.id] ?? (!isMobile || Boolean(sq.detailedExplanation?.printRule && attempted && !isCorrect));
+                        const thinkingOpen = openThinkingBySq[sq.id] ?? (!isMobile || Boolean(sq.detailedExplanation?.printRule && attempted && !isCorrect));
                         // ★スクリプト（英文＋和訳）を上に出しているときは、解説の中の同じ英文の枠は出さない（2026-10-04 ご要望）★
                         const sqSliceRaw = sliceForSq(sq);
                         const isScriptFirst = isScriptFirstExplanation(sqSliceRaw);
@@ -185,6 +185,18 @@ export function renderSubQuestionCard(ctx: SubQuestionCardContext, sq: SubQuesti
                             </div>
 
                             <div className={`border-t p-2.5 space-y-2 ${'bg-white border-gray-200'}`}>
+                              {!thinkingOpen && sq.detailedExplanation?.printRule && (
+                                <div
+                                  data-print-rule-compact
+                                  className="rounded-lg border border-amber-300 bg-amber-50/85 px-3 py-2 text-xs leading-relaxed text-slate-900"
+                                >
+                                  <span className="mr-1.5 inline-flex items-center gap-1 font-black text-amber-900">
+                                    <KeyRound size={13} className="inline text-amber-700" />
+                                    鉄則:
+                                  </span>
+                                  <span className="font-bold">{formatText(sq.detailedExplanation.printRule)}</span>
+                                </div>
+                              )}
                               <button
                                 type="button"
                                 onClick={() => setOpenExplanationBySq(prev => ({ ...prev, [sq.id]: !explanationOpen }))}

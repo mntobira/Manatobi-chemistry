@@ -25,8 +25,8 @@ import { renderLatex, toChemLatex } from '../src/utils/mathTypeset';
 describe('Manatobi Chemistry Common Test Curriculum & Isolation', () => {
   it('registers all 6 chemistry courses with valid chapters, 1-screen summary sheets, 4+ questions per unit, and detailed explanations', () => {
     expect(CHEM_COURSES).toHaveLength(6);
-    expect(ALL_CHEM_CHAPTER_SPECS).toHaveLength(155);
-    expect(FLAT_CHEM_QUESTIONS.length).toBeGreaterThanOrEqual(645);
+    expect(ALL_CHEM_CHAPTER_SPECS).toHaveLength(161);
+    expect(FLAT_CHEM_QUESTIONS.length).toBeGreaterThanOrEqual(670);
 
     let printRuleCount = 0;
     let genericFallbackCount = 0;
@@ -36,7 +36,7 @@ describe('Manatobi Chemistry Common Test Curriculum & Isolation', () => {
     for (const course of CHEM_COURSES) {
       const chapters = getChaptersOfSubject(course.id);
       const stats = getSubjectStats(course.id);
-      expect(chapters.length).toBeGreaterThanOrEqual(21);
+      expect(chapters.length).toBeGreaterThanOrEqual(22);
       expect(stats.chapters).toBe(chapters.length);
 
       const parts = partsForCourse(course.id);
@@ -77,15 +77,15 @@ describe('Manatobi Chemistry Common Test Curriculum & Isolation', () => {
       }
     }
     expect(genericFallbackCount).toBe(0);
-    expect(printRuleCount).toBeGreaterThanOrEqual(645);
-    expect(multiFigCount).toBeGreaterThanOrEqual(18);
-    expect(tableProbCount).toBeGreaterThanOrEqual(18);
+    expect(printRuleCount).toBeGreaterThanOrEqual(670);
+    expect(multiFigCount).toBeGreaterThanOrEqual(24);
+    expect(tableProbCount).toBeGreaterThanOrEqual(24);
   });
 
-  it('validates all 18 Common Test full mock exams (50pt Basic x9, 100pt Chemistry x9) with exact point totals and authentic structure', () => {
-    expect(CHEM_MOCK_EXAMS).toHaveLength(18);
-    expect(CHEM_MOCK_EXAMS.filter(e => e.examCategory === 'basic')).toHaveLength(9);
-    expect(CHEM_MOCK_EXAMS.filter(e => e.examCategory === 'advanced')).toHaveLength(9);
+  it('validates all 20 Common Test full mock exams (50pt Basic x10, 100pt Chemistry x10) with exact point totals and authentic structure', () => {
+    expect(CHEM_MOCK_EXAMS).toHaveLength(20);
+    expect(CHEM_MOCK_EXAMS.filter(e => e.examCategory === 'basic')).toHaveLength(10);
+    expect(CHEM_MOCK_EXAMS.filter(e => e.examCategory === 'advanced')).toHaveLength(10);
     let dataTableCount = 0;
     let dialogueCount = 0;
     let multiFigSecCount = 0;
@@ -161,14 +161,14 @@ describe('Manatobi Chemistry Common Test Curriculum & Isolation', () => {
     expect(STUDY_CATALOG[0].contents.length).toBe(12);
   });
 
-  it('validates 37-year Center & Common Test analysis records, 18 trap chapter links, and all 39 generated PDF booklets', () => {
+  it('validates 37-year Center & Common Test analysis records, 24 trap chapter links, and all 39 generated PDF booklets', () => {
     expect(EXAM_TIMELINE_RECORDS.length).toBeGreaterThanOrEqual(8);
     expect(EXAM_TIMELINE_RECORDS.some(r => r.era === 'center')).toBe(true);
     expect(EXAM_TIMELINE_RECORDS.some(r => r.era === 'kyotsu' && r.year === 2026)).toBe(true);
     expect(FULL_SCORE_TACTICS).toHaveLength(3);
 
     const allChapterIds = new Set(ALL_CHEM_CHAPTER_SPECS.map(c => c.id));
-    expect(CENTER_KYOTSU_TRAPS).toHaveLength(18);
+    expect(CENTER_KYOTSU_TRAPS).toHaveLength(24);
     for (const trap of CENTER_KYOTSU_TRAPS) {
       expect(allChapterIds.has(trap.chapterId), `${trap.id} -> ${trap.chapterId}`).toBe(true);
       expect(trap.chapterId.startsWith(`${trap.course}_`)).toBe(true);
@@ -220,7 +220,7 @@ describe('Manatobi Chemistry Common Test Curriculum & Isolation', () => {
     expect(latex).toBeTruthy();
     const html = renderLatex(latex!);
     expect(html).toContain('katex');
-    expect(CHEM_LAB_TASKS).toHaveLength(34);
+    expect(CHEM_LAB_TASKS).toHaveLength(40);
   });
 
   it('enforces chemistry storage and Firestore collection isolation', () => {

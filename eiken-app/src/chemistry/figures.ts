@@ -1428,5 +1428,111 @@ export const FIG_DIAZO_COUPLING_MAP = svgDataUri(`
 </svg>
 `);
 
+/** 2025本試型：気液平衡のピストン引き上げ P-V 折れ線グラフ（液体残存域＝水平一定 Pvap → 全蒸発境界 V* 以降＝ボイル双曲線） */
+export const FIG_VAPOR_PISTON_BOYLE = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 250" font-family="sans-serif">
+  <rect width="480" height="250" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="240" y="21" text-anchor="middle" font-size="12" font-weight="bold" fill="#1E293B">気液平衡のピストン膨張 P–V グラフ（液体がある間は Pvap 一定 → 全蒸発 V* からボイル双曲線）</text>
+  <line x1="56" y1="205" x2="444" y2="205" stroke="#334155" stroke-width="2"/>
+  <line x1="56" y1="205" x2="56" y2="40" stroke="#334155" stroke-width="2"/>
+  <text x="250" y="234" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#334155">シリンダー内容積 V [L]（V* ＝ nRT / Pvap で最後の1滴が蒸発！）</text>
+  <text x="20" y="124" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#334155" transform="rotate(-90 20 124)">圧力 P [Pa]</text>
+  <!-- 液体あり：水平線 -->
+  <line x1="76" y1="84" x2="226" y2="84" stroke="#DC2626" stroke-width="3"/>
+  <!-- 気体のみ：双曲線 PV = 一定 -->
+  <path d="M 226 84 Q 286 144 336 154 Q 386 164 426 172" fill="none" stroke="#2563EB" stroke-width="3"/>
+  <circle cx="226" cy="84" r="5" fill="#B91C1C"/>
+  <line x1="226" y1="84" x2="226" y2="205" stroke="#64748B" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="326" y1="145" x2="326" y2="205" stroke="#94A3B8" stroke-dasharray="3 3"/>
+  <line x1="56" y1="145" x2="326" y2="145" stroke="#94A3B8" stroke-dasharray="3 3"/>
+  <text x="50" y="88" text-anchor="end" font-size="9.8" font-weight="bold" fill="#B91C1C">Pvap</text>
+  <text x="50" y="149" text-anchor="end" font-size="9.5" font-weight="bold" fill="#1D4ED8">0.5Pvap</text>
+  <text x="226" y="218" text-anchor="middle" font-size="10" font-weight="bold" fill="#B91C1C">V*</text>
+  <text x="326" y="218" text-anchor="middle" font-size="10" font-weight="bold" fill="#1D4ED8">2V*</text>
+  <rect x="78" y="48" width="136" height="26" rx="6" fill="#FEF2F2" stroke="#FCA5A5"/>
+  <text x="146" y="65" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#991B1B">① 気液共存：P ＝ Pvap 一定</text>
+  <rect x="262" y="60" width="166" height="38" rx="6" fill="#EFF6FF" stroke="#93C5FD"/>
+  <text x="345" y="76" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#1E40AF">② すべて気体（V ＞ V*）</text>
+  <text x="345" y="91" text-anchor="middle" font-size="9.2" fill="#1E3A8A">P ＝ Pvap × (V* / V) で反比例低下</text>
+</svg>
+`);
+
+/** 水和物結晶 CuSO₄·5H₂O (式量 250 ＝ 無水物 160 ＋ 水 90) の冷却析出バランスシート図 */
+export const FIG_SOLUBILITY_HYDRATE_STEP = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 250" font-family="sans-serif">
+  <rect width="480" height="250" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="240" y="21" text-anchor="middle" font-size="12" font-weight="bold" fill="#1E293B">水和物結晶 CuSO₄·5H₂O（式量 250）析出の「溶媒水も一緒に減る」黄金比計算図</text>
+  <rect x="24" y="42" width="194" height="172" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.8"/>
+  <text x="121" y="64" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1D4ED8">析出結晶 x [g] の内訳（160 : 90）</text>
+  <rect x="40" y="78" width="162" height="48" rx="6" fill="#DBEAFE" stroke="#2563EB"/>
+  <text x="121" y="98" text-anchor="middle" font-size="10" font-weight="bold" fill="#1E3A8A">無水塩 CuSO₄ 分（式量 160）</text>
+  <text x="121" y="116" text-anchor="middle" font-size="11" font-weight="bold" fill="#1D4ED8">x × (160 / 250) ＝ 0.64x [g]</text>
+  <rect x="40" y="136" width="162" height="48" rx="6" fill="#E0F2FE" stroke="#0284C7"/>
+  <text x="121" y="156" text-anchor="middle" font-size="10" font-weight="bold" fill="#075985">結晶水 5H₂O 分（式量 90）</text>
+  <text x="121" y="174" text-anchor="middle" font-size="11" font-weight="bold" fill="#0369A1">x × (90 / 250) ＝ 0.36x [g]</text>
+  <text x="121" y="203" text-anchor="middle" font-size="9.2" font-weight="bold" fill="#B91C1C">★結晶に水も持っていかれる！</text>
+  <rect x="240" y="42" width="218" height="172" rx="10" fill="#FFFBEB" stroke="#D97706" stroke-width="1.8"/>
+  <text x="349" y="64" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#92400E">プリントの1行比例式（飽和溶液比）</text>
+  <text x="349" y="92" text-anchor="middle" font-size="10" fill="#0F172A">(初期溶質 A − 0.64x) / (初期溶液 M − x)</text>
+  <text x="349" y="114" text-anchor="middle" font-size="11" font-weight="bold" fill="#B45309">＝ 低温溶解度 S₂ / (100 ＋ S₂)</text>
+  <line x1="256" y1="128" x2="442" y2="128" stroke="#FCD34D"/>
+  <text x="349" y="149" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#78350F">【さらに速い「飽和溶液 ↔ 結晶」比例】</text>
+  <text x="349" y="170" text-anchor="middle" font-size="9.3" fill="#334155">60℃飽和溶液(100+S₁) g を 20℃へ冷却：</text>
+  <text x="349" y="190" text-anchor="middle" font-size="9.6" font-weight="bold" fill="#991B1B">(S₁ − 0.64x) / (100 − 0.36x) ＝ S₂ / 100</text>
+  <text x="240" y="236" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#334155">鉄則：無水塩と違い「分母の溶媒水も 0.36x [g] 減る」ため、単なる引き算 S₁−S₂ より多く析出する！</text>
+</svg>
+`);
+
+/** オストワルト法（NO再利用合算式 NH₃ + 2O₂ → HNO₃ + H₂O）と接触法（発煙硫酸吸収）の2大無機工業フロー */
+export const FIG_OSTWALD_HABER_FLOW = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 250" font-family="sans-serif">
+  <rect width="480" height="250" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="240" y="21" text-anchor="middle" font-size="12" font-weight="bold" fill="#1E293B">無機2大工業製法の物質収支（上：オストワルト法 NO 循環 ／ 下：接触法の濃硫酸吸収）</text>
+  <!-- 上段：オストワルト法 -->
+  <rect x="20" y="36" width="440" height="92" rx="8" fill="#EFF6FF" stroke="#60A5FA" stroke-width="1.6"/>
+  <text x="34" y="54" font-size="10" font-weight="bold" fill="#1E40AF">① オストワルト法（触媒：Pt 網・約800℃）</text>
+  <text x="240" y="76" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#0F172A">NH₃ ──(+O₂ / Pt)──▶ NO ──(+O₂)──▶ NO₂ ──(+温水 H₂O)──▶ HNO₃ ＋ NO(循環再利用！)</text>
+  <path d="M 412 84 C 412 114, 178 114, 178 84" fill="none" stroke="#DC2626" stroke-width="2" stroke-dasharray="4 2"/>
+  <text x="295" y="120" text-anchor="middle" font-size="9.6" font-weight="bold" fill="#B91C1C">★NO を 100% 再利用した合算式：NH₃ ＋ 2O₂ → HNO₃ ＋ H₂O（N原子 1:1 完全保存！）</text>
+  <!-- 下段：接触法 -->
+  <rect x="20" y="138" width="440" height="88" rx="8" fill="#FEFCE8" stroke="#EAB308" stroke-width="1.6"/>
+  <text x="34" y="156" font-size="10" font-weight="bold" fill="#854D0E">② 接触法（触媒：酸化バナジウム(V) V₂O₅）</text>
+  <text x="240" y="178" text-anchor="middle" font-size="10.3" font-weight="bold" fill="#0F172A">S または FeS₂ ──(+O₂)──▶ SO₂ ──(+O₂ / V₂O₅)──▶ SO₃ ──(濃H₂SO₄に吸収→発煙硫酸→希硫酸で薄める)──▶ H₂SO₄</text>
+  <text x="240" y="204" text-anchor="middle" font-size="9.4" font-weight="bold" fill="#991B1B">急所：SO₃ を直接「水」に入れると激しい溶解熱で硫酸ミスト(霧)が飛散するため、まず【濃硫酸】に吸収させる！</text>
+  <text x="240" y="241" text-anchor="middle" font-size="9.3" font-weight="bold" fill="#334155">モル保存：FeS₂ 1 mol（S原子 2個！）からは最大【2 mol】の H₂SO₄ が得られる！</text>
+</svg>
+`);
+
+/** 油脂の「けん化価・ヨウ素価」からの分子量・C=C数決定と ビニロンの「＋12アセタール化則」チャート */
+export const FIG_FAT_SAPONIFICATION_IODINE = svgDataUri(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 250" font-family="sans-serif">
+  <rect width="480" height="250" rx="12" fill="#FCFBF8" stroke="#E2DDD3"/>
+  <text x="240" y="21" text-anchor="middle" font-size="12" font-weight="bold" fill="#1E293B">有機・高分子 2大定量ルール（左：油脂のけん化価＆ヨウ素価 ／ 右：ビニロン合成「＋12の鉄則」）</text>
+  <!-- 左：油脂 -->
+  <rect x="20" y="38" width="216" height="184" rx="10" fill="#FFF7ED" stroke="#F97316" stroke-width="1.7"/>
+  <text x="128" y="58" text-anchor="middle" font-size="10.3" font-weight="bold" fill="#9A3412">油脂（分子量 M）1 mol の基準式</text>
+  <rect x="32" y="68" width="192" height="64" rx="6" fill="#FFEDD5" stroke="#FB923C"/>
+  <text x="128" y="86" text-anchor="middle" font-size="9.6" font-weight="bold" fill="#7C2D12">① けん化価 S [mg KOH / 油脂 1 g]</text>
+  <text x="128" y="104" text-anchor="middle" font-size="9.4" fill="#0F172A">油脂 1 mol ⇔ 3 mol KOH（3×56 g）</text>
+  <text x="128" y="122" text-anchor="middle" font-size="10" font-weight="bold" fill="#C2410C">S ＝ (3 × 56 × 10³) ÷ M</text>
+  <rect x="32" y="142" width="192" height="68" rx="6" fill="#FEF3C7" stroke="#F59E0B"/>
+  <text x="128" y="160" text-anchor="middle" font-size="9.6" font-weight="bold" fill="#92400E">② ヨウ素価 I [g I₂ / 油脂 100 g]</text>
+  <text x="128" y="178" text-anchor="middle" font-size="9.4" fill="#0F172A">C=C が k 個 ⇔ k mol I₂（254k g）</text>
+  <text x="128" y="198" text-anchor="middle" font-size="10" font-weight="bold" fill="#B45309">I ＝ (254k ÷ M) × 100</text>
+  <!-- 右：ビニロン -->
+  <rect x="248" y="38" width="212" height="184" rx="10" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.7"/>
+  <text x="354" y="58" text-anchor="middle" font-size="10.3" font-weight="bold" fill="#166534">PVA → ビニロン（アセタール化）</text>
+  <text x="354" y="82" text-anchor="middle" font-size="9.5" fill="#0F172A">PVA 単位 (−CH₂−CH(OH)−) 式量 ＝ 44</text>
+  <text x="354" y="102" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#15803D">隣り合う 2個の −OH（2単位＝88）に</text>
+  <text x="354" y="120" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#15803D">HCHO(30) が入り H₂O(18) が抜ける！</text>
+  <rect x="262" y="132" width="184" height="76" rx="8" fill="#DCFCE7" stroke="#22C55E"/>
+  <text x="354" y="152" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#14532D">★「＋12（1単位＋6）」の鉄則</text>
+  <text x="354" y="172" text-anchor="middle" font-size="9.4" fill="#0F172A">+HCHO(30) − H₂O(18) ＝ ＋12 / 2単位</text>
+  <text x="354" y="194" text-anchor="middle" font-size="9.6" font-weight="bold" fill="#B91C1C">反応した OH 1 mol あたり ＋6.0 g 増加！</text>
+  <text x="240" y="239" text-anchor="middle" font-size="9.2" font-weight="bold" fill="#334155">単位トラップ注意：けん化価は「油脂 1 g あたり mg」、ヨウ素価は「油脂 100 g あたり g」！</text>
+</svg>
+`);
+
+
 
 

@@ -176,7 +176,7 @@ export function ChemPastAnalysisStudio({
         <div className="mx-auto flex max-w-6xl gap-1 overflow-x-auto px-3 pb-2 sm:px-6">
           {[
             { id: 'pdfs' as const, label: '印刷PDF冊子・マークシート (全39冊)', icon: FileText },
-            { id: 'traps' as const, label: '歴代ひっかけ誤文＆秒殺18選', icon: AlertTriangle },
+            { id: 'traps' as const, label: `歴代ひっかけ誤文＆秒殺${CENTER_KYOTSU_TRAPS.length}選`, icon: AlertTriangle },
             { id: 'timeline' as const, label: 'センター〜共テ37年 出題・平均点分析', icon: History },
             { id: 'tactics' as const, label: '共通テスト100点満点 3大戦術', icon: Target },
           ].map(item => {
@@ -440,7 +440,7 @@ export function ChemPastAnalysisStudio({
             <div className="flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-amber-200 bg-amber-50/80 p-3.5">
               <div>
                 <h2 className="text-sm font-black text-amber-950 sm:text-base">
-                  センター(1990–2020)〜共通テスト(2021–2026) 歴代ひっかけ誤文＆秒殺ルール18選
+                  センター(1990–2020)〜共通テスト(2021–2026) 歴代ひっかけ誤文＆秒殺ルール{CENTER_KYOTSU_TRAPS.length}選
                 </h2>
                 <p className="text-xs text-amber-900/80">
                   「赤シート暗記モード」をONにすると秒殺ルールが隠れ、自分の頭で誤文の根拠を即答できるかテストできます。
